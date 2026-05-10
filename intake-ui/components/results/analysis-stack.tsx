@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, FileText, Gavel, Loader2, Notebook, ScrollText, ShieldAlert, ShieldCheck, Swords } from "lucide-react";
+import { BarChart3, ChevronDown, FileText, Gavel, Goal, Loader2, Notebook, ScrollText, ShieldAlert, ShieldCheck, Swords } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Markdown } from "@/components/markdown";
 import type {
@@ -28,11 +28,13 @@ export function AnalysisStack({
   ranking,
   summary,
   runId,
+  onSelectStrategy,
 }: {
   candidate: CandidateArtifacts;
   ranking?: RankingEntry;
   summary: ArtifactsSummary;
   runId: string;
+  onSelectStrategy?: (strategy: string) => void;
 }) {
   const eligible = ranking?.eligible !== false && ranking?.programmatic_gate !== "fail";
   const panelData = summary.panel?.candidates?.[candidate.strategy];
@@ -44,9 +46,13 @@ export function AnalysisStack({
     (r) => r.candidate_a === candidate.strategy || r.candidate_b === candidate.strategy,
   );
 
+  const seed = findStrategySeed(summary.strategic_diagnosis, candidate.strategy);
+
   return (
     <div className="space-y-4 px-6 py-5">
       <ScoreCard ranking={ranking} eligible={eligible} panelData={panelData} />
+
+      {seed && <StrategySeedCard seed={seed} />}
 
       <Section icon={Gavel} title="Evaluator verdict" defaultOpen>
         <RemoteText runId={runId} path={candidate.verdict_path} empty="No verdict file." render="md" dense />
@@ -62,10 +68,96 @@ export function AnalysisStack({
         </Section>
       )}
 
+      <Section icon={BarChart3} title="How this stacks up across all candidates" defaultOpen={false}>
+        <TournamentTable summary={summary} highlight={candidate.strategy} onSelectStrategy={onSelectStrategy} />
+      </Section>
+
       <Section icon={Notebook} title="Strategic diagnosis (this brief)" defaultOpen={false}>
         <DiagnosisSummary diagnosis={summary.strategic_diagnosis} />
       </Section>
     </div>
+  );
+}
+
+function TournamentTable({
+  summary,
+  highlight,
+  onSelectStrategy,
+}: {
+  summary: ArtifactsSummary;
+  highlight?: string;
+  onSelectStrategy?: (strategy: string) => void;
+}) {
+  const rankByStrategy = new Map<string, RankingEntry>();
+  for (const e of summary.ranking?.entries ?? []) rankByStrategy.set(e.strategy, e);
+
+  // Build the union of all strategies present in tournaments + ranking + candidates.
+  const strategies = new Set<string>();
+  for (const c of summary.candidates) strategies.add(c.strategy);
+  for (const e of summary.ranking?.entries ?? []) strategies.add(e.strategy);
+  for (const k of Object.keys(summary.tournament?.points ?? {})) strategies.add(k);
+  for (const k of Object.keys(summary.blind_tournament?.points ?? {})) strategies.add(k);
+
+  const rows = Array.from(strategies).map((strat) => ({
+    strategy: strat,
+    rank: rankByStrategy.get(strat)?.rank,
+    total: rankByStrategy.get(strat)?.total,
+    panel: summary.panel?.candidates?.[strat]?.panel_average,
+    pairwise: summary.tournament?.points?.[strat] ?? rankByStrategy.get(strat)?.pairwise_points,
+    blind: summary.blind_tournament?.points?.[strat] ?? rankByStrategy.get(strat)?.blind_points,
+    gate: rankByStrategy.get(strat)?.programmatic_gate,
+    eligible: rankByStrategy.get(strat)?.eligible !== false && rankByStrategy.get(strat)?.programmatic_gate !== "fail",
+  }));
+  rows.sort((a, b) => {
+    const ra = a.rank ?? 999;
+    const rb = b.rank ?? 999;
+    if (ra !== rb) return ra - rb;
+    return (b.total ?? -Infinity) - (a.total ?? -Infinity);
+  });
+
+  if (rows.length === 0) return <div className="text-xs text-muted-foreground">No tournament data.</div>;
+
+  return (
+    <table className="w-full text-[12px]">
+      <thead>
+        <tr className="border-b border-border text-muted-foreground">
+          <th className="py-1.5 pl-1 text-left font-normal">#</th>
+          <th className="py-1.5 pl-2 text-left font-normal">strategy</th>
+          <th className="py-1.5 pr-1 text-right font-normal">total</th>
+          <th className="py-1.5 pr-1 text-right font-normal">panel</th>
+          <th className="py-1.5 pr-1 text-right font-normal">pw</th>
+          <th className="py-1.5 pr-1 text-right font-normal">blind</th>
+          <th className="py-1.5 pr-2 text-left font-normal">gate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => {
+          const isMe = r.strategy === highlight;
+          return (
+            <tr
+              key={r.strategy}
+              onClick={() => !isMe && onSelectStrategy?.(r.strategy)}
+              className={cn(
+                "border-b border-border/40 last:border-b-0 tabular-nums",
+                isMe ? "bg-accent" : onSelectStrategy ? "cursor-pointer hover:bg-accent/40" : "",
+              )}
+            >
+              <td className="py-1.5 pl-1 text-muted-foreground">{r.rank ?? "—"}</td>
+              <td className={cn("py-1.5 pl-2 font-mono", isMe && "font-semibold")}>{r.strategy}</td>
+              <td className="py-1.5 pr-1 text-right">{typeof r.total === "number" ? r.total.toFixed(2) : "—"}</td>
+              <td className="py-1.5 pr-1 text-right text-muted-foreground">{typeof r.panel === "number" ? r.panel.toFixed(1) : "—"}</td>
+              <td className="py-1.5 pr-1 text-right text-muted-foreground">{typeof r.pairwise === "number" ? r.pairwise.toFixed(1) : "—"}</td>
+              <td className="py-1.5 pr-1 text-right text-muted-foreground">{typeof r.blind === "number" ? r.blind.toFixed(1) : "—"}</td>
+              <td className="py-1.5 pr-2">
+                {r.gate ? (
+                  <span className={cn("rounded px-1.5 py-0.5 text-[10px] font-mono uppercase", r.eligible ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900")}>{r.gate}</span>
+                ) : "—"}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
 
@@ -332,6 +424,62 @@ function DiagnosisSummary({ diagnosis }: { diagnosis: unknown }) {
           </ul>
         </details>
       )}
+    </div>
+  );
+}
+
+interface StrategySeed {
+  strategy_name?: string;
+  why_this_strategy_is_worth_testing?: string;
+  what_it_should_optimize?: string[];
+  main_risk?: string;
+  best_for?: string;
+}
+
+function findStrategySeed(diagnosis: unknown, strategy: string): StrategySeed | undefined {
+  if (!diagnosis || typeof diagnosis !== "object") return undefined;
+  const seeds = (diagnosis as { candidate_strategy_seeds?: StrategySeed[] }).candidate_strategy_seeds;
+  if (!Array.isArray(seeds)) return undefined;
+  const norm = (s: string) => s.toLowerCase().replace(/[\s_-]+/g, "-");
+  const target = norm(strategy);
+  return seeds.find((s) => s.strategy_name && norm(s.strategy_name) === target);
+}
+
+function StrategySeedCard({ seed }: { seed: StrategySeed }) {
+  return (
+    <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
+      <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        <Goal className="h-3 w-3" /> what this strategy was meant to do
+      </div>
+      {seed.why_this_strategy_is_worth_testing && (
+        <div className="mt-1.5 text-[13px] leading-relaxed">{seed.why_this_strategy_is_worth_testing}</div>
+      )}
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        {seed.what_it_should_optimize && seed.what_it_should_optimize.length > 0 && (
+          <div className="rounded bg-muted/40 p-2">
+            <div className="text-[10px] font-mono uppercase tracking-wide text-muted-foreground">should optimize</div>
+            <ul className="mt-1 space-y-0.5 text-[12px]">
+              {seed.what_it_should_optimize.map((x, i) => <li key={i}>· {x}</li>)}
+            </ul>
+          </div>
+        )}
+        {(seed.main_risk || seed.best_for) && (
+          <div className="space-y-2">
+            {seed.best_for && (
+              <div className="rounded bg-emerald-50 p-2">
+                <div className="text-[10px] font-mono uppercase tracking-wide text-emerald-900">best for</div>
+                <div className="mt-0.5 text-[12px] text-emerald-950">{seed.best_for}</div>
+              </div>
+            )}
+            {seed.main_risk && (
+              <div className="rounded bg-amber-50 p-2">
+                <div className="text-[10px] font-mono uppercase tracking-wide text-amber-900">main risk</div>
+                <div className="mt-0.5 text-[12px] text-amber-950">{seed.main_risk}</div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

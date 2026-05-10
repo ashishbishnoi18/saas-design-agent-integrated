@@ -15,12 +15,14 @@ export function FocusPane({
   summary,
   runId,
   isWinner,
+  onSelectStrategy,
 }: {
   candidate?: CandidateArtifacts;
   ranking?: RankingEntry;
   summary: ArtifactsSummary;
   runId: string;
   isWinner: boolean;
+  onSelectStrategy?: (strategy: string) => void;
 }) {
   const [viewport, setViewport] = useState<Viewport>("desktop");
 
@@ -73,7 +75,7 @@ export function FocusPane({
           <WireframeFrame src={wireframeUrl} viewport={viewport} />
         </div>
         <div className="flex-1 overflow-y-auto scrollbar-thin">
-          <AnalysisStack candidate={candidate} ranking={ranking} summary={summary} runId={runId} />
+          <AnalysisStack candidate={candidate} ranking={ranking} summary={summary} runId={runId} onSelectStrategy={onSelectStrategy} />
         </div>
       </div>
     </div>

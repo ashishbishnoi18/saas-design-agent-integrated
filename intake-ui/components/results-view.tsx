@@ -135,6 +135,7 @@ export function ResultsView({
           summary={summary}
           runId={runId}
           isWinner={!!focused && focused === winner}
+          onSelectStrategy={setFocus}
         />
       </main>
 
