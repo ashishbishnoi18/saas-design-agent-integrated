@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "coverage-confidence-strategy",
+  "winner": "A",
+  "confidence": 0.74,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "tie",
+    "trope_risk": "B"
+  },
+  "reasoning": "Candidate A is the stronger relative choice because it preserves the primary business path: a skeptical family planner can understand the service, see the no-login safety model, and start a free alert in the first viewport on both desktop and mobile. Candidate B has a more strategically distinctive coverage-confidence angle and better paid-search intent matching, but its mobile first viewport delays the form and CTA too far; screenshot 6 shows the form only beginning below the first fold, which weakens the immediate conversion path. On desktop, both have excessive top whitespace, but A\u2019s first viewport still co-locates the trust proof and full form more effectively. B has lower trope risk because the restaurant coverage grid is a domain-specific structural move rather than a generic SaaS proof section, but that does not compensate for the weaker mobile conversion path.",
+  "best_reusable_move_a": "Hero co-location of the no-login trust proof, official handoff, benign four-field alert form, and free CTA; this directly resolves the trust blocker at the action point.",
+  "best_reusable_move_b": "Coverage grid as both search-intent confirmation and Pro upsell motivation; seeing multiple desired restaurants makes unlimited alerts feel naturally valuable.",
+  "synthesis_recommended": true
+}

@@ -1,0 +1,323 @@
+{
+  "blind_pairwise_enabled": true,
+  "participants": [
+    "trust-first-free-alert-strategy",
+    "comparison-ready-pro-strategy",
+    "workflow-first-reservation-rescue-strategy",
+    "segment-self-selection-strategy",
+    "coverage-confidence-strategy",
+    "example-alert-proof-strategy"
+  ],
+  "points": {
+    "trust-first-free-alert-strategy": 5.0,
+    "comparison-ready-pro-strategy": 0.0,
+    "workflow-first-reservation-rescue-strategy": 4.0,
+    "segment-self-selection-strategy": 1.0,
+    "coverage-confidence-strategy": 3.0,
+    "example-alert-proof-strategy": 2.0
+  },
+  "records": {
+    "trust-first-free-alert-strategy": {
+      "wins": 5,
+      "losses": 0,
+      "ties": 0
+    },
+    "comparison-ready-pro-strategy": {
+      "wins": 0,
+      "losses": 5,
+      "ties": 0
+    },
+    "workflow-first-reservation-rescue-strategy": {
+      "wins": 4,
+      "losses": 1,
+      "ties": 0
+    },
+    "segment-self-selection-strategy": {
+      "wins": 1,
+      "losses": 4,
+      "ties": 0
+    },
+    "coverage-confidence-strategy": {
+      "wins": 3,
+      "losses": 2,
+      "ties": 0
+    },
+    "example-alert-proof-strategy": {
+      "wins": 2,
+      "losses": 3,
+      "ties": 0
+    }
+  },
+  "results": [
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "A",
+      "confidence": 0.82,
+      "perception": {
+        "who_is_this_for_a": "A one-trip Disney planner who wants to quickly start a free restaurant alert and feel reassured that no Disney login is required.",
+        "who_is_this_for_b": "A more comparison-oriented Disney planner or superfan evaluating speed, coverage, pricing, FAQs, and Pro value before committing.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "A",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A better satisfies the core landing-page job: the first viewport immediately shows the Disney dining alert problem, no-login reassurance, official Disney handoff, and a visible free alert setup form with restaurant, dates, party size, and email. On mobile, the alert setup path remains directly available above the fold area. Candidate B has stronger full-page depth for experts, including process, coverage, comparison, pricing, testimonials, FAQ, and agency inquiry, but its first viewport is less task-complete because the user sees a CTA and sample alert rather than the actual setup path. B also delays some trust and comparison evidence below the first viewport, especially on mobile. Since the brief weights immediate free signup and early trust most heavily, A wins despite B being more complete for Pro evaluation.",
+      "blocking_visual_issue_a": "Desktop first viewport feels overly sparse and plain, with limited emotional warmth or sample-alert proof visible before scrolling.",
+      "blocking_visual_issue_b": "The first viewport does not show the actual free alert setup form, and mobile trust proof is less prominent than required for a high-skepticism third-party Disney tool."
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "workflow-first-reservation-rescue-strategy",
+      "winner": "A",
+      "confidence": 0.76,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants to quickly set up a safe free dining alert and verify that Pixiedining does not need their Disney login.",
+        "who_is_this_for_b": "A Disney dining planner who wants a clearer explanation of the cancellation-alert workflow, with more supporting proof and comparison content below the fold.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "tie",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A wins because it gets the core conversion job done faster: the first viewport clearly says what the product does, shows no Disney login reassurance, explains the Disney.com handoff, and presents the free alert form with a visible CTA on both desktop and mobile. Candidate B has stronger long-page storytelling, a better sample alert, richer workflow explanation, and more complete content depth, but its mobile first viewport is weaker: the nav appears cramped/clipped and the form CTA is not visible yet. For this brief, immediate safe free-alert setup is the highest-priority requirement, so A is the better strategic fit despite B's stronger downstream sections.",
+      "blocking_visual_issue_a": "none",
+      "blocking_visual_issue_b": "Mobile header/navigation appears cramped and clipped, and the primary alert CTA falls below the first mobile viewport."
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "A",
+      "confidence": 0.82,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants a quick, safe way to start a free dining reservation alert without giving Disney login credentials.",
+        "who_is_this_for_b": "A broader mix of Disney dining planners, Annual Passholders, and travel agents who may want proof, comparisons, coverage, and professional paths.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "A",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A gets closer to the core job in the first viewport: the headline directly addresses refreshing, the alert setup form is immediately visible, and the no-login plus official Disney handoff trust claims appear beside the CTA. On mobile, A preserves the actual form fields in the first screen area, so a user can understand and begin the primary task quickly. Candidate B has stronger segmentation depth and more expert/comparison content in the full page, including planner types, restaurant coverage, comparison tables, and agency inquiry, but its first viewport is less conversion-direct. On mobile B hides the setup fields behind a generic CTA and shows a large sample alert before the user can see restaurant/date/party-size entry, weakening the primary free-alert path. B also says \u201cGet alerted the second your table opens,\u201d which is emotionally strong but edges closer to overpromising than A\u2019s more careful framing. Overall A better satisfies the high-trust, self-serve, free-alert-first mandate.",
+      "blocking_visual_issue_a": "none",
+      "blocking_visual_issue_b": "Mobile first viewport does not show the actual alert setup fields, and the first action is less explicit than Candidate A\u2019s visible form."
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "A",
+      "confidence": 0.72,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants to stop refreshing, understand the no-login safety model, and start a free alert immediately.",
+        "who_is_this_for_b": "A higher-intent Disney planner or superfan who wants restaurant coverage depth, proof, comparisons, FAQ detail, and Pro justification.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "A",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A better satisfies the decisive first-viewport job: it quickly says what Pixiedining does, shows the free alert form, foregrounds no Disney login, explains the Disney.com handoff, and includes an early proof cue with alert volume. Its mobile view also gets users to the form faster with less scrolling. Candidate B has stronger downstream depth, especially coverage, FAQ, comparison, and expert validation, but its first viewport feels more spacious and less proof-dense, and mobile delays the usable form more. Since the diagnosis weights immediate safe free-alert setup and early trust proof most heavily, A is the stronger landing page despite B's better full-page content depth.",
+      "blocking_visual_issue_a": "none",
+      "blocking_visual_issue_b": "Mobile first viewport shows trust and setup context, but the actual primary CTA/form completion path is pushed lower, weakening immediate task completion."
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "A",
+      "confidence": 0.86,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants to quickly set up a specific restaurant alert without giving Disney login credentials, with later proof and pricing available below.",
+        "who_is_this_for_b": "A skeptical Disney dining visitor or expert who wants to understand what an alert looks like, compare proof, channels, coverage, pricing, and FAQs before acting.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "tie",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A better satisfies the core first-viewport obligation: users immediately see the problem, no-login reassurance, official Disney handoff, and an actual free alert setup form with restaurant, dates, party size, and email. It makes the primary conversion concrete rather than abstract. Candidate B has stronger explanatory proof, especially the sample SMS alert, metrics, alert channels, FAQs, and richer Pro/coverage detail for experts, but its first viewport delays the actual alert setup behind a single CTA. On mobile, A preserves the form and primary task directly in view, while B shows trust and CTA but requires more scrolling before a user can begin setting criteria. B is more content-complete as a marketing page, but A is more aligned with the stated decisive requirement: safely and quickly start a free Disney dining alert.",
+      "blocking_visual_issue_a": "The page is visually plain and somewhat sparse, with limited emotional warmth or sample-alert proof in the first viewport.",
+      "blocking_visual_issue_b": "The first viewport does not expose the actual free alert setup fields, so the primary task is less immediately actionable."
+    },
+    {
+      "candidate_a": "comparison-ready-pro-strategy",
+      "candidate_b": "workflow-first-reservation-rescue-strategy",
+      "winner": "B",
+      "confidence": 0.86,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner or comparison-minded user who wants to understand alerts, coverage, polling cadence, Pro pricing, testimonials, and FAQ before deciding.",
+        "who_is_this_for_b": "A visitor who missed a specific Disney dining reservation and wants to quickly set up an alert, with enough downstream detail for families, repeat visitors, and agents.",
+        "primary_action_clearer": "B",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate B better satisfies the core selling job because the first desktop viewport includes an actual free alert setup form with restaurant, dates, party size, alert channel, email, and a clear primary CTA. It also states no Disney login required, says users book on Disney's official site, and shows an alert example plus an alert-volume/restaurant ticker immediately. This makes the product feel actionable and safe faster than Candidate A. Candidate A has stronger comparison depth later in the page and a solid Pro table, but its first viewport is more informational than task-oriented: the CTA is visible, yet setup is not visible, and the sample alert is less tied to immediate action. On mobile, Candidate B gets the user to the form in the first screen after the trust bullets, while Candidate A shows hero copy and CTA but pushes the concrete setup path out of view. B also has a clearer workflow sequence and stronger segment support through the later sections for account safety, coverage, pricing, diner types, testimonials, FAQ, and agent path. Its main weakness is some desktop nav crowding and the mobile header clipping, but the conversion path is still more direct.",
+      "blocking_visual_issue_a": "Mobile first viewport does not show the actual alert setup fields, so the primary free-alert action is less concrete on phones.",
+      "blocking_visual_issue_b": "Mobile header/navigation is visibly cramped and clipped, but the primary task path remains visible shortly below."
+    },
+    {
+      "candidate_a": "comparison-ready-pro-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "B",
+      "confidence": 0.82,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants a simple alert service, with later comparison details for Pro users.",
+        "who_is_this_for_b": "A Disney dining planner who wants to start an alert immediately, with visible paths for families, superfans, and agents.",
+        "primary_action_clearer": "B",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate B better satisfies the first-viewport obligation. It shows the product category, no-login reassurance, primary free alert action, and an actual alert setup form immediately on desktop. It also makes the sample alert concrete and reinforces the official Disney handoff. Candidate A is cleaner and has strong full-page pricing/comparison structure, but its first viewport is more passive: the CTA exists, yet the user cannot begin entering restaurant, dates, or party size until later, and the trust proof is mostly text chips rather than a task path. On mobile, B preserves a prominent no-login statement and large CTA before the sample alert, while A also does this reasonably but feels more like a static marketing page. B\u2019s full page also supports segment self-selection more explicitly with planner-type cards, restaurant coverage, safety FAQ, Pro comparison, plans, testimonials, and an agency form. B has some visual issues, especially a repeated CTA/button visible near the desktop fold and a somewhat dense long page, but strategically it aligns more strongly with the diagnosis.",
+      "blocking_visual_issue_a": "The first viewport does not expose the actual alert setup inputs, so the primary action is less immediate than required.",
+      "blocking_visual_issue_b": "Desktop first viewport shows a duplicated large Start Free Alert button at the bottom edge, creating visual clutter and possible hierarchy confusion."
+    },
+    {
+      "candidate_a": "comparison-ready-pro-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "B",
+      "confidence": 0.82,
+      "perception": {
+        "who_is_this_for_a": "A family planner or Disney power user who wants a quick explanation, sample alert, restaurant coverage, and a detailed Pro comparison before deciding.",
+        "who_is_this_for_b": "A Disney trip planner who is ready to start an alert immediately, with enough coverage and pricing detail lower on the page for superfans and agents.",
+        "primary_action_clearer": "B",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate B wins because the desktop first viewport puts the actual free alert setup form directly beside the value proposition, with restaurant, dates, party size, and email fields visible. It also makes the no-Disney-login reassurance and official Disney handoff clearer near the first action. The full page gives strong coverage confidence with named restaurants, parks, comparison details, pricing, FAQs, and an agency path without letting agency content dominate. Candidate A is polished and has a strong sample alert plus comparison-ready Pro section, but its first viewport is more CTA-and-explanation than task-entry, and the free alert setup feels less immediately tangible. On mobile, A has the clearer above-fold CTA, while B requires scrolling to reach the form CTA, but B still better satisfies the overall strategic need for immediate setup, trust, and coverage proof.",
+      "blocking_visual_issue_a": "The first viewport does not expose the actual alert setup fields, so the primary conversion path feels one step removed.",
+      "blocking_visual_issue_b": "On mobile, the form CTA is below the first viewport, so the primary action is less immediately reachable than on desktop."
+    },
+    {
+      "candidate_a": "comparison-ready-pro-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "B",
+      "confidence": 0.78,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner or expert comparison shopper who wants to understand coverage, cadence, pricing, and Pro tradeoffs before committing.",
+        "who_is_this_for_b": "A skeptical Disney dining planner who wants quick reassurance that the service is safe, real, and will notify them when a table opens.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate A has the clearest literal free-alert CTA and a strong full-page comparison structure, but its first viewport feels more generic and its trust proof is split across smaller supporting lines. Candidate B better satisfies the core trust burden immediately: it prominently says users never log into a Disney account, shows a concrete SMS alert example, explains the official Disney handoff, and gives the user a clear free-start path. B also works better on mobile because the no-login reassurance and main CTA remain highly visible without relying on a dense header. A is stronger for expert Pro comparison, but B is more persuasive for the primary conversion and first-session skepticism described in the diagnosis.",
+      "blocking_visual_issue_a": "Mobile header is crowded, with the login link wrapping and competing with the primary CTA.",
+      "blocking_visual_issue_b": "The primary CTA says Start Watching Free rather than explicitly Start Free Alert, which is slightly less task-specific."
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "A",
+      "confidence": 0.77,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who missed a hard-to-get restaurant reservation and wants to quickly set a free cancellation alert without giving Disney login access.",
+        "who_is_this_for_b": "A broader mix of Disney planners, superfans, and agents comparing an alert tool, with more explicit paths for different user types and paid/pro use cases.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "A",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A does the core selling job faster. In the first desktop viewport it shows the exact problem, a visible free alert form with restaurant/date/party-size/email fields, no Disney login language, official booking handoff language, an example alert, and alert-volume/coverage cues. The full page also sequences the workflow, safety cards, sample alert, coverage, pricing, segment cards, testimonials, FAQ, and footer disclaimer in a way that matches the diagnosis. Candidate B is more polished in parts and has stronger segment self-selection later in the page, but its first viewport is less conversion-direct: the main form appears partially duplicated, the sample alert competes with the setup path, and the mobile viewport hides the actual restaurant/date/party-size entry behind a generic button. B's mobile hero is cleaner and thumb-friendly, but the primary task is less immediately actionable. A has a notable mobile issue because the nav and login area crowd horizontally and the form is only partly visible, but the user can still perceive the core offer, trust claim, and start entering alert criteria sooner than in B.",
+      "blocking_visual_issue_a": "Mobile header/navigation is cramped and partially clipped, which hurts polish and usability, though the alert setup path and trust claims remain visible.",
+      "blocking_visual_issue_b": "Mobile first viewport replaces the visible alert criteria form with a generic Start Free Alert button and instructional text, weakening the required immediate free-alert setup path."
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "A",
+      "confidence": 0.78,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who missed a hard-to-get dining reservation and wants a low-risk alert without giving up Disney account access.",
+        "who_is_this_for_b": "A Disney planner comparing covered restaurants and wanting a broader proof-oriented service, with some appeal to expert users.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "A",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A wins because the first viewport immediately explains the missed-reservation problem, says Pixiedining monitors Disney dining availability, shows a free alert form, and visibly reassures users that no Disney login is required and booking happens on Disney's official site. It also includes an example alert and alert-volume strip early, which makes the service feel concrete. Candidate B has a stronger coverage section and a cleaner comparison-oriented full page, but its first viewport is weaker: the form is visually secondary, the no-login message is present but less explanatory, and there is less immediate proof in the opening screen. On mobile, A gets the core promise, trust bullets, and form start into view more directly, while B delays the form and hides more task detail below the fold. B is still credible and likely better for coverage-confidence, but A better satisfies the diagnosis's hard floors around immediate free alert setup, no-login trust, official handoff, and short-session conversion.",
+      "blocking_visual_issue_a": "none",
+      "blocking_visual_issue_b": "Mobile first viewport does not show the free alert form start soon enough, and early trust proof is weaker than the stated trust burden requires."
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "A",
+      "confidence": 0.66,
+      "perception": {
+        "who_is_this_for_a": "A one-trip Disney planner who wants to start a Be Our Guest or similar cancellation alert immediately, with enough reassurance that Disney login is not required.",
+        "who_is_this_for_b": "A skeptical Disney dining shopper who wants to see what an alert looks like and understand the no-login model before starting.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A better satisfies the core first-viewport obligation: the visitor can see the product promise, no-Disney-login reassurance, official Disney handoff, proof cues, and the actual free alert setup form with restaurant, dates, party size, and alert channel. That is closer to the primary conversion and reduces ambiguity about what happens next. Candidate B is stronger as proof marketing: the sample SMS alert is concrete, the no-login statement is prominent, and the mobile hero is cleaner. But it makes the user click a generic CTA before seeing the actual setup path, so it is less immediate for the primary free-alert task. B may build confidence faster, but A gets a family planner to the concrete action faster.",
+      "blocking_visual_issue_a": "Mobile header/navigation is visibly cramped and partially broken, and the form submit action is not visible in the first mobile viewport.",
+      "blocking_visual_issue_b": "The first viewport does not show the actual free alert criteria entry path, only a CTA button, which weakens functional immediacy."
+    },
+    {
+      "candidate_a": "segment-self-selection-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "B",
+      "confidence": 0.84,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants a simple cancellation alert, with later sections for planners, superfans, agents, safety, comparisons, plans, testimonials, and agency inquiry.",
+        "who_is_this_for_b": "A Disney trip planner trying to recover specific hard-to-get reservations, with strong coverage proof and clearer expert-facing Pro comparison later on.",
+        "primary_action_clearer": "B",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate B better satisfies the core selling job from the rendered page. Its first viewport has a complete free-alert form with restaurant, trip dates, party size, email, and a strong CTA, so a visitor can immediately understand and begin the primary action. It also states no Disney login is required near the hero, explains the official Disney handoff, and uses the headline to name high-intent restaurants. The full page supports coverage confidence with many restaurant cards, clear workflow, metrics, pricing, comparison details, FAQ, and agency path without letting the agency path dominate. Candidate A has broader segment content and a useful sample alert, but the desktop first viewport feels less resolved: the form appears duplicated, the right side proof is sparse, and mobile hides the actual criteria inputs behind a CTA, making the first task less direct. A is credible and comprehensive, but B is more conversion-ready, more specific to search intent, and better aligned with the diagnosis emphasis on immediate task clarity plus early trust.",
+      "blocking_visual_issue_a": "Mobile first viewport shows a CTA but not the actual alert setup fields, and desktop appears to duplicate the Start Free Alert button/form area, which weakens task confidence.",
+      "blocking_visual_issue_b": "none"
+    },
+    {
+      "candidate_a": "segment-self-selection-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "B",
+      "confidence": 0.76,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who wants to immediately set up a specific restaurant alert, with later sections for planners, passholders, and agents.",
+        "who_is_this_for_b": "A skeptical Disney dining user who needs to see a realistic alert, no-login reassurance, speed proof, coverage, and pricing before trusting the product.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "B",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "B",
+        "diagnosis_fit_from_screenshots": "B"
+      },
+      "reasoning": "Candidate A does the best job exposing the actual free-alert setup task on desktop: restaurant, dates, party size, and alert channel are all visible immediately. That is a strong functional advantage. But B is stronger as the overall landing page for this diagnosis because the first viewport more cleanly establishes the safety model, official Disney handoff, realistic sample alert, and no-login reassurance. B also presents stronger proof and paid-plan differentiation across the full page: alert volume, latency, SMS/email/push examples, coverage, pricing, FAQ, and agency path are all easier to scan. On mobile, B preserves the hierarchy better; A has the CTA and trust claim, but the actual setup path is not visible and the page feels more cramped and fragmented. B should ideally make the free-alert criteria entry more immediate, but from the screenshots it better satisfies the high-trust, polished utility strategy.",
+      "blocking_visual_issue_a": "Mobile does not show the restaurant/date/party setup despite the strategy depending on immediate alert setup; desktop also shows a duplicated CTA edge below the form, which makes the hero feel slightly broken.",
+      "blocking_visual_issue_b": "The first viewport CTA is clear but abstract; it does not visibly expose restaurant/date/party criteria entry, so users cannot confirm the setup mechanics before clicking."
+    },
+    {
+      "candidate_a": "coverage-confidence-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "A",
+      "confidence": 0.64,
+      "perception": {
+        "who_is_this_for_a": "A Disney trip planner who already knows the restaurants they want and wants to start a free alert immediately.",
+        "who_is_this_for_b": "A skeptical visitor who needs to see what an alert looks like before trusting the service.",
+        "primary_action_clearer": "A",
+        "first_viewport_clearer": "A",
+        "trust_more_visible": "B",
+        "mobile_more_usable": "A",
+        "diagnosis_fit_from_screenshots": "A"
+      },
+      "reasoning": "Candidate A better satisfies the core hard floor: the first viewport shows the free alert setup itself, including restaurant, dates, party size, and email. It also places no-login reassurance and the official Disney handoff near the primary action. Candidate B is visually cleaner and has stronger early proof through the sample SMS alert, but the primary free alert flow is only represented by a generic CTA button, so the user cannot perceive the actual setup path as directly. B is stronger for trust storytelling; A is stronger for immediate conversion and mobile task continuity, which are weighted more heavily by the diagnosis.",
+      "blocking_visual_issue_a": "The first viewport feels sparse and proof-light beyond the no-login reassurance; stronger sample alert or volume proof near the form would improve trust.",
+      "blocking_visual_issue_b": "The first viewport does not show the actual free alert criteria-entry path, only a CTA, which weakens functional immediacy for the primary conversion."
+    }
+  ]
+}

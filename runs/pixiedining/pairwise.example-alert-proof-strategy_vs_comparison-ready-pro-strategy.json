@@ -1,0 +1,18 @@
+{
+  "candidate_a": "example-alert-proof-strategy",
+  "candidate_b": "comparison-ready-pro-strategy",
+  "winner": "A",
+  "confidence": 0.74,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "tie",
+    "strategy_commitment": "A",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A is the stronger product outcome despite both failing programmatic gates. A's first viewport is more directly persuasive for the high-trust consumer utility problem: the large realistic alert mockup, free CTA, no-login badge, and official-handoff copy all resolve the core skepticism before scroll. B has a better expert Pro comparison architecture later in the page, but its rendered/spec coherence is much weaker, with missing key components and many unjustified components in the harness. B's first viewport is competent but more generic: trust strip, small alert card, and standard SaaS section sequencing. A also commits more visibly to its assigned example-alert-proof strategy, whereas B's comparison-ready strategy depends on mid-page sections rather than the first impression. Mobile is close: both keep the primary CTA visible and stack the proof card soon after, though neither is exceptional. A has trope risk from uniform 3-card rows, FAQ, testimonials, and pricing cards, but B compounds that with trust-strip, process cards, coverage grid, comparison table, testimonial row, final CTA, and a more template-like utility SaaS rhythm.",
+  "best_reusable_move_a": "The hero-level sample alert proof card with specific restaurant, party size, booking handoff, and latency timestamp is the clearest trust-building move and should be retained.",
+  "best_reusable_move_b": "The dedicated performance/comparison section with cadence, notification channels, and Free-vs-Pro specifics is the strongest paid conversion move and should be folded into the winning architecture.",
+  "synthesis_recommended": true
+}

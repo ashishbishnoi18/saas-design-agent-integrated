@@ -1,0 +1,18 @@
+{
+  "candidate_a": "segment-self-selection-strategy",
+  "candidate_b": "example-alert-proof-strategy",
+  "winner": "B",
+  "confidence": 0.76,
+  "perception": {
+    "who_is_this_for_a": "A Disney trip planner who wants to immediately set up a specific restaurant alert, with later sections for planners, passholders, and agents.",
+    "who_is_this_for_b": "A skeptical Disney dining user who needs to see a realistic alert, no-login reassurance, speed proof, coverage, and pricing before trusting the product.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "B",
+    "trust_more_visible": "B",
+    "mobile_more_usable": "B",
+    "diagnosis_fit_from_screenshots": "B"
+  },
+  "reasoning": "Candidate A does the best job exposing the actual free-alert setup task on desktop: restaurant, dates, party size, and alert channel are all visible immediately. That is a strong functional advantage. But B is stronger as the overall landing page for this diagnosis because the first viewport more cleanly establishes the safety model, official Disney handoff, realistic sample alert, and no-login reassurance. B also presents stronger proof and paid-plan differentiation across the full page: alert volume, latency, SMS/email/push examples, coverage, pricing, FAQ, and agency path are all easier to scan. On mobile, B preserves the hierarchy better; A has the CTA and trust claim, but the actual setup path is not visible and the page feels more cramped and fragmented. B should ideally make the free-alert criteria entry more immediate, but from the screenshots it better satisfies the high-trust, polished utility strategy.",
+  "blocking_visual_issue_a": "Mobile does not show the restaurant/date/party setup despite the strategy depending on immediate alert setup; desktop also shows a duplicated CTA edge below the form, which makes the hero feel slightly broken.",
+  "blocking_visual_issue_b": "The first viewport CTA is clear but abstract; it does not visibly expose restaurant/date/party criteria entry, so users cannot confirm the setup mechanics before clicking."
+}

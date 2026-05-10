@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+.env*
+!.env.example
+sessions/*.json
+!sessions/.gitkeep
+*.tsbuildinfo
+next-env.d.ts

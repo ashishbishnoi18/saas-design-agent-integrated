@@ -1,0 +1,531 @@
+{
+  "schema_version": "strategic_diagnosis.v1",
+  "diagnosis_id": "diagnosis_csv_export_utility_high_immediacy",
+  "input_summary": {
+    "one_sentence_summary": "A self-serve CSV export utility for non-engineering users who need to complete a data export quickly without a long buying process.",
+    "detected_product_or_service": "browser-based CSV export utility",
+    "detected_customer": "marketers, operations teams, and founders",
+    "detected_business_goal": "convert visitors into free trial or paid self-serve users",
+    "detected_primary_user_job": "export data to CSV without engineering help",
+    "missing_critical_information": [
+      "specific integrations supported",
+      "pricing model details",
+      "security requirements for connected data sources"
+    ]
+  },
+  "primary_hypothesis": {
+    "primary_archetype": "transactional_utility",
+    "market_type": "hybrid",
+    "sales_motion": "self_serve",
+    "why_this_hypothesis": "The brief describes a short-task export tool with inexpensive self-serve adoption and users who mainly want to complete a concrete job quickly.",
+    "confidence": 0.88
+  },
+  "secondary_hypotheses": [
+    {
+      "archetype": "product_led_b2b_saas",
+      "market_type": "b2b",
+      "sales_motion": "product_led",
+      "why_plausible": "Operations teams may adopt the tool as part of a recurring business workflow rather than a one-off export.",
+      "what_would_change_if_true": "The page would need slightly more product depth, team workflow proof, and integration credibility beyond the first task path.",
+      "confidence": 0.42
+    }
+  ],
+  "strategic_axes": {
+    "market_type": "hybrid",
+    "primary_archetype": "transactional_utility",
+    "sales_motion": "self_serve",
+    "buyer_user_relationship": "buyer_is_user",
+    "usage_pattern": "short_repeated_utility",
+    "expected_session_duration": "one_to_three_min",
+    "decision_risk": "medium",
+    "trust_burden": "medium",
+    "aesthetic_stakes": "medium",
+    "functional_immediacy": "extreme",
+    "product_complexity": "moderate",
+    "audience_sophistication": "mixed",
+    "visual_posture": "polished_utility",
+    "content_depth": "moderate"
+  },
+  "audience_model": {
+    "primary_audience": [
+      "marketers needing exports",
+      "operations users needing data handoff",
+      "founders without engineering support"
+    ],
+    "secondary_audience": [
+      "small team analysts",
+      "growth teams"
+    ],
+    "buyer_roles": [
+      "individual user",
+      "small team owner"
+    ],
+    "user_roles": [
+      "marketer",
+      "operator",
+      "founder"
+    ],
+    "stakeholder_complexity": "low",
+    "what_they_care_about": [
+      "getting a usable CSV quickly",
+      "understanding what data source and options are supported",
+      "avoiding engineering dependency",
+      "knowing the export will not break or lose data"
+    ],
+    "what_they_fear_or_resist": [
+      "wasting time on a tool that does not export the needed data",
+      "connecting data to an unknown service",
+      "paying before seeing whether the workflow works"
+    ],
+    "what_they_need_before_action": [
+      "a visible export path or concrete example",
+      "short explanation of supported inputs and output",
+      "basic trust signal around data handling",
+      "low-friction way to try the workflow"
+    ],
+    "likely_attention_span": "short because the user arrives with a task to complete",
+    "aesthetic_expectation": "polished enough to feel safe, but not ornate or narrative-heavy",
+    "functional_expectation": "the task path should be apparent immediately and require minimal interpretation"
+  },
+  "business_model": {
+    "primary_business_goal": "move task-oriented visitors into trial or paid self-serve usage",
+    "secondary_business_goals": [
+      "show enough reliability to reduce hesitation",
+      "make repeat utility value visible",
+      "differentiate against manual exports and custom scripts"
+    ],
+    "conversion_or_success_event": "start export workflow or begin free trial",
+    "sales_or_adoption_motion": "self-serve product-led adoption",
+    "pricing_or_value_sensitivity": "medium",
+    "competitive_differentiation_likely_based_on": [
+      "speed to export",
+      "simplicity of setup",
+      "supported data sources",
+      "reliability of output"
+    ]
+  },
+  "decision_context": {
+    "primary_user_decision_sequence": [
+      {
+        "step": 1,
+        "decision": "Can I export the data I need here?",
+        "question_in_user_mind": "Does this handle my source and output format?",
+        "page_must_answer_with": "visible task path, supported inputs, and an example CSV outcome"
+      },
+      {
+        "step": 2,
+        "decision": "Will this be faster than my current workaround?",
+        "question_in_user_mind": "Can I get this done in minutes instead of waiting on engineering?",
+        "page_must_answer_with": "short workflow explanation and low-friction trial path"
+      },
+      {
+        "step": 3,
+        "decision": "Is it safe enough to try?",
+        "question_in_user_mind": "What happens to the data I connect or paste?",
+        "page_must_answer_with": "compact data-handling reassurance and credible trust cues"
+      },
+      {
+        "step": 4,
+        "decision": "Is the value worth the price or account step?",
+        "question_in_user_mind": "Will this save enough time to justify using it repeatedly?",
+        "page_must_answer_with": "simple value framing, repeat-use examples, and transparent next step"
+      }
+    ],
+    "risk_reduction_needs": [
+      "state data handling boundaries",
+      "show that the workflow has predictable output",
+      "avoid requiring purchase before task plausibility is clear"
+    ],
+    "proof_needs": [
+      "example output",
+      "usage metric or customer signal if available",
+      "supported source list or integration credibility"
+    ],
+    "explanation_needs": [
+      "what goes in",
+      "what comes out",
+      "how many steps are required",
+      "what happens to connected data"
+    ],
+    "trust_timing": "trust should appear close to the task path, not after a long marketing sequence",
+    "cta_timing": "the primary trial or export action can appear immediately as long as the surrounding copy explains the task and safety boundary"
+  },
+  "experience_context": {
+    "expected_time_on_site": "one to three minutes before trying or leaving",
+    "expected_time_in_product": "short repeated sessions focused on exports",
+    "interaction_intensity": "medium",
+    "task_urgency": "high",
+    "exploration_need": "low",
+    "emotional_involvement": "low",
+    "switching_likelihood_if_experience_poor": "high"
+  },
+  "beauty_function_balance": {
+    "beauty_definition_for_this_site": "visual polish should make the workflow feel calm, fast, and reliable without delaying the export task behind decorative storytelling",
+    "functionality_definition_for_this_site": "functionality means the user can immediately understand the input, export options, output, safety boundary, and next action",
+    "beauty_weight": 0.45,
+    "functionality_weight": 0.95,
+    "trust_weight": 0.55,
+    "speed_weight": 0.9,
+    "explanation_weight": 0.55,
+    "proof_weight": 0.45,
+    "rationale": "The site sells a concrete task outcome; aesthetic quality matters as confidence and readability, while speed and task clarity dominate."
+  },
+  "design_directive": {
+    "strategic_summary": "This is a high-immediacy self-serve utility where the visitor needs to see the export path and likely result before they invest attention in broader product claims.",
+    "primary_design_priorities": [
+      "make the export task path visible immediately",
+      "show input-to-output clarity",
+      "minimize interpretation before first action"
+    ],
+    "secondary_design_priorities": [
+      "place compact trust cues near the task path",
+      "make supported sources and constraints legible",
+      "show repeat-use value without long narrative"
+    ],
+    "tertiary_design_priorities": [
+      "support price/value comparison",
+      "communicate team usefulness for repeated workflows",
+      "keep visual rhythm compact and calm"
+    ],
+    "tone": "direct, capable, calm, task-oriented",
+    "visual_posture": "polished_utility",
+    "content_depth": "moderate",
+    "cta_strategy": "allow immediate trial or export action while making the task and safety boundary visible around it",
+    "proof_strategy": "use example output, supported-source evidence, and compact reliability signals rather than long testimonial storytelling",
+    "explanation_strategy": "explain the workflow in a small number of concrete steps tied to input, options, and output",
+    "mobile_strategy": "keep the first-screen path focused on one primary action and avoid stacking secondary material before task comprehension"
+  },
+  "first_viewport_obligation": {
+    "must_accomplish": "make the visitor believe they can start or understand the CSV export workflow within seconds",
+    "must_show": [
+      "the primary export or trial path",
+      "what input the user provides",
+      "what output they receive",
+      "one compact trust or safety cue"
+    ],
+    "must_not_do": [
+      "lead with a long brand story before the task path",
+      "hide the workflow behind broad benefit claims",
+      "make decorative visuals compete with the export action"
+    ],
+    "primary_question_to_answer": "Can I get the CSV I need quickly and safely?",
+    "acceptable_cta_behavior": "a direct trial or export action is appropriate if the task and expected output are visible nearby",
+    "failure_condition": "the first viewport fails if a user cannot identify the export path, input, and likely output without scrolling"
+  },
+  "hard_floors": [
+    {
+      "id": "hf_first_viewport_task_path",
+      "rule": "If functional_immediacy is extreme, the first viewport must expose the primary task/action path or a concrete example of the export output.",
+      "triggered_by_axis": "functional_immediacy=extreme",
+      "why_it_matters": "The visitor is task-oriented and will leave if the page behaves like a general marketing site before proving task fit.",
+      "score_cap_if_violated": 6.0,
+      "validation_hint": "Check viewport screenshot for visible export path, input/output example, or start action."
+    },
+    {
+      "id": "hf_input_output_clarity",
+      "rule": "The architecture must clarify what goes in and what comes out before deep feature explanation.",
+      "triggered_by_axis": "usage_pattern=short_repeated_utility",
+      "why_it_matters": "The user is choosing whether the utility solves the immediate job, not reading a broad product story first.",
+      "score_cap_if_violated": 6.5,
+      "validation_hint": "Look for concrete input and output language or visual structure in the early sequence."
+    },
+    {
+      "id": "hf_trust_near_task",
+      "rule": "Because data handling creates medium trust burden, at least one safety or reliability cue must appear near the task path or in the early sequence.",
+      "triggered_by_axis": "trust_burden=medium",
+      "why_it_matters": "Connecting or pasting data introduces hesitation even when the purchase risk is not enterprise-level.",
+      "score_cap_if_violated": 7.0,
+      "validation_hint": "Check whether safety, data handling, reliability, or support credibility is close to the action path."
+    },
+    {
+      "id": "hf_mobile_action_path",
+      "rule": "The mobile first viewport must preserve the task path rather than pushing it below secondary copy or decorative material.",
+      "triggered_by_axis": "expected_session_duration=one_to_three_min",
+      "why_it_matters": "Short-session users on mobile need a compressed path to task comprehension and action.",
+      "score_cap_if_violated": 6.0,
+      "validation_hint": "Check mobile viewport screenshot for task/action visibility and absence of secondary-first stacking."
+    },
+    {
+      "id": "hf_no_long_narrative_before_task",
+      "rule": "Marketing narrative, broad mission copy, or feature taxonomy cannot appear before task plausibility is established.",
+      "triggered_by_axis": "content_depth=moderate",
+      "why_it_matters": "The utility value depends on concrete speed and output, not initial brand persuasion.",
+      "score_cap_if_violated": 6.5,
+      "validation_hint": "Inspect early section order for abstract claims appearing before workflow clarity."
+    }
+  ],
+  "anti_patterns": [
+    {
+      "id": "ap_long_brand_intro",
+      "anti_pattern": "long brand narrative before export path",
+      "why_bad_for_this_site": "It delays the one thing the visitor came to verify: whether they can export the needed data.",
+      "severity": "high",
+      "detection_hint": "First viewport is mostly positioning copy with no task or output structure."
+    },
+    {
+      "id": "ap_generic_feature_grid",
+      "anti_pattern": "generic benefit cards before input/output clarity",
+      "why_bad_for_this_site": "Benefit cards can sound plausible while failing to prove the workflow solves the task.",
+      "severity": "high",
+      "detection_hint": "Early page uses broad benefits such as faster, smarter, simpler without concrete export mechanics."
+    },
+    {
+      "id": "ap_decorative_workflow_obstruction",
+      "anti_pattern": "decorative visuals competing with the task path",
+      "why_bad_for_this_site": "Visual polish should increase confidence and scan speed, not reduce task recognition.",
+      "severity": "medium",
+      "detection_hint": "Large ornamental area occupies the space where task, input, or output should be visible."
+    },
+    {
+      "id": "ap_hidden_data_handling",
+      "anti_pattern": "data safety concern addressed too late or not at all",
+      "why_bad_for_this_site": "Users may hesitate to paste or connect data without a nearby safety boundary.",
+      "severity": "medium",
+      "detection_hint": "No early mention of data handling, permissions, retention, or reliability."
+    },
+    {
+      "id": "ap_overbuilt_enterprise_positioning",
+      "anti_pattern": "enterprise-heavy sales posture for a self-serve utility",
+      "why_bad_for_this_site": "It makes a fast task tool feel slower and more bureaucratic than necessary.",
+      "severity": "medium",
+      "detection_hint": "Early sequence emphasizes sales contact, procurement, or complex platform messaging before self-serve action."
+    },
+    {
+      "id": "ap_price_before_task_fit",
+      "anti_pattern": "pricing or plan comparison before task fit is established",
+      "why_bad_for_this_site": "Users need to know whether the export works before comparing payment options.",
+      "severity": "low",
+      "detection_hint": "Pricing emphasis appears before input/output or workflow comprehension."
+    }
+  ],
+  "dynamic_evaluator_policy": {
+    "weights": {
+      "strategic_diagnosis_fit": 0.13,
+      "first_viewport_fit": 0.2,
+      "functional_clarity": 0.22,
+      "trust_and_proof": 0.12,
+      "visual_appropriateness": 0.1,
+      "content_sequence": 0.1,
+      "mobile_path": 0.1,
+      "anti_pattern_avoidance": 0.03
+    },
+    "weight_rationale": "Functional clarity and first viewport fit dominate because this is a short-session utility; trust, visual polish, and content sequence matter as supporting confidence signals.",
+    "absolute_score_caps": [
+      {
+        "condition": "primary task path absent from first viewport",
+        "cap": 6.0,
+        "reason": "The page fails the core functional-immediacy requirement."
+      },
+      {
+        "condition": "input and output relationship is unclear in the early sequence",
+        "cap": 6.5,
+        "reason": "The visitor cannot determine whether the tool solves the job."
+      },
+      {
+        "condition": "mobile first viewport pushes action below secondary explanation",
+        "cap": 6.0,
+        "reason": "The compressed mobile path breaks short-session task completion."
+      },
+      {
+        "condition": "data handling or reliability cue is absent despite connection/paste workflow",
+        "cap": 7.0,
+        "reason": "Medium trust burden is left unresolved."
+      }
+    ],
+    "pairwise_judging_priorities": [
+      "which candidate exposes task fit sooner",
+      "which candidate makes input and output more concrete",
+      "which candidate reduces data hesitation without slowing the path",
+      "which candidate has the stronger mobile task path",
+      "which candidate avoids broad marketing before workflow clarity"
+    ]
+  },
+  "candidate_strategy_seeds": [
+    {
+      "strategy_name": "tool-first",
+      "why_this_strategy_is_worth_testing": "It tests the most direct version of the extreme functional-immediacy requirement.",
+      "what_it_should_optimize": [
+        "first action visibility",
+        "short-session speed"
+      ],
+      "main_risk": "may under-explain trust or supported source constraints",
+      "best_for": "visitors who already know they need a CSV export"
+    },
+    {
+      "strategy_name": "example-output-first",
+      "why_this_strategy_is_worth_testing": "It can prove the result before asking the user to start or connect a source.",
+      "what_it_should_optimize": [
+        "output confidence",
+        "task plausibility"
+      ],
+      "main_risk": "may delay the actual start action if the example becomes too elaborate",
+      "best_for": "users unsure whether the export will match their needed format"
+    },
+    {
+      "strategy_name": "workflow-first",
+      "why_this_strategy_is_worth_testing": "It makes the sequence from source to options to CSV feel concrete and low-friction.",
+      "what_it_should_optimize": [
+        "process clarity",
+        "trust through concreteness"
+      ],
+      "main_risk": "may feel slower than a direct task-first approach",
+      "best_for": "users worried about setup complexity"
+    },
+    {
+      "strategy_name": "speed-first",
+      "why_this_strategy_is_worth_testing": "It emphasizes time saved versus manual work or engineering requests.",
+      "what_it_should_optimize": [
+        "urgency fit",
+        "value clarity"
+      ],
+      "main_risk": "may overpromise without enough reliability proof",
+      "best_for": "time-constrained operators and founders"
+    },
+    {
+      "strategy_name": "light-proof-first",
+      "why_this_strategy_is_worth_testing": "It tests whether a compact trust layer near the task improves confidence without making the page sales-heavy.",
+      "what_it_should_optimize": [
+        "data hesitation reduction",
+        "self-serve confidence"
+      ],
+      "main_risk": "may overweight trust for a utility and delay task recognition",
+      "best_for": "users connecting sensitive or business-critical data"
+    }
+  ],
+  "reference_retrieval_profile": {
+    "positive_reference_queries": [
+      "short-session utility tool landing page with task-first action",
+      "self-serve data export SaaS polished utility design",
+      "input output workflow landing page for browser tool",
+      "developer-lite utility website with immediate action path",
+      "low-friction product-led SaaS page with example output"
+    ],
+    "negative_reference_queries": [
+      "generic SaaS landing page hiding product workflow",
+      "utility tool page with long marketing intro before task",
+      "overdesigned converter website with unclear input output",
+      "enterprise sales page incorrectly used for self-serve utility",
+      "feature card grid before primary action anti-pattern"
+    ],
+    "reference_archetypes_to_include": [
+      "transactional_utility",
+      "short_session_tool",
+      "product_led_b2b_saas"
+    ],
+    "reference_archetypes_to_avoid": [
+      "enterprise_consultative",
+      "lifestyle_saas",
+      "premium_consumer_brand"
+    ],
+    "must_include_reference_traits": [
+      "task path visible early",
+      "concrete input/output relationship",
+      "compact trust near action",
+      "mobile path stays direct"
+    ],
+    "must_include_negative_traits": [
+      "long narrative before task",
+      "generic benefit cards before proof of workflow",
+      "decorative visuals hiding action"
+    ]
+  },
+  "downstream_constraints": {
+    "architect_must_obey": [
+      "map every primary component to task visibility, input/output clarity, or trust near action",
+      "do not place broad marketing narrative before task plausibility",
+      "ensure the first viewport satisfies the stated obligation",
+      "include mobile-first reasoning for action visibility",
+      "test at least five candidate strategies from the provided seeds"
+    ],
+    "visual_designer_must_obey": [
+      "use polish to increase scan speed and confidence",
+      "avoid ornament that competes with the task path",
+      "keep surfaces calm and function-oriented",
+      "make the primary action visually obvious without making the page feel aggressive",
+      "support compact trust cues with mature but lightweight treatment"
+    ],
+    "frontend_implementer_must_obey": [
+      "preserve first viewport task/action visibility on desktop and mobile",
+      "avoid mobile horizontal overflow",
+      "ensure primary action and example output remain accessible",
+      "implement responsive stacking that keeps task comprehension before secondary copy",
+      "keep performance lightweight for fast first interaction"
+    ],
+    "evaluator_must_check": [
+      "whether the first viewport exposes task path or output example",
+      "whether input/output relationship is concrete",
+      "whether trust appears near the task path",
+      "whether mobile preserves action visibility",
+      "whether anti-patterns such as long narrative or generic feature grids appear early"
+    ]
+  },
+  "assumptions": [
+    {
+      "assumption": "the product can expose a trial or workflow preview without a sales conversation",
+      "why_needed": "the brief says self-serve and inexpensive",
+      "risk_if_wrong": "if access requires sales approval, the page would need more trust and process explanation before action"
+    },
+    {
+      "assumption": "users have moderate data-safety concern but not enterprise procurement requirements",
+      "why_needed": "the workflow may involve pasted or connected data, but the target includes individuals and small teams",
+      "risk_if_wrong": "if sensitive enterprise data is common, proof and security would need more weight"
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "Which data sources and integrations are supported?",
+      "why_it_matters": "source support is central to task fit",
+      "which_downstream_decision_it_affects": "input/output proof and reference retrieval",
+      "blocking": false
+    },
+    {
+      "question": "Can users try an export before account creation or payment?",
+      "why_it_matters": "this changes CTA timing and first viewport action behavior",
+      "which_downstream_decision_it_affects": "first viewport and conversion path",
+      "blocking": false
+    }
+  ],
+  "confidence": {
+    "overall": 0.84,
+    "archetype_confidence": 0.88,
+    "audience_confidence": 0.82,
+    "business_goal_confidence": 0.8,
+    "visual_posture_confidence": 0.78,
+    "risk_trust_confidence": 0.7,
+    "confidence_level": "high"
+  },
+  "evidence": {
+    "brief_signals_used": [
+      "browser-based CSV export utility",
+      "users paste a URL or connect a data source",
+      "self-serve and inexpensive",
+      "marketers, operations teams, and founders",
+      "quick export without engineering help"
+    ],
+    "inference_notes": [
+      {
+        "inference": "functional immediacy is extreme",
+        "supporting_signal": "users need a quick export without engineering help",
+        "confidence": 0.9
+      },
+      {
+        "inference": "trust burden is medium",
+        "supporting_signal": "the workflow involves pasted URLs or connected data sources",
+        "confidence": 0.72
+      },
+      {
+        "inference": "visual posture should be polished utility",
+        "supporting_signal": "user preference says functional first and polished but not decorative",
+        "confidence": 0.82
+      }
+    ],
+    "weak_or_missing_signals": [
+      "no integration list",
+      "no data retention policy",
+      "no pricing details"
+    ]
+  },
+  "validator_notes": [
+    "Sample diagnosis included for integration testing only; real runs should regenerate from the raw brief."
+  ]
+}

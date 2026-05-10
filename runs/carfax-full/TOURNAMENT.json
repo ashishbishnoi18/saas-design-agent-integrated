@@ -1,0 +1,179 @@
+{
+  "pairwise_enabled": true,
+  "participants": [
+    "sample-report-proof-led-path",
+    "dealer-value-forward-with-consumer-fast-lane",
+    "task-first-purchase-with-proof-guardrails",
+    "trust-first-dual-path-conversion",
+    "business-identity-and-human-contact-reassurance",
+    "savings-and-safety-comparison-strategy"
+  ],
+  "points": {
+    "sample-report-proof-led-path": 2.5,
+    "dealer-value-forward-with-consumer-fast-lane": 2.5,
+    "task-first-purchase-with-proof-guardrails": 2.5,
+    "trust-first-dual-path-conversion": 2.5,
+    "business-identity-and-human-contact-reassurance": 2.5,
+    "savings-and-safety-comparison-strategy": 2.5
+  },
+  "records": {
+    "sample-report-proof-led-path": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    },
+    "dealer-value-forward-with-consumer-fast-lane": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    },
+    "task-first-purchase-with-proof-guardrails": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    },
+    "trust-first-dual-path-conversion": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    },
+    "business-identity-and-human-contact-reassurance": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    },
+    "savings-and-safety-comparison-strategy": {
+      "wins": 0,
+      "losses": 0,
+      "ties": 5
+    }
+  },
+  "strategy_diversity": {
+    "collapsed_strategies": [],
+    "most_distinct": "sample-report-proof-led-path",
+    "least_distinct": "dealer-value-forward-with-consumer-fast-lane",
+    "notes": "Diagnostic only. Distinctiveness across candidates is inferred from pairwise strategy-commitment and first-viewport ties; it is not a positive winner boost."
+  },
+  "results": [
+    {
+      "candidate_a": "sample-report-proof-led-path",
+      "candidate_b": "dealer-value-forward-with-consumer-fast-lane",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "sample-report-proof-led-path",
+      "candidate_b": "task-first-purchase-with-proof-guardrails",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "sample-report-proof-led-path",
+      "candidate_b": "trust-first-dual-path-conversion",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "sample-report-proof-led-path",
+      "candidate_b": "business-identity-and-human-contact-reassurance",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "sample-report-proof-led-path",
+      "candidate_b": "savings-and-safety-comparison-strategy",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "dealer-value-forward-with-consumer-fast-lane",
+      "candidate_b": "task-first-purchase-with-proof-guardrails",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "dealer-value-forward-with-consumer-fast-lane",
+      "candidate_b": "trust-first-dual-path-conversion",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "dealer-value-forward-with-consumer-fast-lane",
+      "candidate_b": "business-identity-and-human-contact-reassurance",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "dealer-value-forward-with-consumer-fast-lane",
+      "candidate_b": "savings-and-safety-comparison-strategy",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "task-first-purchase-with-proof-guardrails",
+      "candidate_b": "trust-first-dual-path-conversion",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "task-first-purchase-with-proof-guardrails",
+      "candidate_b": "business-identity-and-human-contact-reassurance",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "task-first-purchase-with-proof-guardrails",
+      "candidate_b": "savings-and-safety-comparison-strategy",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "trust-first-dual-path-conversion",
+      "candidate_b": "business-identity-and-human-contact-reassurance",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "trust-first-dual-path-conversion",
+      "candidate_b": "savings-and-safety-comparison-strategy",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    },
+    {
+      "candidate_a": "business-identity-and-human-contact-reassurance",
+      "candidate_b": "savings-and-safety-comparison-strategy",
+      "winner": "tie",
+      "confidence": 0.0,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+      "synthesis_recommended": false
+    }
+  ]
+}

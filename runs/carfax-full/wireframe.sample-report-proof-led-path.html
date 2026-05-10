@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe — sample-report-proof-led-path — carfax-reseller-landing</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f3f4f6;
+      --surface-alt: #e5e7eb;
+      --border: #d1d5db;
+      --border-strong: #9ca3af;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --text-faint: #9ca3af;
+      --primary-fill: #374151;
+      --primary-text: #ffffff;
+      --secondary-fill: #d1d5db;
+      --secondary-text: #1f2937;
+      --gap-xs: 8px;
+      --gap-sm: 12px;
+      --gap-md: 24px;
+      --gap-lg: 48px;
+      --gap-xl: 96px;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    #page-root {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .wf-text-primary   { font-size: 2.5rem; font-weight: 700; line-height: 1.15; color: var(--text); }
+    .wf-text-secondary { font-size: 1.125rem; font-weight: 500; color: var(--text); }
+    .wf-text-body      { font-size: 1rem; color: var(--text-muted); }
+    .wf-text-meta      { font-size: 0.875rem; color: var(--text-faint); }
+
+    .wf-button-primary {
+      display: inline-block;
+      padding: 16px 28px;
+      background: var(--primary-fill);
+      color: var(--primary-text);
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .wf-button-secondary {
+      display: inline-block;
+      padding: 12px 22px;
+      background: transparent;
+      color: var(--secondary-text);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .wf-button-tertiary {
+      display: inline-block;
+      padding: 8px 0;
+      color: var(--text-muted);
+      text-decoration: underline;
+      font-size: 0.9rem;
+    }
+
+    .wf-input {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--text-faint);
+      font-size: 1rem;
+      font-family: ui-monospace, monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .wf-image, .wf-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border-strong);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+      min-height: 80px;
+    }
+
+    .wf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+    }
+
+    .wf-divider {
+      height: 1px;
+      background: var(--border);
+      width: 100%;
+    }
+
+    .wf-icon {
+      width: 24px; height: 24px;
+      background: var(--surface-alt);
+      border-radius: 4px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    [data-density="generous"]  > * + * { margin-top: var(--gap-lg); }
+    [data-density="moderate"]  > * + * { margin-top: var(--gap-md); }
+    [data-density="compact"]   > * + * { margin-top: var(--gap-sm); }
+    [data-density="dense"]     > * + * { margin-top: var(--gap-xs); }
+
+    [data-section-pad="generous"] { padding: var(--gap-xl) var(--gap-lg); }
+    [data-section-pad="moderate"] { padding: var(--gap-lg) var(--gap-md); }
+    [data-section-pad="compact"]  { padding: var(--gap-md) var(--gap-sm); }
+
+    .wf-container-narrow { max-width: 720px; margin: 0 auto; }
+    .wf-container-medium { max-width: 1024px; margin: 0 auto; }
+    .wf-container-wide   { max-width: 1280px; margin: 0 auto; }
+    .wf-container-full   { width: 100%; }
+
+    .wf-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-md); }
+    .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-md); }
+    .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); }
+
+    .wf-flex-row    { display: flex; flex-direction: row; gap: var(--gap-md); align-items: center; }
+    .wf-flex-col    { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .wf-flex-between{ display: flex; justify-content: space-between; align-items: center; gap: var(--gap-md); }
+
+    /* Hero split — 50/50 on desktop, the strategic anchor */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-lg);
+      align-items: start;
+    }
+
+    /* Trust microbar */
+    .trust-microbar {
+      width: 100%;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px var(--gap-md);
+      text-align: center;
+    }
+    .trust-microbar .wf-text-meta { display: inline; }
+    .microbar-sep { color: var(--text-faint); margin: 0 8px; }
+
+    /* Top nav */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px var(--gap-md);
+    }
+    .topnav-mobile { display: none; }
+
+    /* Action zone chips */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip-dot { width: 8px; height: 8px; background: var(--border-strong); border-radius: 50%; }
+
+    /* Sample report card — the strategic proof artifact */
+    .sample-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .sample-card-header {
+      background: var(--surface-alt);
+      border-bottom: 1.5px solid var(--border-strong);
+      padding: 14px 18px;
+    }
+    .sample-card-header-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+    .sample-card-vin {
+      font-family: ui-monospace, monospace;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .sample-card-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .sample-section {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--gap-sm);
+      align-items: baseline;
+    }
+    .sample-section:last-of-type { border-bottom: none; }
+    .sample-section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .sample-section-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .sample-section-detail {
+      grid-column: 1 / -1;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    .sample-mileage-bar {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      height: 24px;
+      background: var(--surface);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sample-mileage-line {
+      position: absolute; left: 0; right: 0; top: 50%;
+      height: 2px;
+      background: var(--border-strong);
+      transform: translateY(-50%);
+    }
+    .sample-mileage-dot {
+      position: absolute;
+      top: 50%;
+      width: 8px; height: 8px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .sample-card-footer {
+      padding: 14px 18px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    /* Pricing comparison cards */
+    .price-compare-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+      text-align: center;
+    }
+    .price-compare-card.ours { border: 2px solid var(--text); }
+    .price-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 8px 0;
+    }
+    .price-strike { text-decoration: line-through; color: var(--text-faint); }
+
+    /* Dealer band */
+    .dealer-band {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Tier card */
+    .tier-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+      text-align: center;
+    }
+    .tier-card.featured { border: 2px solid var(--text); }
+    .tier-volume { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .tier-price { font-size: 1.6rem; font-weight: 700; margin: 8px 0; }
+    .tier-savings { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: var(--gap-md) 0;
+    }
+    .faq-q { font-weight: 600; font-size: 1rem; color: var(--text); }
+    .faq-a { font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; }
+
+    /* What's in: feature card */
+    .feature-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+      text-align: left;
+    }
+
+    /* How it works step */
+    .step-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 50%;
+      font-weight: 700;
+      margin-bottom: var(--gap-sm);
+    }
+
+    /* Trust band logos */
+    .trust-logo-row {
+      display: flex;
+      gap: var(--gap-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-logo {
+      min-width: 100px;
+      min-height: 40px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 8px 16px;
+    }
+
+    /* Testimonial card */
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+    }
+    .testimonial-attr {
+      margin-top: var(--gap-sm);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      background: var(--surface-alt);
+      border-radius: 50%;
+    }
+
+    /* TABLET (≤1024px) */
+    @media (max-width: 1024px) {
+      .hero-split { grid-template-columns: 1fr; gap: var(--gap-lg); }
+      .wf-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      [data-section-pad="generous"] { padding: var(--gap-lg) var(--gap-md); }
+      .wf-text-primary { font-size: 2.1rem; }
+    }
+
+    /* MOBILE (≤640px) */
+    @media (max-width: 640px) {
+      .wf-grid-2, .wf-grid-3, .wf-grid-4 { grid-template-columns: 1fr; }
+      .wf-text-primary { font-size: 1.75rem; }
+      [data-section-pad="generous"] { padding: var(--gap-md) var(--gap-sm); }
+      [data-section-pad="moderate"] { padding: var(--gap-md) var(--gap-sm); }
+
+      .topnav-desktop { display: none; }
+      .topnav-mobile { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+      .wf-button-primary { width: 100%; text-align: center; }
+
+      .trust-microbar { padding: 8px var(--gap-sm); font-size: 0.78rem; }
+      .microbar-sep { margin: 0 4px; }
+
+      .chip-row { flex-direction: column; align-items: flex-start; }
+
+      .price-amount { font-size: 1.5rem; }
+      .tier-price { font-size: 1.4rem; }
+
+      [data-mobile="hide"] { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="page-root" data-strategy="sample-report-proof-led-path" data-page="carfax-reseller-landing">
+
+    <!-- TOP NAV -->
+    <header class="topnav" data-section="nav" data-section-pad="compact">
+      <div class="wf-container-wide">
+        <div class="topnav-desktop wf-flex-between">
+          <div data-component="top-nav" data-class="tertiary" class="wf-flex-row">
+            <span class="wf-icon"></span>
+            <span class="wf-text-secondary">CarReports.io</span>
+          </div>
+          <nav class="wf-flex-row" data-component="top-nav" data-class="tertiary">
+            <a class="wf-text-meta" href="#sample-report-preview">Sample Report</a>
+            <a class="wf-text-meta" href="#dealer-section">For Dealers</a>
+            <a class="wf-text-meta" href="#faq">FAQ</a>
+            <a class="wf-button-secondary" href="#">Sign in</a>
+          </nav>
+        </div>
+        <div class="topnav-mobile">
+          <div class="wf-flex-row">
+            <span class="wf-icon"></span>
+            <span class="wf-text-secondary">CarReports.io</span>
+          </div>
+          <a class="wf-text-meta" href="#dealer-section">For Dealers</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- TRUST MICROBAR (above headline — early legitimacy proof) -->
+    <div id="legitimacy-proof" class="trust-microbar"
+         data-component="trust-microbar" data-class="tertiary"
+         data-tension="trust-density-vs-load">
+      <span class="wf-text-meta">Full refund guarantee</span>
+      <span class="microbar-sep">·</span>
+      <span class="wf-text-meta">Stripe-secured payment</span>
+      <span class="microbar-sep">·</span>
+      <span class="wf-text-meta">2.4M+ reports delivered</span>
+    </div>
+
+    <main>
+
+      <!-- HERO -->
+      <section id="primary-section" data-section="hero" data-density="moderate" data-section-pad="generous">
+        <div class="wf-container-wide">
+          <div class="hero-split">
+
+            <!-- HERO LEFT: text + VIN form -->
+            <div class="wf-flex-col" style="gap: var(--gap-md);">
+              <h1 class="wf-text-primary"
+                  data-component="hero-headline" data-class="primary"
+                  data-tension="sample-vs-purchase-immediacy">
+                Official Carfax reports for $9.99 — see exactly what you're buying.
+              </h1>
+
+              <p class="wf-text-body" style="font-size: 1.05rem;"
+                 data-component="hero-subhead" data-class="secondary"
+                 data-audience="individual,dealer">
+                For used-car buyers and dealers. Discounted access to the same
+                official Carfax reports sold at carfax.com.
+              </p>
+
+              <!-- VIN form action zone -->
+              <div class="wf-flex-col" style="gap: 12px; margin-top: 8px;">
+                <input class="wf-input" type="text"
+                       data-component="vin-input" data-class="primary"
+                       placeholder="Enter VIN (17 characters)"
+                       maxlength="17" />
+
+                <a id="primary-action" class="wf-button-primary" href="#"
+                   data-component="primary-cta" data-class="primary"
+                   data-audience="individual">
+                  Get report — $9.99
+                </a>
+
+                <!-- Action-zone chips — within ~80px of the button -->
+                <div class="chip-row" style="margin-top: 4px;"
+                     data-component="action-chips" data-class="tertiary">
+                  <span id="refund-guarantee" class="chip" data-component="refund-chip" data-class="tertiary">
+                    <span class="chip-dot"></span> Refund guaranteed
+                  </span>
+                  <span class="chip" data-component="payment-chip" data-class="tertiary">
+                    <span class="chip-dot"></span> Stripe-secured payment
+                  </span>
+                  <span class="chip" data-component="delivery-chip" data-class="tertiary">
+                    <span class="chip-dot"></span> PDF in ~60 seconds
+                  </span>
+                </div>
+
+                <p class="wf-text-meta" style="margin-top: 8px;">
+                  <strong style="color: var(--text);">$9.99</strong>
+                  <span class="price-strike">$44.99</span>
+                  &nbsp;direct from carfax.com — save $35 (78%)
+                </p>
+
+                <a class="wf-text-meta" style="margin-top: 4px;" href="#dealer-section"
+                   data-component="for-dealers-subline" data-class="tertiary"
+                   data-audience="dealer">
+                  Buying for a dealership? See volume pricing →
+                </a>
+              </div>
+            </div>
+
+            <!-- HERO RIGHT: Sample report preview — STRATEGIC ANCHOR -->
+            <div>
+              <div id="sample-report-preview" class="sample-card"
+                   data-component="sample-report-preview" data-class="primary"
+                   data-tension="sample-vs-purchase-immediacy"
+                   data-audience="individual,dealer">
+
+                <div class="sample-card-header">
+                  <span class="sample-card-header-label">SAMPLE</span>
+                  <div class="sample-card-vin">VIN: 1FTFW1ET5DKD12345</div>
+                  <div class="sample-card-meta">2013 Ford F-150 SuperCrew · Generated 2024-03-12</div>
+                </div>
+
+                <div class="sample-section">
+                  <span class="sample-section-label">Accident Records</span>
+                  <span class="sample-section-value">2 incidents</span>
+                  <span class="sample-section-detail">
+                    Minor rear collision (2019) · Front-end damage, repaired (2021)
+                  </span>
+                </div>
+
+                <div class="sample-section">
+                  <span class="sample-section-label">Title Brand</span>
+                  <span class="sample-section-value">Clean</span>
+                  <span class="sample-section-detail">
+                    No salvage, flood, lemon, or rebuilt brand reported across 11 years.
+                  </span>
+                </div>
+
+                <div class="sample-section">
+                  <span class="sample-section-label">Ownership History</span>
+                  <span class="sample-section-value">3 owners</span>
+                  <span class="sample-section-detail">
+                    TX (2013-2017) · OK (2017-2021) · TX (2021-present)
+                  </span>
+                </div>
+
+                <div class="sample-section">
+                  <span class="sample-section-label">Service Records</span>
+                  <span class="sample-section-value">12 entries</span>
+                  <span class="sample-section-detail">
+                    Regular maintenance through 2022. Oil changes, tire rotations,
+                    brake service, transmission flush.
+                  </span>
+                </div>
+
+                <div class="sample-section">
+                  <span class="sample-section-label">Odometer Readings</span>
+                  <span class="sample-section-value">128,440 mi</span>
+                  <div class="sample-mileage-bar">
+                    <div class="sample-mileage-line"></div>
+                    <div class="sample-mileage-dot" style="left: 5%;"></div>
+                    <div class="sample-mileage-dot" style="left: 18%;"></div>
+                    <div class="sample-mileage-dot" style="left: 32%;"></div>
+                    <div class="sample-mileage-dot" style="left: 47%;"></div>
+                    <div class="sample-mileage-dot" style="left: 61%;"></div>
+                    <div class="sample-mileage-dot" style="left: 75%;"></div>
+                    <div class="sample-mileage-dot" style="left: 88%;"></div>
+                  </div>
+                </div>
+
+                <div class="sample-card-footer">
+                  <a class="wf-button-tertiary" href="#"
+                     data-component="open-full-sample-link" data-class="tertiary">
+                    Open full sample report →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT'S IN YOUR REPORT -->
+      <section data-section="whats-in" data-density="moderate" data-section-pad="moderate">
+        <div class="wf-container-wide wf-flex-col">
+          <h2 class="wf-text-secondary" style="font-size: 1.6rem; text-align: center;"
+              data-component="whats-in-headline" data-class="secondary">
+            What's in every official Carfax report
+          </h2>
+          <div class="wf-grid-4" data-component="whats-in-grid" data-class="secondary">
+            <div class="feature-card">
+              <span class="wf-icon"></span>
+              <p class="wf-text-secondary" style="margin-top: 12px;">Accident Records</p>
+              <p class="wf-text-meta" style="margin-top: 4px;">
+                Reported collisions, severity, repair status, and damage location.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="wf-icon"></span>
+              <p class="wf-text-secondary" style="margin-top: 12px;">Title History</p>
+              <p class="wf-text-meta" style="margin-top: 4px;">
+                Salvage, flood, lemon, rebuilt, and other title brands across all states.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="wf-icon"></span>
+              <p class="wf-text-secondary" style="margin-top: 12px;">Ownership</p>
+              <p class="wf-text-meta" style="margin-top: 4px;">
+                Owner count, length of ownership, and use type (personal, fleet, lease).
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="wf-icon"></span>
+              <p class="wf-text-secondary" style="margin-top: 12px;">Service Records</p>
+              <p class="wf-text-meta" style="margin-top: 4px;">
+                Maintenance history, odometer readings, recall status, and inspections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST BAND -->
+      <section data-section="trust-band" data-density="moderate" data-section-pad="moderate"
+               style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="wf-container-medium wf-flex-col" style="text-align: center;">
+          <div class="trust-logo-row" data-component="trust-band" data-class="secondary">
+            <div class="trust-logo">[Stripe]</div>
+            <div class="trust-logo">[PayPal]</div>
+            <div class="trust-logo">[BBB]</div>
+            <div class="trust-logo">[SSL]</div>
+          </div>
+          <p class="wf-text-body" style="margin-top: var(--gap-md);">
+            <strong>Refund guarantee:</strong> Full refund if your PDF doesn't arrive
+            within 24 hours, or if the report data is incomplete.
+          </p>
+          <p class="wf-text-meta" style="margin-top: 8px;">
+            Operated by ACME Vehicle Reports Inc. · Registered in Delaware ·
+            EIN visible on Refund Policy page
+          </p>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works" data-section="how-it-works" data-density="moderate" data-section-pad="moderate">
+        <div class="wf-container-wide wf-flex-col">
+          <h2 class="wf-text-secondary" style="font-size: 1.6rem; text-align: center;"
+              data-component="how-it-works-headline" data-class="secondary">
+            How it works
+          </h2>
+          <div class="wf-grid-3" data-component="how-it-works-strip" data-class="secondary">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <p class="wf-text-secondary">Enter VIN</p>
+              <p class="wf-text-meta" style="margin-top: 6px;">17 characters, anywhere on the dashboard or door jamb.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <p class="wf-text-secondary">Pay $9.99</p>
+              <p class="wf-text-meta" style="margin-top: 6px;">Stripe-secured. Card or PayPal.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <p class="wf-text-secondary">PDF in your inbox</p>
+              <p class="wf-text-meta" style="margin-top: 6px;">Delivered in ~60 seconds. Refund if it doesn't arrive.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING COMPARISON -->
+      <section id="pricing-comparison" data-section="pricing-comparison" data-density="moderate" data-section-pad="moderate">
+        <div class="wf-container-medium wf-flex-col">
+          <h2 class="wf-text-secondary" style="font-size: 1.6rem; text-align: center;"
+              data-component="pricing-headline" data-class="secondary">
+            Why we're cheaper
+          </h2>
+          <div class="wf-grid-2" data-component="pricing-comparison-block" data-class="secondary">
+            <div class="price-compare-card">
+              <p class="wf-text-meta">carfax.com direct</p>
+              <p class="price-amount">$44.99</p>
+              <p class="wf-text-meta">per report</p>
+            </div>
+            <div class="price-compare-card ours">
+              <p class="wf-text-meta">Our price</p>
+              <p class="price-amount">$9.99</p>
+              <p class="wf-text-meta"><strong>Save $35 (78%)</strong></p>
+            </div>
+          </div>
+          <p class="wf-text-body" style="text-align: center; margin-top: var(--gap-md);">
+            We purchase reports in bulk and pass the volume savings on to individual
+            buyers and dealers. Same official Carfax data, same PDF format, lower price.
+          </p>
+        </div>
+      </section>
+
+      <!-- DEALER BAND — full-width, prominent -->
+      <section id="dealer-section" class="dealer-band"
+               data-section="dealer" data-density="moderate" data-section-pad="generous"
+               data-audience="dealer">
+        <div class="wf-container-wide wf-flex-col">
+          <div style="text-align: center;">
+            <h2 class="wf-text-primary" style="font-size: 2rem;"
+                data-component="dealer-headline" data-class="primary">
+              Built for dealers.
+            </h2>
+            <p class="wf-text-body" style="margin-top: var(--gap-sm); font-size: 1.05rem;"
+               data-component="dealer-subhead" data-class="secondary">
+              Cut your monthly Carfax cost by up to 80% at volume.
+            </p>
+          </div>
+
+          <div class="wf-grid-3" data-component="dealer-tier-table" data-class="secondary">
+            <div class="tier-card">
+              <p class="tier-volume">50 reports / mo</p>
+              <p class="tier-price">$7.50 each</p>
+              <p class="tier-savings">$375/mo · save 83% vs direct</p>
+            </div>
+            <div class="tier-card featured">
+              <p class="tier-volume">250 reports / mo</p>
+              <p class="tier-price">$4.50 each</p>
+              <p class="tier-savings">$1,125/mo · save 90% vs direct</p>
+            </div>
+            <div class="tier-card">
+              <p class="tier-volume">1000+ / mo</p>
+              <p class="tier-price">Custom</p>
+              <p class="tier-savings">Volume + API + Net-30 terms</p>
+            </div>
+          </div>
+
+          <p class="wf-text-meta" style="text-align: center;"
+             data-component="dealer-trust-line" data-class="tertiary">
+            Net-30 terms · API access available · Dedicated account contact ·
+            Verified business: ACME Vehicle Reports Inc.
+          </p>
+
+          <div style="text-align: center; margin-top: var(--gap-md);">
+            <a id="dealer-action" class="wf-button-primary" href="#"
+               data-component="dealer-cta" data-class="primary">
+              Talk to a dealer specialist →
+            </a>
+            <p class="wf-text-meta" style="margin-top: 10px;">
+              We'll get back within 1 business day.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section data-section="testimonials" data-density="moderate" data-section-pad="moderate">
+        <div class="wf-container-wide">
+          <div class="wf-grid-2" data-component="testimonials" data-class="tertiary">
+            <div class="testimonial-card" data-audience="individual">
+              <p class="wf-text-body">
+                "Used this to check a 2017 Civic I was buying off Marketplace.
+                The Carfax pulled an undisclosed accident — saved me $4,000.
+                PDF showed up in under a minute."
+              </p>
+              <div class="testimonial-attr">
+                <div class="testimonial-avatar"></div>
+                <div>
+                  <p class="wf-text-secondary" style="font-size: 0.95rem;">Marcus Reilly</p>
+                  <p class="wf-text-meta">Austin, TX · Used-car buyer</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card" data-audience="dealer">
+              <p class="wf-text-body">
+                "We pull about 180 Carfaxes a month at our lot. Switched from
+                direct billing six months ago. Same reports, ~$5,400/yr in savings.
+                Dealer rep responds within hours."
+              </p>
+              <div class="testimonial-attr">
+                <div class="testimonial-avatar"></div>
+                <div>
+                  <p class="wf-text-secondary" style="font-size: 0.95rem;">Janelle Ortiz</p>
+                  <p class="wf-text-meta">Sales Manager, Westside Auto · Phoenix, AZ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" data-section="faq" data-density="compact" data-section-pad="moderate"
+               style="background: var(--surface);">
+        <div class="wf-container-medium wf-flex-col">
+          <h2 class="wf-text-secondary" style="font-size: 1.6rem; text-align: center;"
+              data-component="faq-headline" data-class="tertiary">
+            Frequently asked
+          </h2>
+          <div data-component="faq" data-class="tertiary">
+            <div class="faq-item">
+              <p class="faq-q">Are these really official Carfax reports?</p>
+              <p class="faq-a">
+                Yes. Every report we deliver is the same official Carfax PDF
+                you'd receive purchasing directly from carfax.com — same data
+                sources, same format, same VIN coverage.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">Why are you cheaper than carfax.com?</p>
+              <p class="faq-a">
+                We purchase reports in bulk under a reseller arrangement and
+                pass the volume savings to buyers. The product is identical;
+                only the distribution path differs.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">How fast is delivery?</p>
+              <p class="faq-a">
+                Most reports arrive in 30-90 seconds. If your report hasn't
+                arrived in 24 hours, you get a full refund — no questions.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">What if my report is missing data?</p>
+              <p class="faq-a">
+                Carfax data depends on what's been reported for that VIN. If
+                the report we deliver is materially incomplete (no records),
+                we'll refund.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">What's your refund policy?</p>
+              <p class="faq-a">
+                Full refund if (a) your PDF doesn't arrive in 24h, or
+                (b) the report contains no records on the VIN. Submit via
+                support email; processed within 1 business day.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">How does dealer pricing work?</p>
+              <p class="faq-a">
+                Volume tiers start at 50 reports/month. Each tier has a
+                fixed per-report price. Net-30 billing available. API access
+                for inventory tools at the 250+ tier.
+              </p>
+            </div>
+            <div class="faq-item">
+              <p class="faq-q">Is my payment information safe?</p>
+              <p class="faq-a">
+                Payments are processed by Stripe. We never see or store your
+                card data. Optional PayPal checkout for buyers who prefer it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer" data-section="footer" data-section-pad="moderate"
+            style="border-top: 1px solid var(--border); background: var(--bg);">
+      <div class="wf-container-wide" data-component="footer" data-class="tertiary">
+        <div class="wf-grid-4">
+          <div>
+            <p class="wf-text-secondary" style="font-size: 0.95rem;">CarReports.io</p>
+            <p class="wf-text-meta" style="margin-top: 8px;">
+              ACME Vehicle Reports Inc.<br>
+              1209 N. Orange St.<br>
+              Wilmington, DE 19801
+            </p>
+          </div>
+          <div>
+            <p class="wf-text-meta" style="font-weight: 600; color: var(--text);">Product</p>
+            <p class="wf-text-meta" style="margin-top: 8px;">Sample Report</p>
+            <p class="wf-text-meta">For Dealers</p>
+            <p class="wf-text-meta">Pricing</p>
+          </div>
+          <div>
+            <p class="wf-text-meta" style="font-weight: 600; color: var(--text);">Support</p>
+            <p class="wf-text-meta" style="margin-top: 8px;">support@carreports.io</p>
+            <p class="wf-text-meta">1-800-555-0139</p>
+            <p class="wf-text-meta">Refund Policy</p>
+          </div>
+          <div>
+            <p class="wf-text-meta" style="font-weight: 600; color: var(--text);">Legal</p>
+            <p class="wf-text-meta" style="margin-top: 8px;">Terms of Service</p>
+            <p class="wf-text-meta">Privacy Policy</p>
+            <p class="wf-text-meta">Trademark Notice</p>
+          </div>
+        </div>
+        <div class="wf-divider" style="margin: var(--gap-md) 0;"></div>
+        <p class="wf-text-meta" style="text-align: center;">
+          Carfax® is a registered trademark of Carfax, Inc. CarReports.io is an independent
+          reseller and is not affiliated with or endorsed by Carfax, Inc. except where
+          explicitly stated under our reseller agreement.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

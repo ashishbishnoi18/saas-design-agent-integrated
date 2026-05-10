@@ -1,0 +1,64 @@
+{
+  "schema_version": "strategic_diagnosis_validator.v1",
+  "passed": true,
+  "overall_score": 9.4,
+  "blocking_failures": [],
+  "category_scores": {
+    "schema_integrity": 10.0,
+    "brief_grounding": 9.7,
+    "archetype_quality": 9.2,
+    "audience_and_buyer_quality": 9.5,
+    "decision_context_quality": 9.4,
+    "beauty_function_balance_quality": 9.1,
+    "first_viewport_quality": 9.6,
+    "hard_floor_quality": 9.5,
+    "anti_pattern_quality": 9.4,
+    "dynamic_evaluator_policy_quality": 9.3,
+    "candidate_strategy_seed_quality": 9.2,
+    "downstream_usefulness": 9.5
+  },
+  "specific_failures": [],
+  "specific_strengths": [
+    {
+      "field": "first_viewport_obligation",
+      "strength": "Concrete and testable: requires official Carfax clarity, legitimacy proof, individual and dealer paths, savings cue, and sample/proof access in the first viewport, with explicit failure conditions."
+    },
+    {
+      "field": "audience_model",
+      "strength": "Clearly distinguishes individual buyers, dealer buyers, users, stakeholders, motivations, fears, attention spans, and different proof needs."
+    },
+    {
+      "field": "decision_context.primary_user_decision_sequence",
+      "strength": "Gives a specific six-step decision sequence tied to this Carfax reseller context rather than a generic learn-trust-buy funnel."
+    },
+    {
+      "field": "hard_floors",
+      "strength": "Hard floors are enforceable, archetype-specific, tied to strategic axes, include score caps, and contain validation hints for downstream evaluators."
+    },
+    {
+      "field": "anti_patterns",
+      "strength": "Anti-patterns are specific to discounted official report resale, including scam aesthetics, ambiguous Carfax authenticity, fake authority claims, and hidden dealer path."
+    },
+    {
+      "field": "dynamic_evaluator_policy",
+      "strength": "Weights sum to 1.0 and correctly prioritize trust, first viewport performance, functional clarity, and dual-path conversion over generic visual polish."
+    },
+    {
+      "field": "candidate_strategy_seeds",
+      "strength": "Provides multiple distinct strategic directions with reasons, optimization targets, risks, and traffic/audience fit."
+    },
+    {
+      "field": "downstream_constraints",
+      "strength": "Gives clear obligations for architect, visual designer, frontend implementer, and evaluator without prescribing a fixed page layout."
+    }
+  ],
+  "contradictions": [],
+  "generic_or_weak_phrases": [],
+  "missing_strategic_questions": [],
+  "repair_directive": "No repair required. Diagnosis is specific, grounded in the brief, testable, and safe to pass to downstream agents.",
+  "safe_to_pass_downstream": true,
+  "schema_validation": {
+    "passed": true,
+    "errors": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "strategic_diagnosis_validator.v1",
+  "passed": true,
+  "overall_score": 9.1,
+  "blocking_failures": [],
+  "category_scores": {
+    "schema_integrity": 10,
+    "brief_grounding": 9,
+    "archetype_quality": 9,
+    "audience_and_buyer_quality": 9,
+    "decision_context_quality": 9,
+    "beauty_function_balance_quality": 9,
+    "first_viewport_quality": 9,
+    "hard_floor_quality": 9,
+    "anti_pattern_quality": 9,
+    "dynamic_evaluator_policy_quality": 9,
+    "candidate_strategy_seed_quality": 9,
+    "downstream_usefulness": 9
+  },
+  "specific_failures": [],
+  "specific_strengths": [
+    {
+      "field": "first_viewport_obligation",
+      "strength": "The diagnosis gives downstream agents concrete first-fold obligations rather than generic hero guidance."
+    },
+    {
+      "field": "candidate_strategy_seeds",
+      "strength": "The strategy seeds are usable by the architecture search harness."
+    }
+  ],
+  "contradictions": [],
+  "generic_or_weak_phrases": [],
+  "missing_strategic_questions": [],
+  "repair_directive": "none",
+  "safe_to_pass_downstream": true
+}

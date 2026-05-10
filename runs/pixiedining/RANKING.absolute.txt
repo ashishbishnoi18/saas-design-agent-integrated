@@ -1,0 +1,6 @@
+trust-first-free-alert-strategy	eligible=False	abs=1.54	programmatic=5.0
+segment-self-selection-strategy	eligible=False	abs=0.20	programmatic=5.0
+example-alert-proof-strategy	eligible=False	abs=0.00	programmatic=5.0
+coverage-confidence-strategy	eligible=False	abs=0.00	programmatic=5.0
+comparison-ready-pro-strategy	eligible=False	abs=1.53	programmatic=4.0
+workflow-first-reservation-rescue-strategy	eligible=False	abs=1.45	programmatic=4.0

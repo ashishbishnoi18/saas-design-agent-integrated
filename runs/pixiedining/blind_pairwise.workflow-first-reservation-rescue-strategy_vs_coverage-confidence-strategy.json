@@ -1,0 +1,18 @@
+{
+  "candidate_a": "workflow-first-reservation-rescue-strategy",
+  "candidate_b": "coverage-confidence-strategy",
+  "winner": "A",
+  "confidence": 0.78,
+  "perception": {
+    "who_is_this_for_a": "A Disney trip planner who missed a hard-to-get dining reservation and wants a low-risk alert without giving up Disney account access.",
+    "who_is_this_for_b": "A Disney planner comparing covered restaurants and wanting a broader proof-oriented service, with some appeal to expert users.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "A",
+    "trust_more_visible": "A",
+    "mobile_more_usable": "A",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate A wins because the first viewport immediately explains the missed-reservation problem, says Pixiedining monitors Disney dining availability, shows a free alert form, and visibly reassures users that no Disney login is required and booking happens on Disney's official site. It also includes an example alert and alert-volume strip early, which makes the service feel concrete. Candidate B has a stronger coverage section and a cleaner comparison-oriented full page, but its first viewport is weaker: the form is visually secondary, the no-login message is present but less explanatory, and there is less immediate proof in the opening screen. On mobile, A gets the core promise, trust bullets, and form start into view more directly, while B delays the form and hides more task detail below the fold. B is still credible and likely better for coverage-confidence, but A better satisfies the diagnosis's hard floors around immediate free alert setup, no-login trust, official handoff, and short-session conversion.",
+  "blocking_visual_issue_a": "none",
+  "blocking_visual_issue_b": "Mobile first viewport does not show the free alert form start soon enough, and early trust proof is weaker than the stated trust burden requires."
+}

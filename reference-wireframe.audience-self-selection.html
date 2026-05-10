@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe — audience-self-selection — carfaxsavings landing</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f3f4f6;
+      --surface-alt: #e5e7eb;
+      --border: #d1d5db;
+      --border-strong: #9ca3af;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --text-faint: #9ca3af;
+      --primary-fill: #374151;
+      --primary-text: #ffffff;
+      --gap-xs: 8px; --gap-sm: 12px; --gap-md: 24px;
+      --gap-lg: 48px; --gap-xl: 96px;
+      --radius: 6px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-family: ui-sans-serif, system-ui, sans-serif; color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.5; }
+    #page-root { width: 100%; min-height: 100vh; }
+
+    .wf-text-primary { font-size: 2.5rem; font-weight: 700; line-height: 1.15; }
+    .wf-text-secondary { font-size: 1.25rem; font-weight: 600; }
+    .wf-text-body { font-size: 1rem; color: var(--text-muted); }
+    .wf-text-meta { font-size: 0.875rem; color: var(--text-faint); }
+
+    .wf-button-primary { display:inline-block; padding:14px 28px; background:var(--primary-fill); color:var(--primary-text); border-radius:var(--radius); font-weight:600; text-decoration:none; }
+    .wf-button-secondary { display:inline-block; padding:12px 22px; background:transparent; color:var(--text); border:1.5px solid var(--border-strong); border-radius:var(--radius); font-weight:500; text-decoration:none; }
+    .wf-button-tertiary { display:inline-block; padding:8px 12px; color:var(--text-muted); text-decoration:underline; font-size:0.9rem; }
+
+    .wf-input { display:block; width:100%; padding:14px 16px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); color:var(--text-faint); font-size:1rem; }
+    .wf-image { display:flex; align-items:center; justify-content:center; background:var(--surface-alt); border:1px dashed var(--border-strong); color:var(--text-muted); font-size:0.85rem; border-radius:var(--radius); min-height:120px; }
+    .wf-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:var(--gap-md); }
+    .wf-divider { height:1px; background:var(--border); width:100%; }
+    .wf-icon { width:24px; height:24px; background:var(--surface-alt); border-radius:4px; display:inline-block; }
+
+    [data-density="generous"] > * + * { margin-top: var(--gap-lg); }
+    [data-density="moderate"] > * + * { margin-top: var(--gap-md); }
+    [data-density="compact"]  > * + * { margin-top: var(--gap-sm); }
+
+    [data-section-pad="generous"] { padding: var(--gap-xl) var(--gap-lg); }
+    [data-section-pad="moderate"] { padding: var(--gap-lg) var(--gap-md); }
+    [data-section-pad="compact"]  { padding: var(--gap-md) var(--gap-sm); }
+
+    .wf-container-medium { max-width: 1024px; margin: 0 auto; }
+    .wf-container-wide   { max-width: 1280px; margin: 0 auto; }
+
+    .wf-grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap-md); }
+    .wf-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap-md); }
+    .wf-grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap-md); }
+    .wf-flex-row     { display:flex; flex-direction:row; gap:var(--gap-md); align-items:center; }
+    .wf-flex-col     { display:flex; flex-direction:column; gap:var(--gap-md); }
+    .wf-flex-between { display:flex; justify-content:space-between; align-items:center; gap:var(--gap-md); }
+
+    /* The audience-split hero — two equal-but-distinguished entry paths */
+    .audience-split { display:grid; grid-template-columns: 1fr 1fr; gap:var(--gap-lg); }
+    .audience-card { padding:var(--gap-lg); border:2px solid var(--border); border-radius:var(--radius); background:var(--bg); display:flex; flex-direction:column; gap:var(--gap-md); }
+    .audience-card[data-emphasis="primary"] { border-color: var(--primary-fill); border-width: 2px; }
+
+    @media (max-width:1024px) {
+      .wf-grid-3, .wf-grid-4 { grid-template-columns: repeat(2,1fr); }
+      .audience-split { grid-template-columns: 1fr; }
+      [data-section-pad="generous"] { padding: var(--gap-lg) var(--gap-md); }
+    }
+    @media (max-width:640px) {
+      .wf-grid-2, .wf-grid-3, .wf-grid-4 { grid-template-columns: 1fr; }
+      .wf-text-primary { font-size: 1.875rem; }
+      [data-section-pad="generous"] { padding: var(--gap-md) var(--gap-sm); }
+      [data-mobile="hide"] { display:none; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-root" data-strategy="audience-self-selection" data-page="landing">
+
+  <header data-section="nav" data-section-pad="compact">
+    <div class="wf-container-wide wf-flex-between">
+      <div data-component="logo" data-class="tertiary" class="wf-flex-row">
+        <span class="wf-icon"></span>
+        <span class="wf-text-meta">CarfaxSavings</span>
+      </div>
+      <nav class="wf-flex-row" data-component="primary-nav" data-class="tertiary" data-mobile="hide">
+        <span class="wf-text-meta">How it works</span>
+        <span class="wf-text-meta">Sample report</span>
+        <span class="wf-text-meta">Dealer plans</span>
+        <span class="wf-text-meta">FAQ</span>
+        <a class="wf-button-secondary wf-text-meta" data-component="login-link" data-class="tertiary">Log in</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: Audience self-selection. Two paths, both visible, framed -->
+  <!-- around the user's actual decision: "am I buying ONE car or running   -->
+  <!-- a dealership?" The trust gap is addressed in the meta line above.    -->
+  <section id="primary-section" data-section="hero" data-density="generous" data-section-pad="generous">
+    <div class="wf-container-wide wf-flex-col" style="text-align:center; align-items:center;">
+      <p class="wf-text-meta" data-component="trust-meta" data-class="secondary"
+         data-tension="discount-vs-trust">
+        Authorized Carfax reseller · 2.4M reports delivered · BBB A+
+      </p>
+      <h1 class="wf-text-primary" data-component="hero-headline" data-class="primary" style="max-width:720px;">
+        Official Carfax reports. Without the official Carfax price.
+      </h1>
+      <p class="wf-text-body" data-component="hero-subhead" data-class="secondary" style="max-width:640px;">
+        Same VIN. Same data. Same official Carfax PDF. We negotiated bulk pricing
+        and pass the savings to you — whether you're checking one used car or
+        running a dealer's lot.
+      </p>
+    </div>
+
+    <div class="wf-container-wide" style="margin-top: var(--gap-xl);">
+      <div class="audience-split" data-component="audience-selector" data-class="primary"
+           data-tension="dual-audience-prioritization">
+
+        <!-- Path A: Individual (one-time buyer). Primary CTA visible here. -->
+        <div class="audience-card" data-emphasis="primary"
+             data-audience="individual-buyer" data-component="individual-path-card" data-class="primary">
+          <p class="wf-text-meta" data-class="tertiary">CHECKING ONE CAR</p>
+          <h2 class="wf-text-secondary" data-class="primary">I'm buying a used car</h2>
+          <p class="wf-text-body">Get the report in under 60 seconds. $14.99 per report — Carfax's price is $44.99.</p>
+          <input class="wf-input" data-component="vin-input" data-class="primary" placeholder="Enter VIN to start"/>
+          <a id="primary-action" class="wf-button-primary"
+             data-component="primary-cta" data-class="primary">Get my report — $14.99</a>
+          <p class="wf-text-meta" data-component="risk-reducer-individual" data-class="tertiary"
+             data-tension="discount-vs-trust">
+            7-day refund if the report has any error · Pay with Stripe / PayPal / Apple Pay
+          </p>
+        </div>
+
+        <!-- Path B: Dealer (continuous). Different CTA, different proof. -->
+        <div class="audience-card"
+             data-audience="dealer" data-component="dealer-path-card" data-class="primary">
+          <p class="wf-text-meta" data-class="tertiary">RUNNING A DEALERSHIP</p>
+          <h2 class="wf-text-secondary" data-class="primary">I need reports at scale</h2>
+          <p class="wf-text-body">Volume pricing from $4.99/report. Bulk credits, API access, fleet billing — used by 1,200+ independent dealers.</p>
+          <div class="wf-flex-row" style="margin-top:var(--gap-sm);">
+            <a id="dealer-action" class="wf-button-primary"
+               data-component="dealer-cta" data-class="primary">See dealer pricing</a>
+            <a class="wf-button-tertiary" data-component="dealer-call"
+               data-class="secondary">or talk to sales →</a>
+          </div>
+          <p class="wf-text-meta" data-component="risk-reducer-dealer" data-class="tertiary">
+            No commitment · NMVTIS-certified · Net-30 invoicing available
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF: addresses "is this real" with concrete artifact, not logos -->
+  <section data-section="proof-sample" data-density="moderate" data-section-pad="generous">
+    <div class="wf-container-medium wf-flex-col" style="text-align:center;align-items:center;">
+      <p class="wf-text-meta" data-class="tertiary">SEE BEFORE YOU BUY</p>
+      <h2 class="wf-text-secondary" data-component="proof-headline" data-class="secondary">
+        It's the actual Carfax PDF. Here's a real one.
+      </h2>
+      <div class="wf-image" data-component="sample-report-preview" data-class="primary"
+           data-tension="discount-vs-trust"
+           style="width:100%; min-height:520px; max-width:880px;">
+        [SAMPLE CARFAX REPORT PDF — first 2 pages, with watermark, downloadable]
+      </div>
+      <a class="wf-button-secondary" data-component="sample-cta" data-class="secondary">Download full sample</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS: 3-step, but framed around the trust question, not features -->
+  <section data-section="how-it-works" data-density="moderate" data-section-pad="generous">
+    <div class="wf-container-wide wf-flex-col" style="text-align:center;align-items:center;">
+      <h2 class="wf-text-secondary" data-component="how-headline" data-class="secondary">
+        Why we can charge less than Carfax (the boring truth)
+      </h2>
+      <p class="wf-text-body" data-component="how-subhead" data-class="tertiary" style="max-width:640px;">
+        We're not pirates. We're authorized resellers buying volume blocks at
+        dealer rates and passing the saving along.
+      </p>
+      <div class="wf-grid-3" style="width:100%; margin-top:var(--gap-md);"
+           data-component="how-steps" data-class="secondary">
+        <div class="wf-card" data-component="step-1" data-class="secondary">
+          <span class="wf-icon"></span>
+          <h3 class="wf-text-secondary" style="margin-top:var(--gap-sm);">1. Bulk dealer access</h3>
+          <p class="wf-text-body">We hold authorized-reseller status and buy reports at NADA/dealer-block prices.</p>
+        </div>
+        <div class="wf-card" data-component="step-2" data-class="secondary">
+          <span class="wf-icon"></span>
+          <h3 class="wf-text-secondary" style="margin-top:var(--gap-sm);">2. Same official report</h3>
+          <p class="wf-text-body">You receive the unmodified Carfax PDF, generated against the live Carfax database for your VIN.</p>
+        </div>
+        <div class="wf-card" data-component="step-3" data-class="secondary">
+          <span class="wf-icon"></span>
+          <h3 class="wf-text-secondary" style="margin-top:var(--gap-sm);">3. Margin, not magic</h3>
+          <p class="wf-text-body">We mark up over our wholesale cost — still less than Carfax retail. That's the whole business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL/PROOF strip — by audience, not generic -->
+  <section data-section="testimonials" data-density="moderate" data-section-pad="moderate">
+    <div class="wf-container-wide">
+      <div class="wf-grid-2" data-component="testimonials" data-class="secondary">
+        <div class="wf-card">
+          <p class="wf-text-meta" data-class="tertiary">FROM AN INDIVIDUAL BUYER</p>
+          <p class="wf-text-body" style="margin-top:var(--gap-sm);font-style:italic;">"Saved $30 on a report that turned up flood damage on the truck I was about to buy. Paid for itself 100x over."</p>
+          <p class="wf-text-meta" style="margin-top:var(--gap-sm);">— J. M., Phoenix · Verified purchase</p>
+        </div>
+        <div class="wf-card">
+          <p class="wf-text-meta" data-class="tertiary">FROM A DEALER</p>
+          <p class="wf-text-body" style="margin-top:var(--gap-sm);font-style:italic;">"We pull 80–120 reports a month. The volume tier saves us about $2,800 a year vs. our old plan, with no API friction."</p>
+          <p class="wf-text-meta" style="margin-top:var(--gap-sm);">— Owner, Independent dealership · Verified business</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPEATED CTA, audience-aware. Bottom of long-scroll. -->
+  <section data-section="cta-repeat" data-density="moderate" data-section-pad="generous">
+    <div class="wf-container-medium wf-flex-col" style="text-align:center;align-items:center;">
+      <h2 class="wf-text-secondary" data-component="repeat-cta-headline" data-class="primary">
+        Ready when you are.
+      </h2>
+      <div class="wf-flex-row" style="justify-content:center;">
+        <a class="wf-button-primary" data-component="repeat-individual-cta" data-class="primary">Run a single report — $14.99</a>
+        <a class="wf-button-secondary" data-component="repeat-dealer-cta" data-class="secondary">See dealer pricing</a>
+      </div>
+      <p class="wf-text-meta" data-class="tertiary">Refund guarantee · Authorized reseller · 2.4M reports delivered</p>
+    </div>
+  </section>
+
+  <footer data-section="footer" data-section-pad="moderate">
+    <div class="wf-container-wide wf-flex-col" data-component="footer-nav" data-class="tertiary">
+      <div class="wf-flex-between">
+        <span class="wf-text-meta">© CarfaxSavings — Independent authorized reseller. Not affiliated with Carfax, Inc.</span>
+        <span class="wf-text-meta">Privacy · Terms · Contact</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

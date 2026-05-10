@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe — business-identity-and-human-contact-reassurance — carfax-reseller-landing</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f3f4f6;
+      --surface-alt: #e5e7eb;
+      --border: #d1d5db;
+      --border-strong: #9ca3af;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --text-faint: #9ca3af;
+      --primary-fill: #374151;
+      --primary-text: #ffffff;
+      --secondary-fill: #d1d5db;
+      --secondary-text: #1f2937;
+      --gap-xs: 8px;
+      --gap-sm: 12px;
+      --gap-md: 24px;
+      --gap-lg: 48px;
+      --gap-xl: 96px;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    #page-root { width: 100%; min-height: 100vh; }
+
+    .wf-text-primary   { font-size: 2.25rem; font-weight: 700; line-height: 1.15; color: var(--text); }
+    .wf-text-secondary { font-size: 1.125rem; font-weight: 500; color: var(--text); }
+    .wf-text-body      { font-size: 1rem; color: var(--text-muted); }
+    .wf-text-meta      { font-size: 0.875rem; color: var(--text-faint); }
+    .wf-text-label     { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+    .wf-price-strike   { color: var(--text-faint); text-decoration: line-through; font-weight: 400; }
+
+    .wf-button-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--primary-fill);
+      color: var(--primary-text);
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    .wf-button-secondary {
+      display: inline-block;
+      padding: 12px 22px;
+      background: transparent;
+      color: var(--secondary-text);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .wf-button-tertiary {
+      display: inline-block;
+      padding: 8px 12px;
+      color: var(--text-muted);
+      text-decoration: underline;
+      font-size: 0.9rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .wf-input {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-faint);
+      font-size: 1rem;
+    }
+
+    .wf-image, .wf-media, .wf-video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border-strong);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+      min-height: 120px;
+    }
+
+    .wf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+    }
+
+    .wf-card-strong {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+    }
+
+    .wf-divider { height: 1px; background: var(--border); width: 100%; }
+    .wf-divider-thick { height: 2px; background: var(--border-strong); width: 100%; }
+
+    .wf-icon {
+      width: 24px; height: 24px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .wf-icon-sm {
+      width: 16px; height: 16px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .wf-avatar {
+      width: 64px; height: 64px;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .wf-avatar-lg {
+      width: 96px; height: 96px;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+
+    [data-density="generous"]  > * + * { margin-top: var(--gap-lg); }
+    [data-density="moderate"]  > * + * { margin-top: var(--gap-md); }
+    [data-density="compact"]   > * + * { margin-top: var(--gap-sm); }
+    [data-density="dense"]     > * + * { margin-top: var(--gap-xs); }
+
+    [data-section-pad="generous"] { padding: var(--gap-xl) var(--gap-lg); }
+    [data-section-pad="moderate"] { padding: var(--gap-lg) var(--gap-md); }
+    [data-section-pad="compact"]  { padding: var(--gap-md) var(--gap-sm); }
+    [data-section-pad="bar"]      { padding: 10px var(--gap-md); }
+
+    .wf-container-narrow { max-width: 720px; margin: 0 auto; }
+    .wf-container-medium { max-width: 1024px; margin: 0 auto; }
+    .wf-container-wide   { max-width: 1280px; margin: 0 auto; }
+    .wf-container-full   { width: 100%; }
+
+    .wf-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-md); }
+    .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-md); }
+    .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); }
+    .wf-grid-hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--gap-lg); align-items: stretch; }
+    .wf-grid-pricing { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--gap-md); }
+    .wf-grid-dealer-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-md); }
+
+    .wf-flex-row    { display: flex; flex-direction: row; gap: var(--gap-md); align-items: center; }
+    .wf-flex-row-tight { display: flex; flex-direction: row; gap: var(--gap-sm); align-items: center; flex-wrap: wrap; }
+    .wf-flex-col    { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .wf-flex-col-tight { display: flex; flex-direction: column; gap: var(--gap-sm); }
+    .wf-flex-between{ display: flex; justify-content: space-between; align-items: center; gap: var(--gap-md); }
+
+    .wf-section-band { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .wf-bar-strong { background: var(--bg); border-bottom: 1px solid var(--border); }
+    .wf-bar-identity { background: var(--surface); border-bottom: 1px solid var(--border-strong); }
+
+    .wf-list-checks li {
+      list-style: none;
+      padding: 4px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .wf-list-checks li::before { content: "✓ "; color: var(--text); font-weight: 600; }
+
+    .wf-list-meta { list-style: none; }
+    .wf-list-meta li { padding: 6px 0; font-size: 0.875rem; color: var(--text-muted); border-bottom: 1px dotted var(--border); }
+    .wf-list-meta li:last-child { border-bottom: none; }
+
+    .wf-pill-toggle {
+      display: none;
+      width: 100%;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .wf-pill-toggle > div {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .wf-pill-toggle > div:first-child { background: var(--primary-fill); color: var(--primary-text); }
+    .wf-pill-toggle > div:last-child { background: var(--bg); color: var(--text-muted); }
+
+    .wf-mobile-only { display: none; }
+    .wf-desktop-only { display: block; }
+    .wf-flex-mobile-only { display: none; }
+
+    /* ================= TABLET ≤ 1024px ================= */
+    @media (max-width: 1024px) {
+      .wf-grid-3, .wf-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .wf-grid-hero { grid-template-columns: 1fr; gap: var(--gap-md); }
+      .wf-grid-pricing { grid-template-columns: 1fr; }
+      .wf-grid-dealer-2x2 { grid-template-columns: 1fr; }
+      [data-section-pad="generous"] { padding: var(--gap-lg) var(--gap-md); }
+      .wf-pill-toggle { display: flex; }
+    }
+
+    /* ================= MOBILE ≤ 640px ================= */
+    @media (max-width: 640px) {
+      .wf-grid-2, .wf-grid-3, .wf-grid-4 { grid-template-columns: 1fr; }
+      .wf-text-primary { font-size: 1.625rem; }
+      .wf-text-secondary { font-size: 1rem; }
+      [data-section-pad="generous"] { padding: var(--gap-md) var(--gap-sm); }
+      [data-section-pad="moderate"] { padding: var(--gap-md) var(--gap-sm); }
+      .wf-mobile-only { display: block; }
+      .wf-desktop-only { display: none; }
+      .wf-flex-mobile-only { display: flex; }
+      .wf-button-primary { width: 100%; padding: 16px 24px; font-size: 1rem; }
+      .wf-button-secondary { width: 100%; }
+      .wf-flex-between { flex-wrap: wrap; gap: var(--gap-sm); }
+      [data-mobile="hide"] { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-root" data-strategy="business-identity-and-human-contact-reassurance" data-page="carfax-reseller-landing">
+
+  <!-- ================= BUSINESS IDENTITY BAR ================= -->
+  <div id="business-identity-bar"
+       class="wf-bar-identity"
+       data-section="business-identity-bar"
+       data-component="business-identity-bar"
+       data-class="primary"
+       data-section-pad="bar">
+    <div class="wf-container-wide wf-flex-between">
+      <div class="wf-flex-row-tight wf-desktop-only" data-component="identity-line" data-class="primary">
+        <span class="wf-text-meta"><strong>[Company Legal Name LLC]</strong></span>
+        <span class="wf-text-meta">·</span>
+        <span class="wf-text-meta">Established 2014</span>
+        <span class="wf-text-meta">·</span>
+        <a id="phone-contact" class="wf-text-meta" data-component="phone-contact" data-class="secondary" data-tension="speed-vs-reassurance">
+          <span class="wf-icon-sm"></span> (XXX) XXX-XXXX
+        </a>
+        <span class="wf-text-meta">·</span>
+        <span class="wf-text-meta">Mon–Fri 9am–9pm ET</span>
+      </div>
+      <div class="wf-flex-mobile-only wf-flex-row-tight" data-component="identity-line-mobile" data-class="primary">
+        <span class="wf-icon-sm"></span>
+        <span class="wf-text-meta"><strong>[Co.]</strong></span>
+        <span class="wf-icon-sm"></span>
+        <span class="wf-text-meta">Tap to call</span>
+      </div>
+      <a class="wf-text-meta" data-component="talk-to-person-link" data-class="secondary">
+        Talk to a real person →
+      </a>
+    </div>
+  </div>
+
+  <!-- ================= TOP NAV ================= -->
+  <header data-section="nav" data-section-pad="bar" class="wf-bar-strong">
+    <div class="wf-container-wide wf-flex-between">
+      <div class="wf-flex-row-tight" data-component="logo" data-class="tertiary">
+        <span class="wf-icon"></span>
+        <span class="wf-text-secondary"><strong>Brand</strong></span>
+      </div>
+      <nav class="wf-flex-row" data-component="top-nav" data-class="tertiary">
+        <span class="wf-text-meta">How it works</span>
+        <span class="wf-text-meta">Dealers</span>
+        <span class="wf-text-meta">Sample</span>
+        <span class="wf-text-meta">Contact</span>
+        <a class="wf-button-secondary" data-component="nav-cta" data-class="tertiary">Buy a report</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main>
+    <section id="primary-section"
+             data-section="hero"
+             data-density="moderate"
+             data-section-pad="generous">
+      <div class="wf-container-wide wf-flex-col">
+
+        <!-- Mobile pill toggle for audience self-select -->
+        <div class="wf-pill-toggle wf-mobile-only"
+             data-component="audience-toggle"
+             data-class="secondary"
+             data-tension="dealer-prominence-vs-individual-default"
+             data-audience="both">
+          <div data-audience="individual">Buy one report</div>
+          <div data-audience="dealer">I'm a dealer</div>
+        </div>
+
+        <div class="wf-flex-col-tight" style="max-width: 880px;">
+          <h1 class="wf-text-primary" data-component="hero-headline" data-class="primary">
+            Get an official Carfax report — $9.99
+            <span class="wf-price-strike" style="font-size: 1.5rem;">was $44.99</span>
+          </h1>
+          <p class="wf-text-body" data-component="hero-sub" data-class="secondary">
+            Delivered as a PDF in under 90 seconds. We're a real US business that purchases
+            official Carfax reports through a licensed Carfax account and passes the
+            savings to you. Every report is the actual Carfax PDF.
+          </p>
+        </div>
+
+        <!-- Hero split: individual lane (LEFT 60%) | dealer panel (RIGHT 40%) -->
+        <div class="wf-grid-hero">
+
+          <!-- ============ INDIVIDUAL LANE ============ -->
+          <div class="wf-card-strong wf-flex-col"
+               data-component="individual-lane"
+               data-class="primary"
+               data-audience="individual"
+               data-tension="speed-vs-reassurance">
+
+            <span class="wf-text-label">Buying one report for a specific car</span>
+
+            <form id="primary-action"
+                  data-component="vin-form"
+                  data-class="primary"
+                  data-audience="individual"
+                  onsubmit="event.preventDefault();">
+              <div class="wf-flex-col-tight">
+                <label class="wf-text-meta" for="vin-input">Enter VIN</label>
+                <input id="vin-input"
+                       class="wf-input"
+                       data-component="vin-input"
+                       data-class="primary"
+                       placeholder="17 characters — no I, O, or Q"
+                       autocomplete="off">
+                <p class="wf-text-meta">We'll show your price before you pay.</p>
+                <button type="submit"
+                        class="wf-button-primary"
+                        data-component="primary-cta"
+                        data-class="primary">
+                  Get my Carfax report — $9.99
+                </button>
+              </div>
+            </form>
+
+            <ul class="wf-list-checks" data-component="primary-microcopy" data-class="secondary">
+              <li>Official Carfax report (real PDF, not a substitute)</li>
+              <li>Delivered in under 90 seconds</li>
+              <li>100% refund if not delivered — automatic at 5 minutes</li>
+              <li>Real US humans: <a data-component="phone-mention-individual" data-class="tertiary">(XXX) XXX-XXXX</a> · Mon–Fri 9am–9pm ET</li>
+              <li>Powered by Stripe — secure payment</li>
+            </ul>
+
+            <div class="wf-flex-row-tight">
+              <a id="sample-action"
+                 class="wf-button-tertiary"
+                 data-component="sample-link-hero"
+                 data-class="secondary"
+                 data-audience="both">
+                → See a sample report (real, redacted)
+              </a>
+            </div>
+
+            <p class="wf-text-meta" data-component="savings-cue" data-class="secondary">
+              Save $35 vs. carfax.com direct pricing.
+            </p>
+          </div>
+
+          <!-- ============ DEALER LANE ============ -->
+          <div class="wf-card-strong wf-flex-col"
+               id="dealer-contact-panel"
+               data-component="dealer-contact-panel"
+               data-class="primary"
+               data-audience="dealer"
+               data-tension="dealer-prominence-vs-individual-default">
+
+            <span class="wf-text-label">Running a dealership · need volume access</span>
+
+            <h2 class="wf-text-secondary" data-component="dealer-heading" data-class="primary">
+              Talking to a person is part of the deal.
+            </h2>
+
+            <div class="wf-grid-2" data-component="account-manager-grid" data-class="primary">
+              <div class="wf-flex-col-tight" data-component="am-card-1" data-class="primary">
+                <div class="wf-avatar">[Photo]</div>
+                <div>
+                  <p class="wf-text-secondary"><strong>[AM Name 1]</strong></p>
+                  <p class="wf-text-meta">Dealer Account Manager</p>
+                  <p class="wf-text-meta">☎ (XXX) XXX-1234</p>
+                  <p class="wf-text-meta">name1@co.com</p>
+                </div>
+              </div>
+              <div class="wf-flex-col-tight" data-component="am-card-2" data-class="primary">
+                <div class="wf-avatar">[Photo]</div>
+                <div>
+                  <p class="wf-text-secondary"><strong>[AM Name 2]</strong></p>
+                  <p class="wf-text-meta">Dealer Account Manager</p>
+                  <p class="wf-text-meta">☎ (XXX) XXX-5678</p>
+                  <p class="wf-text-meta">name2@co.com</p>
+                </div>
+              </div>
+            </div>
+
+            <a id="dealer-action"
+               class="wf-button-primary"
+               data-component="dealer-cta"
+               data-class="primary"
+               data-audience="dealer">
+              Book a 15-min call with [AM Name] →
+            </a>
+
+            <a class="wf-button-tertiary" data-component="dealer-trial-cta" data-class="secondary">
+              Or start a free dealer trial — first report on us →
+            </a>
+
+            <ul class="wf-list-checks" data-component="dealer-microcopy" data-class="secondary">
+              <li>First report free · no card required</li>
+              <li>Real human onboarding — no chatbots</li>
+              <li>No quotas, no contract lock-in</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hero trust strip — peeks at fold edge -->
+        <div class="wf-flex-row-tight"
+             style="justify-content: center; padding-top: var(--gap-sm); flex-wrap: wrap;"
+             data-component="hero-trust-strip"
+             data-class="secondary">
+          <span class="wf-icon-sm"></span><span class="wf-text-meta">BBB A+ Accredited</span>
+          <span class="wf-text-meta">·</span>
+          <span class="wf-icon-sm"></span><span class="wf-text-meta">Stripe payments</span>
+          <span class="wf-text-meta">·</span>
+          <span class="wf-icon-sm"></span><span class="wf-text-meta">Registered in [State]</span>
+          <span class="wf-text-meta">·</span>
+          <span class="wf-icon-sm"></span><span class="wf-text-meta">123 [Street, City, State]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= IDENTITY PROOF BAR ================= -->
+    <section id="identity-proof-bar"
+             class="wf-section-band"
+             data-section="identity-proof-bar"
+             data-component="identity-proof-bar"
+             data-class="primary"
+             data-section-pad="moderate"
+             data-density="moderate"
+             data-tension="speed-vs-reassurance">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="identity-heading" data-class="secondary">
+          A real US business, accountable to you.
+        </h2>
+        <div class="wf-grid-4" data-component="identity-proof-items" data-class="primary">
+          <div class="wf-flex-col-tight">
+            <span class="wf-text-label">Legal entity</span>
+            <p class="wf-text-body">[Company Legal Name LLC]</p>
+            <p class="wf-text-meta">Incorporated in [State], 2014</p>
+          </div>
+          <div class="wf-flex-col-tight">
+            <span class="wf-text-label">Registration</span>
+            <p class="wf-text-body">EIN ##-#######</p>
+            <p class="wf-text-meta">[State] reg. #########</p>
+          </div>
+          <div class="wf-flex-col-tight">
+            <span class="wf-text-label">Verified by</span>
+            <p class="wf-text-body">BBB A+ <span class="wf-text-meta">(see profile →)</span></p>
+            <p class="wf-text-meta">Stripe payments — verified merchant</p>
+          </div>
+          <div class="wf-flex-col-tight">
+            <span class="wf-text-label">Reach us</span>
+            <p class="wf-text-body">123 [Street]<br>[City, State, ZIP]</p>
+            <p class="wf-text-meta">☎ (XXX) XXX-XXXX · Mon–Fri 9am–9pm ET</p>
+          </div>
+        </div>
+        <p class="wf-text-body" data-component="volume-served-counter" data-class="secondary">
+          <strong>147,000+ official Carfax reports</strong> delivered to drivers and dealers since 2014.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section data-section="how-it-works" data-section-pad="moderate" data-density="moderate">
+      <div class="wf-container-medium wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="how-it-works-heading" data-class="tertiary">
+          How it works
+        </h2>
+        <div class="wf-grid-3" data-component="how-it-works-strip" data-class="tertiary">
+          <div class="wf-card">
+            <span class="wf-text-label">Step 1</span>
+            <p class="wf-text-secondary">Enter VIN</p>
+            <p class="wf-text-meta">17 characters from the dashboard or door jamb.</p>
+          </div>
+          <div class="wf-card">
+            <span class="wf-text-label">Step 2</span>
+            <p class="wf-text-secondary">Pay $9.99</p>
+            <p class="wf-text-meta">Secure checkout via Stripe.</p>
+          </div>
+          <div class="wf-card">
+            <span class="wf-text-label">Step 3</span>
+            <p class="wf-text-secondary">Get the official PDF in &lt;90s</p>
+            <p class="wf-text-meta">Delivered to your email and on-screen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section data-section="pricing" data-section-pad="moderate" data-density="moderate" class="wf-section-band">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="pricing-heading" data-class="secondary">
+          Transparent pricing — for one VIN or many.
+        </h2>
+
+        <div class="wf-grid-pricing" data-component="pricing-block" data-class="secondary">
+
+          <div class="wf-card-strong wf-flex-col" data-component="b2c-price-card" data-class="secondary" data-audience="individual">
+            <span class="wf-text-label">One report</span>
+            <p class="wf-text-primary" style="font-size: 2rem;">$9.99 <span class="wf-price-strike" style="font-size: 1.125rem;">$44.99</span></p>
+            <p class="wf-text-meta">Save $35 vs. carfax.com direct pricing.</p>
+            <a class="wf-button-primary" data-component="pricing-buy-cta" data-class="primary">
+              Buy a report → $9.99
+            </a>
+            <a class="wf-button-tertiary" data-component="sample-link-pricing" data-class="secondary">
+              → See a sample report
+            </a>
+          </div>
+
+          <div class="wf-card-strong wf-flex-col" data-component="dealer-tier-card" data-class="secondary" data-audience="dealer">
+            <span class="wf-text-label">Dealers — volume pricing</span>
+            <p class="wf-text-secondary">Per-report cost drops with monthly volume.</p>
+            <ul class="wf-list-meta">
+              <li><strong>25 reports/mo</strong> — $X/report · save $Y/mo</li>
+              <li><strong>100 reports/mo</strong> — $X/report · save $Y/mo</li>
+              <li><strong>500 reports/mo</strong> — $X/report · save $Y/mo</li>
+            </ul>
+            <p class="wf-text-meta">No quota minimums. No contract lock-in. Real human onboarding.</p>
+            <a class="wf-button-primary" data-component="pricing-dealer-cta" data-class="primary">
+              Talk to your dealer team →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REFUND / DELIVERY / SUPPORT TERMS ================= -->
+    <section id="refund-terms"
+             data-section="refund-terms"
+             data-component="refund-terms"
+             data-class="primary"
+             data-section-pad="moderate"
+             data-density="moderate"
+             data-tension="speed-vs-reassurance">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="refund-terms-heading" data-class="primary">
+          Refund · Delivery · Support — the actual terms.
+        </h2>
+        <div class="wf-grid-3" data-component="refund-terms-blocks" data-class="primary">
+
+          <div class="wf-card" data-component="delivery-block" data-class="primary">
+            <span class="wf-text-label">Delivery</span>
+            <p class="wf-text-secondary">90-second SLA</p>
+            <p class="wf-text-body">If we don't deliver your PDF within 5 minutes, the refund triggers automatically.</p>
+          </div>
+
+          <div class="wf-card" data-component="refund-block" data-class="primary">
+            <span class="wf-text-label">Refund</span>
+            <p class="wf-text-secondary">100% — automatic</p>
+            <p class="wf-text-body">No email or ticket required. Refund issued by Stripe to your original payment method within 1–3 business days.</p>
+          </div>
+
+          <div class="wf-card" data-component="support-block" data-class="primary">
+            <span class="wf-text-label">Support</span>
+            <p class="wf-text-secondary">Real US humans</p>
+            <p class="wf-text-body">
+              <a data-component="phone-mention-refund" data-class="secondary">☎ (XXX) XXX-XXXX</a><br>
+              Mon–Fri 9am–9pm ET<br>
+              support@co.com
+            </p>
+          </div>
+        </div>
+        <a class="wf-button-tertiary" data-component="sample-link-refund" data-class="secondary">
+          → See a sample report before you buy
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= MEET THE TEAM ================= -->
+    <section id="meet-the-team"
+             data-section="meet-the-team"
+             data-component="meet-the-team"
+             data-class="secondary"
+             data-section-pad="moderate"
+             data-density="moderate"
+             class="wf-section-band">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="team-heading" data-class="secondary">
+          Meet the team running this business.
+        </h2>
+        <p class="wf-text-meta">
+          Real people, real photos, real direct lines. We answer the phone.
+        </p>
+        <div class="wf-grid-4" data-component="team-grid" data-class="secondary">
+          <div class="wf-flex-col-tight" style="text-align: center;" data-component="team-card-founder" data-class="primary">
+            <div class="wf-avatar-lg">[Photo]</div>
+            <p class="wf-text-secondary"><strong>[Founder Name]</strong></p>
+            <p class="wf-text-meta">Founder · 12 years in automotive data</p>
+            <p class="wf-text-meta">Based in [City, State]</p>
+          </div>
+          <div class="wf-flex-col-tight" style="text-align: center;" data-component="team-card-support" data-class="secondary">
+            <div class="wf-avatar-lg">[Photo]</div>
+            <p class="wf-text-secondary"><strong>[Support Lead]</strong></p>
+            <p class="wf-text-meta">Head of Support · answers the phone</p>
+            <p class="wf-text-meta">Mon–Fri 9–9 ET</p>
+          </div>
+          <div class="wf-flex-col-tight" style="text-align: center;" data-component="team-card-am-1" data-class="secondary">
+            <div class="wf-avatar-lg">[Photo]</div>
+            <p class="wf-text-secondary"><strong>[AM Name 1]</strong></p>
+            <p class="wf-text-meta">Dealer Account Manager</p>
+            <p class="wf-text-meta">☎ (XXX) XXX-1234</p>
+          </div>
+          <div class="wf-flex-col-tight" style="text-align: center;" data-component="team-card-am-2" data-class="secondary">
+            <div class="wf-avatar-lg">[Photo]</div>
+            <p class="wf-text-secondary"><strong>[AM Name 2]</strong></p>
+            <p class="wf-text-meta">Dealer Account Manager</p>
+            <p class="wf-text-meta">☎ (XXX) XXX-5678</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DEALER DETAIL SECTION ================= -->
+    <section id="dealer-section"
+             data-section="dealer-section"
+             data-component="dealer-section"
+             data-class="primary"
+             data-section-pad="moderate"
+             data-density="moderate"
+             data-audience="dealer"
+             data-tension="dealer-prominence-vs-individual-default">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-primary" data-component="dealer-section-heading" data-class="primary">
+          Dealers — the volume operators trust this discount.
+        </h2>
+        <p class="wf-text-body">
+          You already know what a Carfax is. Here's what running your reports through us actually changes.
+        </p>
+
+        <div class="wf-grid-dealer-2x2">
+
+          <div class="wf-card" data-component="dealer-why-switch" data-class="secondary">
+            <span class="wf-text-label">Why dealers switch</span>
+            <ul class="wf-list-meta">
+              <li>Lower per-report cost at every tier</li>
+              <li>Direct AM — known by name, by phone</li>
+              <li>No quotas, no contract lock-in</li>
+              <li>Same official Carfax PDF dealers expect</li>
+              <li>Net-15 invoicing available on volume tiers</li>
+            </ul>
+          </div>
+
+          <div class="wf-card" data-component="dealer-volume-math" data-class="secondary">
+            <span class="wf-text-label">Volume math at your tier</span>
+            <ul class="wf-list-meta">
+              <li>25 reports/mo → $X/report · save $Y/mo</li>
+              <li>100 reports/mo → $X/report · save $Y/mo</li>
+              <li>500 reports/mo → $X/report · save $Y/mo</li>
+              <li>Custom tier above 500 — talk to your AM</li>
+            </ul>
+          </div>
+
+          <div class="wf-card" data-component="dealer-case-study" data-class="secondary">
+            <span class="wf-text-label">Case study</span>
+            <div class="wf-flex-row-tight">
+              <div class="wf-avatar">[Photo]</div>
+              <div>
+                <p class="wf-text-secondary"><strong>[Dealership Name]</strong></p>
+                <p class="wf-text-meta">[City, State] · ~120 reports/mo</p>
+              </div>
+            </div>
+            <p class="wf-text-body">"We cut our monthly Carfax spend by ~60% and got an actual person to call when something needs fixing. It's not magic, it's just a real business."</p>
+            <p class="wf-text-meta">— [Name], [Title], [Dealership]</p>
+          </div>
+
+          <div class="wf-card-strong wf-flex-col" data-component="dealer-am-repeat" data-class="primary">
+            <span class="wf-text-label">Talk to your AM</span>
+            <div class="wf-flex-row-tight">
+              <div class="wf-avatar">[Photo]</div>
+              <div class="wf-avatar">[Photo]</div>
+            </div>
+            <p class="wf-text-body"><strong>[AM Name 1]</strong> · ☎ (XXX) XXX-1234</p>
+            <p class="wf-text-body"><strong>[AM Name 2]</strong> · ☎ (XXX) XXX-5678</p>
+            <a class="wf-button-primary" data-component="dealer-section-cta" data-class="primary">
+              Book a 15-min call →
+            </a>
+            <a class="wf-button-secondary" data-component="dealer-trial-repeat" data-class="secondary">
+              Start a free dealer trial
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section data-section="testimonials" data-section-pad="moderate" data-density="moderate" class="wf-section-band">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="testimonials-heading" data-class="secondary">
+          What customers say (named, real, contactable).
+        </h2>
+        <div class="wf-grid-3" data-component="testimonials-grid" data-class="secondary">
+          <div class="wf-card" data-component="testimonial-1" data-class="secondary">
+            <div class="wf-flex-row-tight">
+              <div class="wf-avatar">[Photo]</div>
+              <div>
+                <p class="wf-text-secondary"><strong>[Full Name]</strong></p>
+                <p class="wf-text-meta">[Dealership Name], [City]</p>
+                <p class="wf-text-meta">~80 reports/mo</p>
+              </div>
+            </div>
+            <p class="wf-text-body">"Quote: specific operational outcome. ~30 words about cost reduction or onboarding speed."</p>
+          </div>
+          <div class="wf-card" data-component="testimonial-2" data-class="secondary">
+            <div class="wf-flex-row-tight">
+              <div class="wf-avatar">[Photo]</div>
+              <div>
+                <p class="wf-text-secondary"><strong>[Full Name]</strong></p>
+                <p class="wf-text-meta">Used-car buyer, [City]</p>
+                <p class="wf-text-meta">First-time customer</p>
+              </div>
+            </div>
+            <p class="wf-text-body">"Quote: specific consumer experience. PDF speed, refund call experience, etc."</p>
+          </div>
+          <div class="wf-card" data-component="testimonial-3" data-class="secondary">
+            <div class="wf-flex-row-tight">
+              <div class="wf-avatar">[Photo]</div>
+              <div>
+                <p class="wf-text-secondary"><strong>[Full Name]</strong></p>
+                <p class="wf-text-meta">[Dealership], [City]</p>
+                <p class="wf-text-meta">~250 reports/mo</p>
+              </div>
+            </div>
+            <p class="wf-text-body">"Quote: specific outcome from talking to a named AM rather than a chatbot."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section data-section="faq" data-section-pad="moderate" data-density="compact">
+      <div class="wf-container-medium wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="faq-heading" data-class="tertiary">
+          Frequently asked
+        </h2>
+        <div class="wf-flex-col-tight" data-component="faq-list" data-class="tertiary">
+          <details class="wf-card"><summary class="wf-text-secondary">Is this an official Carfax report?</summary><p class="wf-text-body">Yes. Every PDF is the actual official Carfax report. We purchase reports through a licensed Carfax account and pass the savings to you.</p></details>
+          <details class="wf-card"><summary class="wf-text-secondary">Why is this discounted?</summary><p class="wf-text-body">We buy reports in volume and operate lean. The savings come from our cost basis, not from substituting a different product.</p></details>
+          <details class="wf-card"><summary class="wf-text-secondary">How does the refund work?</summary><p class="wf-text-body">If your PDF isn't delivered within 5 minutes, our system triggers an automatic refund through Stripe. No email, no ticket, no waiting.</p></details>
+          <details class="wf-card"><summary class="wf-text-secondary">What dealer terms apply?</summary><p class="wf-text-body">No quotas, no contract lock-in. Net-15 invoicing on volume tiers. Onboarding handled by a named account manager.</p></details>
+          <details class="wf-card"><summary class="wf-text-secondary">Can I talk to a real person?</summary><p class="wf-text-body">Yes. (XXX) XXX-XXXX, Mon–Fri 9am–9pm ET. Dealers can book a 15-minute call directly with an AM.</p></details>
+          <details class="wf-card"><summary class="wf-text-secondary">What if delivery is delayed?</summary><p class="wf-text-body">Refund triggers automatically at 5 minutes. You can also call support and we'll investigate the VIN immediately.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA STRIP ================= -->
+    <section data-section="final-cta" data-section-pad="moderate" data-density="moderate" class="wf-section-band">
+      <div class="wf-container-wide wf-flex-col">
+        <h2 class="wf-text-secondary" data-component="final-cta-heading" data-class="secondary">
+          Buy a report — or call a real human first.
+        </h2>
+        <div class="wf-grid-3" data-component="final-cta-strip" data-class="secondary">
+          <a class="wf-button-primary" data-component="final-cta-buy" data-class="primary" data-audience="individual">
+            Buy a report — $9.99
+          </a>
+          <a class="wf-button-secondary" data-component="final-cta-call" data-class="secondary">
+            Or call ☎ (XXX) XXX-XXXX
+          </a>
+          <a class="wf-button-secondary" data-component="final-cta-dealer" data-class="secondary" data-audience="dealer">
+            Dealers — book a 15-min call
+          </a>
+        </div>
+        <p class="wf-text-meta" style="text-align: center;">
+          Mon–Fri 9am–9pm ET · Real US humans · Founder: [Name]
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="footer-info"
+          data-section="footer"
+          data-component="footer-info"
+          data-class="tertiary"
+          data-section-pad="moderate"
+          data-density="moderate">
+    <div class="wf-container-wide">
+      <div class="wf-grid-3" data-component="footer-grid" data-class="tertiary">
+
+        <div class="wf-flex-col-tight" data-component="footer-identity" data-class="tertiary">
+          <span class="wf-text-label">Business identity</span>
+          <p class="wf-text-meta"><strong>[Company Legal Name LLC]</strong></p>
+          <p class="wf-text-meta">123 [Street]<br>[City, State, ZIP]</p>
+          <p class="wf-text-meta">EIN ##-####### · [State] reg. #########</p>
+          <p class="wf-text-meta">Established 2014</p>
+        </div>
+
+        <div class="wf-flex-col-tight" data-component="footer-contact" data-class="tertiary">
+          <span class="wf-text-label">Reach a human</span>
+          <p class="wf-text-meta">☎ (XXX) XXX-XXXX</p>
+          <p class="wf-text-meta">support@co.com</p>
+          <p class="wf-text-meta">Mon–Fri 9am–9pm ET</p>
+          <p class="wf-text-meta">Dealers: dealers@co.com</p>
+        </div>
+
+        <div class="wf-flex-col-tight" data-component="footer-legal" data-class="tertiary">
+          <span class="wf-text-label">Verified by</span>
+          <p class="wf-text-meta">BBB A+ (see profile →)</p>
+          <p class="wf-text-meta">Stripe payments — verified merchant</p>
+          <p class="wf-text-meta">Privacy · Terms · Refund policy</p>
+          <p class="wf-text-meta">© 2014–2026 [Co.]</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

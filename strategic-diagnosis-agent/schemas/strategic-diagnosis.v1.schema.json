@@ -1,0 +1,1350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StrategicDiagnosisV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "diagnosis_id",
+    "input_summary",
+    "primary_hypothesis",
+    "secondary_hypotheses",
+    "strategic_axes",
+    "audience_model",
+    "business_model",
+    "decision_context",
+    "experience_context",
+    "beauty_function_balance",
+    "design_directive",
+    "first_viewport_obligation",
+    "hard_floors",
+    "anti_patterns",
+    "dynamic_evaluator_policy",
+    "candidate_strategy_seeds",
+    "reference_retrieval_profile",
+    "downstream_constraints",
+    "assumptions",
+    "open_questions",
+    "confidence",
+    "evidence",
+    "validator_notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "strategic_diagnosis.v1"
+    },
+    "diagnosis_id": {
+      "type": "string",
+      "minLength": 12
+    },
+    "input_summary": {
+      "type": "object",
+      "required": [
+        "one_sentence_summary",
+        "detected_product_or_service",
+        "detected_customer",
+        "detected_business_goal",
+        "detected_primary_user_job",
+        "missing_critical_information"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "one_sentence_summary": {
+          "type": "string",
+          "minLength": 20
+        },
+        "detected_product_or_service": {
+          "type": "string",
+          "minLength": 3
+        },
+        "detected_customer": {
+          "type": "string",
+          "minLength": 3
+        },
+        "detected_business_goal": {
+          "type": "string",
+          "minLength": 5
+        },
+        "detected_primary_user_job": {
+          "type": "string",
+          "minLength": 5
+        },
+        "missing_critical_information": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "primary_hypothesis": {
+      "type": "object",
+      "required": [
+        "primary_archetype",
+        "market_type",
+        "sales_motion",
+        "why_this_hypothesis",
+        "confidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "primary_archetype": {
+          "$ref": "#/$defs/primary_archetype"
+        },
+        "market_type": {
+          "$ref": "#/$defs/market_type"
+        },
+        "sales_motion": {
+          "$ref": "#/$defs/sales_motion"
+        },
+        "why_this_hypothesis": {
+          "type": "string",
+          "minLength": 20
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "secondary_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "archetype",
+          "market_type",
+          "sales_motion",
+          "why_plausible",
+          "what_would_change_if_true",
+          "confidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "archetype": {
+            "$ref": "#/$defs/primary_archetype"
+          },
+          "market_type": {
+            "$ref": "#/$defs/market_type"
+          },
+          "sales_motion": {
+            "$ref": "#/$defs/sales_motion"
+          },
+          "why_plausible": {
+            "type": "string",
+            "minLength": 20
+          },
+          "what_would_change_if_true": {
+            "type": "string",
+            "minLength": 20
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "strategic_axes": {
+      "type": "object",
+      "required": [
+        "market_type",
+        "primary_archetype",
+        "sales_motion",
+        "buyer_user_relationship",
+        "usage_pattern",
+        "expected_session_duration",
+        "decision_risk",
+        "trust_burden",
+        "aesthetic_stakes",
+        "functional_immediacy",
+        "product_complexity",
+        "audience_sophistication",
+        "visual_posture",
+        "content_depth"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "market_type": {
+          "$ref": "#/$defs/market_type"
+        },
+        "primary_archetype": {
+          "$ref": "#/$defs/primary_archetype"
+        },
+        "sales_motion": {
+          "$ref": "#/$defs/sales_motion"
+        },
+        "buyer_user_relationship": {
+          "$ref": "#/$defs/buyer_user_relationship"
+        },
+        "usage_pattern": {
+          "$ref": "#/$defs/usage_pattern"
+        },
+        "expected_session_duration": {
+          "$ref": "#/$defs/expected_session_duration"
+        },
+        "decision_risk": {
+          "$ref": "#/$defs/decision_risk"
+        },
+        "trust_burden": {
+          "$ref": "#/$defs/trust_burden"
+        },
+        "aesthetic_stakes": {
+          "$ref": "#/$defs/aesthetic_stakes"
+        },
+        "functional_immediacy": {
+          "$ref": "#/$defs/functional_immediacy"
+        },
+        "product_complexity": {
+          "$ref": "#/$defs/product_complexity"
+        },
+        "audience_sophistication": {
+          "$ref": "#/$defs/audience_sophistication"
+        },
+        "visual_posture": {
+          "$ref": "#/$defs/visual_posture"
+        },
+        "content_depth": {
+          "$ref": "#/$defs/content_depth"
+        }
+      }
+    },
+    "audience_model": {
+      "type": "object",
+      "required": [
+        "primary_audience",
+        "secondary_audience",
+        "buyer_roles",
+        "user_roles",
+        "stakeholder_complexity",
+        "what_they_care_about",
+        "what_they_fear_or_resist",
+        "what_they_need_before_action",
+        "likely_attention_span",
+        "aesthetic_expectation",
+        "functional_expectation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "primary_audience": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 3
+          },
+          "minItems": 1
+        },
+        "secondary_audience": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "buyer_roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "user_roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stakeholder_complexity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "what_they_care_about": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "what_they_fear_or_resist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 2
+        },
+        "what_they_need_before_action": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "likely_attention_span": {
+          "type": "string",
+          "minLength": 5
+        },
+        "aesthetic_expectation": {
+          "type": "string",
+          "minLength": 10
+        },
+        "functional_expectation": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "business_model": {
+      "type": "object",
+      "required": [
+        "primary_business_goal",
+        "secondary_business_goals",
+        "conversion_or_success_event",
+        "sales_or_adoption_motion",
+        "pricing_or_value_sensitivity",
+        "competitive_differentiation_likely_based_on"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "primary_business_goal": {
+          "type": "string",
+          "minLength": 10
+        },
+        "secondary_business_goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conversion_or_success_event": {
+          "type": "string",
+          "minLength": 5
+        },
+        "sales_or_adoption_motion": {
+          "type": "string",
+          "minLength": 5
+        },
+        "pricing_or_value_sensitivity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "competitive_differentiation_likely_based_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 2
+        }
+      }
+    },
+    "decision_context": {
+      "type": "object",
+      "required": [
+        "primary_user_decision_sequence",
+        "risk_reduction_needs",
+        "proof_needs",
+        "explanation_needs",
+        "trust_timing",
+        "cta_timing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "primary_user_decision_sequence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "step",
+              "decision",
+              "question_in_user_mind",
+              "page_must_answer_with"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "step": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "decision": {
+                "type": "string",
+                "minLength": 5
+              },
+              "question_in_user_mind": {
+                "type": "string",
+                "minLength": 5
+              },
+              "page_must_answer_with": {
+                "type": "string",
+                "minLength": 5
+              }
+            }
+          },
+          "minItems": 4
+        },
+        "risk_reduction_needs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "proof_needs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "explanation_needs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "trust_timing": {
+          "type": "string",
+          "minLength": 10
+        },
+        "cta_timing": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "experience_context": {
+      "type": "object",
+      "required": [
+        "expected_time_on_site",
+        "expected_time_in_product",
+        "interaction_intensity",
+        "task_urgency",
+        "exploration_need",
+        "emotional_involvement",
+        "switching_likelihood_if_experience_poor"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "expected_time_on_site": {
+          "type": "string",
+          "minLength": 3
+        },
+        "expected_time_in_product": {
+          "type": "string",
+          "minLength": 3
+        },
+        "interaction_intensity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "task_urgency": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "exploration_need": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "emotional_involvement": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "switching_likelihood_if_experience_poor": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "beauty_function_balance": {
+      "type": "object",
+      "required": [
+        "beauty_definition_for_this_site",
+        "functionality_definition_for_this_site",
+        "beauty_weight",
+        "functionality_weight",
+        "trust_weight",
+        "speed_weight",
+        "explanation_weight",
+        "proof_weight",
+        "rationale"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "beauty_definition_for_this_site": {
+          "type": "string",
+          "minLength": 20
+        },
+        "functionality_definition_for_this_site": {
+          "type": "string",
+          "minLength": 20
+        },
+        "beauty_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "functionality_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trust_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "speed_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "explanation_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "proof_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "design_directive": {
+      "type": "object",
+      "required": [
+        "strategic_summary",
+        "primary_design_priorities",
+        "secondary_design_priorities",
+        "tertiary_design_priorities",
+        "tone",
+        "visual_posture",
+        "content_depth",
+        "cta_strategy",
+        "proof_strategy",
+        "explanation_strategy",
+        "mobile_strategy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "strategic_summary": {
+          "type": "string",
+          "minLength": 30
+        },
+        "primary_design_priorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "secondary_design_priorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "tertiary_design_priorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "tone": {
+          "type": "string",
+          "minLength": 5
+        },
+        "visual_posture": {
+          "$ref": "#/$defs/visual_posture"
+        },
+        "content_depth": {
+          "$ref": "#/$defs/content_depth"
+        },
+        "cta_strategy": {
+          "type": "string",
+          "minLength": 10
+        },
+        "proof_strategy": {
+          "type": "string",
+          "minLength": 10
+        },
+        "explanation_strategy": {
+          "type": "string",
+          "minLength": 10
+        },
+        "mobile_strategy": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "first_viewport_obligation": {
+      "type": "object",
+      "required": [
+        "must_accomplish",
+        "must_show",
+        "must_not_do",
+        "primary_question_to_answer",
+        "acceptable_cta_behavior",
+        "failure_condition"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "must_accomplish": {
+          "type": "string",
+          "minLength": 20
+        },
+        "must_show": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "must_not_do": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "primary_question_to_answer": {
+          "type": "string",
+          "minLength": 10
+        },
+        "acceptable_cta_behavior": {
+          "type": "string",
+          "minLength": 10
+        },
+        "failure_condition": {
+          "type": "string",
+          "minLength": 15
+        }
+      }
+    },
+    "hard_floors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "rule",
+          "triggered_by_axis",
+          "why_it_matters",
+          "score_cap_if_violated",
+          "validation_hint"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 5
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 20
+          },
+          "triggered_by_axis": {
+            "type": "string",
+            "minLength": 5
+          },
+          "why_it_matters": {
+            "type": "string",
+            "minLength": 20
+          },
+          "score_cap_if_violated": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "validation_hint": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      },
+      "minItems": 5
+    },
+    "anti_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "anti_pattern",
+          "why_bad_for_this_site",
+          "severity",
+          "detection_hint"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 5
+          },
+          "anti_pattern": {
+            "type": "string",
+            "minLength": 10
+          },
+          "why_bad_for_this_site": {
+            "type": "string",
+            "minLength": 20
+          },
+          "severity": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "detection_hint": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      },
+      "minItems": 6
+    },
+    "dynamic_evaluator_policy": {
+      "type": "object",
+      "required": [
+        "weights",
+        "weight_rationale",
+        "absolute_score_caps",
+        "pairwise_judging_priorities"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "weights": {
+          "type": "object",
+          "required": [
+            "strategic_diagnosis_fit",
+            "first_viewport_fit",
+            "functional_clarity",
+            "trust_and_proof",
+            "visual_appropriateness",
+            "content_sequence",
+            "mobile_path",
+            "anti_pattern_avoidance"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "strategic_diagnosis_fit": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "first_viewport_fit": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "functional_clarity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "trust_and_proof": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "visual_appropriateness": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "content_sequence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "mobile_path": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "anti_pattern_avoidance": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "weight_rationale": {
+          "type": "string",
+          "minLength": 20
+        },
+        "absolute_score_caps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "condition",
+              "cap",
+              "reason"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "condition": {
+                "type": "string",
+                "minLength": 10
+              },
+              "cap": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          },
+          "minItems": 3
+        },
+        "pairwise_judging_priorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        }
+      }
+    },
+    "candidate_strategy_seeds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "strategy_name",
+          "why_this_strategy_is_worth_testing",
+          "what_it_should_optimize",
+          "main_risk",
+          "best_for"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "strategy_name": {
+            "type": "string",
+            "minLength": 5
+          },
+          "why_this_strategy_is_worth_testing": {
+            "type": "string",
+            "minLength": 20
+          },
+          "what_it_should_optimize": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 5
+            },
+            "minItems": 2
+          },
+          "main_risk": {
+            "type": "string",
+            "minLength": 10
+          },
+          "best_for": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      },
+      "minItems": 5
+    },
+    "reference_retrieval_profile": {
+      "type": "object",
+      "required": [
+        "positive_reference_queries",
+        "negative_reference_queries",
+        "reference_archetypes_to_include",
+        "reference_archetypes_to_avoid",
+        "must_include_reference_traits",
+        "must_include_negative_traits"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "positive_reference_queries": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        },
+        "negative_reference_queries": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        },
+        "reference_archetypes_to_include": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 3
+          },
+          "minItems": 1
+        },
+        "reference_archetypes_to_avoid": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "must_include_reference_traits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        },
+        "must_include_negative_traits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 3
+        }
+      }
+    },
+    "downstream_constraints": {
+      "type": "object",
+      "required": [
+        "architect_must_obey",
+        "visual_designer_must_obey",
+        "frontend_implementer_must_obey",
+        "evaluator_must_check"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "architect_must_obey": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        },
+        "visual_designer_must_obey": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        },
+        "frontend_implementer_must_obey": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        },
+        "evaluator_must_check": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 5
+          },
+          "minItems": 5
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "assumption",
+          "why_needed",
+          "risk_if_wrong"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "assumption": {
+            "type": "string",
+            "minLength": 5
+          },
+          "why_needed": {
+            "type": "string",
+            "minLength": 5
+          },
+          "risk_if_wrong": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "question",
+          "why_it_matters",
+          "which_downstream_decision_it_affects",
+          "blocking"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 5
+          },
+          "why_it_matters": {
+            "type": "string",
+            "minLength": 5
+          },
+          "which_downstream_decision_it_affects": {
+            "type": "string",
+            "minLength": 5
+          },
+          "blocking": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": [
+        "overall",
+        "archetype_confidence",
+        "audience_confidence",
+        "business_goal_confidence",
+        "visual_posture_confidence",
+        "risk_trust_confidence",
+        "confidence_level"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "overall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "archetype_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "audience_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "business_goal_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visual_posture_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "risk_trust_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence_level": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "brief_signals_used",
+        "inference_notes",
+        "weak_or_missing_signals"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "brief_signals_used": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 3
+          },
+          "minItems": 2
+        },
+        "inference_notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "inference",
+              "supporting_signal",
+              "confidence"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "inference": {
+                "type": "string",
+                "minLength": 5
+              },
+              "supporting_signal": {
+                "type": "string",
+                "minLength": 5
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          },
+          "minItems": 3
+        },
+        "weak_or_missing_signals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "validator_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "zero_to_one": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "market_type": {
+      "enum": [
+        "b2c",
+        "b2b",
+        "b2b2c",
+        "internal",
+        "marketplace",
+        "developer",
+        "creator",
+        "local_service",
+        "ecommerce",
+        "media_content",
+        "hybrid",
+        "unknown"
+      ]
+    },
+    "primary_archetype": {
+      "enum": [
+        "transactional_utility",
+        "short_session_tool",
+        "lifestyle_saas",
+        "creator_tool",
+        "product_led_b2b_saas",
+        "sales_led_b2b_saas",
+        "enterprise_consultative",
+        "enterprise_platform",
+        "developer_tool",
+        "consumer_marketplace",
+        "b2b_marketplace",
+        "ecommerce_conversion",
+        "premium_consumer_brand",
+        "local_service",
+        "portfolio_authority",
+        "content_media",
+        "internal_dashboard",
+        "hybrid",
+        "unknown"
+      ]
+    },
+    "sales_motion": {
+      "enum": [
+        "self_serve",
+        "product_led",
+        "sales_led",
+        "consultation_led",
+        "marketplace",
+        "ecommerce",
+        "content_led",
+        "internal_adoption",
+        "hybrid",
+        "unknown"
+      ]
+    },
+    "buyer_user_relationship": {
+      "enum": [
+        "buyer_is_user",
+        "buyer_differs_from_user",
+        "multiple_stakeholders",
+        "procurement_involved",
+        "parent_or_guardian_buyer",
+        "technical_evaluator_plus_business_buyer",
+        "unknown"
+      ]
+    },
+    "usage_pattern": {
+      "enum": [
+        "one_time_utility",
+        "short_repeated_utility",
+        "daily_workflow",
+        "long_session_workspace",
+        "lifestyle_or_creator_workflow",
+        "enterprise_evaluation",
+        "product_research",
+        "transactional_purchase",
+        "content_consumption",
+        "portfolio_evaluation",
+        "unknown"
+      ]
+    },
+    "expected_session_duration": {
+      "enum": [
+        "under_1_min",
+        "one_to_three_min",
+        "three_to_ten_min",
+        "ten_plus_min",
+        "repeated_workflow",
+        "unknown"
+      ]
+    },
+    "decision_risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "enterprise",
+        "regulated_or_security_sensitive",
+        "unknown"
+      ]
+    },
+    "trust_burden": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "extreme",
+        "unknown"
+      ]
+    },
+    "aesthetic_stakes": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "taste_critical",
+        "luxury_or_brand_critical",
+        "unknown"
+      ]
+    },
+    "functional_immediacy": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "extreme",
+        "unknown"
+      ]
+    },
+    "product_complexity": {
+      "enum": [
+        "simple",
+        "moderate",
+        "complex",
+        "multi_product",
+        "platform",
+        "service_plus_product",
+        "unknown"
+      ]
+    },
+    "audience_sophistication": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "expert",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "visual_posture": {
+      "enum": [
+        "utilitarian",
+        "polished_utility",
+        "premium_minimal",
+        "enterprise_trust",
+        "technical_precision",
+        "lifestyle_expressive",
+        "playful_consumer",
+        "editorial_authority",
+        "luxury_restraint",
+        "creator_energy",
+        "marketplace_clarity",
+        "local_trust",
+        "hybrid",
+        "unknown"
+      ]
+    },
+    "content_depth": {
+      "enum": [
+        "minimal",
+        "moderate",
+        "deep",
+        "layered",
+        "unknown"
+      ]
+    }
+  }
+}

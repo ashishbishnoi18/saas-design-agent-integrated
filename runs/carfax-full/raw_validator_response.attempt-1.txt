@@ -1,0 +1,87 @@
+{
+  "schema_version": "strategic_diagnosis_validator.v1",
+  "passed": false,
+  "overall_score": 8.7,
+  "blocking_failures": [
+    "Hard floor set does not include an explicit first-viewport / above-the-fold hard floor, despite first viewport performance being central to the diagnosis.",
+    "Dynamic evaluator policy underweights functional clarity relative to the diagnosis's own high functional immediacy and transactional purchase requirements."
+  ],
+  "category_scores": {
+    "schema_integrity": 10.0,
+    "brief_grounding": 9.6,
+    "archetype_quality": 9.1,
+    "audience_and_buyer_quality": 9.5,
+    "decision_context_quality": 9.2,
+    "beauty_function_balance_quality": 8.8,
+    "first_viewport_quality": 9.2,
+    "hard_floor_quality": 7.2,
+    "anti_pattern_quality": 9.3,
+    "dynamic_evaluator_policy_quality": 7.4,
+    "candidate_strategy_seed_quality": 9.1,
+    "downstream_usefulness": 8.9
+  },
+  "specific_failures": [
+    {
+      "field": "hard_floors",
+      "failure": "No explicit first-viewport / above-the-fold hard floor is present.",
+      "why_it_matters": "The first viewport must establish official Carfax relevance, legitimacy, savings, individual purchase path, dealer path, and sample-report proof. Without a hard floor, downstream evaluators may allow designs that satisfy these obligations only later on the page.",
+      "repair_instruction": "Add a hard floor such as hf_first_viewport_legitimacy_and_self_selection requiring the first viewport to show the official discounted Carfax offer, credible legitimacy/safety proof, one-time report purchase path, dealer access path, savings cue, and sample-report/proof option. Include a score cap of 5.5 or 6.0 if violated and a concrete validation hint for desktop and mobile screenshots."
+    },
+    {
+      "field": "dynamic_evaluator_policy.weights.functional_clarity",
+      "failure": "Functional clarity is weighted at 0.14 even though functional immediacy is marked high and the individual user must understand the VIN-to-pay-to-PDF path in under 60 seconds.",
+      "why_it_matters": "A visually trustworthy page that does not make the task path obvious would fail the core conversion job. The evaluator weighting should punish that more strongly.",
+      "repair_instruction": "Increase functional_clarity to at least 0.16 or 0.17 and rebalance lower-priority categories while keeping the total weight exactly 1.0. Alternatively split out purchase-path clarity and dealer-path clarity if the schema allows."
+    },
+    {
+      "field": "dynamic_evaluator_policy.absolute_score_caps",
+      "failure": "There is no direct absolute score cap for failing the complete first viewport obligation.",
+      "why_it_matters": "The existing caps cover related issues, but not the combined above-the-fold requirement: product clarity, legitimacy, self-selection, savings, and proof must all be visible early.",
+      "repair_instruction": "Add a cap condition: if the first viewport does not establish the offer, legitimacy, individual path, dealer path, and proof option, maximum score is 6.0 or lower."
+    }
+  ],
+  "specific_strengths": [
+    {
+      "field": "brief_grounding",
+      "strength": "The diagnosis closely tracks the brief's two segments, high scam concern, dealer LTV priority, warm/cold traffic distinction, and three named actions."
+    },
+    {
+      "field": "audience_model",
+      "strength": "The diagnosis clearly distinguishes individual buyers, dealer owners/managers, users, buyers, and stakeholders instead of collapsing them into generic visitors."
+    },
+    {
+      "field": "decision_context.primary_user_decision_sequence",
+      "strength": "The decision sequence is concrete and specific to discounted official Carfax resale, including relevance, legitimacy, economics, path selection, proof, and recourse."
+    },
+    {
+      "field": "first_viewport_obligation",
+      "strength": "The first viewport obligation is specific, testable, and directly tied to scam-risk reduction and dual-path conversion."
+    },
+    {
+      "field": "anti_patterns",
+      "strength": "The anti-patterns are highly relevant to this brief, especially coupon-scam aesthetics, buried trust, ambiguous product naming, and unsupported authority claims."
+    },
+    {
+      "field": "candidate_strategy_seeds",
+      "strength": "The strategy seeds explore meaningfully different tradeoffs: trust-first, task-first, dealer-forward, sample-report-led, savings-and-safety comparison, and human-contact reassurance."
+    }
+  ],
+  "contradictions": [
+    {
+      "field_a": "strategic_axes.functional_immediacy",
+      "field_b": "dynamic_evaluator_policy.weights.functional_clarity",
+      "contradiction": "Functional immediacy is diagnosed as high, but functional clarity receives only 0.14 weight, below first viewport and trust and only slightly above content sequencing.",
+      "repair_instruction": "Raise functional clarity weight and reduce less critical categories so evaluator priorities match the declared transactional urgency."
+    },
+    {
+      "field_a": "first_viewport_obligation",
+      "field_b": "hard_floors",
+      "contradiction": "The diagnosis defines a strong first viewport obligation but does not convert it into an enforceable hard floor with a score cap.",
+      "repair_instruction": "Add an explicit above-the-fold hard floor with a validation hint and score cap."
+    }
+  ],
+  "generic_or_weak_phrases": [],
+  "missing_strategic_questions": [],
+  "repair_directive": "Repair the diagnosis by adding an explicit first-viewport hard floor and matching absolute score cap, then rebalance evaluator weights so functional clarity is weighted consistently with high functional immediacy. Keep the current brief-grounded audience, trust, anti-pattern, and strategy content; do not rewrite the whole diagnosis.",
+  "safe_to_pass_downstream": false
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StrategicDiagnosisValidatorV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "passed",
+    "overall_score",
+    "blocking_failures",
+    "category_scores",
+    "specific_failures",
+    "specific_strengths",
+    "contradictions",
+    "generic_or_weak_phrases",
+    "missing_strategic_questions",
+    "repair_directive",
+    "safe_to_pass_downstream"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": "strategic_diagnosis_validator.v1"},
+    "passed": {"type": "boolean"},
+    "overall_score": {"type": "number", "minimum": 0, "maximum": 10},
+    "blocking_failures": {"type": "array", "items": {"type": "string"}},
+    "category_scores": {
+      "type": "object",
+      "required": [
+        "schema_integrity",
+        "brief_grounding",
+        "archetype_quality",
+        "audience_and_buyer_quality",
+        "decision_context_quality",
+        "beauty_function_balance_quality",
+        "first_viewport_quality",
+        "hard_floor_quality",
+        "anti_pattern_quality",
+        "dynamic_evaluator_policy_quality",
+        "candidate_strategy_seed_quality",
+        "downstream_usefulness"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema_integrity": {"type": "number", "minimum": 0, "maximum": 10},
+        "brief_grounding": {"type": "number", "minimum": 0, "maximum": 10},
+        "archetype_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "audience_and_buyer_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "decision_context_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "beauty_function_balance_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "first_viewport_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "hard_floor_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "anti_pattern_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "dynamic_evaluator_policy_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "candidate_strategy_seed_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "downstream_usefulness": {"type": "number", "minimum": 0, "maximum": 10}
+      }
+    },
+    "specific_failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "failure", "why_it_matters", "repair_instruction"],
+        "additionalProperties": true,
+        "properties": {
+          "field": {"type": "string"},
+          "failure": {"type": "string"},
+          "why_it_matters": {"type": "string"},
+          "repair_instruction": {"type": "string"}
+        }
+      }
+    },
+    "specific_strengths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "strength"],
+        "additionalProperties": true,
+        "properties": {"field": {"type": "string"}, "strength": {"type": "string"}}
+      }
+    },
+    "contradictions": {"type": "array", "items": {"type": "object"}},
+    "generic_or_weak_phrases": {"type": "array", "items": {"type": "object"}},
+    "missing_strategic_questions": {"type": "array", "items": {"type": "object"}},
+    "repair_directive": {"type": "string"},
+    "safe_to_pass_downstream": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "coverage-confidence-strategy",
+  "winner": "A",
+  "confidence": 0.72,
+  "perception": {
+    "who_is_this_for_a": "A Disney trip planner who wants to stop refreshing, understand the no-login safety model, and start a free alert immediately.",
+    "who_is_this_for_b": "A higher-intent Disney planner or superfan who wants restaurant coverage depth, proof, comparisons, FAQ detail, and Pro justification.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "A",
+    "trust_more_visible": "A",
+    "mobile_more_usable": "A",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate A better satisfies the decisive first-viewport job: it quickly says what Pixiedining does, shows the free alert form, foregrounds no Disney login, explains the Disney.com handoff, and includes an early proof cue with alert volume. Its mobile view also gets users to the form faster with less scrolling. Candidate B has stronger downstream depth, especially coverage, FAQ, comparison, and expert validation, but its first viewport feels more spacious and less proof-dense, and mobile delays the usable form more. Since the diagnosis weights immediate safe free-alert setup and early trust proof most heavily, A is the stronger landing page despite B's better full-page content depth.",
+  "blocking_visual_issue_a": "none",
+  "blocking_visual_issue_b": "Mobile first viewport shows trust and setup context, but the actual primary CTA/form completion path is pushed lower, weakening immediate task completion."
+}

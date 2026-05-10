@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe — coverage-confidence-strategy — Pixiedining</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f3f4f6;
+      --surface-alt: #e5e7eb;
+      --border: #d1d5db;
+      --border-strong: #9ca3af;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --text-faint: #9ca3af;
+      --primary-fill: #374151;
+      --primary-text: #ffffff;
+      --secondary-fill: #d1d5db;
+      --secondary-text: #1f2937;
+      --gap-xs: 8px;
+      --gap-sm: 12px;
+      --gap-md: 24px;
+      --gap-lg: 48px;
+      --gap-xl: 96px;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    #page-root {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    [data-class="primary"]   {}
+    [data-class="secondary"] {}
+    [data-class="tertiary"]  {}
+
+    .wf-text-primary   { font-size: 2.25rem; font-weight: 700; line-height: 1.15; color: var(--text); }
+    .wf-text-secondary { font-size: 1.125rem; font-weight: 500; color: var(--text); }
+    .wf-text-body      { font-size: 1rem; color: var(--text-muted); }
+    .wf-text-meta      { font-size: 0.875rem; color: var(--text-faint); }
+
+    .wf-button-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--primary-fill);
+      color: var(--primary-text);
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .wf-button-secondary {
+      display: inline-block;
+      padding: 12px 22px;
+      background: transparent;
+      color: var(--secondary-text);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .wf-button-tertiary {
+      display: inline-block;
+      padding: 8px 12px;
+      color: var(--text-muted);
+      text-decoration: underline;
+      font-size: 0.9rem;
+    }
+
+    .wf-input {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-faint);
+      font-size: 1rem;
+    }
+
+    .wf-image, .wf-media, .wf-video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border-strong);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+      min-height: 120px;
+    }
+
+    .wf-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+    }
+
+    .wf-divider {
+      height: 1px;
+      background: var(--border);
+      width: 100%;
+    }
+
+    .wf-icon {
+      width: 24px; height: 24px;
+      background: var(--surface-alt);
+      border-radius: 4px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    [data-density="generous"]  > * + * { margin-top: var(--gap-lg); }
+    [data-density="moderate"]  > * + * { margin-top: var(--gap-md); }
+    [data-density="compact"]   > * + * { margin-top: var(--gap-sm); }
+    [data-density="dense"]     > * + * { margin-top: var(--gap-xs); }
+
+    [data-section-pad="generous"] { padding: var(--gap-xl) var(--gap-lg); }
+    [data-section-pad="moderate"] { padding: var(--gap-lg) var(--gap-md); }
+    [data-section-pad="compact"]  { padding: var(--gap-md) var(--gap-sm); }
+
+    .wf-container-narrow { max-width: 720px; margin: 0 auto; }
+    .wf-container-medium { max-width: 1024px; margin: 0 auto; }
+    .wf-container-wide   { max-width: 1280px; margin: 0 auto; }
+    .wf-container-full   { width: 100%; }
+
+    .wf-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap-md); }
+    .wf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-md); }
+    .wf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); }
+    .wf-grid-sidebar-content { display: grid; grid-template-columns: 280px 1fr; gap: var(--gap-md); }
+    .wf-grid-content-sidebar { display: grid; grid-template-columns: 1fr 320px; gap: var(--gap-md); }
+
+    .wf-flex-row    { display: flex; flex-direction: row; gap: var(--gap-md); align-items: center; }
+    .wf-flex-col    { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .wf-flex-between{ display: flex; justify-content: space-between; align-items: center; gap: var(--gap-md); }
+
+    @media (max-width: 1024px) {
+      .wf-grid-3, .wf-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .wf-grid-sidebar-content, .wf-grid-content-sidebar { grid-template-columns: 1fr; }
+      [data-section-pad="generous"] { padding: var(--gap-lg) var(--gap-md); }
+    }
+
+    @media (max-width: 640px) {
+      .wf-grid-2, .wf-grid-3, .wf-grid-4 { grid-template-columns: 1fr; }
+      .wf-text-primary { font-size: 1.875rem; }
+      [data-section-pad="generous"] { padding: var(--gap-md) var(--gap-sm); }
+      [data-mobile="hide"] { display: none; }
+    }
+
+    /* ─── Page-specific layout ─── */
+
+    /* Nav */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .site-nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-nav__logo-mark {
+      width: 28px; height: 28px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .site-nav__links {
+      display: flex;
+      gap: var(--gap-md);
+      align-items: center;
+    }
+    .hamburger {
+      display: none;
+      width: 32px; height: 32px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    /* Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+    }
+    .hero-right {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: var(--gap-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-sm);
+    }
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      width: fit-content;
+    }
+    .trust-badge__icon {
+      font-size: 0.9rem;
+    }
+    .handoff-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .party-stepper {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      background: var(--bg);
+    }
+    .party-stepper__btn {
+      width: 28px; height: 28px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .party-stepper__val {
+      flex: 1;
+      text-align: center;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .no-cc-note {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      text-align: center;
+    }
+
+    /* Coverage grid */
+    .coverage-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap-sm);
+    }
+    .restaurant-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .restaurant-card__name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .restaurant-card__loc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .restaurant-card__badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface-alt);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      padding: 2px 6px;
+      width: fit-content;
+      margin-top: 4px;
+    }
+    .park-tabs {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      width: fit-content;
+    }
+    .park-tab {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: var(--bg);
+    }
+    .park-tab--active {
+      background: var(--surface-alt);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .park-tab + .park-tab {
+      border-left: 1px solid var(--border);
+    }
+    .see-all-link {
+      text-align: right;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* How it works */
+    .step-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--gap-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-sm);
+    }
+    .step-number {
+      width: 36px; height: 36px;
+      border: 2px solid var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Sample alert */
+    .alert-card {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      padding: var(--gap-md);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .alert-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--gap-sm);
+    }
+    .alert-card__app {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .alert-card__time {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+    .alert-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .alert-card__body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: var(--gap-sm);
+    }
+    .alert-card__cta {
+      display: inline-block;
+      padding: 10px 18px;
+      background: var(--primary-fill);
+      color: var(--primary-text);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Proof stats */
+    .stats-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-item__number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .stat-item__label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Testimonial */
+    .testimonial-block {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonial-block__quote {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .testimonial-block__attr {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-top: 12px;
+    }
+
+    /* Tier comparison */
+    .tier-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-md);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .tier-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: var(--gap-md);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tier-card--pro {
+      border: 2px solid var(--border-strong);
+      background: var(--surface);
+    }
+    .tier-card__label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .tier-card__price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .tier-card__price-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .tier-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tier-feature-list li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .tier-feature-list li::before {
+      content: "✓";
+      color: var(--border-strong);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tier-reassurance {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    /* Expert section */
+    .expert-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+    }
+    .expert-compare-row {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 0.875rem;
+    }
+    .expert-compare-row > div {
+      padding: 10px 14px;
+      border-right: 1px solid var(--border);
+    }
+    .expert-compare-row > div:last-child { border-right: none; }
+    .expert-compare-row--header > div {
+      background: var(--surface-alt);
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+    .expert-compare-row--data > div {
+      background: var(--bg);
+      color: var(--text-muted);
+    }
+    .expert-compare-row--data > div:first-child {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.8rem;
+      background: var(--surface);
+    }
+    .expert-highlight {
+      color: var(--text) !important;
+      font-weight: 600 !important;
+    }
+
+    /* Agent inquiry bar */
+    .agent-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--gap-md);
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .agent-bar__text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .agent-bar__link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      gap: var(--gap-md);
+    }
+    .faq-chevron {
+      width: 18px; height: 18px;
+      background: var(--surface-alt);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .faq-answer {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      padding-top: 10px;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: var(--gap-md) var(--gap-md);
+    }
+    .footer-links {
+      display: flex;
+      gap: var(--gap-md);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      text-align: center;
+      line-height: 1.5;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Section utility */
+    .section-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .centered { text-align: center; }
+
+    /* ─── Responsive overrides ─── */
+    @media (max-width: 1024px) {
+      .coverage-grid-4 { grid-template-columns: repeat(3, 1fr); }
+      .hero-grid { grid-template-columns: 1fr; gap: var(--gap-md); }
+      .hero-right { max-width: 560px; }
+    }
+
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hamburger { display: block; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-right { max-width: 100%; }
+      .coverage-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .tier-cards { grid-template-columns: 1fr; }
+      .expert-compare-row { grid-template-columns: 1fr; font-size: 0.8rem; }
+      .expert-compare-row > div { border-right: none; border-bottom: 1px solid var(--border); }
+      .expert-compare-row > div:last-child { border-bottom: none; }
+      .agent-bar { flex-direction: column; gap: 8px; }
+      .site-nav__inner { padding: 12px 16px; }
+      .wf-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="page-root" data-strategy="coverage-confidence-strategy" data-page="pixiedining-landing">
+
+    <!-- ═══════════════ NAV ═══════════════ -->
+    <header data-section="nav" data-density="compact" data-section-pad="compact">
+      <nav class="site-nav" data-component="nav-bar" data-class="tertiary">
+        <div class="site-nav__inner">
+          <div class="site-nav__logo">
+            <div class="site-nav__logo-mark"></div>
+            <span class="wf-text-secondary" style="font-size:1.05rem;">Pixiedining</span>
+          </div>
+          <div class="site-nav__links">
+            <a class="wf-text-meta" style="color:var(--text-muted);">Pro Plans</a>
+            <a class="wf-button-secondary" style="padding:8px 18px;font-size:0.875rem;">Sign In</a>
+          </div>
+          <div class="hamburger" data-mobile="show" aria-label="Menu"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ═══════════════ HERO ═══════════════ -->
+      <section id="primary-section" data-section="hero" data-density="moderate" data-section-pad="generous">
+        <div class="wf-container-wide">
+          <div class="hero-grid">
+
+            <!-- Left: headline, trust, explanation -->
+            <div class="hero-left" data-class="primary">
+              <h1 class="wf-text-primary" data-component="hero-headline" data-class="primary">
+                Stop missing Be Our Guest, Space 220, and Cinderella's Royal Table.
+              </h1>
+              <p class="wf-text-body" data-component="hero-subheadline" data-class="primary" style="font-size:1.05rem;color:var(--text-muted);line-height:1.6;">
+                Pixiedining monitors Disney's dining availability 24/7 and sends you a real-time alert the moment your table opens — so you can book it on Disney's official site before anyone else.
+              </p>
+              <div id="trust-badge" class="trust-badge" data-component="no-login-badge" data-class="primary" data-tension="no-login-trust">
+                <span class="trust-badge__icon">🔒</span>
+                No Disney login required. Ever.
+              </div>
+              <p class="handoff-note" data-component="official-handoff-note" data-class="secondary">
+                When a table opens, you click the alert and book directly on DisneyWorld.com or Disneyland.com — we never access your Disney account.
+              </p>
+            </div>
+
+            <!-- Right: alert setup form -->
+            <div class="hero-right" data-component="alert-setup-form" data-class="primary" data-tension="form-in-hero">
+              <p class="wf-text-secondary" style="font-size:0.95rem;font-weight:600;margin-bottom:4px;">Start a free alert</p>
+              <div class="wf-divider"></div>
+
+              <div class="form-field">
+                <label class="form-label">Restaurant</label>
+                <div class="wf-input" style="color:var(--text-faint);display:flex;justify-content:space-between;align-items:center;">
+                  <span>Search restaurant name…</span>
+                  <span style="color:var(--text-faint);font-size:0.85rem;">▼</span>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Trip dates</label>
+                <div class="wf-input" style="color:var(--text-faint);">Jul 10 → Jul 17, 2025</div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Party size</label>
+                <div class="party-stepper">
+                  <div class="party-stepper__btn">−</div>
+                  <div class="party-stepper__val">4 guests</div>
+                  <div class="party-stepper__btn">+</div>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Email address</label>
+                <input class="wf-input" type="email" placeholder="you@example.com">
+              </div>
+
+              <a id="primary-action" class="wf-button-primary" data-component="primary-cta" data-class="primary"
+                 style="text-align:center;width:100%;display:block;padding:15px 28px;margin-top:4px;">
+                Start My Free Alert →
+              </a>
+              <p class="no-cc-note" data-component="no-cc-note" data-class="tertiary">
+                No credit card required · No Disney login
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ RESTAURANT COVERAGE ═══════════════ -->
+      <section id="restaurant-coverage" data-section="coverage" data-density="moderate" data-section-pad="moderate" style="background:var(--surface);">
+        <div class="wf-container-wide">
+
+          <div data-density="moderate" class="wf-flex-col">
+            <div>
+              <p class="section-eyebrow" style="margin-bottom:8px;">Coverage</p>
+              <h2 class="wf-text-secondary" data-component="restaurant-coverage-headline" data-class="secondary"
+                  style="font-size:1.4rem;font-weight:700;">
+                160+ Disney dining locations monitored —<br>
+                including the ones that sell out in seconds.
+              </h2>
+            </div>
+
+            <!-- Park tabs -->
+            <div class="park-tabs" data-component="park-tabs" data-class="secondary">
+              <div class="park-tab park-tab--active">Walt Disney World · 120+</div>
+              <div class="park-tab">Disneyland · 40+</div>
+            </div>
+
+            <!-- Coverage grid -->
+            <div class="coverage-grid-4" data-component="restaurant-coverage-grid" data-class="primary" data-tension="coverage-density-vs-warmth">
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Be Our Guest</span>
+                <span class="restaurant-card__loc">Magic Kingdom · WDW</span>
+                <span class="restaurant-card__badge">★ High demand</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Space 220</span>
+                <span class="restaurant-card__loc">EPCOT · WDW</span>
+                <span class="restaurant-card__badge">★ High demand</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Cinderella's Royal Table</span>
+                <span class="restaurant-card__loc">Magic Kingdom · WDW</span>
+                <span class="restaurant-card__badge">★ High demand</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Topolino's Terrace</span>
+                <span class="restaurant-card__loc">Disney's Hollywood Studios · WDW</span>
+                <span class="restaurant-card__badge">★ High demand</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Storybook Dining at Artist Point</span>
+                <span class="restaurant-card__loc">Disney's Wilderness Lodge · WDW</span>
+                <span class="restaurant-card__badge">★ High demand</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Ohana</span>
+                <span class="restaurant-card__loc">Disney's Polynesian Village · WDW</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">California Grill</span>
+                <span class="restaurant-card__loc">Disney's Contemporary Resort · WDW</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Skipper Canteen</span>
+                <span class="restaurant-card__loc">Magic Kingdom · WDW</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Akershus Royal Banquet Hall</span>
+                <span class="restaurant-card__loc">EPCOT · Norway Pavilion · WDW</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Boma — Flavors of Africa</span>
+                <span class="restaurant-card__loc">Disney's Animal Kingdom Lodge · WDW</span>
+              </div>
+
+              <div class="restaurant-card">
+                <span class="restaurant-card__name">Tusker House Restaurant</span>
+                <span class="restaurant-card__loc">Disney's Animal Kingdom · WDW</span>
+              </div>
+
+              <div class="restaurant-card" style="background:var(--surface-alt);display:flex;align-items:center;justify-content:center;min-height:80px;">
+                <span class="restaurant-card__loc" style="text-align:center;">+ 109 more<br>across WDW &amp; DL</span>
+              </div>
+
+            </div>
+
+            <div class="see-all-link" data-component="see-all-link" data-class="tertiary">
+              See all 160+ restaurants and parks covered →
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════ HOW IT WORKS + SAMPLE ALERT ═══════════════ -->
+      <section id="how-it-works" data-section="how-it-works" data-density="moderate" data-section-pad="generous">
+        <div class="wf-container-medium wf-flex-col">
+
+          <div class="centered">
+            <h2 class="wf-text-secondary" data-component="how-it-works-headline" data-class="secondary"
+                style="font-size:1.4rem;font-weight:700;">How Pixiedining works</h2>
+            <p class="wf-text-body" style="margin-top:8px;">Set your criteria once. We watch 24/7. You book when your table appears.</p>
+          </div>
+
+          <!-- 3-step grid -->
+          <div class="wf-grid-3">
+            <div class="step-card" data-component="step-set-criteria" data-class="secondary">
+              <div class="step-number">1</div>
+              <p class="step-title">Set your criteria</p>
+              <p class="wf-text-body" style="font-size:0.875rem;">
+                Choose your restaurant, trip dates, party size, and how you want to be notified — email, SMS, or push.
+              </p>
+            </div>
+
+            <div class="step-card" data-component="step-we-monitor" data-class="secondary">
+              <div class="step-number">2</div>
+              <p class="step-title">We monitor around the clock</p>
+              <p class="wf-text-body" style="font-size:0.875rem;">
+                Pixiedining checks Disney's availability feed <strong>every 60 seconds</strong>, 24 hours a day, 7 days a week.
+              </p>
+            </div>
+
+            <div class="step-card" data-component="step-you-book" data-class="secondary">
+              <div class="step-number">3</div>
+              <p class="step-title">Alert fires → you book</p>
+              <p class="wf-text-body" style="font-size:0.875rem;">
+                Alert arrives in seconds. Tap the link to open Disney's official reservation page and complete the booking yourself.
+              </p>
+            </div>
+          </div>
+
+          <!-- Sample alert -->
+          <section id="sample-alert" data-section="sample-alert" data-density="compact">
+            <div class="centered" style="margin-bottom:var(--gap-md);">
+              <p class="section-eyebrow">Sample alert</p>
+              <p class="wf-text-body" style="margin-top:4px;font-size:0.875rem;">Here's what a Pixiedining alert looks like in your notifications.</p>
+            </div>
+            <div class="alert-card" data-component="sample-alert" data-class="secondary" data-tension="product-concreteness">
+              <div class="alert-card__header">
+                <div>
+                  <span class="alert-card__app">🔔 Pixiedining Alert</span>
+                </div>
+                <span class="alert-card__time">6:14 AM</span>
+              </div>
+              <div class="alert-card__title">Be Our Guest — Party of 4 · July 14</div>
+              <div class="alert-card__body">
+                A 6:30 PM slot just opened up! Tap below to book on Disney's official reservation site before it's gone.
+              </div>
+              <div class="alert-card__cta">Book now on DisneyWorld.com →</div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════ PROOF STATS ═══════════════ -->
+      <section id="proof-stats" data-section="proof-stats" data-density="compact" data-section-pad="moderate">
+        <div class="stats-strip" style="padding:var(--gap-lg) var(--gap-md);">
+          <div class="wf-container-wide">
+            <div class="wf-grid-3" data-component="proof-stats-strip" data-class="secondary">
+              <div class="stat-item">
+                <span class="stat-item__number">2.4M</span>
+                <span class="stat-item__label">alerts sent</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-item__number">~4 min</span>
+                <span class="stat-item__label">avg. from cancellation to alert</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-item__number">160+</span>
+                <span class="stat-item__label">restaurants across WDW &amp; Disneyland</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="wf-container-wide" style="padding-top:var(--gap-lg);">
+          <div class="testimonial-block" data-component="success-testimonial" data-class="secondary">
+            <p class="testimonial-block__quote">
+              "I finally got Topolino's Terrace breakfast for my daughter's birthday — the alert came through at 6:14 AM and I had the reservation by 6:16. We had been trying for weeks."
+            </p>
+            <p class="testimonial-block__attr">— Sarah K., Walt Disney World 2024</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ TIER COMPARISON ═══════════════ -->
+      <section id="tier-comparison" data-section="tier-comparison" data-density="moderate" data-section-pad="generous" style="background:var(--surface);">
+        <div class="wf-container-medium wf-flex-col">
+
+          <div class="centered">
+            <h2 class="wf-text-secondary" data-component="tier-comparison-headline" data-class="secondary"
+                style="font-size:1.4rem;font-weight:700;">
+              One alert free. Unlimited when you need more.
+            </h2>
+            <p class="wf-text-body" style="margin-top:8px;">
+              Start with a single restaurant. Upgrade to Pro when you want to monitor Be Our Guest <em>and</em> Space 220 <em>and</em> everywhere else.
+            </p>
+          </div>
+
+          <div class="tier-cards">
+
+            <!-- Free tier -->
+            <div class="tier-card" data-component="free-tier-card" data-class="secondary">
+              <div class="tier-card__label">Free</div>
+              <div>
+                <div class="tier-card__price">$0</div>
+                <div class="tier-card__price-sub">Forever free for one active alert</div>
+              </div>
+              <ul class="tier-feature-list">
+                <li>1 restaurant monitored</li>
+                <li>Email alerts</li>
+                <li>Standard polling (every 5 min)</li>
+                <li>Single trip window</li>
+              </ul>
+              <a class="wf-button-secondary" data-component="free-tier-cta" data-class="secondary" style="text-align:center;width:100%;display:block;">
+                Start Free Alert
+              </a>
+              <p class="tier-reassurance">No credit card required</p>
+            </div>
+
+            <!-- Pro tier -->
+            <div class="tier-card tier-card--pro" data-component="pro-tier-card" data-class="secondary">
+              <div class="tier-card__label">Pro</div>
+              <div>
+                <div class="tier-card__price">$14.99<span style="font-size:1rem;font-weight:400;color:var(--text-muted);">/mo</span></div>
+                <div class="tier-card__price-sub">or $99/yr — save 45%</div>
+              </div>
+              <ul class="tier-feature-list">
+                <li>Unlimited restaurants monitored</li>
+                <li>Email + SMS + Push notifications</li>
+                <li>Faster polling — every 60 seconds</li>
+                <li>Multi-park bundles (WDW + DL)</li>
+                <li>Auto-resume after alert fires</li>
+                <li>Priority alert delivery</li>
+              </ul>
+              <a id="pro-cta" class="wf-button-primary" data-component="pro-cta-button" data-class="secondary"
+                 style="text-align:center;width:100%;display:block;">
+                Go Pro — $14.99/mo →
+              </a>
+              <p class="tier-reassurance" data-component="payment-reassurance" data-class="tertiary">
+                Cancel anytime · Money-back guarantee · Stripe-secured
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════ EXPERT SECTION ═══════════════ -->
+      <section id="expert-section" data-section="expert" data-density="moderate" data-section-pad="generous" data-audience="annual-passholders-power-users">
+        <div class="wf-container-medium">
+          <div class="expert-inner">
+
+            <div>
+              <p class="section-eyebrow" style="margin-bottom:8px;">For Annual Passholders &amp; Power Users</p>
+              <h2 class="wf-text-secondary" data-component="expert-section" data-class="secondary" style="font-size:1.2rem;">
+                The details that matter when you're comparing alert services
+              </h2>
+            </div>
+
+            <p class="wf-text-body" data-component="expert-comparison-note" data-class="secondary" style="line-height:1.7;">
+              Pixiedining polls Disney's availability every <strong>60 seconds</strong>. Most competing services check every 3–5 minutes — a meaningful gap when a Storybook Dining cancellation lasts under 90 seconds. Pro also delivers SMS so you don't miss an alert with your phone silenced, and we cover <strong>160+ restaurants</strong> across both Walt Disney World and Disneyland — more than any comparable service.
+            </p>
+
+            <!-- Comparison micro-table -->
+            <div>
+              <div class="expert-compare-row expert-compare-row--header">
+                <div></div>
+                <div>Pixiedining Pro</div>
+                <div>MouseDining</div>
+                <div>DVC Res. Finder</div>
+              </div>
+              <div class="expert-compare-row expert-compare-row--data">
+                <div>Polling cadence</div>
+                <div class="expert-highlight">60 seconds</div>
+                <div>3–5 minutes</div>
+                <div>3–5 minutes</div>
+              </div>
+              <div class="expert-compare-row expert-compare-row--data">
+                <div>SMS alerts</div>
+                <div class="expert-highlight">✓ Included</div>
+                <div>Paid add-on</div>
+                <div>✗</div>
+              </div>
+              <div class="expert-compare-row expert-compare-row--data">
+                <div>WDW + DL coverage</div>
+                <div class="expert-highlight">160+ restaurants</div>
+                <div>WDW only</div>
+                <div>WDW + DVC only</div>
+              </div>
+              <div class="expert-compare-row expert-compare-row--data">
+                <div>Auto-resume</div>
+                <div class="expert-highlight">✓</div>
+                <div>✗</div>
+                <div>✗</div>
+              </div>
+            </div>
+
+            <a class="wf-button-tertiary" style="padding:0;">
+              See full comparison →
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ AGENT INQUIRY BAR ═══════════════ -->
+      <div id="agent-inquiry" class="agent-bar" data-component="agent-inquiry-bar" data-class="tertiary" data-audience="travel-agents">
+        <span class="agent-bar__text">Managing dining reservations for multiple Disney families?</span>
+        <a class="agent-bar__link">Our Agency Plan handles unlimited concurrent trips. Contact us →</a>
+      </div>
+
+      <!-- ═══════════════ FAQ ═══════════════ -->
+      <section id="faq-section" data-section="faq" data-density="compact" data-section-pad="generous">
+        <div class="wf-container-narrow wf-flex-col">
+
+          <div class="centered">
+            <h2 class="wf-text-secondary" style="font-size:1.2rem;font-weight:700;">Frequently asked questions</h2>
+          </div>
+
+          <div data-component="faq-section" data-class="tertiary">
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Is this safe — do I have to give you my Disney account?
+                <div class="faq-chevron"></div>
+              </div>
+              <p class="faq-answer">
+                No. Pixiedining never asks for your Disney username, password, or any account credentials. We monitor Disney's public availability feed — the same feed their app uses — and send you an alert when your table appears. You complete the booking yourself on Disney's official site.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                How fast are the alerts?
+                <div class="faq-chevron"></div>
+              </div>
+              <p class="faq-answer">
+                Free alerts use standard polling — we check approximately every 5 minutes. Pro alerts use faster polling — every 60 seconds. On average, Pro users receive an alert within 4 minutes of a cancellation appearing. High-demand restaurants like Be Our Guest can re-book within 90 seconds, so faster polling meaningfully increases your chances.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                What if a table never opens up?
+                <div class="faq-chevron"></div>
+              </div>
+              <p class="faq-answer">
+                Your alert runs until you cancel it or your trip date passes. We never charge you for an alert that didn't fire. Pro subscribers receive a full refund within 30 days if they're unsatisfied.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                Does this work for Disneyland?
+                <div class="faq-chevron"></div>
+              </div>
+              <p class="faq-answer">
+                Yes. Pixiedining monitors 40+ Disneyland and Disney California Adventure dining locations including Blue Bayou, Carthay Circle, Napa Rose, and more. Select Disneyland from the restaurant search or the park filter.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                How is Pixiedining different from MouseDining?
+                <div class="faq-chevron"></div>
+              </div>
+              <p class="faq-answer">
+                Pixiedining Pro polls every 60 seconds vs. MouseDining's 3–5 minute interval. We also include SMS alerts at no extra charge, cover both Walt Disney World and Disneyland in a single subscription, and offer auto-resume so monitoring restarts automatically if a table opens and closes before you can act.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer data-section="footer" data-section-pad="compact">
+      <div class="site-footer" data-component="footer-nav" data-class="tertiary">
+        <div class="footer-links">
+          <a class="wf-text-meta" style="text-decoration:underline;">Privacy Policy</a>
+          <a class="wf-text-meta" style="text-decoration:underline;">Terms of Service</a>
+          <a class="wf-text-meta" style="text-decoration:underline;">Contact</a>
+          <a class="wf-text-meta" style="text-decoration:underline;">Supported Parks</a>
+          <a class="wf-text-meta" style="text-decoration:underline;">Coverage List</a>
+        </div>
+        <p class="footer-disclaimer">
+          Pixiedining is an independent service and is not affiliated with, sponsored by, or endorsed by The Walt Disney Company, Walt Disney Parks and Resorts, or any of their subsidiaries or affiliates. Restaurant names are used for identification purposes only.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

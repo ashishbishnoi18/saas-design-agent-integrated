@@ -1,0 +1,9 @@
+# Integrated SaaS design-agent harness
+jsonschema>=4.21.0
+playwright>=1.44.0
+pytest>=8.0.0
+
+# Optional provider adapters. Install the ones you use.
+google-genai>=1.0.0
+openai>=1.99.0
+anthropic>=0.57.0

@@ -1,0 +1,18 @@
+{
+  "candidate_a": "workflow-first-reservation-rescue-strategy",
+  "candidate_b": "segment-self-selection-strategy",
+  "winner": "A",
+  "confidence": 0.77,
+  "perception": {
+    "who_is_this_for_a": "A Disney trip planner who missed a hard-to-get restaurant reservation and wants to quickly set a free cancellation alert without giving Disney login access.",
+    "who_is_this_for_b": "A broader mix of Disney planners, superfans, and agents comparing an alert tool, with more explicit paths for different user types and paid/pro use cases.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "A",
+    "trust_more_visible": "A",
+    "mobile_more_usable": "B",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate A does the core selling job faster. In the first desktop viewport it shows the exact problem, a visible free alert form with restaurant/date/party-size/email fields, no Disney login language, official booking handoff language, an example alert, and alert-volume/coverage cues. The full page also sequences the workflow, safety cards, sample alert, coverage, pricing, segment cards, testimonials, FAQ, and footer disclaimer in a way that matches the diagnosis. Candidate B is more polished in parts and has stronger segment self-selection later in the page, but its first viewport is less conversion-direct: the main form appears partially duplicated, the sample alert competes with the setup path, and the mobile viewport hides the actual restaurant/date/party-size entry behind a generic button. B's mobile hero is cleaner and thumb-friendly, but the primary task is less immediately actionable. A has a notable mobile issue because the nav and login area crowd horizontally and the form is only partly visible, but the user can still perceive the core offer, trust claim, and start entering alert criteria sooner than in B.",
+  "blocking_visual_issue_a": "Mobile header/navigation is cramped and partially clipped, which hurts polish and usability, though the alert setup path and trust claims remain visible.",
+  "blocking_visual_issue_b": "Mobile first viewport replaces the visible alert criteria form with a generic Start Free Alert button and instructional text, weakening the required immediate free-alert setup path."
+}

@@ -1,0 +1,764 @@
+{
+  "schema_version": "strategic_diagnosis.v1",
+  "diagnosis_id": "diagnosis_hybrid_carfax_reseller_high_trust_high_immediacy",
+  "input_summary": {
+    "one_sentence_summary": "A standalone landing page must convert skeptical visitors into either one-time buyers of discounted official Carfax reports or higher-LTV dealer subscription leads.",
+    "detected_product_or_service": "Discounted official Carfax vehicle history reports sold through a reseller, with individual report purchase and dealer volume access paths.",
+    "detected_customer": "Individual used-car buyers evaluating a specific vehicle, plus used-car dealers or independent buyers who need recurring report access.",
+    "detected_business_goal": "Generate revenue from individual report purchases while strongly supporting dealer subscription acquisition because dealer lifetime value is substantially higher.",
+    "detected_primary_user_job": "Verify a used vehicle with a legitimate Carfax report at a lower cost without getting scammed or receiving an unofficial substitute.",
+    "missing_critical_information": [
+      "Exact individual report price and discount amount versus carfax.com",
+      "Exact dealer pricing model, minimums, terms, and onboarding process",
+      "Verifiable reseller authorization or legal legitimacy proof available for use",
+      "Available trust assets such as BBB status, payment processor badges, refund policy, business registration, testimonials, and sample report",
+      "Checkout provider, payment security details, delivery timing, and refund mechanics",
+      "Legal constraints around use of Carfax marks, logos, and wording"
+    ]
+  },
+  "primary_hypothesis": {
+    "primary_archetype": "hybrid",
+    "market_type": "hybrid",
+    "sales_motion": "hybrid",
+    "why_this_hypothesis": "The brief explicitly combines a fast B2C one-time checkout path with a higher-LTV B2B dealer subscription/contact path, both blocked primarily by legitimacy concerns.",
+    "confidence": 0.92
+  },
+  "secondary_hypotheses": [
+    {
+      "archetype": "ecommerce_conversion",
+      "market_type": "b2c",
+      "sales_motion": "ecommerce",
+      "why_plausible": "The named primary action is buying a single report now through a VIN-to-payment-to-PDF flow, and individual visitors decide in under 60 seconds.",
+      "what_would_change_if_true": "The site would bias more heavily toward immediate pricing, VIN entry, checkout confidence, refund reassurance, and speed, with dealer acquisition reduced to a secondary path.",
+      "confidence": 0.68
+    },
+    {
+      "archetype": "sales_led_b2b_saas",
+      "market_type": "b2b",
+      "sales_motion": "sales_led",
+      "why_plausible": "Dealer subscriptions have substantially higher lifetime value, require volume pricing and terms, and may involve talking to a person before committing.",
+      "what_would_change_if_true": "The site would prioritize dealer economics, legitimacy documentation, consultation scheduling, and volume-plan qualification over immediate individual checkout.",
+      "confidence": 0.56
+    },
+    {
+      "archetype": "transactional_utility",
+      "market_type": "b2c",
+      "sales_motion": "self_serve",
+      "why_plausible": "For individual buyers, the user has a specific urgent task: obtain one official report quickly for a vehicle they are considering.",
+      "what_would_change_if_true": "The experience would become more tool-first, with the purchase task surfaced immediately and minimal explanatory content beyond trust and price validation.",
+      "confidence": 0.52
+    }
+  ],
+  "strategic_axes": {
+    "market_type": "hybrid",
+    "primary_archetype": "hybrid",
+    "sales_motion": "hybrid",
+    "buyer_user_relationship": "multiple_stakeholders",
+    "usage_pattern": "transactional_purchase",
+    "expected_session_duration": "one_to_three_min",
+    "decision_risk": "high",
+    "trust_burden": "high",
+    "aesthetic_stakes": "medium",
+    "functional_immediacy": "high",
+    "product_complexity": "service_plus_product",
+    "audience_sophistication": "mixed",
+    "visual_posture": "polished_utility",
+    "content_depth": "layered"
+  },
+  "audience_model": {
+    "primary_audience": [
+      "Individual used-car buyers who need one report for a specific VIN",
+      "Used-car dealers or independent buyers who need frequent report access"
+    ],
+    "secondary_audience": [
+      "Warm referral visitors who have partial trust but still need verification",
+      "Cold social media visitors who are highly skeptical of discounted report offers",
+      "Dealer staff or managers comparing ongoing report costs"
+    ],
+    "buyer_roles": [
+      "Private used-car buyer",
+      "Used-car dealer owner",
+      "Dealer general manager",
+      "Independent auto buyer",
+      "Dealer operations or purchasing decision-maker"
+    ],
+    "user_roles": [
+      "Person entering a VIN and purchasing a one-time report",
+      "Dealer staff member needing recurring report access",
+      "Business decision-maker evaluating a volume plan"
+    ],
+    "stakeholder_complexity": "medium",
+    "what_they_care_about": [
+      "Receiving an actual official Carfax report rather than a generic substitute",
+      "Paying less than direct Carfax pricing",
+      "Fast delivery of a usable report before making a vehicle decision",
+      "Refund or recourse if the report is not delivered or is not what was promised",
+      "Clear dealer savings at realistic monthly volume",
+      "Legitimate business identity and safe payment handling"
+    ],
+    "what_they_fear_or_resist": [
+      "A scam site using the Carfax name illegitimately",
+      "Receiving an unofficial, incomplete, outdated, or unusable report",
+      "Entering payment information into an untrustworthy page",
+      "Hidden conditions, recurring charges, or unclear refund policies",
+      "Dealer plans that are vague, not actually cheaper at scale, or operationally unreliable",
+      "Claims of authorization or legitimacy that are unsupported"
+    ],
+    "what_they_need_before_action": [
+      "Immediate confirmation that the product is an official Carfax report",
+      "Visible legitimacy proof before payment or contact commitment",
+      "Clear individual price, delivery expectation, and refund guarantee",
+      "A sample report or proof of report format and contents",
+      "A clear distinction between one-time purchase and dealer volume access",
+      "For dealers, enough pricing and terms context to justify contacting or signing up"
+    ],
+    "likely_attention_span": "Individuals may decide in under 60 seconds; dealers will spend longer only if the page quickly proves legitimacy and relevance.",
+    "aesthetic_expectation": "The site should feel clean, secure, and businesslike rather than flashy, coupon-like, or overly generic; visual polish primarily serves trust.",
+    "functional_expectation": "Individuals expect a direct VIN-to-purchase path with minimal friction; dealers expect an obvious route to volume terms, contact, or setup."
+  },
+  "business_model": {
+    "primary_business_goal": "Convert traffic into paid individual report purchases and qualified dealer subscription inquiries, while protecting trust enough to make discounted resale feel safe.",
+    "secondary_business_goals": [
+      "Increase conversion among cold social visitors by reducing scam perception",
+      "Encourage dealers to self-identify because their lifetime value is higher",
+      "Use low-commitment proof such as sample reports to recover skeptical visitors",
+      "Reduce support burden by clarifying product, delivery, refund, and eligibility expectations",
+      "Build credibility for word-of-mouth referral loops"
+    ],
+    "conversion_or_success_event": "Either a completed one-time report checkout or a qualified dealer access signup/contact submission, with sample report views as an important assisted conversion.",
+    "sales_or_adoption_motion": "Hybrid: self-serve ecommerce for individual buyers and consultation or signup-led acquisition for dealers.",
+    "pricing_or_value_sensitivity": "high",
+    "competitive_differentiation_likely_based_on": [
+      "Discount versus direct Carfax one-report pricing",
+      "Legitimate access to official Carfax reports",
+      "Fast, simple report delivery",
+      "Visible refund or satisfaction guarantee",
+      "Dealer volume savings and continuity of access",
+      "Trustworthy payment and business verification signals"
+    ]
+  },
+  "decision_context": {
+    "primary_user_decision_sequence": [
+      {
+        "step": 1,
+        "decision": "Decide whether this is relevant to their immediate need.",
+        "question_in_user_mind": "Can I get the Carfax report I need here, or is this something else?",
+        "page_must_answer_with": "Plain language that identifies discounted official Carfax reports and separates one-time buyers from dealer volume users."
+      },
+      {
+        "step": 2,
+        "decision": "Decide whether the offer is legitimate.",
+        "question_in_user_mind": "Is this a real reseller and will I receive an actual report?",
+        "page_must_answer_with": "Early, specific legitimacy proof such as authorization language if true, business identity, secure payment, refund guarantee, sample report, and usage volume."
+      },
+      {
+        "step": 3,
+        "decision": "Decide whether the economics are worth acting on.",
+        "question_in_user_mind": "How much do I save, and are there hidden costs or conditions?",
+        "page_must_answer_with": "Transparent individual pricing, discount framing, dealer volume savings logic, and clear terms."
+      },
+      {
+        "step": 4,
+        "decision": "Choose the correct path.",
+        "question_in_user_mind": "Am I buying one report now or setting up ongoing dealer access?",
+        "page_must_answer_with": "Unambiguous self-selection between individual purchase and dealer access without forcing either audience through irrelevant content."
+      },
+      {
+        "step": 5,
+        "decision": "Commit to the action or seek proof first.",
+        "question_in_user_mind": "Do I trust this enough to enter a VIN, pay, or contact sales?",
+        "page_must_answer_with": "A low-friction primary action, a dealer contact/signup option, and a sample-report proof path for visitors who need reassurance."
+      },
+      {
+        "step": 6,
+        "decision": "Confirm there is recourse if something goes wrong.",
+        "question_in_user_mind": "What happens if I do not receive the report or it is not official?",
+        "page_must_answer_with": "Clear refund, delivery, support, and payment protection information before final commitment."
+      }
+    ],
+    "risk_reduction_needs": [
+      "Legitimacy proof must appear before or alongside conversion prompts",
+      "Report authenticity must be explained without vague reseller language",
+      "Payment and refund safety must be explicit",
+      "Dealer buyers need terms, business identity, and human contact confidence",
+      "Cold traffic needs stronger proof than warm referral traffic"
+    ],
+    "proof_needs": [
+      "Sample report or representative report preview",
+      "Refund guarantee or satisfaction policy",
+      "Secure payment provider or payment protection signal",
+      "Business registration or company identity details",
+      "Volume of users or reports served if accurate",
+      "BBB, review, or third-party verification signals if genuine",
+      "Clear official Carfax relationship or reseller status if legally supportable"
+    ],
+    "explanation_needs": [
+      "What the buyer receives",
+      "How the discounted report process works",
+      "How quickly the report is delivered",
+      "How the offer differs from buying directly from carfax.com",
+      "How dealer access works at a high level",
+      "What terms or limits apply"
+    ],
+    "trust_timing": "Trust must be established immediately and repeatedly; it cannot be delayed until after pricing or checkout because skepticism is the primary blocker.",
+    "cta_timing": "The individual purchase path should be available early, but paired with credibility signals; the dealer path should also be visible early because dealer LTV is strategically important."
+  },
+  "experience_context": {
+    "expected_time_on_site": "Individuals likely spend under one to three minutes before buying or bouncing; dealers may spend three to ten minutes if legitimacy and pricing relevance are established quickly.",
+    "expected_time_in_product": "Individual post-click flow should be short and task-focused: enter VIN, pay, receive PDF. Dealer product usage is recurring and operational.",
+    "interaction_intensity": "medium",
+    "task_urgency": "high",
+    "exploration_need": "medium",
+    "emotional_involvement": "medium",
+    "switching_likelihood_if_experience_poor": "high"
+  },
+  "beauty_function_balance": {
+    "beauty_definition_for_this_site": "Beauty means polished utility: a clean, secure, legitimate, businesslike experience that reduces scam perception and makes the discount feel credible rather than too-good-to-be-true.",
+    "functionality_definition_for_this_site": "Functionality means fast self-selection, clear report authenticity, immediate individual purchase readiness, credible dealer inquiry flow, transparent terms, and proof access without friction.",
+    "beauty_weight": 0.45,
+    "functionality_weight": 0.78,
+    "trust_weight": 0.95,
+    "speed_weight": 0.82,
+    "explanation_weight": 0.68,
+    "proof_weight": 0.9,
+    "rationale": "The audience is price-sensitive and task-oriented, but the discount creates skepticism. Visual quality matters mainly as a trust carrier; proof, clarity, and speed matter more than expressive brand design."
+  },
+  "design_directive": {
+    "strategic_summary": "Create a high-trust, high-immediacy conversion page that lets individuals buy quickly while making dealers feel explicitly recognized and valuable, with legitimacy proof visible before either audience is asked to commit.",
+    "primary_design_priorities": [
+      "Make official report legitimacy and reseller credibility unmistakable early",
+      "Allow immediate self-selection between one-time buyer and dealer access paths",
+      "Keep the individual purchase path fast enough for sub-60-second decision behavior",
+      "Treat the dealer path as strategically important rather than an afterthought"
+    ],
+    "secondary_design_priorities": [
+      "Explain the discount and report delivery process clearly enough to reduce suspicion",
+      "Provide low-commitment proof through a sample report or equivalent evidence",
+      "Clarify refund, payment security, and support expectations before checkout",
+      "Use pricing and savings language that feels specific and verifiable"
+    ],
+    "tertiary_design_priorities": [
+      "Support both warm referral and cold social traffic with appropriate proof density",
+      "Avoid unnecessary education about what Carfax is for expert dealer users",
+      "Keep mobile flows concise because many individual buyers may arrive from marketplace browsing",
+      "Preserve legal and brand safety around Carfax-related claims and marks"
+    ],
+    "tone": "Direct, credible, practical, transparent, and reassuring; confident without hype.",
+    "visual_posture": "polished_utility",
+    "content_depth": "layered",
+    "cta_strategy": "Use a primary self-serve purchase action for individuals, a clearly differentiated dealer access action, and a sample-report proof action for hesitant visitors; CTAs should be trust-adjacent rather than isolated hype buttons.",
+    "proof_strategy": "Lead with concrete legitimacy signals, then reinforce with sample report, refund guarantee, secure payment, company identity, and dealer-relevant verification or contact availability.",
+    "explanation_strategy": "Use concise, sequenced explanation: what the report is, why it is discounted, how purchase or dealer access works, what safeguards exist, and what happens after action.",
+    "mobile_strategy": "Prioritize fast loading, immediate trust recognition, easy path selection, simple VIN or contact input, readable terms, and minimal scrolling before core actions are discoverable."
+  },
+  "first_viewport_obligation": {
+    "must_accomplish": "Within the first viewport, the page must make visitors understand that they can buy discounted official Carfax reports safely, verify legitimacy enough to continue, and choose between individual purchase and dealer access.",
+    "must_show": [
+      "Clear identification of discounted official Carfax reports",
+      "A credible legitimacy or safety signal before commitment",
+      "A one-time buyer path for buying a report now",
+      "A dealer or volume access path",
+      "A low-commitment proof option such as sample report access or equivalent evidence",
+      "A concise value cue around savings or discount"
+    ],
+    "must_not_do": [
+      "Ask for payment before establishing basic legitimacy",
+      "Hide the dealer path below individual-only messaging",
+      "Use vague wording that could imply a non-Carfax generic vehicle report",
+      "Lead with exaggerated discount hype that increases scam perception",
+      "Force cold visitors to scroll through a long story before understanding the offer"
+    ],
+    "primary_question_to_answer": "Is this a legitimate way to get an official Carfax report at a lower price, and which path is right for me?",
+    "acceptable_cta_behavior": "A purchase CTA may appear immediately if it is paired with trust evidence; dealer access and sample proof should be visible enough that skeptical users do not have to hunt.",
+    "failure_condition": "The first viewport fails if a visitor cannot quickly distinguish the individual and dealer paths or if the discount appears unverified, unofficial, or scam-like."
+  },
+  "hard_floors": [
+    {
+      "id": "hf_first_viewport_legitimacy_and_self_selection",
+      "rule": "The first viewport on both desktop and mobile must establish the discounted official Carfax offer, show at least one credible legitimacy or safety proof point, present a one-time report purchase path, present a dealer or volume access path, include a savings or discount cue, and expose a low-commitment proof option such as a sample report or equivalent evidence.",
+      "triggered_by_axis": "first_viewport_obligation: critical",
+      "why_it_matters": "The brief states that individuals decide in under 60 seconds, cold social visitors are highly skeptical, legitimacy must be established before either action feels safe, and both individual and dealer paths are central to revenue.",
+      "score_cap_if_violated": 5.5,
+      "validation_hint": "Review desktop and mobile first-screen screenshots before scrolling. Confirm that official Carfax report clarity, legitimacy or safety proof, individual buy-now path, dealer access path, savings cue, and sample/proof access are all visible or immediately reachable without relying on below-the-fold sections."
+    },
+    {
+      "id": "hf_early_legitimacy_proof",
+      "rule": "Legitimacy proof must be visible before or adjacent to the first commitment-oriented action.",
+      "triggered_by_axis": "trust_burden: high",
+      "why_it_matters": "The brief states that discounted resellers are unfamiliar and visitors will bounce if the page reads as scammy.",
+      "score_cap_if_violated": 6.0,
+      "validation_hint": "Check whether official/reseller legitimacy, refund, secure payment, sample report, business identity, or comparable proof appears before major purchase/contact prompts."
+    },
+    {
+      "id": "hf_segment_self_selection",
+      "rule": "The page must let individual buyers and dealers self-select without ambiguity.",
+      "triggered_by_axis": "market_type: hybrid",
+      "why_it_matters": "The two segments have different motivations, knowledge levels, purchase paths, and lifetime value.",
+      "score_cap_if_violated": 6.5,
+      "validation_hint": "Check whether both one-time report purchase and dealer access are clearly recognized early and throughout the decision flow."
+    },
+    {
+      "id": "hf_individual_purchase_immediacy",
+      "rule": "The individual buyer path must not be buried behind long narrative, dealer content, or excessive explanation.",
+      "triggered_by_axis": "functional_immediacy: high",
+      "why_it_matters": "Individual buyers decide in under 60 seconds and need a task-completion path for a specific vehicle.",
+      "score_cap_if_violated": 6.0,
+      "validation_hint": "Check whether a visitor can quickly understand how to buy one report, what it costs, and what happens after purchase."
+    },
+    {
+      "id": "hf_dealer_path_prominence",
+      "rule": "The dealer volume path must be materially visible and credible, not relegated to a minor afterthought.",
+      "triggered_by_axis": "business_goal: dealer_LTV_high",
+      "why_it_matters": "Dealer subscriptions have substantially higher lifetime value and require methodical evaluation.",
+      "score_cap_if_violated": 7.0,
+      "validation_hint": "Check whether dealer access has clear value framing, expected next step, and trust/terms cues appropriate for business buyers."
+    },
+    {
+      "id": "hf_official_report_clarity",
+      "rule": "The page must clearly distinguish official Carfax reports from generic vehicle history reports or knockoffs.",
+      "triggered_by_axis": "decision_risk: high",
+      "why_it_matters": "Both segments know Carfax and are specifically concerned about receiving the real product.",
+      "score_cap_if_violated": 5.5,
+      "validation_hint": "Look for precise product wording and absence of ambiguous substitutes such as only saying vehicle report without Carfax authenticity context."
+    },
+    {
+      "id": "hf_transparent_terms_and_safety",
+      "rule": "Pricing, delivery expectation, refund or guarantee terms, and payment safety must be understandable before checkout or lead submission.",
+      "triggered_by_axis": "pricing_or_value_sensitivity: high",
+      "why_it_matters": "Discounted offers create suspicion unless visitors can see the economics and protections clearly.",
+      "score_cap_if_violated": 6.5,
+      "validation_hint": "Check whether price/savings, delivery timing, refund policy, and secure payment information are available without forcing final commitment."
+    },
+    {
+      "id": "hf_proof_for_skeptics",
+      "rule": "There must be a low-commitment proof path for skeptical visitors who are not ready to buy or contact.",
+      "triggered_by_axis": "proof_weight: high",
+      "why_it_matters": "The brief names sample report as a tertiary CTA that works for both segments and helps close the legitimacy gap.",
+      "score_cap_if_violated": 7.0,
+      "validation_hint": "Check for sample report access or equivalent proof that does not require payment or a high-friction form."
+    },
+    {
+      "id": "hf_mobile_conversion_path",
+      "rule": "On mobile, core trust signals and the individual purchase path must remain quickly accessible and readable.",
+      "triggered_by_axis": "expected_session_duration: one_to_three_min",
+      "why_it_matters": "Used-car shoppers may arrive from social media or marketplace contexts and will abandon if credibility or action paths are hard to find.",
+      "score_cap_if_violated": 7.0,
+      "validation_hint": "Evaluate first-screen mobile clarity, CTA reachability, VIN/contact input usability, load speed, and readable trust/terms cues."
+    }
+  ],
+  "anti_patterns": [
+    {
+      "id": "ap_coupon_scam_aesthetic",
+      "anti_pattern": "A loud coupon-site presentation with exaggerated discounts, urgency timers, or bargain-bin visuals.",
+      "why_bad_for_this_site": "The discount is already a trust liability; cheap promotional treatment makes the offer feel illegitimate.",
+      "severity": "high",
+      "detection_hint": "Look for overuse of flashing discount language, fake urgency, cluttered badges, or visual tropes associated with shady deal pages."
+    },
+    {
+      "id": "ap_buried_trust",
+      "anti_pattern": "Saving legitimacy proof for late-page FAQs or post-click checkout screens.",
+      "why_bad_for_this_site": "Visitors decide whether the site is real before they engage deeply, especially cold social traffic.",
+      "severity": "high",
+      "detection_hint": "Check whether the first major CTA appears before any meaningful proof or safety cue."
+    },
+    {
+      "id": "ap_individual_only_bias",
+      "anti_pattern": "Optimizing only for one-time purchases while treating dealer subscriptions as a small footer contact option.",
+      "why_bad_for_this_site": "Dealer LTV is substantially higher, and dealer buyers need a serious business path.",
+      "severity": "high",
+      "detection_hint": "Assess whether dealer messaging, terms, and next step are prominent enough to attract qualified dealer leads."
+    },
+    {
+      "id": "ap_dealer_overeducation",
+      "anti_pattern": "Explaining basic vehicle history report concepts at length to dealers who already understand the category.",
+      "why_bad_for_this_site": "Dealer users are expert and care about cost, legitimacy, terms, and operational access, not basic education.",
+      "severity": "medium",
+      "detection_hint": "Look for long generic explanations of what Carfax is without dealer-specific economics or access details."
+    },
+    {
+      "id": "ap_ambiguous_product_naming",
+      "anti_pattern": "Using vague terms like vehicle report without clearly confirming official Carfax report status.",
+      "why_bad_for_this_site": "Ambiguity intensifies fear of a knockoff or substitute report.",
+      "severity": "high",
+      "detection_hint": "Check whether a visitor can unmistakably tell the report is official Carfax rather than AutoCheck or another report type."
+    },
+    {
+      "id": "ap_unsubstantiated_authority_claims",
+      "anti_pattern": "Displaying authorization, BBB, payment, or review claims that are not specific, verifiable, or legally supportable.",
+      "why_bad_for_this_site": "False or vague trust signals are worse than absent proof because the audience is actively scanning for scams.",
+      "severity": "high",
+      "detection_hint": "Look for generic badges, unverifiable statements, missing business identity, or unsupported use of official-looking marks."
+    },
+    {
+      "id": "ap_long_brand_story_before_task",
+      "anti_pattern": "Leading with company story, mission, or generic benefits before answering legitimacy, price, and path selection.",
+      "why_bad_for_this_site": "The user is in a pre-purchase task state and needs rapid risk reduction, not narrative immersion.",
+      "severity": "medium",
+      "detection_hint": "Check whether the first meaningful information is about the company rather than the report, safety, price, or buyer/dealer paths."
+    },
+    {
+      "id": "ap_hidden_or_vague_refund_terms",
+      "anti_pattern": "Mentioning a guarantee without clear conditions, delivery expectations, or support path.",
+      "why_bad_for_this_site": "Guarantees only reduce risk if visitors understand what is protected and how to use it.",
+      "severity": "medium",
+      "detection_hint": "Look for guarantee language without concise terms or a way to get help."
+    },
+    {
+      "id": "ap_generic_saas_visual_formula",
+      "anti_pattern": "Using an abstract SaaS-style page that looks polished but does not address report authenticity, payment safety, or dealer economics.",
+      "why_bad_for_this_site": "Generic polish will not overcome the specific skepticism attached to discounted Carfax resale.",
+      "severity": "medium",
+      "detection_hint": "Check whether visuals and copy could fit almost any online service without specific vehicle-report trust cues."
+    }
+  ],
+  "dynamic_evaluator_policy": {
+    "weights": {
+      "strategic_diagnosis_fit": 0.12,
+      "first_viewport_fit": 0.18,
+      "functional_clarity": 0.17,
+      "trust_and_proof": 0.18,
+      "visual_appropriateness": 0.09,
+      "content_sequence": 0.11,
+      "mobile_path": 0.08,
+      "anti_pattern_avoidance": 0.07
+    },
+    "weight_rationale": "Trust, first-viewport performance, and functional clarity are weighted highest because users are skeptical, time-constrained, and must quickly understand either the VIN-to-pay-to-PDF individual path or the dealer access path. Visual appropriateness matters, but mainly as a credibility amplifier rather than a brand-expression goal.",
+    "absolute_score_caps": [
+      {
+        "condition": "The first viewport does not establish the discounted official Carfax offer, credible legitimacy or safety proof, individual purchase path, dealer access path, savings cue, and sample/proof option.",
+        "cap": 5.5,
+        "reason": "The page must satisfy the combined above-the-fold obligation before skeptical visitors will continue or self-select."
+      },
+      {
+        "condition": "No credible legitimacy proof appears before the first commitment-oriented CTA.",
+        "cap": 6.0,
+        "reason": "Trust establishment is the primary blocker to conversion."
+      },
+      {
+        "condition": "The page does not clearly support both individual buyers and dealers.",
+        "cap": 6.5,
+        "reason": "The business model depends on two distinct segments, with dealer LTV especially important."
+      },
+      {
+        "condition": "The product could be mistaken for a non-Carfax or unofficial report.",
+        "cap": 5.5,
+        "reason": "Authenticity of the official Carfax report is central to the buyer decision."
+      },
+      {
+        "condition": "The individual purchase path is not discoverable quickly on mobile.",
+        "cap": 7.0,
+        "reason": "A large share of urgent used-car shoppers may arrive from mobile social or marketplace contexts."
+      },
+      {
+        "condition": "Dealer access lacks clear next step, value framing, or legitimacy proof.",
+        "cap": 7.0,
+        "reason": "Dealer subscriptions are the higher-LTV revenue channel and require business-buyer confidence."
+      }
+    ],
+    "pairwise_judging_priorities": [
+      "Prefer the candidate that makes legitimacy credible earlier, even if it is less visually expressive.",
+      "Prefer the candidate that preserves both individual speed and dealer seriousness over one that over-optimizes only one segment.",
+      "Prefer specific proof and transparent terms over generic trust badges or vague reassurance.",
+      "Prefer clear self-selection and action readiness over long explanatory storytelling.",
+      "Prefer polished utility that feels secure and legitimate over aggressive discount marketing."
+    ]
+  },
+  "candidate_strategy_seeds": [
+    {
+      "strategy_name": "Trust-first dual-path conversion",
+      "why_this_strategy_is_worth_testing": "Both audiences need to self-select, but neither will act unless legitimacy is established immediately.",
+      "what_it_should_optimize": [
+        "Early scam-risk reduction",
+        "Individual versus dealer path clarity",
+        "Balanced revenue channel support",
+        "Fast continuation for warm referral traffic"
+      ],
+      "main_risk": "If too much proof appears before the action paths, the individual purchase flow may feel slower than necessary.",
+      "best_for": "Mixed warm and cold traffic where trust is the biggest conversion bottleneck."
+    },
+    {
+      "strategy_name": "Task-first purchase with proof guardrails",
+      "why_this_strategy_is_worth_testing": "Individual buyers are urgent and price-sensitive, so a fast purchase path may convert well if trust cues are tightly integrated.",
+      "what_it_should_optimize": [
+        "Under-60-second individual decisions",
+        "VIN-to-purchase clarity",
+        "Checkout confidence",
+        "Reduced bounce from urgent buyers"
+      ],
+      "main_risk": "Dealer visitors may feel underserved if the B2B path is not kept prominent and credible.",
+      "best_for": "Traffic skewing toward one-time used-car buyers from social media or marketplace browsing."
+    },
+    {
+      "strategy_name": "Dealer-value-forward with consumer fast lane",
+      "why_this_strategy_is_worth_testing": "Dealer LTV is substantially higher, so the page may benefit from making volume access feel like a serious business offer while retaining a quick individual lane.",
+      "what_it_should_optimize": [
+        "Qualified dealer lead capture",
+        "Volume savings comprehension",
+        "Business legitimacy",
+        "Higher lifetime value acquisition"
+      ],
+      "main_risk": "Individual buyers may perceive the page as not meant for them if the one-time purchase path is not immediately obvious.",
+      "best_for": "Campaigns or referrals expected to include a meaningful share of dealers and independent buyers."
+    },
+    {
+      "strategy_name": "Sample-report proof-led path",
+      "why_this_strategy_is_worth_testing": "A sample report is named as a low-commitment CTA and can reduce skepticism for both segments before asking for payment or contact.",
+      "what_it_should_optimize": [
+        "Skeptical visitor recovery",
+        "Report authenticity confidence",
+        "Education without overexplaining",
+        "Trust before conversion"
+      ],
+      "main_risk": "If sample viewing becomes the dominant action, it could distract motivated buyers from immediate purchase.",
+      "best_for": "Cold social traffic with low pre-existing trust."
+    },
+    {
+      "strategy_name": "Savings-and-safety comparison strategy",
+      "why_this_strategy_is_worth_testing": "Both segments compare against known direct Carfax pricing, so explicit savings plus safeguards can make the discount feel rational rather than suspicious.",
+      "what_it_should_optimize": [
+        "Price-value confidence",
+        "Discount legitimacy",
+        "Dealer cost-reduction logic",
+        "Reduced fear of hidden terms"
+      ],
+      "main_risk": "Overemphasizing price comparison without enough proof may intensify suspicion that the offer is too good to be true.",
+      "best_for": "Visitors who already know Carfax pricing and are actively seeking a cheaper legitimate option."
+    },
+    {
+      "strategy_name": "Business-identity and human-contact reassurance",
+      "why_this_strategy_is_worth_testing": "Dealers are methodical and may want to talk to a person; cold consumers also benefit from signs that a real business is accountable.",
+      "what_it_should_optimize": [
+        "Dealer confidence",
+        "Accountability",
+        "Lead quality",
+        "Reduced payment anxiety"
+      ],
+      "main_risk": "Too much contact emphasis could undermine the speed and simplicity expected by one-time buyers.",
+      "best_for": "Audiences with heightened skepticism or dealer-heavy acquisition channels."
+    }
+  ],
+  "reference_retrieval_profile": {
+    "positive_reference_queries": [
+      "high trust ecommerce landing page secure checkout discounted official product",
+      "vehicle history report landing page legitimacy proof sample report",
+      "B2C and B2B dual audience landing page self selection",
+      "dealer software volume pricing landing page trust proof",
+      "payment security refund guarantee landing page conversion",
+      "automotive service landing page official report trust signals",
+      "high urgency purchase landing page under 60 second decision"
+    ],
+    "negative_reference_queries": [
+      "scammy coupon landing page fake urgency timer",
+      "generic affiliate discount page low trust badges",
+      "vehicle report knockoff landing page vague authenticity",
+      "overhyped social media offer checkout page",
+      "generic SaaS landing page abstract benefit cards",
+      "fake BBB badge landing page trust anti pattern",
+      "buried pricing lead generation page unclear terms"
+    ],
+    "reference_archetypes_to_include": [
+      "High-trust transactional ecommerce",
+      "Secure fintech or payment-adjacent checkout marketing",
+      "Automotive service conversion pages",
+      "Dual-path B2C/B2B landing pages",
+      "Dealer or fleet service acquisition pages",
+      "Proof-led landing pages with sample output"
+    ],
+    "reference_archetypes_to_avoid": [
+      "Luxury automotive brand campaigns",
+      "Pure editorial automotive content sites",
+      "Generic consumer coupon sites",
+      "Abstract enterprise SaaS homepages",
+      "Lead-only pages with no immediate purchase path",
+      "Aggressive affiliate arbitrage pages"
+    ],
+    "must_include_reference_traits": [
+      "Legitimacy proof visible early",
+      "Clear action paths for different audience types",
+      "Transparent pricing or savings framing",
+      "Secure payment and guarantee reassurance",
+      "Low-friction sample or preview proof",
+      "Businesslike visual restraint"
+    ],
+    "must_include_negative_traits": [
+      "Vague official-product claims",
+      "Fake urgency and exaggerated discount presentation",
+      "Buried refund or delivery details",
+      "Generic trust badges without specificity",
+      "Dealer path hidden below consumer content",
+      "Visual clutter that resembles a scam or coupon aggregator"
+    ]
+  },
+  "downstream_constraints": {
+    "architect_must_obey": [
+      "Provide a clear strategic path for both individual report buyers and dealer volume users.",
+      "Do not require visitors to read long explanatory content before understanding legitimacy, price/value, and next step.",
+      "Make a low-commitment proof path available for skeptical visitors.",
+      "Sequence trust before or alongside conversion prompts, not after them.",
+      "Ensure dealer value and next step are prominent enough to support higher-LTV acquisition.",
+      "Account for both warm referral visitors and cold social visitors in the information sequence.",
+      "Avoid overcomplicating the individual purchase decision with dealer-only details."
+    ],
+    "visual_designer_must_obey": [
+      "Use a polished utility posture that feels secure, legitimate, and businesslike.",
+      "Avoid bargain-bin coupon aesthetics, fake urgency, and exaggerated promotional treatment.",
+      "Make trust evidence visually credible without relying on unsupported or generic badges.",
+      "Differentiate the individual and dealer paths clearly while keeping them part of one coherent brand experience.",
+      "Do not imitate official Carfax branding in a way that could be legally misleading.",
+      "Use visual hierarchy to reduce skepticism and support quick comprehension rather than decorative expressiveness.",
+      "Keep mobile visual density controlled so trust and action remain readable."
+    ],
+    "frontend_implementer_must_obey": [
+      "Prioritize fast mobile load and responsive readability for cold social and marketplace traffic.",
+      "Make form interactions for VIN purchase and dealer contact simple, accessible, and error-tolerant.",
+      "If VIN entry is present, validate gracefully without blocking comprehension of the offer.",
+      "Surface refund, delivery, security, and support details before final commitment in the flow.",
+      "Use secure payment handling and avoid UI patterns that obscure charges or terms.",
+      "Ensure sample report access is low friction and works reliably across devices.",
+      "Preserve accessibility for all CTAs, proof links, forms, and trust disclosures."
+    ],
+    "evaluator_must_check": [
+      "Whether the first viewport establishes product category, legitimacy, and both audience paths.",
+      "Whether trust proof is specific, early, and relevant to discounted official Carfax resale.",
+      "Whether individual buyers can understand how to buy one report quickly.",
+      "Whether dealers receive enough value framing, terms context, and next-step confidence.",
+      "Whether the page avoids scam-like discount aesthetics and unsupported authority claims.",
+      "Whether mobile users can find proof and action paths without excessive scrolling or friction.",
+      "Whether sample report or equivalent proof is available for hesitant visitors."
+    ]
+  },
+  "assumptions": [
+    {
+      "assumption": "The business can legally and accurately describe the reports as official Carfax reports.",
+      "why_needed": "The entire trust strategy depends on authentic product claims.",
+      "risk_if_wrong": "The site must avoid official-language claims and would need a different positioning focused on transparency about report source and limitations."
+    },
+    {
+      "assumption": "Some verifiable legitimacy proof exists or can be obtained.",
+      "why_needed": "The brief requires credibility before action feels safe.",
+      "risk_if_wrong": "Conversion potential will be capped because the page cannot credibly overcome scam perception."
+    },
+    {
+      "assumption": "Individual checkout can be completed through a secure and reasonably fast flow.",
+      "why_needed": "The primary action is a single-click-style VIN-to-pay-to-PDF purchase.",
+      "risk_if_wrong": "The page would need to set different expectations and rely more on contact/support, reducing immediacy."
+    },
+    {
+      "assumption": "Dealer access has distinct economics or terms worth presenting separately.",
+      "why_needed": "Dealer LTV is higher and dealers need volume pricing, terms, and legitimacy proof.",
+      "risk_if_wrong": "A dedicated dealer path may overpromise differentiation and should be simplified."
+    },
+    {
+      "assumption": "The sample report can be shown without legal, privacy, or licensing issues.",
+      "why_needed": "The sample report is identified as a trust-building CTA for both segments.",
+      "risk_if_wrong": "An alternative proof mechanism will be needed, such as redacted screenshots, process explanation, or third-party verification."
+    }
+  ],
+  "open_questions": [
+    {
+      "question": "What exact authorization, reseller, or partner status can be truthfully claimed?",
+      "why_it_matters": "This determines the strongest permissible legitimacy language and proof hierarchy.",
+      "which_downstream_decision_it_affects": "Copy claims, trust proof selection, legal-safe visual treatment, and evaluator validation.",
+      "blocking": false
+    },
+    {
+      "question": "What is the individual report price and how much does it save versus direct Carfax pricing?",
+      "why_it_matters": "The discount is the hook, but vague savings can feel suspicious.",
+      "which_downstream_decision_it_affects": "Value framing, pricing clarity, first viewport messaging, and CTA confidence.",
+      "blocking": false
+    },
+    {
+      "question": "What are the dealer pricing tiers, minimum volume requirements, and contract terms?",
+      "why_it_matters": "Dealer buyers need enough information to judge whether contacting or signing up is worthwhile.",
+      "which_downstream_decision_it_affects": "Dealer path depth, lead qualification, proof needs, and conversion event definition.",
+      "blocking": false
+    },
+    {
+      "question": "Which trust assets are real and available for display?",
+      "why_it_matters": "Trust signals must be specific and verifiable; fake or generic badges are a high-severity anti-pattern.",
+      "which_downstream_decision_it_affects": "Proof strategy, visual hierarchy, legal compliance, and score caps.",
+      "blocking": false
+    },
+    {
+      "question": "How quickly is the PDF delivered after purchase and what support exists if delivery fails?",
+      "why_it_matters": "Delivery certainty is part of purchase safety for urgent individual buyers.",
+      "which_downstream_decision_it_affects": "Checkout expectation, refund language, support messaging, and functional clarity.",
+      "blocking": false
+    },
+    {
+      "question": "Are Carfax logos, report screenshots, and brand marks permitted under the reseller arrangement?",
+      "why_it_matters": "Visual credibility must not cross into misleading or infringing brand imitation.",
+      "which_downstream_decision_it_affects": "Visual design constraints, proof presentation, and legal-safe copy.",
+      "blocking": false
+    }
+  ],
+  "confidence": {
+    "overall": 0.88,
+    "archetype_confidence": 0.92,
+    "audience_confidence": 0.95,
+    "business_goal_confidence": 0.93,
+    "visual_posture_confidence": 0.82,
+    "risk_trust_confidence": 0.96,
+    "confidence_level": "high"
+  },
+  "evidence": {
+    "brief_signals_used": [
+      "The brief states the purpose is to convert visitors into paying customers for discounted official Carfax reports.",
+      "The brief names two distinct segments: individual one-time buyers and dealers needing continuous access.",
+      "The brief states dealer LTV is substantially higher than individual LTV.",
+      "The brief states legitimacy as a reseller must be established before either action feels safe.",
+      "Individual buyers decide in under 60 seconds and will bounce if the page reads as scammy.",
+      "Dealer users are expert, methodical, and want volume pricing, terms, legitimacy proof, and possibly human contact.",
+      "Entry traffic includes warm word-of-mouth and cold social media.",
+      "Key actions include buy report now, set up dealer access, and see a sample report."
+    ],
+    "inference_notes": [
+      {
+        "inference": "The website is a hybrid B2C/B2B conversion landing page.",
+        "supporting_signal": "It must convert both individual used-car buyers and dealer subscription prospects.",
+        "confidence": 0.94
+      },
+      {
+        "inference": "Trust burden is high.",
+        "supporting_signal": "The brief repeatedly emphasizes scam concern, reseller legitimacy, official report status, and trust signals.",
+        "confidence": 0.97
+      },
+      {
+        "inference": "Functional immediacy is high.",
+        "supporting_signal": "Individual buyers decide in under 60 seconds and need a VIN-to-pay-to-PDF path.",
+        "confidence": 0.92
+      },
+      {
+        "inference": "Aesthetic stakes are medium rather than taste-critical.",
+        "supporting_signal": "Visual quality matters to avoid scam perception, but the product is transactional and utility-driven rather than lifestyle, luxury, or brand-expression-led.",
+        "confidence": 0.82
+      },
+      {
+        "inference": "Content depth should be layered.",
+        "supporting_signal": "Individuals need speed and basic reassurance, while dealers need more methodical pricing, terms, and legitimacy information.",
+        "confidence": 0.9
+      },
+      {
+        "inference": "Dealer path requires stronger business credibility than consumer checkout.",
+        "supporting_signal": "Dealers are expert, compare Carfax and AutoCheck, need recurring access, and may want to talk to a person.",
+        "confidence": 0.88
+      }
+    ],
+    "weak_or_missing_signals": [
+      "No exact pricing or savings amounts are provided.",
+      "No specific proof assets are confirmed as available.",
+      "No legal details are provided about reseller authorization or permissible use of Carfax branding.",
+      "No traffic mix estimate is provided between individual buyers and dealers.",
+      "No checkout or dealer onboarding mechanics are specified beyond desired exit paths."
+    ]
+  },
+  "validator_notes": [
+    "Repair added an explicit first-viewport hard floor requiring the official discounted Carfax offer, legitimacy or safety proof, individual purchase path, dealer access path, savings cue, and sample/proof option to be visible or immediately reachable on desktop and mobile.",
+    "Repair added a direct absolute score cap for failing the combined first-viewport obligation.",
+    "Repair raised functional_clarity weight to 0.17 and rebalanced lower-priority categories so evaluator weights still sum to exactly 1.0.",
+    "The diagnosis intentionally treats visual beauty as trust-supporting polished utility, not as expressive brand design.",
+    "The primary archetype is hybrid because the brief explicitly combines B2C self-serve purchase and B2B recurring dealer acquisition.",
+    "No detailed page layout or component design is prescribed; obligations are strategic constraints for downstream agents.",
+    "Legal-safe handling of Carfax marks and reseller claims should be verified before final copy or visual execution."
+  ]
+}

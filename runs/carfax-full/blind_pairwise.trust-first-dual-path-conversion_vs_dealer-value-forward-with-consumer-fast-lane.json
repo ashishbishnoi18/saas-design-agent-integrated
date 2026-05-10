@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-dual-path-conversion",
+  "candidate_b": "dealer-value-forward-with-consumer-fast-lane",
+  "winner": "B",
+  "confidence": 0.74,
+  "perception": {
+    "who_is_this_for_a": "Used-car buyers who need one official Carfax report quickly, with a visible secondary path for dealerships needing volume access.",
+    "who_is_this_for_b": "Dealers and high-volume buyers first, with a clear fast lane for individuals who only need one official Carfax report.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "B",
+    "trust_more_visible": "B",
+    "mobile_more_usable": "A",
+    "diagnosis_fit_from_screenshots": "B"
+  },
+  "reasoning": "Candidate A has the cleaner consumer-first purchase flow: the headline, VIN field, price, refund note, Stripe note, dealer card, and sample-report link are all easy to understand above the fold. However, its perceived legitimacy is weakened by generic branding and visible placeholder business details such as legal entity and address placeholders. For a high-skepticism discounted Carfax reseller, that is a major trust problem. Candidate B is more dealer-forward, but it still gives individuals a prominent one-report purchase card with VIN entry, price, delivery promise, guarantee, and sample link. More importantly, it makes legitimacy and dealer seriousness much more visible: named brand, authorized reseller language, report volume, Stripe, money-back guarantee, dealer pricing tiers, business identity, authorization details, reviews, comparison table, FAQ answers, and a clear dealer access form. B better supports the higher-LTV dealer path while still preserving a workable consumer fast lane. Its mobile header is less polished and appears cramped/cut off, but overall it better satisfies the trust-heavy hybrid brief.",
+  "blocking_visual_issue_a": "Visible placeholder trust and business-identity details, plus generic 'Brand' labeling, make the page feel unfinished and undermine reseller legitimacy.",
+  "blocking_visual_issue_b": "Mobile navigation appears overcrowded or horizontally clipped, and the hero is dealer-first enough that some individual buyers may initially feel secondary."
+}

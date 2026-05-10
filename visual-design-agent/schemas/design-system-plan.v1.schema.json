@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DesignSystemPlanV1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "visual_strategy_summary",
+    "brand_posture",
+    "density_policy",
+    "typography_policy",
+    "color_policy",
+    "spacing_policy",
+    "component_visual_treatments",
+    "first_viewport_visual_contract",
+    "responsive_visual_contract",
+    "accessibility_risks",
+    "structure_change_requests",
+    "implementation_notes"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": "design_system_plan.v1"},
+    "visual_strategy_summary": {"type": "string", "minLength": 20},
+    "brand_posture": {"type": "string", "minLength": 5},
+    "density_policy": {"type": "string", "minLength": 5},
+    "typography_policy": {"type": "object"},
+    "color_policy": {"type": "object"},
+    "spacing_policy": {"type": "object"},
+    "component_visual_treatments": {"type": "array", "items": {"type": "object"}},
+    "first_viewport_visual_contract": {"type": "array", "items": {"type": "string"}},
+    "responsive_visual_contract": {"type": "array", "items": {"type": "string"}},
+    "accessibility_risks": {"type": "array", "items": {"type": "string"}},
+    "structure_change_requests": {"type": "array", "items": {"type": "object"}},
+    "implementation_notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

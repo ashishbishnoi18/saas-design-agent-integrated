@@ -1,0 +1,18 @@
+{
+  "candidate_a": "workflow-first-reservation-rescue-strategy",
+  "candidate_b": "example-alert-proof-strategy",
+  "winner": "A",
+  "confidence": 0.66,
+  "perception": {
+    "who_is_this_for_a": "A one-trip Disney planner who wants to start a Be Our Guest or similar cancellation alert immediately, with enough reassurance that Disney login is not required.",
+    "who_is_this_for_b": "A skeptical Disney dining shopper who wants to see what an alert looks like and understand the no-login model before starting.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "A",
+    "trust_more_visible": "B",
+    "mobile_more_usable": "B",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate A better satisfies the core first-viewport obligation: the visitor can see the product promise, no-Disney-login reassurance, official Disney handoff, proof cues, and the actual free alert setup form with restaurant, dates, party size, and alert channel. That is closer to the primary conversion and reduces ambiguity about what happens next. Candidate B is stronger as proof marketing: the sample SMS alert is concrete, the no-login statement is prominent, and the mobile hero is cleaner. But it makes the user click a generic CTA before seeing the actual setup path, so it is less immediate for the primary free-alert task. B may build confidence faster, but A gets a family planner to the concrete action faster.",
+  "blocking_visual_issue_a": "Mobile header/navigation is visibly cramped and partially broken, and the form submit action is not visible in the first mobile viewport.",
+  "blocking_visual_issue_b": "The first viewport does not show the actual free alert criteria entry path, only a CTA button, which weakens functional immediacy."
+}

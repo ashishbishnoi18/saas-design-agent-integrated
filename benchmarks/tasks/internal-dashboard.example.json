@@ -1,0 +1,24 @@
+{
+  "task_id": "internal-saas-compliance-dashboard",
+  "page_family": "internal_product",
+  "raw_brief": "Design an internal SaaS dashboard page for compliance managers who need to triage expiring vendor documents, assign follow-up owners, and understand which renewals are blocking procurement. The page is used daily by trained users under time pressure.",
+  "optional_business_context": "The product is a B2B operations platform. This page is not marketing; it is a dense work surface for repeat use.",
+  "optional_known_constraints": "The design must include empty/loading/error considerations and preserve bulk action reachability on desktop.",
+  "benchmark_contract": {
+    "first_viewport_must": [
+      "Show the highest-risk expiring items or a summary of risk buckets immediately.",
+      "Expose triage controls without making the page feel like a landing page.",
+      "Make ownership/status legible."
+    ],
+    "success_criteria": [
+      "A trained user can identify the next 3 actions without reading marketing copy.",
+      "The architecture accounts for table density, filters, bulk actions, and escalation states.",
+      "Mobile degrades into a viable review/triage path rather than a broken table."
+    ],
+    "forbidden_patterns": [
+      "Marketing hero on an internal product page.",
+      "Cards-only layout that hides sortable operational data.",
+      "No plan for empty, loading, or error states."
+    ]
+  }
+}

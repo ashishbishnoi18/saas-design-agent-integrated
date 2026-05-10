@@ -1,0 +1,18 @@
+{
+  "candidate_a": "coverage-confidence-strategy",
+  "candidate_b": "example-alert-proof-strategy",
+  "winner": "B",
+  "confidence": 0.68,
+  "scores": {
+    "business_outcome_fit": "tie",
+    "objection_resolution": "B",
+    "first_viewport": "B",
+    "mobile_path": "B",
+    "strategy_commitment": "B",
+    "trope_risk": "B"
+  },
+  "reasoning": "Both candidates fail the same programmatic gate pattern, so the relative judgment comes down to rendered architecture. Candidate A has the stronger immediate task surface on desktop because the free-alert form is visible and restaurant-specific coverage appears quickly, which is valuable for paid-search users arriving with Be Our Guest or Space 220 intent. However, Candidate B resolves the core trust objection more efficiently: the first viewport pairs the CTA with a concrete sample alert, explicit official-handoff language, no-login reassurance, and latency proof. That is a better fit for a skeptical third-party Disney tool where users need to understand what they will receive before acting. B also has the stronger mobile path: the mobile first fold shows the headline, full-width primary CTA, no-login reassurance, handoff explanation, and the sample alert beginning below; A's mobile fold shows trust and the form card beginning, but the primary action itself is not visible above the fold in the supplied viewport. First viewport also favors B because its stats section peeks below the fold and the sample alert makes the hero feel product-specific, while A's desktop hero has too much inert whitespace before the main content and the coverage section only barely appears. Strategy commitment is clearer in B: the example-alert-proof strategy is unmistakably executed by the hero artifact. A executes coverage-confidence competently, but its coverage proof lives below the fold and the hero reads partly as a generic SaaS signup form. Trope risk is lower for B despite several uniform card rows because the hero's notification artifact is a domain-specific structural move; A leans harder on form card plus coverage grid plus step cards plus pricing cards, which feels more template-like.",
+  "best_reusable_move_a": "The desktop hero form with restaurant as field one is the clearest low-friction conversion mechanism and should be reused, especially for paid-search visitors who already know the restaurant they want.",
+  "best_reusable_move_b": "The first-viewport sample alert is the strongest trust and comprehension move: it shows the product output, the official Disney handoff, the restaurant/date/party specificity, and speed proof before asking for commitment.",
+  "synthesis_recommended": true
+}

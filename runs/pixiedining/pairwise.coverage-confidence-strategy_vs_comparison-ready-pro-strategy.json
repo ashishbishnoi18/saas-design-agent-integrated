@@ -1,0 +1,18 @@
+{
+  "candidate_a": "coverage-confidence-strategy",
+  "candidate_b": "comparison-ready-pro-strategy",
+  "winner": "A",
+  "confidence": 0.78,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "A",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A better matches the strongest search-intent problem: users arrive looking for a specific Disney restaurant, and the hero names Be Our Guest, Space 220, and Cinderella's Royal Table while placing the free alert form in the first viewport. That creates a direct path from recognition to action. Candidate B has a polished first fold with a sample alert, but it does not let the user start configuring an alert in the viewport, so the primary conversion path is more abstract. A also resolves the no-login objection more concretely and visibly with a dedicated trust badge plus official handoff note near the form. B's first viewport trust copy is present, but it is compressed into microcopy under a CTA. On mobile, A gives headline, trust badge, handoff context, and the alert form beginning in the first viewport; B gives CTA and sample proof, but the actual setup task is farther away. Strategy commitment is also stronger for A because the coverage-confidence concept is visible immediately and reinforced by the first below-fold coverage grid. B commits to comparison-ready Pro later in the page, but the first fold reads more like a generic SaaS alert landing page. Programmatically, both fail the gate, but B has a more severe coherence failure with multiple missing and unjustified components, while A has a count mismatch and one placeholder missing component. Trope risk is lower for A: it still uses uniform card rows, pricing cards, and FAQ, but the restaurant-specific form plus coverage-first structure is more domain-specific than B's trust strip, four-step row, coverage grid, comparison table, testimonial cards, FAQ, and final CTA sequence.",
+  "best_reusable_move_a": "The hero-side free alert form with restaurant as the first field, paired with the no-login badge and official Disney handoff note, is the strongest conversion move.",
+  "best_reusable_move_b": "The sample alert card in the first viewport is a useful proof asset that makes the product output concrete before signup.",
+  "synthesis_recommended": true
+}

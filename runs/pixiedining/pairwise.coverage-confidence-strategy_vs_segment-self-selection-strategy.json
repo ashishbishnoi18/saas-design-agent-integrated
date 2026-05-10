@@ -1,0 +1,18 @@
+{
+  "candidate_a": "coverage-confidence-strategy",
+  "candidate_b": "segment-self-selection-strategy",
+  "winner": "B",
+  "confidence": 0.68,
+  "scores": {
+    "business_outcome_fit": "tie",
+    "objection_resolution": "B",
+    "first_viewport": "B",
+    "mobile_path": "B",
+    "strategy_commitment": "tie",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A has the cleaner search-intent move: it names Be Our Guest, Space 220, and Cinderella's Royal Table immediately and puts restaurant coverage right after the hero, which is strong for paid-search users arriving with a specific venue in mind. Candidate B is stronger as a conversion architecture for the full brief: the first viewport pairs the free action with a tangible sample alert, no-login trust, official handoff framing, and proof, while the mobile first fold keeps the primary CTA reachable. Candidate A's mobile viewport buries the CTA below the visible fold because the form starts before the button, which is a serious first-task failure. Candidate B also resolves the three-audience problem more explicitly through optional routing and dedicated proof sections, although it is more generic structurally. Programmatically both are gated at score 5 due Section 12 count mismatches, but A has an additional missing-component coherence failure, so B is the better relative candidate despite higher trope risk.",
+  "best_reusable_move_a": "Lead with named restaurant coverage and use the coverage grid as both search-intent proof and natural Pro upgrade motivation.",
+  "best_reusable_move_b": "Pair the free alert CTA with a realistic sample alert preview and keep the no-login/official-handoff safety model in the first decision group.",
+  "synthesis_recommended": true
+}

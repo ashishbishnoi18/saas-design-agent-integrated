@@ -1,0 +1,24 @@
+{
+  "task_id": "utility-saas-public-homepage",
+  "page_family": "public_marketing",
+  "raw_brief": "Design a public homepage for a utility SaaS that helps operations teams monitor vendor documents, renewal dates, and compliance tasks. The audience is mid-market operations managers who need fast confidence that the product reduces missed deadlines without creating another heavy implementation project.",
+  "optional_business_context": "Sales-led B2B SaaS. Primary action is booking a demo. Secondary action is viewing a sample workflow.",
+  "optional_known_constraints": "Do not rely on consumer-style lifestyle visuals. The page must communicate operational reliability and low implementation burden.",
+  "benchmark_contract": {
+    "first_viewport_must": [
+      "Make the operational risk concrete before asking for a demo.",
+      "Show a primary action and a low-friction secondary action above the fold.",
+      "Include at least one proof/risk-reduction signal near the action."
+    ],
+    "success_criteria": [
+      "The buyer understands who the product is for within the first viewport.",
+      "The page distinguishes deadline/compliance risk from generic project management.",
+      "Mobile preserves the primary action and a proof signal above the fold."
+    ],
+    "forbidden_patterns": [
+      "Generic hero plus three feature cards.",
+      "Equal-weight logo/testimonial grid before explaining the operational job.",
+      "CTA-only hero with no risk reducer."
+    ]
+  }
+}

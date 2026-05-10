@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SaaSDesignBenchmarkTask",
+  "type": "object",
+  "required": ["task_id", "page_family", "raw_brief", "benchmark_contract"],
+  "additionalProperties": true,
+  "properties": {
+    "task_id": {"type": "string", "minLength": 3},
+    "page_family": {
+      "type": "string",
+      "enum": ["public_marketing", "internal_product", "hybrid", "pricing", "comparison", "docs_developer", "onboarding"]
+    },
+    "raw_brief": {"type": "string", "minLength": 40},
+    "optional_business_context": {"type": "string"},
+    "optional_known_constraints": {"type": "string"},
+    "optional_user_preferences": {"type": "string"},
+    "optional_existing_site_or_brand_notes": {"type": "string"},
+    "benchmark_contract": {
+      "type": "object",
+      "required": ["first_viewport_must", "success_criteria", "forbidden_patterns"],
+      "additionalProperties": true,
+      "properties": {
+        "first_viewport_must": {"type": "array", "items": {"type": "string"}},
+        "success_criteria": {"type": "array", "items": {"type": "string"}},
+        "forbidden_patterns": {"type": "array", "items": {"type": "string"}},
+        "human_judging_notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_a": "workflow-first-reservation-rescue-strategy",
+  "candidate_b": "segment-self-selection-strategy",
+  "winner": "B",
+  "confidence": 0.78,
+  "scores": {
+    "business_outcome_fit": "tie",
+    "objection_resolution": "B",
+    "first_viewport": "A",
+    "mobile_path": "B",
+    "strategy_commitment": "B",
+    "trope_risk": "B"
+  },
+  "reasoning": "Candidate A has the stronger desktop first viewport: the alert form, restaurant/date/party inputs, no-login trust trio, sample alert, and proof bar are all visible and conversion-ready. But A fails more deterministic gates: missing/unjustified components, Section 12 count mismatch, and mobile horizontal overflow. Its mobile screenshot also crops the nav/login area and pushes the primary CTA below the first viewport, weakening the mobile conversion path. Candidate B has a less efficient desktop first fold because the form/CTA stack is lower and the extra full-width CTA creates some spatial awkwardness, but it preserves the core mobile path: headline, no-login trust, primary CTA, risk reducer, and sample alert preview are reachable without layout breakage. B also executes the segment-self-selection strategy more faithfully across the full page with separate family, superfan, pricing, and agency paths, while A's workflow-first strategy mostly reads as a strong action-first landing page with a conventional how-it-works section below. Both have trope exposure from equal card rows, pricing cards, testimonial cards, and FAQ-like sections, but A is more dominated by generic SaaS section sequencing and has worse programmatic/render risk.",
+  "best_reusable_move_a": "The desktop hero is the best reusable move: split copy plus embedded alert widget plus trust trio and compact alert preview gives high-intent users a real setup path while resolving no-login and official-handoff concerns immediately.",
+  "best_reusable_move_b": "The segment-specific depth sequence is the best reusable move: family safety proof, superfan cadence/comparison tables, and agency inquiry are separated cleanly so expert and professional users get relevant proof without polluting the hero.",
+  "synthesis_recommended": true
+}

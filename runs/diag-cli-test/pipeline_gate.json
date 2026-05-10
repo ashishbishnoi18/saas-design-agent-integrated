@@ -1,0 +1,6 @@
+{
+  "deterministic_passed": true,
+  "semantic_passed": true,
+  "safe_to_pass_downstream": true,
+  "architect_allowed": true
+}

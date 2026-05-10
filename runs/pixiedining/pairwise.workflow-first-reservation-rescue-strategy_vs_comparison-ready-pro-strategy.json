@@ -1,0 +1,18 @@
+{
+  "candidate_a": "workflow-first-reservation-rescue-strategy",
+  "candidate_b": "comparison-ready-pro-strategy",
+  "winner": "B",
+  "confidence": 0.68,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "B",
+    "first_viewport": "A",
+    "mobile_path": "B",
+    "strategy_commitment": "B",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A has the stronger desktop first viewport for the primary free-signup outcome: the actual alert setup widget, restaurant/date/party inputs, no-login trust bullets, official-site handoff, and proof bar are all visible immediately. That is a better free-alert conversion architecture than Candidate B's CTA-only hero. However, Candidate A fails the mobile path materially: the mobile nav overflows/crops, the form pushes the CTA below the first viewport, and the programmatic gate confirms horizontal overflow. Candidate B preserves a clean mobile first task with a visible primary CTA, no-login trust line, and sample alert path, and its page more clearly commits to the comparison-ready Pro strategy through performance, cadence, notification-channel, and tier-table sections. Both candidates fail programmatic coherence gates, but B's render is healthier because it avoids mobile overflow. A has slightly lower trope risk because the embedded form/action island is more product-specific than B's more standard SaaS hero plus trust strip plus card-row sequence.",
+  "best_reusable_move_a": "The split hero with a real free-alert setup widget beside no-login and official-site trust signals is the strongest primary conversion move across the pair.",
+  "best_reusable_move_b": "The dedicated performance/comparison zone with polling cadence, notification channels, and Pro feature deltas is the strongest Segment B paid-conversion move.",
+  "synthesis_recommended": true
+}

@@ -1,0 +1,393 @@
+{
+  "judges": [
+    "strategy_fit",
+    "first_viewport",
+    "conversion_or_task_path",
+    "mobile_path",
+    "anti_pattern_taste"
+  ],
+  "candidates": {
+    "sample-report-proof-led-path": {
+      "panel_average": 7.5,
+      "panel_scores": {
+        "strategy_fit": 8.0,
+        "first_viewport": 7.0,
+        "conversion_or_task_path": 8.0,
+        "mobile_path": 7.3,
+        "anti_pattern_taste": 7.2
+      },
+      "hard_failures": [],
+      "raw_results": [
+        {
+          "candidate": "sample-report-proof-led-path",
+          "judge": "strategy_fit",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page visibly follows the assigned sample-report-proof-led strategy: the first viewport clearly states official Carfax reports, shows a realistic sample preview, pairs the VIN purchase CTA with refund/payment/delivery proof, includes transparent $9.99 savings framing, and gives dealers visible routes through nav and volume-pricing links.",
+          "top_failure": "Dealer acquisition is credible later on the page but somewhat underweighted in the first viewport, where the dealer path is mostly a text link rather than a materially differentiated secondary CTA. Some trust assets also read as placeholder or potentially unsubstantiated, such as generic [BBB]/[SSL] badges and broad volume claims.",
+          "revision_directive": "Keep the sample-report-led hero, but strengthen first-viewport dual-path self-selection by adding a clear secondary dealer CTA or compact dealer card near the individual CTA. Replace placeholder trust badges with specific, verifiable proof; clarify legal-safe reseller/authorization language; and make refund, delivery, payment security, and business identity evidence feel concrete rather than generic."
+        },
+        {
+          "candidate": "sample-report-proof-led-path",
+          "judge": "first_viewport",
+          "score": 7.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The first viewport quickly communicates the core individual offer: official Carfax reports for $9.99, direct VIN entry, savings versus carfax.com, refund/payment/delivery reassurance, and a visible sample report preview that makes the discounted offer feel more concrete.",
+          "top_failure": "Dealer self-selection is present but too lightweight for the higher-LTV segment: it is mostly a small nav/link rather than a materially credible dealer path with above-the-fold volume value, terms, or business-contact confidence. On mobile, the sample proof path is also only partially exposed.",
+          "revision_directive": "Keep the strong VIN-to-report hero, but add a more prominent above-the-fold dealer lane or secondary CTA with a concise value cue such as volume pricing, net terms/API access, or talk-to-specialist. Add a verifiable business/reseller legitimacy line near the CTA, and ensure mobile exposes a clear 'View sample report' action without requiring the user to reach the bottom edge of the viewport."
+        },
+        {
+          "candidate": "sample-report-proof-led-path",
+          "judge": "conversion_or_task_path",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page creates a credible high-immediacy purchase path: official Carfax wording, $9.99 pricing, VIN entry, clear primary CTA, refund/payment/delivery chips, savings comparison, and a prominent sample report proof area all appear early enough to reduce skepticism before action.",
+          "top_failure": "The dealer path is present but relatively underweighted in the first viewport; it relies mostly on a nav/text link before the stronger volume pricing and dealer CTA appear much lower on the page. Some trust proof also feels generic or placeholder-like rather than fully verifiable.",
+          "revision_directive": "Add a more explicit above-the-fold dealer self-selection option, such as a secondary hero button or compact dealer card with volume savings and 'Talk to a dealer specialist.' Make the sample report CTA more visible on mobile before or alongside the buy CTA. Replace placeholder trust badges with specific verifiable proof, and surface business identity or reseller-status language closer to the first commitment action."
+        },
+        {
+          "candidate": "sample-report-proof-led-path",
+          "judge": "mobile_path",
+          "score": 7.3,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Mobile keeps the primary individual path highly reachable: the official Carfax offer, price, VIN field, large thumb-friendly purchase CTA, trust strip, refund/payment/delivery chips, savings cue, and dealer path are all visible within the first screen.",
+          "top_failure": "The sample-report proof path is weakened on mobile: the header hides the Sample Report link and the sample preview only begins at the bottom of the viewport, so skeptical cold users do not get an immediately actionable proof option before the buy CTA.",
+          "revision_directive": "On mobile, add an explicit low-friction 'View sample report' link or secondary button adjacent to the VIN CTA/trust chips, not only in the preview below the fold. Preserve the large buy CTA, but improve stack priority by showing three immediate choices: Get report, View sample, and Dealer pricing. Keep dealer access visible in the header, but make the inline dealer link larger and more button-like for thumb reach."
+        },
+        {
+          "candidate": "sample-report-proof-led-path",
+          "judge": "anti_pattern_taste",
+          "score": 7.2,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page largely avoids the major scam/coupon anti-patterns: it uses restrained, businesslike visual treatment, puts an official-report claim, price, VIN action, trust chips, dealer link, and a sample-report preview in the first experience, and the report-preview artifact makes the offer feel much more concrete than a generic SaaS landing page.",
+          "top_failure": "Several trust signals still feel too generic or potentially unsupported: placeholder-style Stripe/PayPal/BBB/SSL badges, broad claims like 2.4M+ reports delivered, invented-looking testimonials, and strong 'official Carfax' language without a visibly verifiable authorization proof create some unsubstantiated-authority risk. On mobile, the proof-led sample path is also not as immediately actionable as the desktop layout.",
+          "revision_directive": "Keep the polished utility posture and sample-report-led hero, but replace generic trust badges and placeholder authority claims with verifiable proof: specific payment processor language, real business registration details, exact reseller/authorization wording, linked refund policy, support contact, and legally safe Carfax trademark treatment. Make the mobile first viewport expose a clear 'View sample report' proof CTA before or adjacent to the buy CTA, and make the dealer path feel like a serious secondary route rather than only a text link until farther down the page."
+        }
+      ]
+    },
+    "trust-first-dual-path-conversion": {
+      "panel_average": 7.540000000000001,
+      "panel_scores": {
+        "strategy_fit": 8.0,
+        "first_viewport": 8.1,
+        "conversion_or_task_path": 7.4,
+        "mobile_path": 6.8,
+        "anti_pattern_taste": 7.4
+      },
+      "hard_failures": [],
+      "raw_results": [
+        {
+          "candidate": "trust-first-dual-path-conversion",
+          "judge": "strategy_fit",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page strongly follows the trust-first dual-path strategy: the desktop first viewport clearly states official discounted Carfax reports, shows savings, surfaces trust signals before purchase, provides a fast VIN-to-report path, exposes a sample-report proof CTA, and gives dealers a visible volume-pricing path.",
+          "top_failure": "The trust proof is directionally right but still partly placeholder-based and generic, with business identity and authorization evidence not yet concrete; on mobile, the dealer path is present mainly as a nav link/brief mention rather than a materially persuasive first-screen dealer option.",
+          "revision_directive": "Replace all placeholder legitimacy details with real verifiable business identity, authorization/reseller language, support/contact details, and legally safe proof. Strengthen mobile above-the-fold dealer self-selection with a compact dealer CTA or volume-pricing cue while preserving the individual purchase flow. Keep the current polished utility tone and dual-path structure."
+        },
+        {
+          "candidate": "trust-first-dual-path-conversion",
+          "judge": "first_viewport",
+          "score": 8.1,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop first viewport strongly satisfies the brief: it immediately says official Carfax reports, frames the discount clearly, pairs the buy CTA with Stripe/refund/report-volume trust signals, exposes a sample-report proof link, and gives dealers a distinct card with volume pricing and a dealer CTA.",
+          "top_failure": "On mobile, the dealer path is reduced to a small nav link and a passing subhead mention; a dealer can technically act without scrolling, but the higher-LTV path lacks the same above-fold value framing and credibility it gets on desktop. The placeholder brand/legal identity also weakens trust for a page where legitimacy is the main blocker.",
+          "revision_directive": "Keep the trust-first desktop structure, but add a compact mobile dual-path selector directly under the hero or trust bar: \u201cBuy one report \u2014 $24.99\u201d and \u201cDealer pricing \u2014 from $9.95/report,\u201d with the dealer CTA visible before or alongside the consumer card. Replace placeholder Brand/legal signals with a real business name and make the top trust claims verifiable or more specific."
+        },
+        {
+          "candidate": "trust-first-dual-path-conversion",
+          "judge": "conversion_or_task_path",
+          "score": 7.4,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop first viewport creates a credible dual conversion path: official Carfax framing, clear savings, VIN-to-buy flow, dealer self-selection, sample-report link, and trust cues are all visible before deeper scrolling.",
+          "top_failure": "The credibility layer is weakened by placeholder business details and somewhat generic proof signals; on mobile, the dealer path is only lightly represented above the fold via navigation rather than a substantive dealer CTA or value card.",
+          "revision_directive": "Replace all placeholder legitimacy content with specific verifiable business identity, reseller/authorization language if legally supportable, real support/contact details, and concrete refund/delivery terms. Strengthen the mobile first viewport by exposing a compact dealer-access CTA or volume-pricing cue alongside the individual purchase path without slowing the VIN purchase flow."
+        },
+        {
+          "candidate": "trust-first-dual-path-conversion",
+          "judge": "mobile_path",
+          "score": 6.8,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Mobile does a solid job for the individual buyer path: the official Carfax offer, discount, Stripe/refund/report-volume trust bar, VIN input, price, primary CTA, refund note, and sample-report link are all readable and reachable in the first mobile viewport.",
+          "top_failure": "The mobile stack effectively hides the higher-LTV dealer path behind a small header link. There is no above-the-fold dealer CTA, pricing cue, or self-selection card on mobile, so the page becomes consumer-first despite the dual-path strategy.",
+          "revision_directive": "Revise the mobile first viewport to expose true dual-path self-selection. After the hero copy, add a compact two-option block or segmented CTA row: \u201cBuy one report \u2014 $24.99\u201d and \u201cDealer volume pricing \u2014 from $9.95/report.\u201d Keep the VIN purchase card prominent, but reduce vertical height enough that dealer access and sample-report proof are not pushed to the edge or below the fold. Make the dealer action a real tap target with value framing, not just a small nav link. Consider a sticky mobile action bar with Buy report, Dealer pricing, and Sample report anchors."
+        },
+        {
+          "candidate": "trust-first-dual-path-conversion",
+          "judge": "anti_pattern_taste",
+          "score": 7.4,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page avoids the biggest diagnosis-specific anti-patterns: it is restrained rather than coupon-like, establishes official Carfax report clarity early, places trust cues adjacent to the purchase CTA, and gives dealers a materially visible path with pricing rather than burying them in a footer.",
+          "top_failure": "Several trust signals still feel placeholder or potentially unsubstantiated: the generic Brand identity, grey badge blocks, legal-entity placeholders, large volume claims, and authorized-reseller language would be dangerous if not backed by real verifiable proof. On mobile, the dealer path is present but comparatively lightweight versus the individual purchase flow.",
+          "revision_directive": "Keep the polished utility posture, but replace every placeholder trust asset with real verifiable details: legal entity, address, reseller/authorization language reviewed for legal accuracy, support contact, real sample report proof, and substantiated delivery/report-volume claims. Make the mobile first viewport show a more explicit dealer access CTA or segmented path choice without weakening the fast VIN purchase flow. Add credible proof presentation, not generic badges or decorative trust icons."
+        }
+      ]
+    },
+    "task-first-purchase-with-proof-guardrails": {
+      "panel_average": 7.7,
+      "panel_scores": {
+        "strategy_fit": 8.3,
+        "first_viewport": 7.4,
+        "conversion_or_task_path": 8.0,
+        "mobile_path": 7.2,
+        "anti_pattern_taste": 7.6
+      },
+      "hard_failures": [],
+      "raw_results": [
+        {
+          "candidate": "task-first-purchase-with-proof-guardrails",
+          "judge": "strategy_fit",
+          "score": 8.3,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Strong visible execution of the assigned task-first strategy: the first viewport immediately presents official Carfax reports, $9.99 pricing, savings versus carfax.com, VIN-to-report purchase flow, adjacent trust cues, a sample report link, and a dealer access path. The full page then layers legitimacy proof, sample output, comparison, dealer tiers, refund terms, FAQ, and final purchase CTA in a sequence that matches the diagnosis well.",
+          "top_failure": "Some trust claims feel placeholder-like or potentially risky if not verifiable, especially BBB A+, authorized data access, registration number, and partner-agreement language. Mobile also prioritizes the consumer path well, but the dealer path is mostly a top banner plus partially visible card, so dealer seriousness is slightly weaker above the fold than on desktop.",
+          "revision_directive": "Keep the task-first VIN purchase hero, but harden the proof layer: replace placeholder trust claims with verifiable business identity, clickable verification, precise reseller/authorization wording, and legally safe Carfax trademark treatment. On mobile, make the dealer path a clearer compact secondary CTA with pricing cue visible before the fold, while preserving the consumer VIN flow and sample report link."
+        },
+        {
+          "candidate": "task-first-purchase-with-proof-guardrails",
+          "judge": "first_viewport",
+          "score": 7.4,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop first viewport is highly clear and conversion-ready: it states official Carfax reports, price, savings, delivery time, VIN-to-buy path, sample report link, dealer access card, and multiple trust cues without requiring scrolling.",
+          "top_failure": "Trust is still somewhat fragile because the brand identity is placeholder-like and several proof points feel generic or unverifiable; on mobile, the dealer path is only partially visible/actionable and the stronger trust bar is below the first viewport.",
+          "revision_directive": "Keep the task-first layout, but strengthen first-screen legitimacy: replace placeholder branding with a real business identity, make proof points verifiable, move at least one stronger trust signal above or beside the mobile CTA, and make the mobile dealer path a clearly tappable first-viewport CTA rather than only a thin banner/partially visible card."
+        },
+        {
+          "candidate": "task-first-purchase-with-proof-guardrails",
+          "judge": "conversion_or_task_path",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page creates a clear, credible dual conversion path: individuals get an immediate VIN-to-report purchase flow with price, delivery, refund, secure checkout, and sample-report cues, while dealers are recognized early with a separate volume-access card, pricing anchor, and later lead/contact section.",
+          "top_failure": "The first commitment CTA still appears slightly ahead of the strongest legitimacy proof, especially on mobile, and several trust signals read as placeholder or generic rather than verifiable business evidence, which weakens confidence for cold skeptical visitors.",
+          "revision_directive": "Move one or two concrete verification signals directly above or beside the primary VIN CTA, such as verified business identity, payment processor protection, and authorized/official report sourcing language. Replace placeholder-like trust claims with verifiable details, make the sample report feel more real than gray preview blocks, and ensure the mobile first viewport shows the dealer path, sample proof, and safety proof without requiring interpretation."
+        },
+        {
+          "candidate": "task-first-purchase-with-proof-guardrails",
+          "judge": "mobile_path",
+          "score": 7.2,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The mobile first viewport preserves the essential task path: official Carfax report positioning, $9.99 price, savings cue, VIN input, primary purchase CTA, refund/security/official-data microproof, sample report link, and an early dealer route are all reachable without hunting.",
+          "top_failure": "The mobile stack is action-forward but under-proves legitimacy in the first screen: the strongest credibility signals such as reports delivered, BBB, Stripe, registration, and deeper legitimacy explanation are pushed below the fold, while the dealer card CTA/pricing detail is only partially visible.",
+          "revision_directive": "For mobile, compress one row of verifiable proof into the first viewport near the CTA, such as BBB A+, Stripe-secured, registration, and reports delivered. Keep the sample report link visible, make the dealer banner or dealer card CTA more obviously tappable, and consider a sticky bottom CTA after the user scrolls past the VIN card so both proof and action remain reachable."
+        },
+        {
+          "candidate": "task-first-purchase-with-proof-guardrails",
+          "judge": "anti_pattern_taste",
+          "score": 7.6,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page largely avoids the biggest diagnosed anti-patterns: it is restrained rather than coupon-like, makes the official Carfax offer and $9.99 savings immediately clear, gives individuals a fast VIN-to-report path, exposes a dealer path early, and includes sample-report and legitimacy cues near the first purchase moment.",
+          "top_failure": "The trust layer still feels somewhat placeholder and potentially unsubstantiated: BBB A+, registration number, authorized data access, and official Carfax wording are presented as proof but not visually or legally anchored enough to overcome scam skepticism. The anonymous placeholder brand and gray wireframe-like restraint also risk feeling generic rather than genuinely established.",
+          "revision_directive": "Keep the task-first structure, but replace placeholder trust claims with verifiable, specific proof: real business name, clickable registration/BBB/payment verification, legal-safe Carfax reseller language, real sample report imagery, and clearer refund/delivery terms before the CTA. Add a slightly more finished identity system so the page feels like a real accountable reseller, not a generic landing-page template, while preserving the restrained non-coupon aesthetic."
+        }
+      ]
+    },
+    "dealer-value-forward-with-consumer-fast-lane": {
+      "panel_average": 6.36,
+      "panel_scores": {
+        "strategy_fit": 8.0,
+        "first_viewport": 6.0,
+        "conversion_or_task_path": 6.0,
+        "mobile_path": 5.8,
+        "anti_pattern_taste": 6.0
+      },
+      "hard_failures": [],
+      "raw_results": [
+        {
+          "candidate": "dealer-value-forward-with-consumer-fast-lane",
+          "judge": "strategy_fit",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Strongly follows the assigned dealer-value-forward strategy while preserving a clear consumer fast lane: the first desktop viewport shows dealer pricing/access, one-report VIN purchase, savings, official Carfax language, guarantee cues, and sample-report proof.",
+          "top_failure": "Mobile weakens the strategy: horizontal overflow and a consumer-dominant first view make dealer self-selection less credible and less immediately actionable, despite the strategy depending on higher-LTV dealer capture.",
+          "revision_directive": "Fix the mobile header/overflow, make the dealer path a clear mobile first-viewport action rather than mostly a nav/link mention, and ensure all high-authority claims such as authorized reseller status, report volumes, reviews, and business identity are verifiable and legally supportable."
+        },
+        {
+          "candidate": "dealer-value-forward-with-consumer-fast-lane",
+          "judge": "first_viewport",
+          "score": 6.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Desktop first viewport is strategically strong: it immediately communicates discounted official Carfax reports, gives dealers a serious primary path, keeps an individual VIN-to-buy card highly visible, and surrounds the CTA with price, delivery, guarantee, sample-report, and trust signals.",
+          "top_failure": "Mobile first viewport is compromised by horizontal overflow and clipped navigation, which looks unpolished on a high-skepticism trust sale. The dealer path on mobile is also reduced mostly to a nav link and headline mention rather than a clear above-fold dealer action.",
+          "revision_directive": "Fix the mobile header overflow with a responsive nav or hamburger, and add a clearly visible mobile dealer CTA near the top such as \u201cDealer volume access\u201d alongside the one-report card. Keep the official Carfax, $14.99 vs direct price, money-back guarantee, sample report, and payment/trust proof visible or immediately adjacent to the buy CTA. Verify that any \u201cauthorized Carfax reseller\u201d claim is legally supportable and presented with credible specificity."
+        },
+        {
+          "candidate": "dealer-value-forward-with-consumer-fast-lane",
+          "judge": "conversion_or_task_path",
+          "score": 6.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop structure creates a credible dual conversion path: dealer pricing and sales contact are prominent, the individual VIN-to-buy flow is immediately available, pricing and savings are clear, and sample report, guarantee, delivery, payment, business identity, and FAQ proof are layered throughout.",
+          "top_failure": "Mobile execution undermines the path: horizontal overflow/clipped navigation creates friction, and the first mobile viewport gives the individual purchase card priority while the dealer path is mostly reduced to a nav item and headline rather than a clear CTA.",
+          "revision_directive": "Fix the mobile header overflow with a proper responsive nav or condensed CTA bar, and ensure the first mobile viewport exposes three clear actions: Buy one report, See dealer pricing or set up dealer access, and View sample report. Keep the strong desktop proof sequence, but make trust cues such as authorized reseller, secure payment, and refund guarantee visible before or immediately adjacent to mobile CTAs."
+        },
+        {
+          "candidate": "dealer-value-forward-with-consumer-fast-lane",
+          "judge": "mobile_path",
+          "score": 5.8,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The mobile purchase card keeps the individual buyer path highly reachable: VIN entry, $14.99 pricing, direct buy CTA, official Carfax/delivery/guarantee reassurance, and sample-report link are all visible early and readable.",
+          "top_failure": "Mobile has horizontal overflow in the header/navigation, with right-side items clipped, and the dealer action path is not materially actionable in the first mobile viewport beyond a small nav link/headline mention. This undermines first-screen self-selection and risks hiding proof/action on the device most likely used by urgent shoppers.",
+          "revision_directive": "Fix mobile overflow immediately with a compact responsive header or hamburger/priority nav. In the first mobile viewport, preserve the VIN purchase card but add a clearly reachable dealer CTA such as 'See dealer pricing' or 'Set up dealer access' near the headline/card, not only in the nav or below the fold. Keep the sample report and trust microcopy adjacent to the buy CTA, and ensure all pricing, proof, and action elements fit within the viewport without horizontal scrolling."
+        },
+        {
+          "candidate": "dealer-value-forward-with-consumer-fast-lane",
+          "judge": "anti_pattern_taste",
+          "score": 6.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop experience mostly hits the right polished-utility posture: restrained, businesslike, not coupon-scammy, with clear official Carfax language, visible savings, a serious dealer pricing path, a consumer VIN purchase card, sample-report access, and repeated refund/security proof.",
+          "top_failure": "The mobile layout has horizontal overflow and clipped navigation, which immediately damages trust and makes the experience feel less professionally controlled. The mobile first view also over-centers the one-report card while the dealer path is reduced to a weak headline/nav cue rather than a credible action. Several authority signals also read as placeholders or potentially unsupported claims unless they are made verifiable.",
+          "revision_directive": "Fix the mobile responsive layout first: eliminate horizontal overflow, collapse or simplify the nav, and keep Buy report, Dealer access, and Sample report reachable without clipping. In the mobile first viewport, add an explicit dealer CTA such as 'See dealer pricing' or 'Set up dealer access' near the consumer fast lane. Replace generic badge blocks with specific, verifiable proof artifacts: business identity, reseller-status wording with legal-safe substantiation, Stripe/payment details, refund terms, and sample report preview. Preserve the restrained visual tone, but make trust evidence look real rather than decorative."
+        }
+      ]
+    },
+    "savings-and-safety-comparison-strategy": {
+      "panel_average": 5.88,
+      "panel_scores": {
+        "strategy_fit": 7.8,
+        "first_viewport": 5.5,
+        "conversion_or_task_path": 5.5,
+        "mobile_path": 5.2,
+        "anti_pattern_taste": 5.4
+      },
+      "hard_failures": [
+        "first_viewport: Mobile first viewport does not expose the primary one-time purchase action: the VIN input and 'Get my report' CTA fall below the fold, so a mobile visitor cannot act without scrolling despite understanding the offer.",
+        "conversion_or_task_path: The mobile first viewport does not expose the primary one-time purchase path or VIN/get-report CTA before scrolling, violating the first-viewport obligation for a high-immediacy individual buyer flow.",
+        "mobile_path: Mobile first viewport does not expose the primary buy/VIN action; the header and stacked savings comparison push the commitment path below the fold, violating the mobile conversion and first-viewport action obligations."
+      ],
+      "raw_results": [
+        {
+          "candidate": "savings-and-safety-comparison-strategy",
+          "judge": "strategy_fit",
+          "score": 7.8,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page strongly follows the assigned savings-and-safety strategy: it immediately frames the offer as official Carfax reports at a clear $20 savings, pairs the price comparison with Stripe, refund, business identity, delivery, and sample-report proof, and supports both individual checkout and dealer volume economics.",
+          "top_failure": "The mobile first viewport does not surface the primary buy-now/VIN action quickly enough, and the dealer path in the hero is still secondary compared with the individual flow despite dealer LTV being strategically important. Some legitimacy claims such as authorized resale, report volume, and business registration also need to be made verifiable rather than asserted.",
+          "revision_directive": "Revise the mobile hero so the VIN field or primary buy CTA appears in the first screen alongside the trust chips, and make the dealer path a clearer parallel CTA rather than mainly a nav/link. Keep the savings comparison, but strengthen verifiable proof around authorization, business identity, refund terms, and sample report access before any commitment action."
+        },
+        {
+          "candidate": "savings-and-safety-comparison-strategy",
+          "judge": "first_viewport",
+          "score": 5.5,
+          "hard_fail": true,
+          "hard_fail_reason": "Mobile first viewport does not expose the primary one-time purchase action: the VIN input and 'Get my report' CTA fall below the fold, so a mobile visitor cannot act without scrolling despite understanding the offer.",
+          "top_strength": "Desktop first viewport is strategically strong: it immediately communicates official Carfax reports, a clear $20 savings comparison, safety cues, refund/payment reassurance, sample-report access, VIN entry, and a visible dealer link.",
+          "top_failure": "The mobile first viewport sacrifices actionability and conversion readiness; the header and stacked comparison consume too much space, leaving the primary buy path below the fold and making the dealer/sample paths feel more available than the main purchase action.",
+          "revision_directive": "Compress the mobile header and hero comparison, then bring a purchase CTA or VIN field into the first mobile viewport. Keep the price/savings cue and 2\u20133 strongest trust signals adjacent to it, with 'For dealers' and 'Sample report' still visible but secondary."
+        },
+        {
+          "candidate": "savings-and-safety-comparison-strategy",
+          "judge": "conversion_or_task_path",
+          "score": 5.5,
+          "hard_fail": true,
+          "hard_fail_reason": "The mobile first viewport does not expose the primary one-time purchase path or VIN/get-report CTA before scrolling, violating the first-viewport obligation for a high-immediacy individual buyer flow.",
+          "top_strength": "The desktop path is strategically strong: it leads with a clear Carfax price comparison, adjacent safety proof, sample-report access, VIN purchase flow, and later gives dealers a credible volume-pricing section with tiers, savings math, and a specialist CTA.",
+          "top_failure": "On mobile, the stacked hero comparison consumes the first screen and pushes the actual purchase action below the fold, so an urgent buyer sees the savings but not the immediate task path to buy a report.",
+          "revision_directive": "Condense the mobile hero so the VIN input and \u201cGet my report \u2014 $24.99\u201d CTA are visible in the first viewport, or add a sticky/mobile-first buy CTA immediately under the headline. Keep the trust chips and sample-report link nearby, but reduce the price comparison card height. Make the dealer path remain visible via the nav plus a compact secondary CTA such as \u201cDealer volume access.\u201d"
+        },
+        {
+          "candidate": "savings-and-safety-comparison-strategy",
+          "judge": "mobile_path",
+          "score": 5.2,
+          "hard_fail": true,
+          "hard_fail_reason": "Mobile first viewport does not expose the primary buy/VIN action; the header and stacked savings comparison push the commitment path below the fold, violating the mobile conversion and first-viewport action obligations.",
+          "top_strength": "Mobile still communicates the official Carfax discount clearly and keeps dealer and sample-report links reachable from the top navigation.",
+          "top_failure": "The mobile stack prioritizes comparison content over action reachability: users see price and partial trust chips, but not the VIN input or 'Get my report' CTA within the first screen.",
+          "revision_directive": "Rework the mobile hero so the first viewport contains official-report clarity, one or two compact trust proof points, the $24.99 value cue, a visible primary 'Get my report' CTA/VIN entry path, plus secondary dealer and sample-report actions. Collapse or shorten the nav, reduce the height of the comparison card, and avoid letting wrapped proof chips push the purchase action below the fold."
+        },
+        {
+          "candidate": "savings-and-safety-comparison-strategy",
+          "judge": "anti_pattern_taste",
+          "score": 5.4,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop concept strongly avoids coupon-scam aesthetics: restrained typography, transparent price comparison, early safety pills, sample-report access, and a serious dealer economics section all fit the polished-utility posture.",
+          "top_failure": "The mobile first viewport fails the most important trust/action balance: it shows the savings story and some proof, but the actual buy path/VIN CTA is below the fold, so urgent individual buyers cannot act quickly. The page also leans on generic or potentially unsubstantiated authority claims such as authorized resale, report volume, testimonials, delivery SLA, and business registration without enough verifiable presentation.",
+          "revision_directive": "Move a compact mobile purchase CTA or VIN entry into the first viewport, keep dealer and sample links visible, and replace placeholder/generic trust language with verifiable proof modules: legal business name, exact reseller status wording, support contact, refund terms, payment processor explanation, and evidence-backed metrics. Preserve the restrained visual tone, but make the brand identity and proof feel less like a wireframe and more like an accountable real reseller."
+        }
+      ]
+    },
+    "business-identity-and-human-contact-reassurance": {
+      "panel_average": 6.92,
+      "panel_scores": {
+        "strategy_fit": 8.0,
+        "first_viewport": 7.0,
+        "conversion_or_task_path": 7.0,
+        "mobile_path": 5.8,
+        "anti_pattern_taste": 6.8
+      },
+      "hard_failures": [],
+      "raw_results": [
+        {
+          "candidate": "business-identity-and-human-contact-reassurance",
+          "judge": "strategy_fit",
+          "score": 8.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The candidate visibly follows the assigned strategy very well: it leads with business identity, phone access, named account managers, refund/payment reassurance, official Carfax wording, a fast VIN-to-buy path, and a materially prominent dealer contact/trial path. The desktop first viewport successfully supports both audience self-selection and trust-before-commitment.",
+          "top_failure": "The trust strategy depends heavily on placeholder or potentially unverifiable proof assets: legal entity, BBB, registration, photos, names, phone numbers, testimonials, dealer savings, and volume pricing are still generic. That weakens the credibility required for a discounted official Carfax reseller and risks the unsubstantiated-authority anti-pattern if not replaced with real proof.",
+          "revision_directive": "Replace all placeholder trust claims with specific, verifiable business identity, authorization/licensed-account language, real support contacts, real testimonials, and concrete dealer pricing. Tighten the mobile header to remove horizontal overflow and ensure the first mobile viewport keeps the dealer path, sample-report proof, savings cue, and purchase path immediately readable without cramped navigation."
+        },
+        {
+          "candidate": "business-identity-and-human-contact-reassurance",
+          "judge": "first_viewport",
+          "score": 7.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The desktop first viewport does a strong job of answering the core question quickly: it states an official Carfax report, shows the $9.99 savings cue, gives delivery timing, explains the licensed-account basis, presents a VIN-to-buy path, exposes a sample-report link, and gives dealers a distinct contact/trial path with human-account-manager reassurance.",
+          "top_failure": "The mobile first viewport is cramped and partially broken: navigation wraps awkwardly, the buy button is clipped, horizontal overflow is present, and the dealer path is reduced to a toggle/nav item rather than a credible dealer value panel. The trust posture also depends heavily on placeholders like [Company Legal Name LLC], [Photo], and [AM Name], which weakens the legitimacy it is trying to establish.",
+          "revision_directive": "Preserve the dual-card desktop structure, but repair mobile first: remove horizontal overflow, simplify the nav into a compact header, keep only the essential top trust line, and make the first mobile screen show clear segmented paths for 'Buy one report' and 'Dealer access' with visible sample/report proof. Replace placeholder identity elements with concrete legal name, real phone, real support hours, verifiable payment/refund proof, and real or legally safe staff/business details before relying on them as trust signals."
+        },
+        {
+          "candidate": "business-identity-and-human-contact-reassurance",
+          "judge": "conversion_or_task_path",
+          "score": 7.0,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The first viewport creates a strong dual conversion path: individual buyers get an immediate VIN-to-purchase flow with price, savings, refund, Stripe, delivery, and sample-report reassurance, while dealers get a visible human-contact path with named account-manager framing and a clear call/trial CTA.",
+          "top_failure": "Credibility is weakened by placeholder identity details, placeholder team names/photos, vague dealer economics, and mobile horizontal overflow; for a high-skepticism Carfax reseller page, any fake-looking or incomplete proof can make the offer feel less legitimate.",
+          "revision_directive": "Replace all placeholder trust assets with real verifiable business identity, phone, address, team, BBB/payment proof, and legally safe Carfax relationship language; fix mobile overflow and simplify the mobile nav; make dealer pricing/terms less vague; keep the above-fold VIN purchase card, dealer self-selection, sample report, refund, delivery, and secure-payment proof tightly adjacent to the CTAs."
+        },
+        {
+          "candidate": "business-identity-and-human-contact-reassurance",
+          "judge": "mobile_path",
+          "score": 5.8,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "Mobile does surface the core individual purchase path early: official Carfax language, $9.99 savings cue, business/licensed-account reassurance, VIN entry, and primary buy CTA are reachable within the first screen.",
+          "top_failure": "Mobile header and nav are cramped and overflow-prone, with multi-line navigation consuming too much vertical space; the dealer path and sample-report proof are technically present but not strong enough as immediate, action-oriented mobile paths.",
+          "revision_directive": "Rebuild the mobile stack around a compact trust/action header: reduce the top bars, collapse secondary nav into a menu, keep a sticky or immediately visible primary CTA, expose 'See sample report' as a real button/link near the VIN CTA, and make the dealer path a clear mobile card or sticky secondary action rather than relying on a crowded nav/toggle. Fix horizontal overflow and ensure all proof, CTA, and form elements fit comfortably at 360\u2013390px widths."
+        },
+        {
+          "candidate": "business-identity-and-human-contact-reassurance",
+          "judge": "anti_pattern_taste",
+          "score": 6.8,
+          "hard_fail": false,
+          "hard_fail_reason": "none",
+          "top_strength": "The page largely avoids the worst SaaS and coupon-reseller tropes: it is restrained, task-oriented, immediately states official Carfax report value, gives both individual and dealer paths, and places human/business reassurance close to conversion actions instead of burying trust below the fold.",
+          "top_failure": "The trust system is dangerously dependent on placeholder authority signals\u2014BBB A+, Stripe verified merchant, legal entity, named account managers, photos, testimonials, registration details\u2014which would become a severe unsubstantiated-authority anti-pattern if not real and verifiable. Mobile also shows cramped navigation and horizontal overflow, weakening the high-trust first impression.",
+          "revision_directive": "Replace every placeholder trust claim with real, verifiable business identity, permitted Carfax relationship language, actual team photos/names, real testimonials, and specific refund/payment terms\u2014or remove the claim entirely. Fix mobile overflow and simplify the mobile header so official-report clarity, buy path, dealer path, savings cue, and sample proof remain readable without visual clutter. Preserve the restrained utility aesthetic, but make the credibility evidence feel audited rather than badge-stacked."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_a": "sample-report-proof-led-path",
+  "candidate_b": "trust-first-dual-path-conversion",
+  "winner": "A",
+  "confidence": 0.74,
+  "perception": {
+    "who_is_this_for_a": "Used-car buyers who want a discounted official Carfax report immediately, with a secondary path for dealers needing volume pricing.",
+    "who_is_this_for_b": "Both individual buyers and dealerships, with clearer side-by-side self-selection on desktop but a more generic brand and less credible proof execution.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "B",
+    "trust_more_visible": "A",
+    "mobile_more_usable": "A",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate B has the cleaner desktop first-viewport split between individual buyers and dealers, so self-selection is more explicit there. But Candidate A feels more conversion-ready and more trustworthy overall. A immediately shows the official Carfax offer, exact price, VIN entry, purchase CTA, refund and Stripe cues, delivery timing, savings versus carfax.com, dealer link, and a detailed sample report preview in the hero. That sample preview is a strong low-commitment proof path and makes the product feel tangible. A also has fuller downstream support: how it works, refund language, dealer tiers, testimonials, FAQs, business identity, support, and legal footer. B\u2019s trust story is weakened by visible unfinished placeholders such as \"Brand,\" \"[Legal Entity Name],\" placeholder address/EIN text, and a placeholder-like sample report block. For a skeptical buyer worried about scams, those visible placeholders are a major credibility problem. A is not perfect because the dealer path is less prominent above the fold than B\u2019s, but it better satisfies the trust, proof, immediacy, and official-report clarity needs from the screenshots.",
+  "blocking_visual_issue_a": "Dealer access is present but visually underweighted in the first viewport compared with the individual purchase and sample-report path.",
+  "blocking_visual_issue_b": "Visible placeholder brand/legal/business identity content and placeholder-style proof sections undermine legitimacy on a page where trust is the primary conversion blocker."
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "workflow-first-reservation-rescue-strategy",
+  "winner": "A",
+  "confidence": 0.78,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "A",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A is the stronger relative choice despite its programmatic gate failure. Its first viewport more directly satisfies the brief: the user sees the core promise, the no-login/Disney.com trust model, the full free-alert form, and the free/no-credit-card reducer in a clean task-first composition. Candidate B has a more conceptually rich workflow strategy, but the rendered first fold is weaker for conversion: the hero form competes with more navigation and explanation, the proof/alert preview is smaller, and the mobile viewport visibly breaks with horizontal overflow/cropping in the nav/form area. A also better preserves the Segment A path: understand safety, start free alert, then scroll for proof. B handles workflow explanation well downstream, but it overbuilds with repeated equal-card rows, FAQ, segment cards, testimonial cards, and a broader SaaS-page scaffold. Programmatically both are ineligible until repaired, but B's failures are more severe: multiple missing/unjustified components plus mobile horizontal overflow, versus A's count mismatch and one unjustified grouping wrapper.",
+  "best_reusable_move_a": "Co-locating the complete free-alert form with compact trust proof in the hero: no Disney login, Disney.com handoff, alert volume/latency, and no-credit-card copy are all adjacent to the primary action.",
+  "best_reusable_move_b": "The post-hero workflow framing, especially explaining what happens after saving an alert and explicitly ending with 'you book on Disney's official site,' is useful trust infrastructure.",
+  "synthesis_recommended": true
+}

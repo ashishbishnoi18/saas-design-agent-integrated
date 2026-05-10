@@ -1,0 +1,136 @@
+{
+  "schema_version": "strategic_diagnosis_validator.v1",
+  "passed": false,
+  "overall_score": 0.0,
+  "blocking_failures": [
+    "Schema validation failed, so the diagnosis cannot pass regardless of strategic quality.",
+    "Multiple enum fields use unsupported custom values instead of allowed schema values.",
+    "Extra deterministic checks were skipped because schema validation failed."
+  ],
+  "category_scores": {
+    "schema_integrity": 0.0,
+    "brief_grounding": 8.8,
+    "archetype_quality": 7.8,
+    "audience_and_buyer_quality": 8.6,
+    "decision_context_quality": 8.7,
+    "beauty_function_balance_quality": 8.2,
+    "first_viewport_quality": 9.0,
+    "hard_floor_quality": 8.9,
+    "anti_pattern_quality": 8.8,
+    "dynamic_evaluator_policy_quality": 8.6,
+    "candidate_strategy_seed_quality": 8.7,
+    "downstream_usefulness": 8.8
+  },
+  "specific_failures": [
+    {
+      "field": "schema_validation",
+      "failure": "Schema validation failed.",
+      "why_it_matters": "Downstream agents require schema-valid structured output. Strategically useful content is not enough if consumers cannot reliably parse enum fields.",
+      "repair_instruction": "Replace all unsupported enum values with allowed schema enum values while preserving nuance in rationale fields."
+    },
+    {
+      "field": "primary_hypothesis.primary_archetype",
+      "failure": "Uses unsupported value 'high_trust_consumer_transactional_utility'.",
+      "why_it_matters": "The primary archetype cannot be consumed by downstream schema-bound agents.",
+      "repair_instruction": "Use 'transactional_utility' as the primary archetype and explain the high-trust consumer context in why_this_hypothesis."
+    },
+    {
+      "field": "primary_hypothesis.market_type",
+      "failure": "Uses unsupported value 'b2c_primary_hybrid_secondary'.",
+      "why_it_matters": "The schema allows 'b2c' or 'hybrid', not custom blended labels.",
+      "repair_instruction": "Use 'b2c' if consumer self-serve governs the page, or 'hybrid' if agency path materially affects strategy. Put the primary/secondary distinction in rationale."
+    },
+    {
+      "field": "primary_hypothesis.sales_motion",
+      "failure": "Uses unsupported value 'self_serve_product_led'.",
+      "why_it_matters": "The schema requires a single allowed motion value.",
+      "repair_instruction": "Use 'self_serve' or 'product_led'. Given the brief, 'self_serve' is likely best, with freemium upgrade details in rationale."
+    },
+    {
+      "field": "secondary_hypotheses[0].archetype",
+      "failure": "Uses unsupported value 'product_led_consumer_subscription_utility'.",
+      "why_it_matters": "Secondary hypotheses must also conform to enum constraints.",
+      "repair_instruction": "Use 'transactional_utility' or 'short_session_tool' and describe subscription mechanics in the hypothesis explanation."
+    },
+    {
+      "field": "secondary_hypotheses[0].sales_motion",
+      "failure": "Uses unsupported value 'freemium_to_paid_subscription'.",
+      "why_it_matters": "Schema-bound downstream logic cannot interpret this value.",
+      "repair_instruction": "Use 'product_led' or 'self_serve' and describe free-to-paid subscription behavior in why_plausible."
+    },
+    {
+      "field": "strategic_axes.buyer_user_relationship",
+      "failure": "Uses unsupported value 'mostly_same_person_consumer_buyer_user_with_secondary_household_and_agency_stakeholders'.",
+      "why_it_matters": "This breaks schema integrity even though the idea is strategically valid.",
+      "repair_instruction": "Use 'buyer_is_user' or 'multiple_stakeholders'. Since the page has consumer primary and agency secondary, 'multiple_stakeholders' is acceptable if the nuance is explained elsewhere."
+    },
+    {
+      "field": "audience_model.stakeholder_complexity",
+      "failure": "Uses unsupported value 'low_to_medium_for_primary_consumers_medium_for_agency_use_cases'.",
+      "why_it_matters": "The schema allows only 'low', 'medium', 'high', or 'unknown'.",
+      "repair_instruction": "Use 'medium' and explain the consumer-versus-agency distinction in nearby audience fields."
+    }
+  ],
+  "specific_strengths": [
+    {
+      "field": "first_viewport_obligation",
+      "strength": "Concrete, testable, and tied directly to the brief: real-time Disney dining alerts, no Disney login, official handoff, and immediate free alert setup."
+    },
+    {
+      "field": "decision_context.primary_user_decision_sequence",
+      "strength": "Decision steps are specific to this product and distinguish safety, speed, free-versus-Pro choice, and expert/agency use cases."
+    },
+    {
+      "field": "hard_floors",
+      "strength": "Hard floors are enforceable, include score caps, and reflect Pixiedining-specific risks such as no-login proof, official handoff, Pro value, and guarantee language."
+    },
+    {
+      "field": "anti_patterns",
+      "strength": "Anti-patterns are diagnosis-specific and include useful detection hints for Disney-brand confusion, unsupported speed claims, hidden safety model, and Pro overpush."
+    },
+    {
+      "field": "candidate_strategy_seeds",
+      "strength": "Strategy seeds are distinct enough to guide architecture exploration across trust, sample alert proof, Pro comparison, workflow explanation, segment selection, and coverage confidence."
+    }
+  ],
+  "contradictions": [
+    {
+      "field_a": "schema_validation.passed",
+      "field_b": "strategic_diagnosis.validator_notes",
+      "contradiction": "Validator notes claim evaluator weights and repairs were preserved, but schema validation still fails on multiple enum fields.",
+      "repair_instruction": "Do not include self-validating notes that imply readiness while deterministic validation fails. Fix enum values first."
+    },
+    {
+      "field_a": "primary_hypothesis.confidence",
+      "field_b": "schema_validation.errors",
+      "contradiction": "The strategic hypothesis has high confidence, but its core archetype, market_type, and sales_motion are invalid schema values.",
+      "repair_instruction": "Keep the confidence only after mapping the hypothesis to valid schema enums."
+    }
+  ],
+  "generic_or_weak_phrases": [
+    {
+      "phrase": "warm, practical, reassuring",
+      "where_found": "design_directive.tone",
+      "why_weak": "These are acceptable but somewhat broad without the surrounding Pixiedining-specific constraints.",
+      "repair_instruction": "Keep only if paired with concrete trust, no-login, official handoff, and alert-speed requirements."
+    },
+    {
+      "phrase": "polished utility",
+      "where_found": "strategic_axes.visual_posture and design_directive.visual_posture",
+      "why_weak": "Useful shorthand, but not schema-level strategy by itself.",
+      "repair_instruction": "Retain as label only if the adjacent beauty and visual designer constraints remain specific."
+    }
+  ],
+  "missing_strategic_questions": [
+    {
+      "question": "Which allowed schema archetype should govern the page after enum repair?",
+      "why_needed": "The current custom archetype is strategically meaningful but invalid. The repaired diagnosis must choose a valid canonical archetype, likely 'transactional_utility'."
+    },
+    {
+      "question": "Should market_type be 'b2c' or 'hybrid' under the schema?",
+      "why_needed": "The brief is consumer-primary with a real agency path. The diagnosis must encode this in an allowed value and explain the tradeoff."
+    }
+  ],
+  "repair_directive": "Repair schema integrity first. Replace custom enum values with allowed schema values: use 'transactional_utility' for the primary archetype, likely 'b2c' or 'hybrid' for market_type, 'self_serve' or 'product_led' for sales_motion, 'multiple_stakeholders' or 'buyer_is_user' for buyer_user_relationship, and 'medium' for stakeholder_complexity. Preserve the strong Pixiedining-specific rationale, first viewport obligation, hard floors, anti-patterns, evaluator policy, and strategy seeds. Re-run deterministic validation before passing downstream.",
+  "safe_to_pass_downstream": false
+}

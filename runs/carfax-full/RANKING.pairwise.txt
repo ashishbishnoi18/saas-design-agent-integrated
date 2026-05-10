@@ -1,0 +1,6 @@
+sample-report-proof-led-path	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=7.75
+dealer-value-forward-with-consumer-fast-lane	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=7.11
+task-first-purchase-with-proof-guardrails	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=7.53
+trust-first-dual-path-conversion	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=7.53
+business-identity-and-human-contact-reassurance	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=6.93
+savings-and-safety-comparison-strategy	points=2.5	record={'wins': 0, 'losses': 0, 'ties': 5}	abs=6.84

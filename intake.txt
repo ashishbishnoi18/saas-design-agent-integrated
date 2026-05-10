@@ -1,0 +1,48 @@
+PURPOSE: Convert visitors into paying customers for discounted official Carfax
+reports — driving (a) one-time report purchases from individual used-car buyers
+and (b) recurring dealer subscriptions for continuous report access. The page
+must establish credibility as a legitimate reseller before either action feels
+safe. Business intent: revenue from both channels, with dealer LTV being
+substantially higher than individual LTV.
+
+AUDIENCE: Two distinct segments that should self-select.
+
+  Segment A — Individual buyer (one-time):
+    Who: A person evaluating a specific used car they're considering buying.
+    Motivation: They've found a car they like (Craigslist / Facebook
+      Marketplace / dealership / private seller) and need a Carfax to vet it
+      before committing.
+    Knowledge: Knows carfax.com exists and costs ~$40 for one report. Doesn't
+      know if discounted resellers are legitimate.
+    Decision behavior: Price-sensitive — the discount is the hook. But will
+      bounce hard if the page reads as scammy. Decides in under 60 seconds
+      whether this is real. Trust signals (volume of users served, refund
+      guarantee, BBB / payment processor logos, sample report) close the gap.
+
+  Segment B — Dealer (continuous):
+    Who: Used-car dealer or independent buyer who needs reports as a regular
+      cost of doing business.
+    Motivation: Already paying for Carfax (or AutoCheck). Looking for cost
+      reduction at scale — even a small per-report saving multiplies across
+      dozens or hundreds of monthly reports.
+    Knowledge: Expert. Knows official pricing, knows the difference between
+      Carfax and AutoCheck, knows what's in a report. Skeptical of anything
+      that smells like a knockoff.
+    Decision behavior: Methodical. Wants to see volume pricing, terms,
+      legitimacy proof (e.g., authorized reseller status, business
+      registration), and ideally talk to a person before committing.
+
+CONTEXT: Standalone landing page (single page, root of the site).
+  Entry: word-of-mouth referrals (warm, partial trust pre-seeded) and social
+    media (cold, full skepticism).
+  Exit: Either checkout flow for individuals (one report purchase) or
+    contact/signup flow for dealers (volume plan inquiry).
+  User journey stage: SELLING. We are pre-purchase for both segments. Trust
+    establishment is the primary blocker to conversion.
+
+KEY ACTIONS:
+  1. PRIMARY — Buy a report now (single-click flow for individuals,
+     enter VIN → pay → receive PDF).
+  2. SECONDARY — Set up dealer access (form or contact path for volume).
+  3. TERTIARY — See a sample report (low-commitment proof CTA for the
+     skeptical-but-curious — works for both segments).

@@ -1,0 +1,329 @@
+{
+  "pairwise_enabled": true,
+  "participants": [
+    "trust-first-free-alert-strategy",
+    "workflow-first-reservation-rescue-strategy",
+    "coverage-confidence-strategy",
+    "example-alert-proof-strategy",
+    "segment-self-selection-strategy",
+    "comparison-ready-pro-strategy"
+  ],
+  "points": {
+    "trust-first-free-alert-strategy": 5.0,
+    "workflow-first-reservation-rescue-strategy": 0.0,
+    "coverage-confidence-strategy": 2.0,
+    "example-alert-proof-strategy": 3.0,
+    "segment-self-selection-strategy": 4.0,
+    "comparison-ready-pro-strategy": 1.0
+  },
+  "records": {
+    "trust-first-free-alert-strategy": {
+      "wins": 5,
+      "losses": 0,
+      "ties": 0
+    },
+    "workflow-first-reservation-rescue-strategy": {
+      "wins": 0,
+      "losses": 5,
+      "ties": 0
+    },
+    "coverage-confidence-strategy": {
+      "wins": 2,
+      "losses": 3,
+      "ties": 0
+    },
+    "example-alert-proof-strategy": {
+      "wins": 3,
+      "losses": 2,
+      "ties": 0
+    },
+    "segment-self-selection-strategy": {
+      "wins": 4,
+      "losses": 1,
+      "ties": 0
+    },
+    "comparison-ready-pro-strategy": {
+      "wins": 1,
+      "losses": 4,
+      "ties": 0
+    }
+  },
+  "strategy_diversity": {
+    "collapsed_strategies": [],
+    "most_distinct": "trust-first-free-alert-strategy",
+    "least_distinct": "trust-first-free-alert-strategy",
+    "notes": "Diagnostic only. Distinctiveness across candidates is inferred from pairwise strategy-commitment and first-viewport ties; it is not a positive winner boost."
+  },
+  "results": [
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "workflow-first-reservation-rescue-strategy",
+      "winner": "A",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "A",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A is the stronger relative choice despite its programmatic gate failure. Its first viewport more directly satisfies the brief: the user sees the core promise, the no-login/Disney.com trust model, the full free-alert form, and the free/no-credit-card reducer in a clean task-first composition. Candidate B has a more conceptually rich workflow strategy, but the rendered first fold is weaker for conversion: the hero form competes with more navigation and explanation, the proof/alert preview is smaller, and the mobile viewport visibly breaks with horizontal overflow/cropping in the nav/form area. A also better preserves the Segment A path: understand safety, start free alert, then scroll for proof. B handles workflow explanation well downstream, but it overbuilds with repeated equal-card rows, FAQ, segment cards, testimonial cards, and a broader SaaS-page scaffold. Programmatically both are ineligible until repaired, but B's failures are more severe: multiple missing/unjustified components plus mobile horizontal overflow, versus A's count mismatch and one unjustified grouping wrapper.",
+      "best_reusable_move_a": "Co-locating the complete free-alert form with compact trust proof in the hero: no Disney login, Disney.com handoff, alert volume/latency, and no-credit-card copy are all adjacent to the primary action.",
+      "best_reusable_move_b": "The post-hero workflow framing, especially explaining what happens after saving an alert and explicitly ending with 'you book on Disney's official site,' is useful trust infrastructure.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "A",
+      "confidence": 0.74,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "tie",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A is the stronger relative choice because it preserves the primary business path: a skeptical family planner can understand the service, see the no-login safety model, and start a free alert in the first viewport on both desktop and mobile. Candidate B has a more strategically distinctive coverage-confidence angle and better paid-search intent matching, but its mobile first viewport delays the form and CTA too far; screenshot 6 shows the form only beginning below the first fold, which weakens the immediate conversion path. On desktop, both have excessive top whitespace, but A\u2019s first viewport still co-locates the trust proof and full form more effectively. B has lower trope risk because the restaurant coverage grid is a domain-specific structural move rather than a generic SaaS proof section, but that does not compensate for the weaker mobile conversion path.",
+      "best_reusable_move_a": "Hero co-location of the no-login trust proof, official handoff, benign four-field alert form, and free CTA; this directly resolves the trust blocker at the action point.",
+      "best_reusable_move_b": "Coverage grid as both search-intent confirmation and Pro upsell motivation; seeing multiple desired restaurants makes unlimited alerts feel naturally valuable.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "A",
+      "confidence": 0.72,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "tie",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A better serves the primary business outcome: a visitor can understand the service, see the no-login trust model, and begin the actual free alert setup in the first viewport. The visible four-field form is not just a CTA; it demonstrates that Pixiedining asks for benign trip criteria rather than Disney credentials. Candidate B has a stronger proof artifact with the sample alert, but it delays the concrete alert-setup task behind a generic CTA and relies on a later flow. On mobile, A preserves the signup path with trust badges and the form visible above the fold, while B gives a CTA and reassurance but only starts to reveal the sample alert and no criteria capture. Both candidates have programmatic gate failures, but relatively A is more aligned to the intake's free-signup conversion path. B carries higher trope risk due to repeated equal card rows, testimonials, FAQ accordion, and a more generic SaaS proof-page sequence.",
+      "best_reusable_move_a": "The hero form as trust proof: restaurant, dates, party size, and email visibly prove that no Disney login is required while enabling immediate signup.",
+      "best_reusable_move_b": "The concrete SMS sample alert with restaurant, party size, timestamp, and Disney handoff is the strongest proof artifact and should be reused near the action path.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "A",
+      "confidence": 0.64,
+      "scores": {
+        "business_outcome_fit": "tie",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "tie",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A is the stronger product outcome despite a worse programmatic coherence issue, because its rendered architecture better satisfies the core hard job: trust proof and the actual free-alert setup path are co-located in the first viewport on desktop and mobile. The benign fields are visible, so the page demonstrates 'no Disney login' through the task itself. Candidate B does a better job serving Segment B and C downstream with coverage, FAQ, comparison tables, and agency inquiry, but its mobile first fold hides the alert criteria behind a CTA-like path, weakening functional immediacy and the trust-through-benign-inputs signal. B also drifts toward a long generic SaaS page with repeated equal-card sections, whereas A is more focused around the free alert conversion moment.",
+      "best_reusable_move_a": "Hero form as trust proof: restaurant, dates, party size, and email visible beside no-login and Disney.com handoff signals, making the primary action feel safe without extra explanation.",
+      "best_reusable_move_b": "Segment-specific depth path: coverage, family FAQ, superfan comparison tables, pricing, and agency inquiry give each audience a plausible downstream route after the universal hero.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "trust-first-free-alert-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "A",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "A",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A is the stronger outcome fit because it makes the actual primary conversion task visible immediately: the hero contains the restaurant/date/party/email alert form, the no-login trust claim, Disney.com handoff, and free CTA in one decision zone. That directly matches the highest-friction Segment A behavior and demonstrates safety through the benign fields themselves. Candidate B has a cleaner comparison-ready arc for Segment B and lower trope risk overall, but its first viewport only offers a CTA, trust microcopy, and sample alert, not the actual alert setup path; that weakens the stated primary business action and makes the mobile path less task-complete. Programmatically both fail, but B fails harder with multiple missing and unjustified components, while A\u2019s coherence failure is narrower. B wins trope risk because A uses more uniform card rows and conventional pricing/testimonial/step structures, but A better resolves the brief\u2019s core trust-plus-action requirement.",
+      "best_reusable_move_a": "The hero form as trust proof: showing restaurant, trip dates, party size, and email before asking for action makes the no-Disney-login safety model concrete instead of merely asserted.",
+      "best_reusable_move_b": "The comparison-ready expert zone with polling cadence, notification channels, coverage, and a row-based Free vs Pro table gives Segment B a much clearer annual-Pro evaluation path.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "coverage-confidence-strategy",
+      "winner": "B",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "B",
+        "objection_resolution": "A",
+        "first_viewport": "B",
+        "mobile_path": "B",
+        "strategy_commitment": "tie",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate B is the stronger relative outcome despite a weaker objection stack because it commits more cleanly to the search-intent problem: users arrive looking for specific Disney restaurants, and B puts restaurant names in the hero and makes the coverage grid the first major proof section. Its desktop first viewport is calmer and more focused: headline, trust badge, official handoff, and form are all visible without the awkward nav overlap seen in A's mobile crop. B's mobile path is also more viable: the headline, no-login badge, and start action appear in a coherent order, while A's mobile screenshot shows cramped navigation and the form beginning before the CTA is reachable. A resolves trust and workflow objections more comprehensively, with the sample alert, no-login bullets, cadence, and official handoff tightly integrated around the hero. But A has a worse programmatic gate result, mobile horizontal overflow, more unjustified components, and a more generic long-page SaaS sequence with repeated equal-card rows, pricing table, testimonials, FAQ, and final CTA. B still has card-grid tropes, but its coverage grid is strategy-relevant rather than generic filler, and the page architecture is more differentiated around the core coverage-confidence bet.",
+      "best_reusable_move_a": "The hero trust trio plus compact sample alert preview beside the free-alert form is the best trust-building move; it answers no-login, official-site handoff, and alert cadence before the user commits.",
+      "best_reusable_move_b": "The immediate restaurant-specific coverage proof below the hero is the strongest strategic move; it turns named Disney venues into both credibility proof and a natural Pro upsell trigger.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "B",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "B",
+        "first_viewport": "B",
+        "mobile_path": "B",
+        "strategy_commitment": "B",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A has the stronger direct conversion mechanic because the hero contains the actual free-alert setup form, which better matches the primary business action. But Candidate B wins overall because it resolves the core trust objection earlier and more cleanly: the hero sample alert makes the product tangible, the no-login and official-handoff language sit next to the CTA, and the mobile first viewport keeps the CTA visible while A's mobile path pushes the CTA below the first screen and has detected horizontal overflow. B is also more faithful to its assigned example-alert-proof strategy; A's workflow-first rationale is mostly deferred below the fold and the rendered first viewport reads closer to action-first. Programmatically, both fail, but A fails harder with multiple missing/unjustified components and mobile overflow, while B's failure is mainly a spec count/component artifact issue.",
+      "best_reusable_move_a": "The embedded hero alert widget is the best conversion move: restaurant, dates, party size, channel, and Start Free Alert are all visible as a concrete task path instead of a generic CTA.",
+      "best_reusable_move_b": "The hero sample alert card is the best trust move: it shows a believable notification with restaurant, party size, time, official booking link, and latency cue before asking the user to commit.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "B",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "tie",
+        "objection_resolution": "B",
+        "first_viewport": "A",
+        "mobile_path": "B",
+        "strategy_commitment": "B",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A has the stronger desktop first viewport: the alert form, restaurant/date/party inputs, no-login trust trio, sample alert, and proof bar are all visible and conversion-ready. But A fails more deterministic gates: missing/unjustified components, Section 12 count mismatch, and mobile horizontal overflow. Its mobile screenshot also crops the nav/login area and pushes the primary CTA below the first viewport, weakening the mobile conversion path. Candidate B has a less efficient desktop first fold because the form/CTA stack is lower and the extra full-width CTA creates some spatial awkwardness, but it preserves the core mobile path: headline, no-login trust, primary CTA, risk reducer, and sample alert preview are reachable without layout breakage. B also executes the segment-self-selection strategy more faithfully across the full page with separate family, superfan, pricing, and agency paths, while A's workflow-first strategy mostly reads as a strong action-first landing page with a conventional how-it-works section below. Both have trope exposure from equal card rows, pricing cards, testimonial cards, and FAQ-like sections, but A is more dominated by generic SaaS section sequencing and has worse programmatic/render risk.",
+      "best_reusable_move_a": "The desktop hero is the best reusable move: split copy plus embedded alert widget plus trust trio and compact alert preview gives high-intent users a real setup path while resolving no-login and official-handoff concerns immediately.",
+      "best_reusable_move_b": "The segment-specific depth sequence is the best reusable move: family safety proof, superfan cadence/comparison tables, and agency inquiry are separated cleanly so expert and professional users get relevant proof without polluting the hero.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "workflow-first-reservation-rescue-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "B",
+      "confidence": 0.68,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "B",
+        "first_viewport": "A",
+        "mobile_path": "B",
+        "strategy_commitment": "B",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A has the stronger desktop first viewport for the primary free-signup outcome: the actual alert setup widget, restaurant/date/party inputs, no-login trust bullets, official-site handoff, and proof bar are all visible immediately. That is a better free-alert conversion architecture than Candidate B's CTA-only hero. However, Candidate A fails the mobile path materially: the mobile nav overflows/crops, the form pushes the CTA below the first viewport, and the programmatic gate confirms horizontal overflow. Candidate B preserves a clean mobile first task with a visible primary CTA, no-login trust line, and sample alert path, and its page more clearly commits to the comparison-ready Pro strategy through performance, cadence, notification-channel, and tier-table sections. Both candidates fail programmatic coherence gates, but B's render is healthier because it avoids mobile overflow. A has slightly lower trope risk because the embedded form/action island is more product-specific than B's more standard SaaS hero plus trust strip plus card-row sequence.",
+      "best_reusable_move_a": "The split hero with a real free-alert setup widget beside no-login and official-site trust signals is the strongest primary conversion move across the pair.",
+      "best_reusable_move_b": "The dedicated performance/comparison zone with polling cadence, notification channels, and Pro feature deltas is the strongest Segment B paid-conversion move.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "coverage-confidence-strategy",
+      "candidate_b": "example-alert-proof-strategy",
+      "winner": "B",
+      "confidence": 0.68,
+      "scores": {
+        "business_outcome_fit": "tie",
+        "objection_resolution": "B",
+        "first_viewport": "B",
+        "mobile_path": "B",
+        "strategy_commitment": "B",
+        "trope_risk": "B"
+      },
+      "reasoning": "Both candidates fail the same programmatic gate pattern, so the relative judgment comes down to rendered architecture. Candidate A has the stronger immediate task surface on desktop because the free-alert form is visible and restaurant-specific coverage appears quickly, which is valuable for paid-search users arriving with Be Our Guest or Space 220 intent. However, Candidate B resolves the core trust objection more efficiently: the first viewport pairs the CTA with a concrete sample alert, explicit official-handoff language, no-login reassurance, and latency proof. That is a better fit for a skeptical third-party Disney tool where users need to understand what they will receive before acting. B also has the stronger mobile path: the mobile first fold shows the headline, full-width primary CTA, no-login reassurance, handoff explanation, and the sample alert beginning below; A's mobile fold shows trust and the form card beginning, but the primary action itself is not visible above the fold in the supplied viewport. First viewport also favors B because its stats section peeks below the fold and the sample alert makes the hero feel product-specific, while A's desktop hero has too much inert whitespace before the main content and the coverage section only barely appears. Strategy commitment is clearer in B: the example-alert-proof strategy is unmistakably executed by the hero artifact. A executes coverage-confidence competently, but its coverage proof lives below the fold and the hero reads partly as a generic SaaS signup form. Trope risk is lower for B despite several uniform card rows because the hero's notification artifact is a domain-specific structural move; A leans harder on form card plus coverage grid plus step cards plus pricing cards, which feels more template-like.",
+      "best_reusable_move_a": "The desktop hero form with restaurant as field one is the clearest low-friction conversion mechanism and should be reused, especially for paid-search visitors who already know the restaurant they want.",
+      "best_reusable_move_b": "The first-viewport sample alert is the strongest trust and comprehension move: it shows the product output, the official Disney handoff, the restaurant/date/party specificity, and speed proof before asking for commitment.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "coverage-confidence-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "B",
+      "confidence": 0.68,
+      "scores": {
+        "business_outcome_fit": "tie",
+        "objection_resolution": "B",
+        "first_viewport": "B",
+        "mobile_path": "B",
+        "strategy_commitment": "tie",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A has the cleaner search-intent move: it names Be Our Guest, Space 220, and Cinderella's Royal Table immediately and puts restaurant coverage right after the hero, which is strong for paid-search users arriving with a specific venue in mind. Candidate B is stronger as a conversion architecture for the full brief: the first viewport pairs the free action with a tangible sample alert, no-login trust, official handoff framing, and proof, while the mobile first fold keeps the primary CTA reachable. Candidate A's mobile viewport buries the CTA below the visible fold because the form starts before the button, which is a serious first-task failure. Candidate B also resolves the three-audience problem more explicitly through optional routing and dedicated proof sections, although it is more generic structurally. Programmatically both are gated at score 5 due Section 12 count mismatches, but A has an additional missing-component coherence failure, so B is the better relative candidate despite higher trope risk.",
+      "best_reusable_move_a": "Lead with named restaurant coverage and use the coverage grid as both search-intent proof and natural Pro upgrade motivation.",
+      "best_reusable_move_b": "Pair the free alert CTA with a realistic sample alert preview and keep the no-login/official-handoff safety model in the first decision group.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "coverage-confidence-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "A",
+      "confidence": 0.78,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "A",
+        "strategy_commitment": "A",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A better matches the strongest search-intent problem: users arrive looking for a specific Disney restaurant, and the hero names Be Our Guest, Space 220, and Cinderella's Royal Table while placing the free alert form in the first viewport. That creates a direct path from recognition to action. Candidate B has a polished first fold with a sample alert, but it does not let the user start configuring an alert in the viewport, so the primary conversion path is more abstract. A also resolves the no-login objection more concretely and visibly with a dedicated trust badge plus official handoff note near the form. B's first viewport trust copy is present, but it is compressed into microcopy under a CTA. On mobile, A gives headline, trust badge, handoff context, and the alert form beginning in the first viewport; B gives CTA and sample proof, but the actual setup task is farther away. Strategy commitment is also stronger for A because the coverage-confidence concept is visible immediately and reinforced by the first below-fold coverage grid. B commits to comparison-ready Pro later in the page, but the first fold reads more like a generic SaaS alert landing page. Programmatically, both fail the gate, but B has a more severe coherence failure with multiple missing and unjustified components, while A has a count mismatch and one placeholder missing component. Trope risk is lower for A: it still uses uniform card rows, pricing cards, and FAQ, but the restaurant-specific form plus coverage-first structure is more domain-specific than B's trust strip, four-step row, coverage grid, comparison table, testimonial cards, FAQ, and final CTA sequence.",
+      "best_reusable_move_a": "The hero-side free alert form with restaurant as the first field, paired with the no-login badge and official Disney handoff note, is the strongest conversion move.",
+      "best_reusable_move_b": "The sample alert card in the first viewport is a useful proof asset that makes the product output concrete before signup.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "example-alert-proof-strategy",
+      "candidate_b": "segment-self-selection-strategy",
+      "winner": "B",
+      "confidence": 0.68,
+      "scores": {
+        "business_outcome_fit": "B",
+        "objection_resolution": "B",
+        "first_viewport": "A",
+        "mobile_path": "tie",
+        "strategy_commitment": "tie",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A has the stronger first viewport: the sample alert is immediately legible, co-located with the free CTA, and resolves the core 'is this real?' doubt with less friction. However, Candidate B is stronger for the full brief because it actually operationalizes the three-segment audience model: family planner safety proof, superfan comparison/pro cadence depth, and an agency inquiry path. B also provides an inline desktop free-alert task path, while A stops at a CTA and pushes criteria entry downstream. Both candidates fail the programmatic gate via Section 12 count mismatch, but A has the additional missing-component coherence failure. A carries heavier generic landing-page trope risk through repeated equal-card rows, stats strip, testimonial cards, pricing cards, and bottom FAQ. B also has trope exposure, but its segment-specific tables, grouped coverage, and agency form make the structure more outcome-specific.",
+      "best_reusable_move_a": "The hero sample alert mockup is the clearest proof artifact: specific restaurant, party size, date/time, Disney handoff CTA, and latency note all directly answer whether the service is real and useful.",
+      "best_reusable_move_b": "The optional segment guide followed by dedicated family, superfan, and agency sections gives each audience a relevant path without forcing segmentation before the primary free-alert action.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "example-alert-proof-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "A",
+      "confidence": 0.74,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "tie",
+        "strategy_commitment": "A",
+        "trope_risk": "A"
+      },
+      "reasoning": "Candidate A is the stronger product outcome despite both failing programmatic gates. A's first viewport is more directly persuasive for the high-trust consumer utility problem: the large realistic alert mockup, free CTA, no-login badge, and official-handoff copy all resolve the core skepticism before scroll. B has a better expert Pro comparison architecture later in the page, but its rendered/spec coherence is much weaker, with missing key components and many unjustified components in the harness. B's first viewport is competent but more generic: trust strip, small alert card, and standard SaaS section sequencing. A also commits more visibly to its assigned example-alert-proof strategy, whereas B's comparison-ready strategy depends on mid-page sections rather than the first impression. Mobile is close: both keep the primary CTA visible and stack the proof card soon after, though neither is exceptional. A has trope risk from uniform 3-card rows, FAQ, testimonials, and pricing cards, but B compounds that with trust-strip, process cards, coverage grid, comparison table, testimonial row, final CTA, and a more template-like utility SaaS rhythm.",
+      "best_reusable_move_a": "The hero-level sample alert proof card with specific restaurant, party size, booking handoff, and latency timestamp is the clearest trust-building move and should be retained.",
+      "best_reusable_move_b": "The dedicated performance/comparison section with cadence, notification channels, and Free-vs-Pro specifics is the strongest paid conversion move and should be folded into the winning architecture.",
+      "synthesis_recommended": true
+    },
+    {
+      "candidate_a": "segment-self-selection-strategy",
+      "candidate_b": "comparison-ready-pro-strategy",
+      "winner": "A",
+      "confidence": 0.72,
+      "scores": {
+        "business_outcome_fit": "A",
+        "objection_resolution": "A",
+        "first_viewport": "A",
+        "mobile_path": "tie",
+        "strategy_commitment": "A",
+        "trope_risk": "B"
+      },
+      "reasoning": "Candidate A better serves the full brief despite its weaker visual polish and Section 12 count gate failure. Its first viewport directly supports the primary business outcome with restaurant/date/party criteria, no-login trust, sample alert, and immediate free-alert action, so Segment A can act without scrolling while Segments B and C get explicit downstream routes. Candidate B has a cleaner, more composed first fold and lower visual trope risk, but it under-instantiates the travel-agent and segment-self-selection obligations, leans heavily toward Segment B, and has a worse programmatic coherence failure with missing and unjustified components. A also resolves the high-trust objection more concretely by placing the no-login badge, official handoff, sample alert, form, and risk reducers in the primary action zone. On mobile both preserve a visible CTA and trust copy, but A loses some product proof below fold while B has a simpler readable stack, so this is effectively tied. Overall, A is more likely to convert the stated mixed audience once its structural count issue is repaired.",
+      "best_reusable_move_a": "The desktop hero combines actual alert setup fields with no-login trust, risk reducers, and a sample alert preview, making the product feel usable immediately rather than merely described.",
+      "best_reusable_move_b": "The comparison-ready expert zone is well sequenced after the trust-first hero and gives Segment B concrete performance claims, notification channels, and tier value without putting dense tables above the fold.",
+      "synthesis_recommended": true
+    }
+  ]
+}

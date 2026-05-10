@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "segment-self-selection-strategy",
+  "winner": "A",
+  "confidence": 0.64,
+  "scores": {
+    "business_outcome_fit": "tie",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "tie",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A is the stronger product outcome despite a worse programmatic coherence issue, because its rendered architecture better satisfies the core hard job: trust proof and the actual free-alert setup path are co-located in the first viewport on desktop and mobile. The benign fields are visible, so the page demonstrates 'no Disney login' through the task itself. Candidate B does a better job serving Segment B and C downstream with coverage, FAQ, comparison tables, and agency inquiry, but its mobile first fold hides the alert criteria behind a CTA-like path, weakening functional immediacy and the trust-through-benign-inputs signal. B also drifts toward a long generic SaaS page with repeated equal-card sections, whereas A is more focused around the free alert conversion moment.",
+  "best_reusable_move_a": "Hero form as trust proof: restaurant, dates, party size, and email visible beside no-login and Disney.com handoff signals, making the primary action feel safe without extra explanation.",
+  "best_reusable_move_b": "Segment-specific depth path: coverage, family FAQ, superfan comparison tables, pricing, and agency inquiry give each audience a plausible downstream route after the universal hero.",
+  "synthesis_recommended": true
+}

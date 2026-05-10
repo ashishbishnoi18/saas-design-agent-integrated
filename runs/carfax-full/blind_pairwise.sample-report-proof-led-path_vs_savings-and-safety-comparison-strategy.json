@@ -1,0 +1,18 @@
+{
+  "candidate_a": "sample-report-proof-led-path",
+  "candidate_b": "savings-and-safety-comparison-strategy",
+  "winner": "A",
+  "confidence": 0.78,
+  "perception": {
+    "who_is_this_for_a": "Used-car buyers who want an official Carfax report quickly and cheaply, with dealers offered a secondary volume-pricing path and skeptics given a visible sample report preview.",
+    "who_is_this_for_b": "Price-comparison shoppers and recurring dealership buyers who want to understand savings versus carfax.com, with more detailed dealer economics lower on the page.",
+    "primary_action_clearer": "A",
+    "first_viewport_clearer": "A",
+    "trust_more_visible": "A",
+    "mobile_more_usable": "A",
+    "diagnosis_fit_from_screenshots": "A"
+  },
+  "reasoning": "Candidate A better satisfies the first-view and mobile obligations. A immediately shows official Carfax reports, the individual VIN purchase flow, exact price, savings cue, refund/Stripe/PDF-speed trust chips, dealer link, and a large sample report preview. That combination lets a skeptical buyer understand both what they get and how to act without scrolling. Candidate B has stronger savings-comparison framing and a more serious full-page dealer section, but its mobile first viewport is dominated by navigation, headline, and price comparison; the VIN field and buy CTA are pushed below the visible area. B also relies more on claims and links for proof in the first view, whereas A makes the sample report tangible immediately. Overall, A is more conversion-ready for the urgent individual buyer while still keeping dealers and proof visible.",
+  "blocking_visual_issue_a": "Dealer access is present in the hero but relatively small compared with the individual purchase path; later placeholder-style trust badges could slightly dilute credibility.",
+  "blocking_visual_issue_b": "On mobile, the primary purchase action is not visible in the first viewport, and the generic Brandmark/placeholder business presentation weakens perceived legitimacy."
+}

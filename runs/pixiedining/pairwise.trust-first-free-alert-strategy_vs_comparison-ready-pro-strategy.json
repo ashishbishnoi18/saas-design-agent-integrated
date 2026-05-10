@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "comparison-ready-pro-strategy",
+  "winner": "A",
+  "confidence": 0.78,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "A",
+    "trope_risk": "B"
+  },
+  "reasoning": "Candidate A is the stronger outcome fit because it makes the actual primary conversion task visible immediately: the hero contains the restaurant/date/party/email alert form, the no-login trust claim, Disney.com handoff, and free CTA in one decision zone. That directly matches the highest-friction Segment A behavior and demonstrates safety through the benign fields themselves. Candidate B has a cleaner comparison-ready arc for Segment B and lower trope risk overall, but its first viewport only offers a CTA, trust microcopy, and sample alert, not the actual alert setup path; that weakens the stated primary business action and makes the mobile path less task-complete. Programmatically both fail, but B fails harder with multiple missing and unjustified components, while A\u2019s coherence failure is narrower. B wins trope risk because A uses more uniform card rows and conventional pricing/testimonial/step structures, but A better resolves the brief\u2019s core trust-plus-action requirement.",
+  "best_reusable_move_a": "The hero form as trust proof: showing restaurant, trip dates, party size, and email before asking for action makes the no-Disney-login safety model concrete instead of merely asserted.",
+  "best_reusable_move_b": "The comparison-ready expert zone with polling cadence, notification channels, coverage, and a row-based Free vs Pro table gives Segment B a much clearer annual-Pro evaluation path.",
+  "synthesis_recommended": true
+}

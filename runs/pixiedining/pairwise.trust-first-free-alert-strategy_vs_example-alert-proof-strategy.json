@@ -1,0 +1,18 @@
+{
+  "candidate_a": "trust-first-free-alert-strategy",
+  "candidate_b": "example-alert-proof-strategy",
+  "winner": "A",
+  "confidence": 0.72,
+  "scores": {
+    "business_outcome_fit": "A",
+    "objection_resolution": "A",
+    "first_viewport": "A",
+    "mobile_path": "A",
+    "strategy_commitment": "tie",
+    "trope_risk": "A"
+  },
+  "reasoning": "Candidate A better serves the primary business outcome: a visitor can understand the service, see the no-login trust model, and begin the actual free alert setup in the first viewport. The visible four-field form is not just a CTA; it demonstrates that Pixiedining asks for benign trip criteria rather than Disney credentials. Candidate B has a stronger proof artifact with the sample alert, but it delays the concrete alert-setup task behind a generic CTA and relies on a later flow. On mobile, A preserves the signup path with trust badges and the form visible above the fold, while B gives a CTA and reassurance but only starts to reveal the sample alert and no criteria capture. Both candidates have programmatic gate failures, but relatively A is more aligned to the intake's free-signup conversion path. B carries higher trope risk due to repeated equal card rows, testimonials, FAQ accordion, and a more generic SaaS proof-page sequence.",
+  "best_reusable_move_a": "The hero form as trust proof: restaurant, dates, party size, and email visibly prove that no Disney login is required while enabling immediate signup.",
+  "best_reusable_move_b": "The concrete SMS sample alert with restaurant, party size, timestamp, and Disney handoff is the strongest proof artifact and should be reused near the action path.",
+  "synthesis_recommended": true
+}

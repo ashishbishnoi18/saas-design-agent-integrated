@@ -1,0 +1,56 @@
+{
+  "schema_version": "strategic_diagnosis_validator.v1",
+  "passed": true,
+  "overall_score": 9.3,
+  "blocking_failures": [],
+  "category_scores": {
+    "schema_integrity": 10.0,
+    "brief_grounding": 9.5,
+    "archetype_quality": 9.0,
+    "audience_and_buyer_quality": 9.2,
+    "decision_context_quality": 9.4,
+    "beauty_function_balance_quality": 8.8,
+    "first_viewport_quality": 9.6,
+    "hard_floor_quality": 9.5,
+    "anti_pattern_quality": 9.4,
+    "dynamic_evaluator_policy_quality": 9.2,
+    "candidate_strategy_seed_quality": 9.3,
+    "downstream_usefulness": 9.6
+  },
+  "specific_failures": [],
+  "specific_strengths": [
+    {
+      "field": "first_viewport_obligation",
+      "strength": "Concrete, testable, and specific to Pixiedining: it names the alert utility, Disney dining cancellations, no-login safety model, official Disney handoff, free alert action, and failure condition."
+    },
+    {
+      "field": "audience_model",
+      "strength": "Clearly distinguishes family planners, superfans, annual passholders, travel agents, buyers, users, and stakeholders with different proof and conversion needs."
+    },
+    {
+      "field": "decision_context.primary_user_decision_sequence",
+      "strength": "Uses a specific five-step decision path tied to Disney dining availability, third-party trust, alert speed, Pro upgrade reasoning, and expert or agency use cases."
+    },
+    {
+      "field": "hard_floors",
+      "strength": "Contains enforceable score caps tied to strategic axes, including first-viewport action visibility, no-login trust, no guarantee language, official handoff, mobile task flow, and Pro value specificity."
+    },
+    {
+      "field": "anti_patterns",
+      "strength": "Anti-patterns are Pixiedining-specific and include detection hints and severity, especially around Disney imitation, unsupported speed claims, hidden safety model, and guarantee language."
+    },
+    {
+      "field": "dynamic_evaluator_policy",
+      "strength": "Evaluator weights sum to 1.0 and correctly prioritize first viewport fit, functional clarity, trust, proof, and mobile path over generic visual polish."
+    },
+    {
+      "field": "candidate_strategy_seeds",
+      "strength": "Provides multiple distinct strategy seeds with reasons, optimization targets, risks, and audience fit."
+    }
+  ],
+  "contradictions": [],
+  "generic_or_weak_phrases": [],
+  "missing_strategic_questions": [],
+  "repair_directive": "No repair required. This diagnosis is specific, grounded, enforceable, and safe to pass downstream.",
+  "safe_to_pass_downstream": true
+}
