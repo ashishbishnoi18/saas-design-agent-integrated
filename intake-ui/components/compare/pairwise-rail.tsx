@@ -4,7 +4,7 @@ import { ChevronDown, Eye, Gavel, Scale, Trophy } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { ArtifactsSummary, BlindPairwiseRecord, PairwiseRecord, RankingEntry } from "@/lib/types";
-import { findPair } from "@/lib/artifacts";
+import { findPair } from "@/lib/pairwise";
 
 export function PairwiseRail({
   a,

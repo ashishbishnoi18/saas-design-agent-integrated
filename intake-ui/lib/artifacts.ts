@@ -216,30 +216,9 @@ async function discoverPairwise(outDir: string): Promise<{
   return { pairwise, blind };
 }
 
-/**
- * Find the pairwise record for a pair (a, b) regardless of file ordering.
- * Returns the record with `winner` normalized to whichever of the input
- * order is "A" or "B" so the caller can render consistently.
- */
-export function findPair<T extends { candidate_a: string; candidate_b: string; winner: string }>(
-  records: T[] | undefined,
-  a: string,
-  b: string,
-): { record: T; oriented: T } | undefined {
-  if (!records) return undefined;
-  for (const r of records) {
-    if (r.candidate_a === a && r.candidate_b === b) {
-      return { record: r, oriented: r };
-    }
-    if (r.candidate_a === b && r.candidate_b === a) {
-      // Flip the orientation so the caller can show its (a, b) order naturally.
-      const flippedWinner = r.winner === "A" ? "B" : r.winner === "B" ? "A" : r.winner;
-      const oriented = { ...r, candidate_a: a, candidate_b: b, winner: flippedWinner } as T;
-      return { record: r, oriented };
-    }
-  }
-  return undefined;
-}
+// findPair lives in ./pairwise so client components can import it without
+// pulling in this file's node:fs / node:path imports.
+export { findPair } from "./pairwise";
 
 export async function loadArtifactsSummary(outDir: string): Promise<ArtifactsSummary> {
   const summary: ArtifactsSummary = {
