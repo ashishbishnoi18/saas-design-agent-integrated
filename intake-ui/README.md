@@ -4,10 +4,25 @@ Conversational front-end that drives `integrated_pipeline.py` with a high-fideli
 
 ## What it does
 
-1. Opens a chat with an **interviewer agent** that picks the next critical question from the *live* diagnosis preview — no hardcoded checklist.
-2. Pushes back on vague answers, forces trade-offs, demands behaviors over opinions.
+End-to-end strategist surface. Three views in one app: **Intake → Pipeline → Results**.
+
+### Intake
+1. Chat with an **interviewer agent** that picks the next critical question from the *live* diagnosis preview — no hardcoded checklist.
+2. Pushes back on vague answers, forces trade-offs, demands behaviors over opinions, sticks on one axis until it's strong.
 3. Re-runs a lightweight **diagnosis preview** every two user messages (or on demand). The right-hand panel shows per-axis confidence and missing critical info.
-4. Stops when the preview reports `ready_for_full_diagnosis: true`. Click **Finalize** to write `runs/intake-<id>/input.json` ready for `python3 integrated_pipeline.py --input ...`.
+4. Stops when the preview reports `ready_for_full_diagnosis: true`. Click **Finalize** — the brief is distilled into `runs/intake-<id>/input.json` and the view auto-switches to **Pipeline**.
+
+### Pipeline
+- A **Run pipeline** card in the right rail spawns `python3 integrated_pipeline.py` against the finalized brief.
+- Configurable per-run: provider per stage (claude-cli / codex-cli / gemini / openai / anthropic), use-diagnosis-strategies, judge panel, blind pairwise, spec-aware pairwise, top-K synthesis.
+- Live log streams from `runs/intake-<id>-pipeline-<runId>/run.log` (1.5s polling, last 64KB shown).
+- Status badges, elapsed time, kill button. Survives browser refreshes — the run record lives on disk and rejoins on reload.
+
+### Results
+- Top-line winner with rationale, runner-up note.
+- Candidate gallery with desktop hero thumbnail per strategy + total / panel / pairwise / blind / programmatic-gate badges.
+- Click a candidate to open a detail view: all 6 screenshots (desktop/tablet/mobile × viewport/full), the gray-box wireframe HTML in an iframe, the evaluator verdict, the UI spec, and a panel-judge score footer.
+- Aggregate tournament-points table (spec-aware vs blind vs panel avg) so you can see *why* the ranking landed where it did.
 
 Switch between **Claude CLI** (`claude-opus-4-7`) and **Codex CLI** (`gpt-5.5`) per session in the header.
 

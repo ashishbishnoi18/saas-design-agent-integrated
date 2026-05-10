@@ -48,4 +48,96 @@ export interface Session {
   messages: Message[];
   preview?: DiagnosisPreview;
   final_brief?: FinalBrief;
+  latest_run_id?: string;
+}
+
+export type RunStatus = "running" | "completed" | "failed" | "killed";
+
+export interface RunOptions {
+  diagnosis_provider: string;
+  validator_provider: string;
+  evaluator_provider: string;
+  use_diagnosis_strategies: boolean;
+  judge_panel: boolean;
+  blind_pairwise: boolean;
+  pairwise: boolean;
+  synthesize_top_k: number;
+}
+
+export interface RunRecord {
+  id: string;
+  session_id: string;
+  status: RunStatus;
+  started_at: number;
+  ended_at?: number;
+  exit_code?: number;
+  pid?: number;
+  command: string[];
+  input_path: string;
+  out_dir: string;
+  options: RunOptions;
+  error?: string;
+}
+
+export interface RankingEntry {
+  gate: "RANKED" | "BLOCKED" | "REJECTED" | string;
+  rank: number;
+  strategy: string;
+  total: number;
+  positive?: number;
+  trope_penalty?: number;
+  programmatic_gate?: string;
+  programmatic_score?: number;
+  hard_floor?: boolean;
+  eligible?: boolean;
+  pairwise_points?: number;
+  blind_points?: number;
+  panel_avg?: number;
+  panel_scores?: Record<string, number>;
+  gate_reason?: string;
+  raw: string;
+}
+
+export interface ParsedRanking {
+  winner?: string;
+  why_won?: string;
+  runner_up_note?: string;
+  synthesis_note?: string;
+  entries: RankingEntry[];
+}
+
+export interface PanelData {
+  judges: string[];
+  candidates: Record<string, {
+    panel_average: number;
+    panel_scores: Record<string, number>;
+    hard_failures?: string[];
+  }>;
+}
+
+export interface TournamentData {
+  pairwise_enabled?: boolean;
+  participants?: string[];
+  points?: Record<string, number>;
+  records?: Record<string, { wins: number; losses: number; ties: number }>;
+}
+
+export interface CandidateArtifacts {
+  strategy: string;
+  ui_spec_path?: string;
+  wireframe_path?: string;
+  programmatic_path?: string;
+  verdict_path?: string;
+  shots: Array<{ viewport: string; kind: "viewport" | "full"; path: string }>;
+}
+
+export interface ArtifactsSummary {
+  out_dir: string;
+  ranking?: ParsedRanking;
+  panel?: PanelData;
+  tournament?: TournamentData;
+  blind_tournament?: TournamentData;
+  candidates: CandidateArtifacts[];
+  has_pipeline_input: boolean;
+  has_strategic_diagnosis: boolean;
 }
