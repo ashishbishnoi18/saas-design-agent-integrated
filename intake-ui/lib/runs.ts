@@ -46,6 +46,32 @@ export async function readRun(outDir: string): Promise<RunRecord | null> {
   }
 }
 
+/**
+ * If the meta says `running` but the recorded pid is no longer alive (because
+ * the parent Next.js process was killed before the child's close handler
+ * could update the meta), flip the record to `failed` with an explanatory
+ * error and persist. Idempotent.
+ */
+async function reconcileIfOrphaned(rec: RunRecord): Promise<RunRecord> {
+  if (rec.status !== "running" || !rec.pid) return rec;
+  let alive = false;
+  try {
+    process.kill(rec.pid, 0); // signal 0 just probes existence
+    alive = true;
+  } catch {
+    alive = false;
+  }
+  if (alive) return rec;
+  const reconciled: RunRecord = {
+    ...rec,
+    status: "failed",
+    ended_at: rec.ended_at ?? Date.now(),
+    error: rec.error ?? `Process ${rec.pid} no longer exists. Run was orphaned (the dev server likely restarted before the python child finished).`,
+  };
+  await writeRun(reconciled);
+  return reconciled;
+}
+
 export async function readRunById(runId: string): Promise<RunRecord | null> {
   // Scan RUNS_ROOT for a dir matching the run id suffix.
   let entries: string[];
@@ -57,7 +83,8 @@ export async function readRunById(runId: string): Promise<RunRecord | null> {
   }
   const match = entries.find((e) => e.endsWith(`-pipeline-${runId}`));
   if (!match) return null;
-  return readRun(path.join(RUNS_ROOT, match));
+  const rec = await readRun(path.join(RUNS_ROOT, match));
+  return rec ? reconcileIfOrphaned(rec) : null;
 }
 
 export async function listRunsForSession(sessionId: string): Promise<RunRecord[]> {
@@ -73,7 +100,7 @@ export async function listRunsForSession(sessionId: string): Promise<RunRecord[]
   for (const e of entries) {
     if (!e.startsWith(prefix)) continue;
     const rec = await readRun(path.join(RUNS_ROOT, e));
-    if (rec) out.push(rec);
+    if (rec) out.push(await reconcileIfOrphaned(rec));
   }
   out.sort((a, b) => b.started_at - a.started_at);
   return out;
