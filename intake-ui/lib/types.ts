@@ -131,6 +131,31 @@ export interface CandidateArtifacts {
   shots: Array<{ viewport: string; kind: "viewport" | "full"; path: string }>;
 }
 
+export interface PairwiseRecord {
+  candidate_a: string;
+  candidate_b: string;
+  winner: "A" | "B" | "tie" | string;
+  confidence?: number;
+  scores?: Record<string, string>;
+  reasoning?: string;
+  best_reusable_move_a?: string;
+  best_reusable_move_b?: string;
+  synthesis_recommended?: boolean;
+  source_file: string;
+}
+
+export interface BlindPairwiseRecord {
+  candidate_a: string;
+  candidate_b: string;
+  winner: "A" | "B" | "tie" | string;
+  confidence?: number;
+  perception?: Record<string, string>;
+  reasoning?: string;
+  blocking_visual_issue_a?: string;
+  blocking_visual_issue_b?: string;
+  source_file: string;
+}
+
 export interface ArtifactsSummary {
   out_dir: string;
   ranking?: ParsedRanking;
@@ -138,6 +163,9 @@ export interface ArtifactsSummary {
   tournament?: TournamentData;
   blind_tournament?: TournamentData;
   candidates: CandidateArtifacts[];
+  pairwise_records: PairwiseRecord[];
+  blind_pairwise_records: BlindPairwiseRecord[];
+  strategic_diagnosis?: unknown;
   has_pipeline_input: boolean;
   has_strategic_diagnosis: boolean;
 }

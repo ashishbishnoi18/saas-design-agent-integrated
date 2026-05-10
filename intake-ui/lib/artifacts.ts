@@ -2,7 +2,9 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import type {
   ArtifactsSummary,
+  BlindPairwiseRecord,
   CandidateArtifacts,
+  PairwiseRecord,
   PanelData,
   ParsedRanking,
   RankingEntry,
@@ -193,10 +195,58 @@ async function discoverCandidates(outDir: string): Promise<CandidateArtifacts[]>
   return Array.from(byStrategy.values()).sort((a, b) => a.strategy.localeCompare(b.strategy));
 }
 
+async function discoverPairwise(outDir: string): Promise<{
+  pairwise: PairwiseRecord[];
+  blind: BlindPairwiseRecord[];
+}> {
+  const entries = await fs.readdir(outDir);
+  const pairwise: PairwiseRecord[] = [];
+  const blind: BlindPairwiseRecord[] = [];
+
+  for (const name of entries) {
+    if (name.startsWith("pairwise.") && name.endsWith(".json") && !name.startsWith("pairwise.blind")) {
+      const obj = await readJsonIfExists<Omit<PairwiseRecord, "source_file">>(path.join(outDir, name));
+      if (obj) pairwise.push({ ...obj, source_file: name });
+    } else if (name.startsWith("blind_pairwise.") && name.endsWith(".json")) {
+      const obj = await readJsonIfExists<Omit<BlindPairwiseRecord, "source_file">>(path.join(outDir, name));
+      if (obj) blind.push({ ...obj, source_file: name });
+    }
+  }
+
+  return { pairwise, blind };
+}
+
+/**
+ * Find the pairwise record for a pair (a, b) regardless of file ordering.
+ * Returns the record with `winner` normalized to whichever of the input
+ * order is "A" or "B" so the caller can render consistently.
+ */
+export function findPair<T extends { candidate_a: string; candidate_b: string; winner: string }>(
+  records: T[] | undefined,
+  a: string,
+  b: string,
+): { record: T; oriented: T } | undefined {
+  if (!records) return undefined;
+  for (const r of records) {
+    if (r.candidate_a === a && r.candidate_b === b) {
+      return { record: r, oriented: r };
+    }
+    if (r.candidate_a === b && r.candidate_b === a) {
+      // Flip the orientation so the caller can show its (a, b) order naturally.
+      const flippedWinner = r.winner === "A" ? "B" : r.winner === "B" ? "A" : r.winner;
+      const oriented = { ...r, candidate_a: a, candidate_b: b, winner: flippedWinner } as T;
+      return { record: r, oriented };
+    }
+  }
+  return undefined;
+}
+
 export async function loadArtifactsSummary(outDir: string): Promise<ArtifactsSummary> {
   const summary: ArtifactsSummary = {
     out_dir: outDir,
     candidates: [],
+    pairwise_records: [],
+    blind_pairwise_records: [],
     has_pipeline_input: await fileExists(path.join(outDir, "pipeline_input.json")),
     has_strategic_diagnosis: await fileExists(path.join(outDir, "strategic_diagnosis.json")),
   };
@@ -210,11 +260,21 @@ export async function loadArtifactsSummary(outDir: string): Promise<ArtifactsSum
   summary.panel = await readJsonIfExists<PanelData>(path.join(outDir, "PANEL.json"));
   summary.tournament = await readJsonIfExists<TournamentData>(path.join(outDir, "TOURNAMENT.json"));
   summary.blind_tournament = await readJsonIfExists<TournamentData>(path.join(outDir, "TOURNAMENT.blind.json"));
+  summary.strategic_diagnosis = await readJsonIfExists(path.join(outDir, "strategic_diagnosis.json"));
 
   try {
     summary.candidates = await discoverCandidates(outDir);
   } catch {
     summary.candidates = [];
   }
+
+  try {
+    const pairs = await discoverPairwise(outDir);
+    summary.pairwise_records = pairs.pairwise;
+    summary.blind_pairwise_records = pairs.blind;
+  } catch {
+    /* pairwise data is optional */
+  }
+
   return summary;
 }
