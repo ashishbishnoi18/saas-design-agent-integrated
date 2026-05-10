@@ -325,6 +325,7 @@ export default function Page() {
               <RunStatusView
                 run={currentRun}
                 log={runLog}
+                artifacts={artifacts}
                 onKill={killRun}
                 onStartNew={() => setCurrentRun(null)}
               />
