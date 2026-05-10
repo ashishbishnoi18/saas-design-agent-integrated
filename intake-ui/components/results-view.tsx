@@ -1,26 +1,33 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Award, Inbox, RefreshCw, Trophy } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useEffect, useMemo, useState } from "react";
+import { Inbox, RefreshCw, Scale, Trophy, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CandidateCard } from "./candidate-card";
-import { CandidateDetail } from "./candidate-detail";
+import { Leaderboard, type LeaderboardRow } from "./results/leaderboard";
+import { FocusPane } from "./results/focus-pane";
 import type { ArtifactsSummary, RankingEntry } from "@/lib/types";
+
+const MAX_COMPARE = 2;
 
 export function ResultsView({
   runId,
   summary,
   refreshing,
   onRefresh,
+  initialFocus,
+  onFocusChange,
+  onCompare,
 }: {
   runId: string;
   summary: ArtifactsSummary | null;
   refreshing: boolean;
   onRefresh: () => void;
+  initialFocus?: string;
+  onFocusChange?: (strategy: string | undefined) => void;
+  onCompare?: (a: string, b: string) => void;
 }) {
-  const [openStrategy, setOpenStrategy] = useState<string | null>(null);
+  const [focused, setFocused] = useState<string | undefined>(initialFocus);
+  const [selected, setSelected] = useState<string[]>([]);
 
   const rankingByStrategy = useMemo(() => {
     const m = new Map<string, RankingEntry>();
@@ -28,20 +35,33 @@ export function ResultsView({
     return m;
   }, [summary]);
 
-  const orderedCandidates = useMemo(() => {
+  const orderedRows: LeaderboardRow[] = useMemo(() => {
     if (!summary) return [];
     const ranked = summary.ranking?.entries.map((e) => e.strategy) ?? [];
     const set = new Set(ranked);
     const tail = summary.candidates.filter((c) => !set.has(c.strategy)).map((c) => c.strategy);
     const order = [...ranked, ...tail];
-    return order
-      .map((s) => summary.candidates.find((c) => c.strategy === s))
-      .filter((x): x is NonNullable<typeof x> => Boolean(x));
-  }, [summary]);
+    const rows: LeaderboardRow[] = [];
+    for (const strategy of order) {
+      const candidate = summary.candidates.find((c) => c.strategy === strategy);
+      if (candidate) rows.push({ candidate, ranking: rankingByStrategy.get(strategy) });
+    }
+    return rows;
+  }, [summary, rankingByStrategy]);
 
-  const winner = summary?.ranking?.winner;
-  const openCandidate = openStrategy ? summary?.candidates.find((c) => c.strategy === openStrategy) : undefined;
-  const openRanking = openStrategy ? rankingByStrategy.get(openStrategy) : undefined;
+  // Default focus to the top candidate if none set yet (and no initialFocus prop change pending).
+  useEffect(() => {
+    if (!focused && orderedRows.length > 0) {
+      const next = orderedRows[0].candidate.strategy;
+      setFocused(next);
+      onFocusChange?.(next);
+    }
+  }, [focused, orderedRows, onFocusChange]);
+
+  // Sync external initialFocus changes (e.g., from URL).
+  useEffect(() => {
+    if (initialFocus && initialFocus !== focused) setFocused(initialFocus);
+  }, [initialFocus, focused]);
 
   if (!summary) {
     return (
@@ -51,101 +71,95 @@ export function ResultsView({
     );
   }
 
+  const winner = summary.ranking?.winner;
+  const focusedRow = orderedRows.find((r) => r.candidate.strategy === focused);
+
+  const setFocus = (strategy: string) => {
+    setFocused(strategy);
+    onFocusChange?.(strategy);
+  };
+
+  const toggleSelect = (strategy: string) => {
+    setSelected((cur) => {
+      if (cur.includes(strategy)) return cur.filter((s) => s !== strategy);
+      if (cur.length >= MAX_COMPARE) return [cur[1], strategy];
+      return [...cur, strategy];
+    });
+  };
+
+  const startCompare = () => {
+    if (selected.length === 2 && onCompare) onCompare(selected[0], selected[1]);
+  };
+
   return (
-    <div className="flex h-full flex-col overflow-auto scrollbar-thin">
-      <div className="border-b border-border bg-background/60 px-6 py-4">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Pipeline results</div>
-            {winner ? (
-              <div className="mt-1 flex items-center gap-2 text-base font-semibold">
-                <Trophy className="h-4 w-4 text-amber-500" />
-                <code className="font-mono">{winner}</code>
-                <Badge variant="outline">winner</Badge>
-              </div>
-            ) : (
-              <div className="mt-1 text-sm text-muted-foreground">No final winner determined.</div>
-            )}
-            {summary.ranking?.why_won && (
-              <div className="mt-1 max-w-3xl text-[12px] text-muted-foreground">
-                {summary.ranking.why_won}
-              </div>
-            )}
+    <div className="relative flex h-full overflow-hidden">
+      <aside className="flex w-[340px] shrink-0 flex-col border-r border-border bg-muted/30">
+        <div className="flex items-center justify-between border-b border-border bg-background/60 px-3 py-2.5">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Leaderboard</span>
+            <span className="text-[10px] text-muted-foreground">{orderedRows.length} candidates</span>
           </div>
-          <Button size="sm" variant="outline" onClick={onRefresh} disabled={refreshing} className="gap-1.5">
-            <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} /> Refresh
+          <Button size="icon" variant="ghost" onClick={onRefresh} disabled={refreshing} title="Refresh artifacts">
+            <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} />
           </Button>
         </div>
 
-        {summary.ranking?.runner_up_note && (
-          <div className="mt-2 max-w-3xl text-[12px] text-muted-foreground">
-            <Award className="mr-1 inline h-3.5 w-3.5" /> {summary.ranking.runner_up_note}
+        {winner && (
+          <div className="border-b border-border bg-amber-50/60 px-3 py-2">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-amber-900">
+              <Trophy className="h-3 w-3" /> winner
+            </div>
+            <div className="mt-0.5 truncate font-mono text-[12px] text-amber-900">{winner}</div>
+            {summary.ranking?.why_won && (
+              <div className="mt-1 line-clamp-3 text-[11px] leading-snug text-amber-800/80">{summary.ranking.why_won}</div>
+            )}
           </div>
         )}
-      </div>
 
-      <div className="grid grid-cols-1 gap-4 p-6 md:grid-cols-2 xl:grid-cols-3">
-        {orderedCandidates.length === 0 ? (
-          <div className="col-span-full text-sm text-muted-foreground">
-            No candidates produced yet. Refresh after the pipeline finishes the architect stage.
-          </div>
-        ) : orderedCandidates.map((c) => (
-          <CandidateCard
-            key={c.strategy}
-            candidate={c}
-            ranking={rankingByStrategy.get(c.strategy)}
-            runId={runId}
-            isWinner={winner === c.strategy}
-            onOpen={() => setOpenStrategy(c.strategy)}
+        <div className="flex-1 overflow-y-auto scrollbar-thin">
+          <Leaderboard
+            rows={orderedRows}
+            focusedStrategy={focused}
+            selectedStrategies={selected}
+            onFocus={setFocus}
+            onToggleSelect={toggleSelect}
+            winner={winner}
           />
-        ))}
-      </div>
-
-      {summary.tournament?.points && Object.keys(summary.tournament.points).length > 0 && (
-        <div className="px-6 pb-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Tournament points</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <table className="w-full text-[12px]">
-                <thead>
-                  <tr className="border-b border-border text-left text-muted-foreground">
-                    <th className="py-1 pr-3">strategy</th>
-                    <th className="py-1 pr-3 text-right">spec-aware</th>
-                    <th className="py-1 pr-3 text-right">blind</th>
-                    <th className="py-1 pr-3 text-right">panel avg</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(summary.tournament.points)
-                    .sort((a, b) => b[1] - a[1])
-                    .map(([strat, pts]) => {
-                      const blind = summary.blind_tournament?.points?.[strat];
-                      const panel = summary.panel?.candidates?.[strat]?.panel_average;
-                      return (
-                        <tr key={strat} className="border-b border-border last:border-b-0">
-                          <td className="py-1 pr-3 font-mono">{strat}</td>
-                          <td className="py-1 pr-3 text-right tabular-nums">{pts.toFixed(1)}</td>
-                          <td className="py-1 pr-3 text-right tabular-nums text-muted-foreground">{typeof blind === "number" ? blind.toFixed(1) : "—"}</td>
-                          <td className="py-1 pr-3 text-right tabular-nums text-muted-foreground">{typeof panel === "number" ? panel.toFixed(1) : "—"}</td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              </table>
-            </CardContent>
-          </Card>
         </div>
-      )}
+      </aside>
 
-      {openCandidate && (
-        <CandidateDetail
-          candidate={openCandidate}
-          ranking={openRanking}
+      <main className="flex-1 overflow-hidden bg-background">
+        <FocusPane
+          candidate={focusedRow?.candidate}
+          ranking={focusedRow?.ranking}
+          summary={summary}
           runId={runId}
-          onClose={() => setOpenStrategy(null)}
+          isWinner={!!focused && focused === winner}
         />
+      </main>
+
+      {selected.length > 0 && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
+          <div className="pointer-events-auto flex items-center gap-3 rounded-full border border-border bg-background/95 px-3 py-2 shadow-lg backdrop-blur">
+            <Scale className="h-3.5 w-3.5 text-muted-foreground" />
+            <span className="text-xs">
+              {selected.length === 1
+                ? <>Selected <code className="font-mono">{selected[0]}</code> — pick one more to compare.</>
+                : <>Compare <code className="font-mono">{selected[0]}</code> vs <code className="font-mono">{selected[1]}</code></>}
+            </span>
+            <Button size="sm" disabled={selected.length !== 2} onClick={startCompare} className="gap-1.5">
+              Compare
+            </Button>
+            <button
+              type="button"
+              onClick={() => setSelected([])}
+              className="inline-flex h-6 w-6 items-center justify-center rounded-full text-muted-foreground hover:bg-accent"
+              title="Clear selection"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

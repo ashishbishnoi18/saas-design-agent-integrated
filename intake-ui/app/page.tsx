@@ -341,6 +341,19 @@ export default function Page() {
               summary={artifacts}
               refreshing={artifactsLoading}
               onRefresh={() => currentRun && fetchArtifacts(currentRun.id)}
+              initialFocus={typeof window !== "undefined" ? new URL(window.location.href).searchParams.get("focus") ?? undefined : undefined}
+              onFocusChange={(strategy) => {
+                if (typeof window === "undefined") return;
+                const url = new URL(window.location.href);
+                if (strategy) url.searchParams.set("focus", strategy);
+                else url.searchParams.delete("focus");
+                window.history.replaceState({}, "", url.toString());
+              }}
+              onCompare={(a, b) => {
+                if (!currentRun) return;
+                const params = new URLSearchParams({ run: currentRun.id, a, b });
+                window.location.href = `/compare?${params.toString()}`;
+              }}
             />
           )}
         </main>
