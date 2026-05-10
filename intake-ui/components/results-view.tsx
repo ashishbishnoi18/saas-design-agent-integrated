@@ -1,16 +1,40 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Inbox, RefreshCw, Scale, Trophy, X } from "lucide-react";
+import { CheckCircle2, Clock, Inbox, Loader2, RefreshCw, Scale, Trophy, X, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Leaderboard, type LeaderboardRow } from "./results/leaderboard";
 import { FocusPane } from "./results/focus-pane";
-import type { ArtifactsSummary, RankingEntry } from "@/lib/types";
+import type { ArtifactsSummary, RankingEntry, RunRecord } from "@/lib/types";
+
+function formatRel(ms?: number): string {
+  if (!ms) return "—";
+  const diff = Date.now() - ms;
+  const s = Math.floor(diff / 1000);
+  if (s < 60) return `${s}s ago`;
+  const m = Math.floor(s / 60);
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  const d = Math.floor(h / 24);
+  return `${d}d ago`;
+}
+
+function formatDuration(start?: number, end?: number): string {
+  if (!start) return "—";
+  const ms = (end ?? Date.now()) - start;
+  const s = Math.floor(ms / 1000);
+  if (s < 60) return `${s}s`;
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}m ${r}s`;
+}
 
 const MAX_COMPARE = 2;
 
 export function ResultsView({
   runId,
+  run,
   summary,
   refreshing,
   onRefresh,
@@ -19,6 +43,7 @@ export function ResultsView({
   onCompare,
 }: {
   runId: string;
+  run?: RunRecord | null;
   summary: ArtifactsSummary | null;
   refreshing: boolean;
   onRefresh: () => void;
@@ -94,6 +119,7 @@ export function ResultsView({
   return (
     <div className="relative flex h-full overflow-hidden">
       <aside className="flex w-[340px] shrink-0 flex-col border-r border-border bg-muted/30">
+        {run && <RunHeader run={run} />}
         <div className="flex items-center justify-between border-b border-border bg-background/60 px-3 py-2.5">
           <div className="flex items-center gap-2">
             <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Leaderboard</span>
@@ -140,7 +166,7 @@ export function ResultsView({
       </main>
 
       {selected.length > 0 && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center">
+        <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
           <div className="pointer-events-auto flex items-center gap-3 rounded-full border border-border bg-background/95 px-3 py-2 shadow-lg backdrop-blur">
             <Scale className="h-3.5 w-3.5 text-muted-foreground" />
             <span className="text-xs">
@@ -160,6 +186,56 @@ export function ResultsView({
               <X className="h-3.5 w-3.5" />
             </button>
           </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RunHeader({ run }: { run: RunRecord }) {
+  const StatusIcon =
+    run.status === "running" ? Loader2 :
+    run.status === "completed" ? CheckCircle2 :
+    run.status === "failed" ? XCircle :
+    Clock;
+  const tone =
+    run.status === "running" ? "text-amber-700" :
+    run.status === "completed" ? "text-emerald-700" :
+    run.status === "failed" ? "text-rose-700" :
+    "text-muted-foreground";
+
+  const opts = run.options;
+  const optChips: string[] = [];
+  if (opts.use_diagnosis_strategies) optChips.push("diag-seeds");
+  if (opts.judge_panel) optChips.push("panel");
+  if (opts.blind_pairwise) optChips.push("blind");
+  if (opts.pairwise) optChips.push("pairwise");
+  if (opts.synthesize_top_k > 0) optChips.push(`top-${opts.synthesize_top_k}`);
+
+  return (
+    <div className="border-b border-border bg-background/40 px-3 py-2.5">
+      <div className="flex items-center gap-1.5 text-[11px]">
+        <StatusIcon className={`h-3 w-3 ${run.status === "running" ? "animate-spin" : ""} ${tone}`} />
+        <span className={`font-mono font-medium uppercase tracking-wide ${tone}`}>{run.status}</span>
+        <code className="ml-auto rounded bg-muted px-1 py-0.5 font-mono text-[10px] text-muted-foreground">{run.id}</code>
+      </div>
+      <div className="mt-1 flex items-center gap-2 text-[10px] text-muted-foreground">
+        <span>{run.status === "running" ? "started" : "finished"} {formatRel(run.ended_at ?? run.started_at)}</span>
+        <span>·</span>
+        <span>{formatDuration(run.started_at, run.ended_at)}</span>
+        {run.exit_code !== undefined && run.exit_code !== 0 && (
+          <>
+            <span>·</span>
+            <span>exit {run.exit_code}</span>
+          </>
+        )}
+      </div>
+      {optChips.length > 0 && (
+        <div className="mt-1.5 flex flex-wrap gap-1">
+          <span className="rounded bg-muted px-1 py-0.5 font-mono text-[9px] text-muted-foreground">{run.options.evaluator_provider}</span>
+          {optChips.map((c) => (
+            <span key={c} className="rounded bg-muted px-1 py-0.5 font-mono text-[9px] text-muted-foreground">{c}</span>
+          ))}
         </div>
       )}
     </div>

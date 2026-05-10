@@ -338,6 +338,7 @@ export default function Page() {
           ) : (
             <ResultsView
               runId={currentRun?.id ?? ""}
+              run={currentRun}
               summary={artifacts}
               refreshing={artifactsLoading}
               onRefresh={() => currentRun && fetchArtifacts(currentRun.id)}
