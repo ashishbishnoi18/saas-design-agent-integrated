@@ -57,7 +57,17 @@ export async function startRun({ sessionId, inputAbs, options }: StartRunArgs): 
   const outRel = path.relative(PROJECT_ROOT, outDir);
   const args = buildArgs(inputRel, outRel, options);
 
-  const env = { ...process.env, ...(await loadProjectEnv()) };
+  const env = {
+    ...process.env,
+    ...(await loadProjectEnv()),
+    // Without this, Python block-buffers stdout when piped (not a TTY), so
+    // none of the harness's progress prints reach run.log until the buffer
+    // fills — which, with hours-long claude-cli subprocess calls in between,
+    // means the log can stay empty for the whole run. PYTHONUNBUFFERED=1
+    // forces line-by-line flushes so the UI's stage tracker has something
+    // to parse and the user isn't flying blind.
+    PYTHONUNBUFFERED: "1",
+  };
   const pythonBin = resolvePythonBin();
 
   // Open the log file before spawn so a blank log exists immediately for the UI.
