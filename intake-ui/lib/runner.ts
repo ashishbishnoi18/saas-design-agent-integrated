@@ -129,12 +129,69 @@ export async function killRun(record: RunRecord): Promise<RunRecord> {
   return (await readRun(record.out_dir)) ?? next;
 }
 
-export function defaultRunOptions(provider: string): RunOptions {
+const PROVIDER_FAMILY: Record<string, string> = {
+  "claude-cli": "anthropic",
+  anthropic: "anthropic",
+  "codex-cli": "openai",
+  openai: "openai",
+  gemini: "google",
+};
+
+function providerAvailable(p: string, env: Record<string, string | undefined>): boolean {
+  switch (p) {
+    case "gemini":
+      return !!(env.GOOGLE_API_KEY || env.GEMINI_API_KEY);
+    case "openai":
+      return !!env.OPENAI_API_KEY;
+    case "anthropic":
+      return !!env.ANTHROPIC_API_KEY;
+    case "claude-cli":
+      // Assumed installed — the harness/runner already depends on it; the
+      // command-not-found error from spawn is clear enough if it isn't.
+      return true;
+    case "codex-cli":
+      return true;
+    default:
+      return false;
+  }
+}
+
+/**
+ * Pick a validator from a *different* model family than `sessionProvider`,
+ * preferring providers whose API keys are present. Falls back to the session
+ * provider if nothing cross-family is available — mixing is a "best effort"
+ * default, not a hard requirement.
+ *
+ * Cross-family validation is the highest-leverage diversity in this pipeline:
+ * the validator's job is to flag overconfidence and bias in the diagnosis,
+ * which an in-family model is biased to overlook.
+ */
+function pickCrossFamilyValidator(sessionProvider: string, env: Record<string, string | undefined>): string {
+  const sessionFamily = PROVIDER_FAMILY[sessionProvider] ?? sessionProvider;
+  // Preference orders by session family; first available wins.
+  const preferenceBySession: Record<string, string[]> = {
+    anthropic: ["gemini", "openai", "codex-cli", "claude-cli"],
+    openai: ["gemini", "anthropic", "claude-cli", "codex-cli"],
+    google: ["anthropic", "openai", "claude-cli", "codex-cli"],
+  };
+  const prefs = preferenceBySession[sessionFamily] ?? ["gemini", "openai", "anthropic"];
+  for (const p of prefs) {
+    const fam = PROVIDER_FAMILY[p];
+    if (fam === sessionFamily) continue;
+    if (providerAvailable(p, env)) return p;
+  }
+  return sessionProvider;
+}
+
+export async function defaultRunOptions(provider: string): Promise<RunOptions> {
   // Provider names accepted by integrated_pipeline.py: gemini, openai, anthropic, claude-cli, codex-cli.
   const safe = ["gemini", "openai", "anthropic", "claude-cli", "codex-cli"].includes(provider) ? provider : "claude-cli";
+  // Merge .env with process.env so we honor either.
+  const env: Record<string, string | undefined> = { ...process.env, ...(await loadProjectEnv()) };
+  const validator = pickCrossFamilyValidator(safe, env);
   return {
     diagnosis_provider: safe,
-    validator_provider: safe,
+    validator_provider: validator,
     evaluator_provider: safe,
     use_diagnosis_strategies: true,
     judge_panel: true,

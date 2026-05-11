@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: `input.json missing at ${inputAbs}; re-finalize` }, { status: 400 });
   }
 
-  const merged: RunOptions = { ...defaultRunOptions(session.provider), ...(body.options ?? {}) };
+  const merged: RunOptions = { ...(await defaultRunOptions(session.provider)), ...(body.options ?? {}) };
 
   const record = await startRun({ sessionId: session.id, inputAbs, options: merged });
 
