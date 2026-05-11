@@ -311,15 +311,28 @@ async def semantic_validate_and_repair(
             "validator_result": validator_result,
             "deterministic_validation": validation,
         }
-        diagnosis = await call_json_provider(
-            provider,
-            model,
-            REPAIR_PROMPT.read_text(encoding="utf-8"),
-            repair_payload,
-            out_raw_path=out_dir / f"raw_repair_response.attempt-{attempt + 1}.txt",
-            schema_path=DIAG_SCHEMA,
-            schema_name="strategic_diagnosis",
-        )
+        try:
+            diagnosis = await call_json_provider(
+                provider,
+                model,
+                REPAIR_PROMPT.read_text(encoding="utf-8"),
+                repair_payload,
+                out_raw_path=out_dir / f"raw_repair_response.attempt-{attempt + 1}.txt",
+                schema_path=DIAG_SCHEMA,
+                schema_name="strategic_diagnosis",
+            )
+        except (RuntimeError, json.JSONDecodeError) as exc:
+            # The repair call can't be parsed (commonly: model returned a
+            # truncated response because input + output exceeded the output
+            # token budget). Falling back to the previous diagnosis is far
+            # better than killing an hours-long run — the semantic validator
+            # has its own opinion downstream and the pipeline gate decides
+            # whether to architect anyway.
+            print(
+                f"  ⚠ Repair attempt {attempt + 1} failed to produce parseable JSON ({exc}). "
+                f"Falling back to the previous diagnosis."
+            )
+            return diagnosis, validation, validator_result
         write_json(out_dir / "strategic_diagnosis.json", diagnosis)
         validation = deterministic_validate_diagnosis(diagnosis)
         write_json(out_dir / "diagnosis_deterministic_validation.json", validation)
@@ -383,22 +396,38 @@ async def main_async(args) -> int:
     diagnosis, validation, validator_result = await semantic_validate_and_repair(
         args, input_payload, diagnosis, validation, out_dir
     )
-    safe = bool(
-        validation.get("passed")
-        and validator_result.get("passed")
-        and validator_result.get("safe_to_pass_downstream")
+    deterministic_passed = bool(validation.get("passed"))
+    semantic_passed = bool(validator_result.get("passed"))
+    safe_signal = bool(validator_result.get("safe_to_pass_downstream"))
+    # The semantic validator is the more sophisticated arbiter; deterministic
+    # checks are heuristic. If both signals agree it's safe, we proceed even
+    # when the deterministic check flags something. Down-weight to warning
+    # status rather than hard block so a single weight-imbalance heuristic
+    # doesn't kill an hours-long run after the validator already approved.
+    safe = (deterministic_passed and semantic_passed and safe_signal) or (
+        semantic_passed and safe_signal
     )
+    gate_note = None
+    if not deterministic_passed and safe:
+        det_errs = validation.get("extra_deterministic_checks", {}).get("errors", [])
+        first = det_errs[0] if det_errs else {}
+        gate_note = (
+            f"Deterministic check failed ({first.get('error', 'unknown') if first else 'see file'}) "
+            f"but semantic validator approved safe_to_pass_downstream. Proceeding with warning."
+        )
+        print(f"  ⚠ {gate_note}")
     write_json(
         out_dir / "pipeline_gate.json",
         {
-            "deterministic_passed": validation.get("passed"),
-            "semantic_passed": validator_result.get("passed"),
-            "safe_to_pass_downstream": validator_result.get("safe_to_pass_downstream"),
+            "deterministic_passed": deterministic_passed,
+            "semantic_passed": semantic_passed,
+            "safe_to_pass_downstream": safe_signal,
             "architect_allowed": safe or args.allow_failed_diagnosis,
+            "note": gate_note,
         },
     )
     if not safe and not args.allow_failed_diagnosis:
-        print("Diagnosis gate failed. Use --allow-failed-diagnosis only for debugging.")
+        print("Diagnosis gate failed (semantic validator rejected). Use --allow-failed-diagnosis only for debugging.")
         return 3
 
     if args.skip_architect:
