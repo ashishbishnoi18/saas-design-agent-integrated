@@ -155,6 +155,16 @@ async def _call_openai_structured_json(
     return harness._extract_json_object(raw)
 
 
+_PARSE_RETRY_HINT = (
+    "\n\nIMPORTANT: A prior attempt produced malformed JSON (truncated or "
+    "syntactically invalid). Return ONLY a single complete, valid JSON object "
+    "that fully closes every string, array, and object. Do not include "
+    "markdown code fences, commentary, or chain-of-thought. If the schema is "
+    "long, be terse where possible to ensure the response fits in the output "
+    "budget — but every required field must still be present."
+)
+
+
 async def call_json_provider(
     provider: str,
     model: str,
@@ -164,6 +174,7 @@ async def call_json_provider(
     out_raw_path: pathlib.Path | None = None,
     schema_path: pathlib.Path | None = None,
     schema_name: str = "structured_output",
+    max_parse_retries: int = 2,
 ) -> dict[str, Any]:
     if (
         provider == "openai"
@@ -176,11 +187,48 @@ async def call_json_provider(
 
     evaluator = harness._make_evaluator(provider, model)
     user_text = json.dumps(payload, indent=2, ensure_ascii=False)
-    raw = await evaluator.evaluate(system_prompt, user_text, [])
-    if out_raw_path:
-        out_raw_path.parent.mkdir(parents=True, exist_ok=True)
-        out_raw_path.write_text(raw, encoding="utf-8")
-    return harness._extract_json_object(raw)
+    attempt = 0
+    last_err: Exception | None = None
+    prompt_suffix = ""
+    while True:
+        attempt += 1
+        try:
+            raw = await evaluator.evaluate(system_prompt + prompt_suffix, user_text, [])
+        except Exception as exc:
+            # Provider-level failure (network, CLI exit nonzero, etc.). Surface
+            # immediately rather than silently retrying — these aren't parse
+            # issues and the LLM call has its own cost.
+            raise
+
+        if out_raw_path:
+            suffix_path = (
+                out_raw_path
+                if attempt == 1
+                else out_raw_path.with_suffix(out_raw_path.suffix + f".retry-{attempt - 1}")
+            )
+            suffix_path.parent.mkdir(parents=True, exist_ok=True)
+            suffix_path.write_text(raw, encoding="utf-8")
+
+        try:
+            return harness._extract_json_object(raw)
+        except (json.JSONDecodeError, ValueError) as exc:
+            last_err = exc
+            if attempt > max_parse_retries:
+                # Persist the failing raw at a clearly named path so the user
+                # can see what the model actually produced.
+                if out_raw_path:
+                    broken = out_raw_path.with_suffix(out_raw_path.suffix + ".broken")
+                    broken.write_text(raw, encoding="utf-8")
+                raise RuntimeError(
+                    f"Failed to parse JSON from {provider}/{model} after {attempt} attempts. "
+                    f"Last error: {exc}. Raw saved to {out_raw_path}"
+                ) from exc
+
+            print(
+                f"  ⚠ JSON parse failed on attempt {attempt} ({exc.__class__.__name__}: "
+                f"{str(exc)[:120]}); retrying with truncation hint..."
+            )
+            prompt_suffix = _PARSE_RETRY_HINT
 
 
 async def generate_or_load_diagnosis(args, input_payload: dict[str, Any], out_dir: pathlib.Path) -> dict[str, Any]:
