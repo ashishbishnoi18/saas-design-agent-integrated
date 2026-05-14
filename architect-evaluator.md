@@ -172,7 +172,7 @@ PROGRAMMATIC_GATE_PASSED: {yes/no}
 WEIGHTED_POSITIVE_TOTAL: {0-10}
 TROPE_REVERSION_PENALTY_APPLIED: {0.0 to -1.0}
 WEIGHTED_TOTAL: {0-10 after penalty}
-HARD_FLOOR_VIOLATED: {yes/no}
+HARD_FLOOR_VIOLATED: {yes/no — set "yes" ONLY when a rule from `hard_floors_wireframe_stage` is violated by the rendered wireframe. Do NOT mark "yes" for any rule listed under `hard_floors_deferred` — those are visual-stage or code-stage mandates that the gray-box wireframe structurally cannot satisfy or fail, and the downstream visual-design and frontend stages will decide them. Note deferred-stage concerns in TOP 3 SPECIFIC FAILURES as observations only, not as floor violations.}
 ELIGIBLE_FOR_FINAL_RANKING: {yes/no}
 
 TOP 3 SPECIFIC FAILURES:

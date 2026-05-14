@@ -2,9 +2,10 @@ import { spawn } from "node:child_process";
 import type { CliProvider } from "./types";
 
 const CLAUDE_DEFAULT_MODEL = process.env.INTAKE_CLAUDE_MODEL || "claude-opus-4-7";
+const CLAUDE_EFFORT = process.env.INTAKE_CLAUDE_EFFORT || "max";
 const CODEX_DEFAULT_MODEL = process.env.INTAKE_CODEX_MODEL || "gpt-5.5";
-const CODEX_EFFORT = process.env.INTAKE_CODEX_EFFORT || "medium";
-const CALL_TIMEOUT_MS = Number(process.env.INTAKE_CLI_TIMEOUT_MS || 180_000);
+const CODEX_EFFORT = process.env.INTAKE_CODEX_EFFORT || "xhigh";
+const CALL_TIMEOUT_MS = Number(process.env.INTAKE_CLI_TIMEOUT_MS || 1_800_000);
 
 export interface CliCallOptions {
   provider: CliProvider;
@@ -25,6 +26,7 @@ async function runClaude(opts: CliCallOptions): Promise<string> {
   const args = [
     "-p", opts.userText,
     "--model", model,
+    "--effort", CLAUDE_EFFORT,
     "--allowedTools", "Read",
     "--permission-mode", "acceptEdits",
     "--output-format", "text",

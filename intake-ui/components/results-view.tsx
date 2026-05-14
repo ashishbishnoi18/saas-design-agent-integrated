@@ -83,10 +83,15 @@ export function ResultsView({
     }
   }, [focused, orderedRows, onFocusChange]);
 
-  // Sync external initialFocus changes (e.g., from URL).
+  // Sync external initialFocus changes (e.g., back/forward button). Must NOT
+  // depend on `focused` — otherwise every internal click triggers this effect
+  // with a stale initialFocus (since `history.replaceState` from setFocus
+  // doesn't re-render the parent), snapping `focused` back to the URL value
+  // captured at the parent's last render.
   useEffect(() => {
-    if (initialFocus && initialFocus !== focused) setFocused(initialFocus);
-  }, [initialFocus, focused]);
+    if (initialFocus) setFocused(initialFocus);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialFocus]);
 
   if (!summary) {
     return (

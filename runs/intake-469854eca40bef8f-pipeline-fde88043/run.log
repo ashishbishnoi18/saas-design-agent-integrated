@@ -1,3 +1,0 @@
-Missing dependency: jsonschema. Run: pip install -r strategic-diagnosis-agent/requirements.txt
-
-[runner] exited code=1 signal=null

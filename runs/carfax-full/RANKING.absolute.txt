@@ -1,6 +1,0 @@
-sample-report-proof-led-path	eligible=False	abs=7.75	programmatic=4.0
-dealer-value-forward-with-consumer-fast-lane	eligible=False	abs=7.11	programmatic=6.0
-task-first-purchase-with-proof-guardrails	eligible=False	abs=7.53	programmatic=4.0
-trust-first-dual-path-conversion	eligible=False	abs=7.53	programmatic=4.0
-business-identity-and-human-contact-reassurance	eligible=False	abs=6.93	programmatic=4.0
-savings-and-safety-comparison-strategy	eligible=False	abs=6.84	programmatic=4.0

@@ -699,6 +699,10 @@
           "validation_hint": {
             "type": "string",
             "minLength": 10
+          },
+          "stage": {
+            "enum": ["wireframe", "visual", "code"],
+            "description": "Which downstream stage actually decides whether this floor is satisfied. wireframe = structural/layout/copy/order/component-presence/first-viewport geometry (the gray-box stage can prove pass or fail). visual = color/typography/illustration/warmth/brand-fit (only the visual-design stage can satisfy or judge it). code = runtime behavior, performance, a11y, interactivity (only the implemented frontend can satisfy it). Defaults to wireframe when omitted, preserving v1 behavior."
           }
         }
       },

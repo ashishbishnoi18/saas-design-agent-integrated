@@ -24,7 +24,13 @@ REPAIR RULES
 4. Remove or rewrite generic phrases.
 5. Resolve contradictions.
 6. Strengthen weak evidence.
-7. Make hard floors enforceable.
+7. Make hard floors enforceable. Each hard floor MUST carry a `stage` field
+   (`wireframe` | `visual` | `code`) declaring which downstream stage decides
+   pass/fail. Preserve any `stage` already present. If missing, add it: tag
+   structural/layout/copy/first-viewport rules as `wireframe`, aesthetic/
+   color/typography/warmth rules as `visual`, runtime/perf/a11y rules as
+   `code`. When in doubt, pick the later stage — tagging a visual mandate as
+   wireframe causes false-fails the gray-box wireframe cannot satisfy.
 8. Make anti-patterns specific.
 9. Make first viewport obligation concrete.
 10. Make evaluator weights sum to exactly 1.0.

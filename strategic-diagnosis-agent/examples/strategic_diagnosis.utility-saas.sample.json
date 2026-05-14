@@ -219,7 +219,8 @@
       "triggered_by_axis": "functional_immediacy=extreme",
       "why_it_matters": "The visitor is task-oriented and will leave if the page behaves like a general marketing site before proving task fit.",
       "score_cap_if_violated": 6.0,
-      "validation_hint": "Check viewport screenshot for visible export path, input/output example, or start action."
+      "validation_hint": "Check viewport screenshot for visible export path, input/output example, or start action.",
+      "stage": "wireframe"
     },
     {
       "id": "hf_input_output_clarity",
@@ -227,7 +228,8 @@
       "triggered_by_axis": "usage_pattern=short_repeated_utility",
       "why_it_matters": "The user is choosing whether the utility solves the immediate job, not reading a broad product story first.",
       "score_cap_if_violated": 6.5,
-      "validation_hint": "Look for concrete input and output language or visual structure in the early sequence."
+      "validation_hint": "Look for concrete input and output language or visual structure in the early sequence.",
+      "stage": "wireframe"
     },
     {
       "id": "hf_trust_near_task",
@@ -235,7 +237,8 @@
       "triggered_by_axis": "trust_burden=medium",
       "why_it_matters": "Connecting or pasting data introduces hesitation even when the purchase risk is not enterprise-level.",
       "score_cap_if_violated": 7.0,
-      "validation_hint": "Check whether safety, data handling, reliability, or support credibility is close to the action path."
+      "validation_hint": "Check whether safety, data handling, reliability, or support credibility is close to the action path.",
+      "stage": "wireframe"
     },
     {
       "id": "hf_mobile_action_path",
@@ -243,7 +246,8 @@
       "triggered_by_axis": "expected_session_duration=one_to_three_min",
       "why_it_matters": "Short-session users on mobile need a compressed path to task comprehension and action.",
       "score_cap_if_violated": 6.0,
-      "validation_hint": "Check mobile viewport screenshot for task/action visibility and absence of secondary-first stacking."
+      "validation_hint": "Check mobile viewport screenshot for task/action visibility and absence of secondary-first stacking.",
+      "stage": "wireframe"
     },
     {
       "id": "hf_no_long_narrative_before_task",
@@ -251,7 +255,8 @@
       "triggered_by_axis": "content_depth=moderate",
       "why_it_matters": "The utility value depends on concrete speed and output, not initial brand persuasion.",
       "score_cap_if_violated": 6.5,
-      "validation_hint": "Inspect early section order for abstract claims appearing before workflow clarity."
+      "validation_hint": "Inspect early section order for abstract claims appearing before workflow clarity.",
+      "stage": "wireframe"
     }
   ],
   "anti_patterns": [

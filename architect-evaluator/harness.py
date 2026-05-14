@@ -98,7 +98,7 @@ FALLBACK_EVALUATOR_MODELS = {
     "gemini": "gemini-3.1-pro-preview",
     "openai": "gpt-5.5",
     "anthropic": "claude-opus-4-7",
-    "claude-cli": "sonnet",
+    "claude-cli": "claude-opus-4-7",
     "codex-cli": "gpt-5.5",
 }
 
@@ -190,7 +190,7 @@ class RunConfig:
     knowledge_dir: pathlib.Path
     evaluator_provider: str  # "gemini" | "openai"
     evaluator_model: str
-    max_revisions: int = 1
+    max_revisions: int = 2
     use_installed_agent: bool = False
     pairwise: bool = False
     pairwise_top_k: int = 10
@@ -314,12 +314,52 @@ def _adapt_dimension_weights_from_diagnosis(diagnosis: dict[str, Any]) -> dict[s
     return {key: value / total for key, value in mapped.items()}
 
 
+_DEFERRED_HARD_FLOOR_STAGES = ("visual", "code")
+
+
+def _hard_floor_stage(item: dict[str, Any]) -> str:
+    """Stage that decides this hard floor. Defaults to 'wireframe' for v1
+    diagnoses that predate the field; aligns with the schema's documented
+    back-compat behavior."""
+    raw = (item or {}).get("stage")
+    if not isinstance(raw, str):
+        return "wireframe"
+    cleaned = raw.strip().lower()
+    if cleaned in ("wireframe", "visual", "code"):
+        return cleaned
+    return "wireframe"
+
+
+def _partition_hard_floors(
+    diagnosis: dict[str, Any] | None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Split hard floors into (wireframe-stage = enforced here, deferred =
+    visual+code stage, informational only at the wireframe stage). The
+    wireframe-stage evaluator must not block ranking on deferred floors —
+    those will be decided by the visual-design and frontend-implementation
+    stages where the page actually has the properties being judged."""
+    if not diagnosis:
+        return [], []
+    enforced: list[dict[str, Any]] = []
+    deferred: list[dict[str, Any]] = []
+    for hf in diagnosis.get("hard_floors", []) or []:
+        if not isinstance(hf, dict):
+            continue
+        stage = _hard_floor_stage(hf)
+        if stage in _DEFERRED_HARD_FLOOR_STAGES:
+            deferred.append({**hf, "stage": stage})
+        else:
+            enforced.append({**hf, "stage": "wireframe"})
+    return enforced, deferred
+
+
 def _format_strategic_handoff_for_prompt(
     diagnosis: dict[str, Any], validator_result: dict[str, Any] | None = None
 ) -> str:
     if not diagnosis:
         return "No strategic diagnosis was provided. Use the raw intake and general evaluator policy."
 
+    enforced_floors, deferred_floors = _partition_hard_floors(diagnosis)
     compact = {
         "diagnosis_id": diagnosis.get("diagnosis_id"),
         "primary_hypothesis": diagnosis.get("primary_hypothesis"),
@@ -330,7 +370,13 @@ def _format_strategic_handoff_for_prompt(
         "beauty_function_balance": diagnosis.get("beauty_function_balance"),
         "design_directive": diagnosis.get("design_directive"),
         "first_viewport_obligation": diagnosis.get("first_viewport_obligation"),
-        "hard_floors": diagnosis.get("hard_floors"),
+        # Hard floors are partitioned by stage. The wireframe-stage evaluator
+        # and panel judges enforce ONLY `hard_floors_wireframe_stage`. Floors
+        # tagged stage=visual or stage=code live in `hard_floors_deferred` as
+        # context the architect must structurally enable, not block on at the
+        # gray-box stage where they cannot be satisfied or judged.
+        "hard_floors_wireframe_stage": enforced_floors,
+        "hard_floors_deferred": deferred_floors,
         "anti_patterns": diagnosis.get("anti_patterns"),
         "dynamic_evaluator_policy": diagnosis.get("dynamic_evaluator_policy"),
         "candidate_strategy_seeds": diagnosis.get("candidate_strategy_seeds"),
@@ -615,10 +661,12 @@ async def _call_architect_cli(
         )
 
     user_prompt = _build_architect_user_prompt(cfg, strategy, revision_directive)
-    architect_model = os.environ.get("ARCH_CLI_MODEL", "sonnet")
+    architect_model = os.environ.get("ARCH_CLI_MODEL", "claude-opus-4-7")
+    architect_effort = os.environ.get("ARCH_CLI_EFFORT", "max")
     cmd = [
         "claude", "-p", user_prompt,
         "--model", architect_model,
+        "--effort", architect_effort,
         "--allowedTools", "Read,Write,Edit,Bash,Glob,Grep",
         "--permission-mode", "acceptEdits",
         "--output-format", "json",
@@ -1224,6 +1272,12 @@ async def _check_render(wf_path: pathlib.Path, selectors: list[str]) -> dict[str
         "mobile_horizontal_overflow": False,
         "first_viewport_visible_components": 0,
         "missing_visible_selectors_desktop": [],
+        # Per-viewport list of primary-class elements whose top sits BELOW the
+        # viewport bottom — i.e., requires scrolling to reach. The architect
+        # tagged these primary; if they're below the fold, the hero failed.
+        "primary_below_fold_desktop": [],
+        "primary_below_fold_tablet": [],
+        "primary_below_fold_mobile": [],
     }
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -1268,8 +1322,39 @@ async def _check_render(wf_path: pathlib.Path, selectors: list[str]) -> dict[str
                     })""",
                     selectors,
                 )
+            # Fold-position audit for primary elements. An element is "below
+            # the fold" when its top sits at or below the viewport's bottom
+            # edge after the page loads — meaning the user must scroll to
+            # see ANY part of it. Allow a 4px tolerance for sub-pixel layout.
+            below_fold = await page.evaluate(
+                """(vh) => Array.from(document.querySelectorAll('[data-class=\"primary\"]'))
+                    .map(el => {
+                        const r = el.getBoundingClientRect();
+                        const id = el.id || null;
+                        const comp = el.getAttribute('data-component') || null;
+                        const section = el.closest('[data-section]')?.getAttribute('data-section') || null;
+                        return { id, component: comp, section, top: Math.round(r.top), bottom: Math.round(r.bottom), width: Math.round(r.width), height: Math.round(r.height) };
+                    })
+                    .filter(b => b.width > 0 && b.height > 0 && b.top >= (vh - 4))""",
+                h,
+            )
+            result[f"primary_below_fold_{vp_name}"] = below_fold
             await ctx.close()
         await browser.close()
+    # Fold-violation policy: mobile is the strictest — no primary may fall
+    # below the 390x844 fold (cold Reddit visitor decides in ~3s, scrolling
+    # past a blank phone frame is a bounce). Desktop similarly strict at
+    # 1440x900 (no excuse for a wide hero to push primary content below).
+    # Tablet allows up to 1 primary below fold as slack for the awkward
+    # in-between sizes.
+    fold_violations = []
+    if result["primary_below_fold_mobile"]:
+        fold_violations.append(f"mobile (390x844): {len(result['primary_below_fold_mobile'])} primary element(s) below fold")
+    if result["primary_below_fold_desktop"]:
+        fold_violations.append(f"desktop (1440x900): {len(result['primary_below_fold_desktop'])} primary element(s) below fold")
+    if len(result["primary_below_fold_tablet"]) > 1:
+        fold_violations.append(f"tablet (768x1024): {len(result['primary_below_fold_tablet'])} primary element(s) below fold")
+    result["fold_violations"] = fold_violations
     result["passed"] = bool(
         not result["console_errors_desktop"]
         and not result["console_errors_tablet"]
@@ -1277,6 +1362,7 @@ async def _check_render(wf_path: pathlib.Path, selectors: list[str]) -> dict[str
         and not result["mobile_horizontal_overflow"]
         and result["first_viewport_visible_components"] >= 5
         and not result["missing_visible_selectors_desktop"]
+        and not fold_violations
     )
     return result
 
@@ -1644,6 +1730,25 @@ def _build_revision_directive(checks: dict[str, Any]) -> str | None:
         issues.append(
             f"Desktop first viewport is too empty: only {rn['first_viewport_visible_components']} visible data-component elements; make at least 5 visible before the fold."
         )
+    # Surface fold violations with the specific element ids/components/sections
+    # so the architect knows what to move up, not just that "something" failed.
+    for vp_name, vp_label in (("mobile", "mobile (390x844)"),
+                              ("tablet", "tablet (768x1024)"),
+                              ("desktop", "desktop (1440x900)")):
+        below = rn.get(f"primary_below_fold_{vp_name}", [])
+        # Tablet allows up to 1 primary below fold (slack for awkward in-between sizes);
+        # mobile and desktop must have zero.
+        threshold = 1 if vp_name == "tablet" else 0
+        if len(below) > threshold:
+            tags = [
+                (b.get("id") or b.get("component") or b.get("section") or "anonymous")
+                + f"@top={b['top']}px"
+                for b in below
+            ]
+            issues.append(
+                f"First-viewport fold violation on {vp_label}: primary elements sit below the fold and require scrolling — {tags}. "
+                f"Move these primary elements above the fold, OR if one is correctly a deeper-page reinforcement (e.g., bottom reinforcement CTA), demote its data-class from 'primary' to 'secondary' in the spec AND the wireframe."
+            )
     for key in ("console_errors_desktop", "console_errors_tablet", "console_errors_mobile"):
         if rn[key]:
             issues.append(f"Render console errors in {key.removeprefix('console_errors_')}: {rn[key]}")
@@ -1864,8 +1969,8 @@ class ClaudeCliEvaluator:
                 "claude CLI not found on PATH. Install with: "
                 "npm install -g @anthropic-ai/claude-code"
             )
-        # `model` accepts aliases like "sonnet" / "opus" or full IDs. Default to sonnet.
-        self._model = model or "sonnet"
+        # `model` accepts aliases like "sonnet" / "opus" or full IDs.
+        self._model = model or "claude-opus-4-7"
 
     async def evaluate(self, system_prompt, user_text, image_paths):
         if image_paths:
@@ -1880,9 +1985,11 @@ class ClaudeCliEvaluator:
         else:
             full_user = user_text
 
+        effort = os.environ.get("ARCH_EVAL_CLAUDE_EFFORT", "max")
         cmd = [
             "claude", "-p", full_user,
             "--model", self._model,
+            "--effort", effort,
             "--allowedTools", "Read",
             "--permission-mode", "acceptEdits",
             "--output-format", "text",
@@ -1930,7 +2037,7 @@ class CodexCliEvaluator:
                 "codex CLI not found on PATH. Install with: npm install -g @openai/codex"
             )
         self._model = model or os.environ.get("ARCH_EVAL_CODEX_MODEL") or "gpt-5.5"
-        self._effort = os.environ.get("ARCH_EVAL_CODEX_EFFORT", "medium")
+        self._effort = os.environ.get("ARCH_EVAL_CODEX_EFFORT", "xhigh")
 
     async def evaluate(self, system_prompt, user_text, image_paths):
         # Codex has no system-prompt flag; concatenate. Pipe via stdin because
@@ -2576,7 +2683,17 @@ async def _call_panel_judge(
 ) -> dict[str, Any]:
     system = (
         "You are one member of a harsh multi-judge SaaS design bench. "
-        "Return valid JSON only. Use score 6 for competent median AI output, 8 for strong, and 9+ only for rare exceptional work."
+        "Return valid JSON only. Use score 6 for competent median AI output, 8 for strong, and 9+ only for rare exceptional work. "
+        "You are judging a gray-box WIREFRAME, not a styled page. The diagnosis "
+        "splits hard floors by stage: `hard_floors_wireframe_stage` are the rules "
+        "this candidate is allowed to be judged on; `hard_floors_deferred` are "
+        "visual/code-stage mandates that downstream stages will satisfy, not this one. "
+        "Set `hard_fail: true` ONLY when a hard_floors_wireframe_stage rule is "
+        "violated by the rendered wireframe. Do NOT hard_fail because the wireframe "
+        "lacks warmth, color, illustration, brand palette, custom typography, "
+        "imagery, animation, or any aesthetic property — those are deferred and "
+        "the gray-box stage structurally cannot satisfy them. Note any deferred-"
+        "stage concerns in `top_failure` as observations, not as hard fails."
     )
     labels, images = _pairwise_image_paths(candidate)
     user_text = f"""
@@ -2608,7 +2725,7 @@ Return ONLY valid JSON:
   "judge": "{judge_name}",
   "score": 0.0,
   "hard_fail": false,
-  "hard_fail_reason": "... or none",
+  "hard_fail_reason": "... or none. Only populate if a hard_floors_wireframe_stage rule is violated.",
   "top_strength": "...",
   "top_failure": "...",
   "revision_directive": "..."
@@ -2732,6 +2849,10 @@ After both files are written, output:
         "claude",
         "-p",
         user_prompt,
+        "--model",
+        os.environ.get("ARCH_CLI_MODEL", "claude-opus-4-7"),
+        "--effort",
+        os.environ.get("ARCH_CLI_EFFORT", "max"),
         "--allowedTools",
         "Read,Write,Edit,Bash,Glob,Grep",
         "--permission-mode",
@@ -2860,21 +2981,36 @@ async def run(cfg: RunConfig) -> list[Candidate]:
             f"  [{candidate.strategy}] programmatic score = {score} "
             f"({checks['score_derivation']['reasoning'][:80]})"
         )
-        if (
+        # Iterative revision: keep sending the candidate back as long as it's
+        # failing programmatic checks AND we have revision budget left.
+        # Previously this was a single `if` — bumping max_revisions had no
+        # effect because each candidate only ever got one revision attempt.
+        while (
             (score < 9 or _category_failed(checks))
             and cfg.max_revisions > 0
             and candidate.revision_number < cfg.max_revisions
         ):
             directive = _build_revision_directive(checks)
-            if directive:
-                print(f"  [{candidate.strategy}] sending back for revision")
-                await _call_architect_cli(cfg, candidate.strategy, directive)
-                if candidate.spec_path.exists() and candidate.wireframe_path.exists():
-                    candidate.revision_number += 1
-                    await _screenshot_wireframe(candidate, cfg.out_dir)
-                    await run_programmatic_checks(
-                        candidate, cfg.references_dir, cfg.reference_items, cfg.strategic_diagnosis
-                    )
+            if not directive:
+                break
+            print(
+                f"  [{candidate.strategy}] sending back for revision "
+                f"#{candidate.revision_number + 1}/{cfg.max_revisions}"
+            )
+            await _call_architect_cli(cfg, candidate.strategy, directive)
+            if not (candidate.spec_path.exists() and candidate.wireframe_path.exists()):
+                print(f"  [{candidate.strategy}] revision did not produce expected files; stopping revision loop")
+                break
+            candidate.revision_number += 1
+            await _screenshot_wireframe(candidate, cfg.out_dir)
+            checks = await run_programmatic_checks(
+                candidate, cfg.references_dir, cfg.reference_items, cfg.strategic_diagnosis
+            )
+            score = checks["score_derivation"]["score"]
+            print(
+                f"  [{candidate.strategy}] after revision #{candidate.revision_number}: "
+                f"programmatic score = {score}"
+            )
 
     print(
         f"\n=== STEP 4: Evaluator ({cfg.evaluator_provider} / {cfg.evaluator_model}) "

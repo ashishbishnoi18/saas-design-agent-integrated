@@ -574,12 +574,48 @@ Array of at least 5 objects:
   "triggered_by_axis": "string",
   "why_it_matters": "string",
   "score_cap_if_violated": 0.0,
-  "validation_hint": "string"
+  "validation_hint": "string",
+  "stage": "wireframe | visual | code"
 }
 
 score_cap_if_violated must be between 0 and 10.
 
 Hard floors must be concrete enough for an evaluator to apply.
+
+`stage` declares which downstream stage actually decides pass/fail. The pipeline
+runs in three stages — wireframe (gray-box HTML, no color/type/illustration),
+visual (color, typography, illustration, warmth, brand fit), code (runtime,
+performance, a11y, interactivity). A hard floor must be tagged with the earliest
+stage that can structurally satisfy AND judge it. Pick exactly one:
+
+- `wireframe` — anything decidable from gray-box structure alone: component
+  presence, ordering, first-viewport geometry, mobile fold positions, copy
+  content, selector existence, CTA target, hard-floor block presence in spec.
+- `visual` — anything that depends on color, typography character, illustration,
+  imagery warmth, palette mood, density-as-feel, brand fit, or whether the page
+  reads as "warm/whimsical" vs "sterile/utility". A gray-box wireframe cannot
+  satisfy or fail these — do NOT tag aesthetic mandates as wireframe.
+- `code` — anything that requires the page to be running: load speed, animation
+  quality, real form behavior, keyboard navigation, screen-reader output, focus
+  states, real video playback.
+
+When in doubt, pick the later stage. Tagging a visual floor as `wireframe`
+causes false-fails on candidates the wireframe stage structurally cannot
+satisfy, blocking the entire ranking on a constraint the wrong stage was asked
+to enforce. Tagging a wireframe floor as `visual` is also wrong — it lets
+structural violations slip past the gate.
+
+Examples:
+- "CTA must appear in the first viewport at 390x844" → `wireframe`
+- "Phone-screen demo must be visible above the fold on mobile" → `wireframe`
+- "$49/year plan must not appear in the hero" → `wireframe`
+- "Page must read as warm Disney-blog, not utility SaaS" → `visual`
+- "Brand palette must use warm cream/peach, no cold grays" → `visual`
+- "Hero alert demo must autoplay within 200ms of load" → `code`
+- "All interactive elements must be reachable via keyboard tab order" → `code`
+
+If you omit the field, the pipeline assumes `wireframe` for v1 back-compat.
+Always set it explicitly.
 
 15. anti_patterns
 

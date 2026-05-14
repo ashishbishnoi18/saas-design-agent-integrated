@@ -480,7 +480,7 @@ def main() -> int:
     parser.add_argument("--evaluator-provider", default="gemini",
                         choices=["gemini", "openai", "anthropic", "claude-cli", "codex-cli"])
     parser.add_argument("--evaluator-model", default=None)
-    parser.add_argument("--max-revisions", type=int, default=1)
+    parser.add_argument("--max-revisions", type=int, default=2)
     parser.add_argument("--use-installed-agent", action="store_true")
     parser.add_argument("--pairwise", action="store_true")
     parser.add_argument("--blind-pairwise", action="store_true")

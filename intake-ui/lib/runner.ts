@@ -67,12 +67,12 @@ export async function startRun({ sessionId, inputAbs, options }: StartRunArgs): 
     // forces line-by-line flushes so the UI's stage tracker has something
     // to parse and the user isn't flying blind.
     PYTHONUNBUFFERED: "1",
-    // Align pipeline model choice with the intake UI's expectation. The
-    // harness's claude-cli default is "sonnet" and codex-cli's is "gpt-5.5";
-    // we surface "Claude CLI · opus 4.7" in the model switcher, so the
-    // pipeline calls should use that same model unless the user already
-    // pinned one via env. INTAKE_CLAUDE_MODEL is the intake-ui's setting;
-    // ARCH_EVAL_CLAUDE_CLI_MODEL is what the harness reads.
+    // Align pipeline model + effort choice with the intake UI's expectation.
+    // Defaults are pinned to the strongest config (opus 4.7 / codex xhigh) so
+    // every stage matches the model switcher unless the user already pinned
+    // one via env. INTAKE_CLAUDE_MODEL/INTAKE_CODEX_MODEL are the intake-ui's
+    // settings; ARCH_EVAL_CLAUDE_CLI_MODEL / ARCH_EVAL_CODEX_MODEL /
+    // ARCH_CLI_MODEL / ARCH_EVAL_CODEX_EFFORT are what the harness reads.
     ARCH_EVAL_CLAUDE_CLI_MODEL:
       process.env.ARCH_EVAL_CLAUDE_CLI_MODEL ||
       process.env.INTAKE_CLAUDE_MODEL ||
@@ -81,6 +81,24 @@ export async function startRun({ sessionId, inputAbs, options }: StartRunArgs): 
       process.env.ARCH_EVAL_CODEX_MODEL ||
       process.env.INTAKE_CODEX_MODEL ||
       "gpt-5.5",
+    // Architect stage reads its own var; without this bridge it falls back to
+    // the harness default and ignores the intake-ui model switcher.
+    ARCH_CLI_MODEL:
+      process.env.ARCH_CLI_MODEL ||
+      process.env.INTAKE_CLAUDE_MODEL ||
+      "claude-opus-4-7",
+    ARCH_CLI_EFFORT:
+      process.env.ARCH_CLI_EFFORT ||
+      process.env.INTAKE_CLAUDE_EFFORT ||
+      "max",
+    ARCH_EVAL_CLAUDE_EFFORT:
+      process.env.ARCH_EVAL_CLAUDE_EFFORT ||
+      process.env.INTAKE_CLAUDE_EFFORT ||
+      "max",
+    ARCH_EVAL_CODEX_EFFORT:
+      process.env.ARCH_EVAL_CODEX_EFFORT ||
+      process.env.INTAKE_CODEX_EFFORT ||
+      "xhigh",
   };
   const pythonBin = resolvePythonBin();
 
